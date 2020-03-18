@@ -2,5 +2,5 @@
 Rubén Bullones Subirats,
 Jesús Vicente Egido,
 Rubén González García,
-Lucía Montiel Asensio
-María del Carmen López Gómez
+Lucía Montiel Asensio,
+María del Carmen López Gómez,
