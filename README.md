@@ -1,4 +1,4 @@
-# IngSof2020
+﻿# IngSof2020
 
 Jesus Visente
 
@@ -11,3 +11,5 @@ Rubén González García
 Lucía Montiel Asensio
 
 Adrián Cámara Muñoz
+
+Maria del carmen López Gómez
