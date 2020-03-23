@@ -1,15 +1,15 @@
-﻿# IngSof2020
+<h1> IngSof2020 </h1>
 
-Jesus Visente
+*Jesus Vicente Egido
 
-Juan Manuel Pérez González
+*Juan Manuel Pérez González
 
-Rubén Bullones Subirats
+*Rubén Bullones Subirats
 
-Rubén González García
+*Rubén González García
 
-Lucía Montiel Asensio
+*Lucía Montiel Asensio
 
-Adrián Cámara Muñoz
+*Adrián Cámara Muñoz
 
-Maria del carmen López Gómez
+*Maria del carmen López Gómez
