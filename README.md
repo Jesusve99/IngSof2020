@@ -14,7 +14,4 @@
 
 * Maria del carmen López Gómez
 
->pepe
->que me estas contando
->
->hola bb
+>El objetivo es crear una aplicación para organizar partidos de fútbol en las pistas municipales.
