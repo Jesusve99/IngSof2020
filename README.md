@@ -1,6 +1,6 @@
 <h1> IngSof2020 </h1>
 
-*Italic* **bold** 'monospace'
+*Italic* **bold** `monospace`
 
 * Jesus Vicente Egido
 
