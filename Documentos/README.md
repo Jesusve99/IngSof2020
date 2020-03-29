@@ -1,9 +1,17 @@
-# IngSof2020
+<h1> NBP(Neo Balompié) </h1>
 
-Jesus Visente
+* Jesus Vicente Egido
 
-Juan Manuel Pérez González
+* Juan Manuel Pérez González
 
-Rubén Bullones Subirats
+* Rubén Bullones Subirats
 
-Rubén González García
+* Rubén González García
+
+* Lucía Montiel Asensio
+
+* Adrián Cámara Muñoz
+
+* Maria del carmen López Gómez
+
+>El objetivo es crear una aplicación para organizar partidos de fútbol en las pistas municipales.
