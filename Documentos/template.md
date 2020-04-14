@@ -78,8 +78,8 @@ Requisitos no Funcionales: Describen una restricción sobre una característica 
 
 ### 1.4 Referencias
 
-https://github.com/joaquinballesteros/SRS-Template/blob/master/template.md
-Política de Seguridad de la Información del Ayuntamiento de Málaga, Mayo 2019: https://www.malaga.eu/visorcontenido/NRMDocumentDisplayer/665/DocumentoNormativa665
+https://github.com/joaquinballesteros/SRS-Template/blob/master/template.md<br>
+Política de Seguridad de la Información del Ayuntamiento de Málaga, Mayo 2019: https://www.malaga.eu/visorcontenido/NRMDocumentDisplayer/665/DocumentoNormativa665<br>
 Normalización de Interfaces de MADEJA, versión 1.5.0 : http://www.juntadeandalucia.es/servicios/madeja/contenido/subsistemas/interfazusuario/normalizacion-interfaces
 
 
