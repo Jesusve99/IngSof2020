@@ -66,7 +66,12 @@ El objetivo comercial de esta app sería proporcionar a los distintos ayuntamien
 
 ### 1.3 Definiciones, acrónimos y abreviaturas
 
--NBP es la abreviatura del nombre completo de nuestra aplicación, la cual es Neo Balompié.
+NBP: Es la abreviatura del nombre completo de nuestra aplicación, la cual es Neo Balompié.
+Software: Programa que ofrece una funcionalidad.
+Hardware: Componentes físicos de un sistema.
+MADEJA: Marco de Desarrollo de la Junta de Andalucía.
+Requisitos Funcionales: Describen una característica o funcionalidad del sistema
+Requisitos no Funcionales: Describen una restricción sobre una característica o funcionalidad del sistema.
 -Un usuario será definido como anfitrión al crear un partido, dándole la posibilidad de eliminar el partido y aceptar o no a los jugadores que quieran unirse.
 -Definimos como administrador a aquellas cuentas con un permiso dado por el sistema que les permiten gestionar las pistas.
 
@@ -74,7 +79,8 @@ El objetivo comercial de esta app sería proporcionar a los distintos ayuntamien
 ### 1.4 Referencias
 
 https://github.com/joaquinballesteros/SRS-Template/blob/master/template.md
-https://www.malaga.eu/visorcontenido/NRMDocumentDisplayer/665/DocumentoNormativa665
+Política de Seguridad de la Información del Ayuntamiento de Málaga, Mayo 2019: https://www.malaga.eu/visorcontenido/NRMDocumentDisplayer/665/DocumentoNormativa665
+Normalización de Interfaces de MADEJA, versión 1.5.0 : http://www.juntadeandalucia.es/servicios/madeja/contenido/subsistemas/interfazusuario/normalizacion-interfaces
 
 
 ### 1.5 Resumen del documento
@@ -166,8 +172,7 @@ Utilizaremos una API de Java que nos será de gran utilidad a la hora de realiza
 | R19 | Tamaño nombre de<br>  equipo                                  | El nombre de los<br>  equipos deberá tener menos de 10 caracteres y solo podrán ser letras                                                                                                   | Opcional    | R16         | No funcional       |
 | R20 | Máximo de<br>  miembros de un equipo                          | Un equipo<br>  permitirá inscribir hasta 10 jugadores.                                                                                                                                       | Opcional    | R16         | No funcional       |
 | R21 | Unirse a un<br>  partido                                      | El usuario<br>  tendrá la opción de unirse a un partido solo.                                                                                                                                | Fundamental | R9          | Funcional          |
-|     |                                                               | El usuario podrá<br>  añadir al partido jugadores no registrados en el sistema, determinando su<br>  edad y nombre.                                                                          |             |             |                    |
-| R22 | Añadir jugadores no registrados a un partido                  |                                                                                                                                                                                              | Deseable    | R21         | Funcional          |
+| R22 | Añadir jugadores no registrados a un partido                  | El usuario podrá<br>  añadir al partido jugadores no registrados en el sistema, determinando su<br>  edad y nombre.                                                                          | Deseable    | R21         | Funcional          |            
 | R23 | Añadir miembros<br>  de tu equipo a un partido                | El usuario podrá<br>  añadir al partido usuarios que estén en su equipo.                                                                                                                     | Deseable    | R21         | Funcional          |
 | R24 | Aceptar/<br>  Rechazar Jugador                                | El anfitrión del<br>  partido será el responsable de aceptar o no las peticiones de usuarios para<br>  poder disputar dicho partido.                                                         | Fundamental | R21         | Funcional          |
 | R25 | Limitación de<br>  envío de solicitud de unión                | Si el jugador se<br>  ha unido a un partido y el creador de este lo rechaza, este usuario no podrá<br>  mandar otra solicitud para unirse al mismo partido.                                  | Opcional    | R24         | No funcional       |
@@ -178,17 +183,18 @@ Utilizaremos una API de Java que nos será de gran utilidad a la hora de realiza
 | R30 | Limitación de<br>  valoraciones                               | Un jugador solo<br>  podrá valorar una vez a cada jugador del partido y a la pista por cada<br>  partido disputado.                                                                          | Opcional    | R21         | No funcional       |
 | R31 | Compartir<br>  partido                                        | El sistema<br>  generará un enlace para que el usuario pueda compartir un partido por redes<br>  sociales.                                                                                   | Opcional    | R9          | Funcional          |
 | R32 | Notificación de<br>  eliminación de partido                   | El sistema<br>  mandará una notificación a los usuarios inscritos en el partido para avisar<br>  de que este ha sido eliminado.                                                              | Opcional    | R13         | Funcional          |
-|     |                                                               |                                                                                                                                                                                              |             | R14         |                    |
-| R33 | Notificación de<br>  eliminación de pista                     | El sistema<br>  mandará una notificación a todos los usuarios registrados en el sistema, con<br>  la información de qué pista ha sido eliminada.                                             | Opcional    | R8          | Funcional          |
-| R34 | Notificación al<br>  aceptar una solicitud de unión a partido | El sistema<br>  mandará un correo al usuario cuando el anfitrión lo acepte o rechace en el<br>  partido.                                                                                     | Opcional    | R21         | Funcional          |
-| R35 | Notificación de<br>  partido lleno                            | El sistema<br>  mandará una notificación a los usuarios inscritos en el partido para avisar<br>  que está completo.                                                                          | Opcional    | R24         | Funcional          |
-| R36 | Idioma                                                        | La aplicación<br>  estará en español e inglés.                                                                                                                                               | Opcional    |             | No funcional       |
+| R33 | Notificación de<br>  eliminación de pista                     | El sistema<br>  mandará una notificación a todos los usuarios registrados en el sistema, con<br>  la información de qué pista ha sido eliminada.                                             | Opcional    | R14         | Funcional          |
+| R34 | Notificación al<br>  aceptar una solicitud de unión a partido | El sistema<br>  mandará un correo al usuario cuando el anfitrión lo acepte o rechace en el<br>  partido.                                                                                     | Opcional    | R8          | Funcional          |
+| R35 | Notificación de<br>  partido lleno                            | El sistema<br>  mandará una notificación a los usuarios inscritos en el partido para avisar<br>  que está completo.                                                                          | Opcional    | R21         | Funcional          |
+| R36 | Idioma                                                        | La aplicación<br>  estará en español e inglés.                                                                                                                                               | Opcional    | R24         | No funcional       |
 | R37 | Conexión a<br>  internet                                      | El sistema<br>  contará con una conexión de aproximadamente 1Mbps para acceder a la base de<br>  datos, gestionar partidos y ver el horario disponible.                                      | Deseable    |             | No funcional       |
 | R38 | Manejabilidad                                                 | El usuario será<br>  capaz de manejarse sin ningún tipo de ayuda por el sistema tras 15 minutos de<br>  uso.                                                                                 | Deseable    |             | No funcional       |
 | R39 | Seguridad                                                     | No se<br>  proporcionará información personal de los clientes salvo nombre de usuario,<br>  edad y demarcación favorita.                                                                     | Deseable    |             | No funcional       |
 | R40 | Tiempo de<br>  respuesta                                      | Al abrir la<br>  aplicación, esta debe ser capaz de responder al usuario en menos de 5<br>  segundos.                                                                                        | Deseable    |             | No funcional       |
 | R41 | Ubicación BDD                                                 | La Base de Datos<br>  estará físicamente ubicada en Málaga.                                                                                                                                  | Fundamental |             | No funcional       |
 | R42 | Almacenamiento<br>  BDD                                       | La base de datos<br>  almacenará los datos de los usuarios registrados, de las pistas y de los<br>  partidos no finalizados.                                                                 | Opcional    |             | No funcional<br>   |	
+| R43 | Fiabilidad 						      | El programa solo podrá fallar una vez cada 1000 horas de uso.																     | Opcional    |		 | No funcional       |
+| R44 | Disponibilidad 						      | El programa podrá usuarse con un ordenador de prestaciones bajas.															     | Opcional    |		 | No funcional       |
 
 
 ### 4.2 Funcionales
@@ -210,14 +216,11 @@ El resto del sistema no necesita una respuesta rápida puesto que la aplicación
 El sistema podrá almacenar una serie de datos personales como email, contraseña y las preferencias de cada jugador, por lo que en versiones futuras se tendrá en cuenta que se encripte con un algoritmo que garantice su seguridad.
 
 #### 4.3.3 Fiabilidad
-Especifique los requisitos no funcionales necesarios para establecer la fiabilidad requerida del sistema de software al momento de la entrega.
+Puesto que el riesgo de que nuestro producto no funcione es prácticamente nulo, se pretende que el programa solo falle una cada 1000 horas de uso.
 
 #### 4.3.4 Disponibilidad
-Especifique los requisitos no funcionales necesarios para garantizar un nivel de disponibilidad definido para todo el sistema, tiempo mínimo disponible por día, máximos de reinicios permitidos por tiempo, etc.
+Su primera versión solo estará disponibles en ordenadores, las características iguales o superiores que necesitan para el correcto funcionamiento del programa son al menos 1GB de RAM y un Intel Celeron G4930 3.2Ghz. 
 
-### 4.4 Normativas aplicables
-
-En futuras versiones se tratará la información según el documento “Política de Seguridad de la Información”
 
 ### 4.5 Diseño e implementación
 
@@ -282,10 +285,3 @@ La entrega de este proyecto se realizará el 5 de junio de 2020.
  * Tiempo de respuesta: Se harán testeos del sistema para ver cuánto tiempo máximo ha tardado el sistema en responder.
  * Ubicación BDD: Se comprobará que la ubicación física de nuestra BDD está en Málaga.
  * Almacenamiento base de datos: Se comprobará si todas esas especificaciones están en la base de datos del sistema.
-
-
-## 6. Apendices
-
-### Apéndice A: Ejemplos de este documento relleno
-
-https://www.malaga.eu/visorcontenido/NRMDocumentDisplayer/665/DocumentoNormativa665
