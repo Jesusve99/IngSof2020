@@ -185,7 +185,7 @@ Utilizaremos una API de Java que nos será de gran utilidad a la hora de realiza
 | R41 | Ubicación BDD                                                 | La Base de Datos<br>  estará físicamente ubicada en Málaga.                                                                                                                                  | Fundamental |             | No funcional       |
 | R42 | Almacenamiento<br>  BDD                                       | La base de datos<br>  almacenará los datos de los usuarios registrados, de las pistas y de los<br>  partidos no finalizados.                                                                 | Opcional    |             | No funcional<br>   |	
 | R43 | Fiabilidad 						      | El programa solo podrá fallar una vez cada 1000 horas de uso.																     | Opcional    |		 | No funcional       |
-| R44 | Disponibilidad 						      | El programa podrá usuarse con un ordenador de prestaciones bajas.															     | Opcional    |		 | No funcional       |
+| R44 | Disponibilidad 						      | El programa podrá usarse con un ordenador de prestaciones bajas.															     | Opcional    |		 | No funcional       |
 
 
 ### 4.2 Funcionales
