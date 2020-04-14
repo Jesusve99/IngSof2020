@@ -40,7 +40,7 @@ Generada por NBP
 * 5 [Verificación](#5-verificación)
   
 ## Versiones
-| Name |    Date    | Reason For Changes  | Version   |
+| Name |    Date    | Reason For Changes  | Version   |<br>
 | NBP  | 13/04/2020 | Primera versión     | 0.1       |
 
 
