@@ -1,10 +1,9 @@
 ﻿# Especificación de requisitos 
-## Del proyecto <project name>
+## Del proyecto NBP
 
 Versión 0.1  
-Generada por <author>  
-<organización>  
-<fecha creación>  
+Generada por NBP  
+13/04/2020  
 
 Índice
 =================
@@ -33,24 +32,17 @@ Generada por <author>
     * 4.3.2 [Seguridad](#432-seguridad)
     * 4.3.3 [Fiabilidad](#433-fiabilidad)
     * 4.3.4 [Disponibilidad](#434-disponibilidad)
-  * 4.4 [Normativas aplicables](#44-normativas-aplicables)
   * 4.5 [Diseño e implementación](#45-diseño-e-implementación)
     * 4.5.1 [Instalación](#451-instalación)
-    * 4.5.2 [Distribución](#452-distribución)
-    * 4.5.3 [Mantenimiento](#453-mantenimiento)
-    * 4.5.4 [Reusabilidad](#454-reusabilidad)
-    * 4.5.5 [Portabilidad](#455-portabilidad)
-    * 4.5.6 [Coste](#456-coste)
-    * 4.5.7 [Fecha de Entrega](#457-fecha-de-entrega)
+    * 4.5.2 [Mantenimiento](#452-mantenimiento)
+    * 4.5.3 [Coste](#453-coste)
+    * 4.5.4 [Fecha de Entrega](#454-fecha-de-entrega)
 * 5 [Verificación](#5-verificación)
-* 6 [Apendices](#6-apendices) 
   
 ## Versiones
-| Name | Date    | Reason For Changes  | Version   |
-| ---- | ------- | ------------------- | --------- |
-|      |         |                     |           |
-|      |         |                     |           |
-|      |         |                     |           |
+| Name |    Date    | Reason For Changes  | Version   |
+| NBP  | 13/04/2020 | Primera versión     | 0.1       |
+
 
 ## 1. Introducción
 
@@ -78,7 +70,6 @@ Requisitos no Funcionales: Describen una restricción sobre una característica 
 
 ### 1.4 Referencias
 
-https://github.com/joaquinballesteros/SRS-Template/blob/master/template.md<br>
 Política de Seguridad de la Información del Ayuntamiento de Málaga, Mayo 2019: https://www.malaga.eu/visorcontenido/NRMDocumentDisplayer/665/DocumentoNormativa665<br>
 Normalización de Interfaces de MADEJA, versión 1.5.0 : http://www.juntadeandalucia.es/servicios/madeja/contenido/subsistemas/interfazusuario/normalizacion-interfaces
 
@@ -142,7 +133,6 @@ Arquitectura:
 Nuestro producto está direccionado a ser multiplataforma, aunque por ahora la primera versión será una aplicación de escritorio. Todos los equipos donde vaya a ser ejecutada nuestra aplicación necesitarán tener preinstalados el JVM, ya que de por sí ninguna aplicación Java es ejecutada de forma nativa por ningún sistema operativo.
 Actualmente vamos a trabajar de forma local en la primera versión, con una BDD de Oracle. Sin embargo, en un futuro tenemos pensado crear una BDD MySQL que podrá utilizarse a través de la contratación hosting de un servidor donde estará localizada.
 Utilizaremos una API de Java que nos será de gran utilidad a la hora de realizar las conexiones con la BDD ya que añade una biblioteca java.sql que contiene clases de gran utilidad, la API se conoce como Java Database Connectivity o bien JDBC.
-
 
 
 ## 4. Requisitos
