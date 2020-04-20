@@ -26,7 +26,7 @@ aceptar o rechazar a todo aquel que quiera unirse al partido.
 Otra opción será la de valorar pistas y jugadores con los que ya haya
 jugado.
 
- 
+
 **Clase Equipo**
 
 La clase Equipo contiene información de un determinado equipo como el
@@ -35,7 +35,7 @@ equipo(creador). 
 
 El equipo se podrá unir a un partido con alguno o todos sus miembros.
 
- 
+
 **Clase Partido**
 
 La clase partido proporciona la fecha y hora en la que se realizará un
