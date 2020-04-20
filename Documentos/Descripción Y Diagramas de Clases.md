@@ -43,7 +43,7 @@ partido en específico, se puede jugar un partido con equipo, solo o con
 jugadores no registrados, partido está relacionado con pista ya que
 estará asignado a una.
 
- 
+
 **Clase Administrador**
 
 La clase Administrador hereda de la clase Usuario, por lo que contiene
