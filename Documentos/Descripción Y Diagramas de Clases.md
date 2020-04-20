@@ -1,4 +1,4 @@
-![](Documentos/Diagramas de Clases/Diagrama de Clases.jpg?raw=true)
+![Alt text](Documentos/Diagramas de Clases/Diagrama de Clases.jpg?raw=true)
 
 **Clase Usuario**
 
