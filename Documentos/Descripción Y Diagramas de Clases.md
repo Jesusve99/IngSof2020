@@ -1,5 +1,3 @@
-![-1583398394.jpg](Documentos/Diagramas de Clases/Diagrama de Clases.jpg?raw=true)
-
 **Clase Usuario**
 
 La clase Usuario contiene información sobre un determinado usuario: su
