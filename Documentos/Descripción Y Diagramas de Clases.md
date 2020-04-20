@@ -1,5 +1,4 @@
-![Documentos/Diagramas de Clases/Diagrama de Clases.jpg](media/image1.jpg){width="5.905555555555556in"
-height="4.097343613298338in"}
+![Documentos/Diagramas de Clases/Diagrama de Clases.jpg?raw=true]
 
 **Clase Usuario**
 
