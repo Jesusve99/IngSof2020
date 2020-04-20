@@ -14,4 +14,4 @@
 
 * Maria del carmen López Gómez
 
-<h2>El objetivo es crear una aplicación para organizar partidos de fútbol en las pistas municipales.</h2>
+<h5>El objetivo es crear una aplicación para organizar partidos de fútbol en las pistas municipales.</h5>
