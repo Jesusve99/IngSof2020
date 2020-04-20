@@ -1,4 +1,4 @@
-![-1583398394.jpg](media/image1.jpg)
+![Documentos/Diagramas de Clases/Diagrama de Clases.jpg](media/image1.jpg)
 
 ![](media/image2.jpeg){width="5.895833333333333in"
 height="4.760416666666667in"}
