@@ -1,4 +1,4 @@
-![https://github.com/Jesusve99/IngSof2020/blob/master/Documentos/Diagramas%20de%20Clases/Diagrama%20de%20Clases.jpg](media/image1.jpg)
+![](https://github.com/Jesusve99/IngSof2020/blob/master/Documentos/Diagramas%20de%20Clases/Diagrama%20de%20Clases.jpg?raw=true)
 
 ![](media/image2.jpeg){width="5.895833333333333in"
 height="4.760416666666667in"}
