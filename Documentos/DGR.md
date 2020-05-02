@@ -85,8 +85,7 @@ En primer lugar, el usuario deberá registrarse en la plataforma para poder acce
 Además, tendrá la opción de crear equipos, compartir partidos por redes sociales y valorar tanto pistas como jugadores con los que haya jugado.
 La aplicación ofrecerá un usuario con privilegios, el administrador, que contará con las mismas funcionalidades que un usuario normal y además podrá gestionar la disponibilidad de las pistas.
 
-![Diagrama de caso de usos]
-(https://github.com/Jesusve99/IngSof2020/blob/master/Documentos/CasosDeUso.jpeg)
+<img src="https://github.com/Jesusve99/IngSof2020/blob/master/Documentos/CasosDeUso.jpeg" alt="Diagrama Casos de Uso" style="vertical-align:middle">
 ### 2.3 Perfiles de usuario
 
 Esta aplicación está enfocada principalmente a todos aquellos amantes del fútbol, ya sean jóvenes o adultos. El usuario no necesitará tener ningún tipo de conocimiento o experiencia para hacer uso del producto. 
