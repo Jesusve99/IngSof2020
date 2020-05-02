@@ -212,6 +212,7 @@ Puesto que el riesgo de que nuestro producto no funcione es prácticamente nulo,
 
 #### 4.3.4 Disponibilidad
 Su primera versión solo estará disponibles en ordenadores, las características iguales o superiores que necesitan para el correcto funcionamiento del programa son al menos 1GB de RAM y un Intel Celeron G4930 3.2Ghz.
+El sistema deberá de ser consistente y resistente a fallos, pudiendo alcanzar como máximo 2 fallos/dia.
 
 #### 4.4 Normativas aplicables
 Nuestra aplicación no tratará actualmente la normativa aplicables en sus primeras versiones. Pero, en las futuras versiones finales se regirá por "Política de Seguridad de la Información" (https://www.red.es/redes/sites/redes/files/Poli%CC%81tica%20de%20Seguridad.pdf).
@@ -222,17 +223,17 @@ Nuestra aplicación no tratará actualmente la normativa aplicables en sus prime
 
 El programa funcionará en una arquitectura de x64 con Java. El sistema donde se ejecute el programa no necesita ningún requerimiento más en concreto.
 
-#### 4.4.2 Mantenimiento
+#### 4.5.2 Mantenimiento
 
 Puesto que el programa usará un modelo de vista-controlador el mantenimiento de este estará separado en la distintas capas, aislando los problemas y haciendo más sencilla una modificación en alguna de estas.
 
-#### 4.4.3 Coste
+#### 4.5.3 Coste
 
 Los recursos que vamos a utilizar nos los proporciona la Universidad de Málaga.
 Además, el coste en personal será de 1297’53€.
 
 
-#### 4.4.4 Fecha de entrega
+#### 4.5.4 Fecha de entrega
 
 La entrega de este proyecto se realizará el 5 de junio de 2020.
 
