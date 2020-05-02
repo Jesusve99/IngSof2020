@@ -118,9 +118,8 @@ La BDD será desarrollada en MySQL y por lo tanto necesitaremos hacer uso del pr
 ### 4.1 Precedencia y prioridad
 
 
-
-|-------|------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|-------------|-----------------|
 |    ID | NOMBRE                                                     | DESCRIPCIÓN                                                                                                                                                                                                       | PRIORIDAD   | PRECEDENCIA | TIPO            |
+|-------|------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|-------------|-----------------|
 | R1    | Registrar   usuario                                        | Un usuario podrá   registrarse facilitando un correo, un nombre de usuario, su nombre y   apellidos reales, su fecha de nacimiento, demarcación favorita y una   contraseña válida.                               | Fundamental |             | Funcional       |
 | R2    | Registro único   de correo electrónico                     | No se podrán registrar varios usuarios con el   mismo correo.                                                                                                                                                     | Fundamental | R1          | No Funcional    |
 | R3    | Contraseña   válida                                        | Una contraseña   será válida cuando esté formada por una cadena alfanumérica con una longitud   de entre 6 y 20 caracteres.                                                                                       | Deseable    | R1          | No funcional    |
@@ -167,6 +166,7 @@ La BDD será desarrollada en MySQL y por lo tanto necesitaremos hacer uso del pr
 | R45   | Fiabilidad                                                 | El programa sólo   podrá fallar una cada 100 horas de uso.                                                                                                                                                        | Opcional    |             | No funcional    |
 | R46   | Rango de   valoración                                      | Las valoraciones   podrán ser del 1 al 5, siendo 1 la peor y 5 la mejor.                                                                                                                                          | Opcional    | R28 / R29   | No funcional    |
 | R47   | JVM                                                        | Todos los   equipos donde vaya a ser ejecutada nuestra aplicación necesitarán tener   preinstalados el JVM, ya que de por sí ninguna aplicación Java es ejecutada   de forma nativa por ningún sistema operativo. | Fundamental |             | No funcional    |
+
 
 ### 4.2 Funcionales
 
