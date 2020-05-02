@@ -32,11 +32,12 @@ Generada por NBP
     * 4.3.2 [Seguridad](#432-seguridad)
     * 4.3.3 [Fiabilidad](#433-fiabilidad)
     * 4.3.4 [Disponibilidad](#434-disponibilidad)
-  * 4.4 [Diseño e implementación](#44-diseño-e-implementación)
-    * 4.4.1 [Instalación](#441-instalación)
-    * 4.4.2 [Mantenimiento](#442-mantenimiento)
-    * 4.4.3 [Coste](#443-coste)
-    * 4.4.4 [Fecha de Entrega](#444-fecha-de-entrega)
+  * 4.4 [Normativas aplicables](#44-normativas-aplicables)
+  * 4.5 [Diseño e implementación](#44-diseño-e-implementación)
+    * 4.5.1 [Instalación](#441-instalación)
+    * 4.5.2 [Mantenimiento](#442-mantenimiento)
+    * 4.5.3 [Coste](#443-coste)
+    * 4.5.4 [Fecha de Entrega](#444-fecha-de-entrega)
 * 5 [Verificación](#5-verificación)
   
 ## Versiones
@@ -210,10 +211,12 @@ El sistema podrá almacenar una serie de datos personales como email, contraseñ
 Puesto que el riesgo de que nuestro producto no funcione es prácticamente nulo, se pretende que el programa solo falle una cada 1000 horas de uso.
 
 #### 4.3.4 Disponibilidad
-Su primera versión solo estará disponibles en ordenadores, las características iguales o superiores que necesitan para el correcto funcionamiento del programa son al menos 1GB de RAM y un Intel Celeron G4930 3.2Ghz. 
+Su primera versión solo estará disponibles en ordenadores, las características iguales o superiores que necesitan para el correcto funcionamiento del programa son al menos 1GB de RAM y un Intel Celeron G4930 3.2Ghz.
 
+#### 4.4 Normativas aplicables
+Nuestra aplicación no tratará actualmente la normativa aplicables en sus primeras versiones. Pero, en las futuras versiones finales se regirá por "Política de Seguridad de la Información" (https://www.red.es/redes/sites/redes/files/Poli%CC%81tica%20de%20Seguridad.pdf).
 
-### 4.4 Diseño e implementación
+### 4.5 Diseño e implementación
 
 #### 4.4.1 Instalación
 
