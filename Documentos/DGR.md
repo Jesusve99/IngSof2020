@@ -32,11 +32,11 @@ Generada por NBP
     * 4.3.2 [Seguridad](#432-seguridad)
     * 4.3.3 [Fiabilidad](#433-fiabilidad)
     * 4.3.4 [Disponibilidad](#434-disponibilidad)
-  * 4.5 [Diseño e implementación](#45-diseño-e-implementación)
-    * 4.5.1 [Instalación](#451-instalación)
-    * 4.5.2 [Mantenimiento](#452-mantenimiento)
-    * 4.5.3 [Coste](#453-coste)
-    * 4.5.4 [Fecha de Entrega](#454-fecha-de-entrega)
+  * 4.4 [Diseño e implementación](#44-diseño-e-implementación)
+    * 4.4.1 [Instalación](#441-instalación)
+    * 4.4.2 [Mantenimiento](#442-mantenimiento)
+    * 4.4.3 [Coste](#443-coste)
+    * 4.4.4 [Fecha de Entrega](#444-fecha-de-entrega)
 * 5 [Verificación](#5-verificación)
   
 ## Versiones
@@ -213,23 +213,23 @@ Puesto que el riesgo de que nuestro producto no funcione es prácticamente nulo,
 Su primera versión solo estará disponibles en ordenadores, las características iguales o superiores que necesitan para el correcto funcionamiento del programa son al menos 1GB de RAM y un Intel Celeron G4930 3.2Ghz. 
 
 
-### 4.5 Diseño e implementación
+### 4.4 Diseño e implementación
 
-#### 4.5.1 Instalación
+#### 4.4.1 Instalación
 
 El programa funcionará en una arquitectura de x64 con Java. El sistema donde se ejecute el programa no necesita ningún requerimiento más en concreto.
 
-#### 4.5.2 Mantenimiento
+#### 4.4.2 Mantenimiento
 
 Puesto que el programa usará un modelo de vista-controlador el mantenimiento de este estará separado en la distintas capas, aislando los problemas y haciendo más sencilla una modificación en alguna de estas.
 
-#### 4.5.3 Coste
+#### 4.4.3 Coste
 
 Los recursos que vamos a utilizar nos los proporciona la Universidad de Málaga.
 Además, el coste en personal será de 1297’53€.
 
 
-#### 4.5.4 Fecha de entrega
+#### 4.4.4 Fecha de entrega
 
 La entrega de este proyecto se realizará el 5 de junio de 2020.
 
