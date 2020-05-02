@@ -26,24 +26,24 @@ Generada por NBP
     * 3.3 [Interfaces con el Software](#33-interfaces-con-el-software)
 * 4 [Requisitos](#4-requisitos)
   * 4.1 [Precedencia y prioridad](#41-precedencia-y-prioridad) 
-  * 4.2 [Funcionales](#42-funcionales)
-  * 4.3 [Calidad de Servicio](#43-calidad-de-servicio)
-    * 4.3.1 [Rendimiento](#431-rendimiento)
-    * 4.3.2 [Seguridad](#432-seguridad)
-    * 4.3.3 [Fiabilidad](#433-fiabilidad)
-    * 4.3.4 [Disponibilidad](#434-disponibilidad)
-  * 4.4 [Normativas aplicables](#44-normativas-aplicables)
-  * 4.5 [Diseño e implementación](#44-diseño-e-implementación)
-    * 4.5.1 [Instalación](#441-instalación)
-    * 4.5.2 [Mantenimiento](#442-mantenimiento)
-    * 4.5.3 [Coste](#443-coste)
-    * 4.5.4 [Fecha de Entrega](#444-fecha-de-entrega)
+  * 4.2 [Calidad de Servicio](#42-calidad-de-servicio)
+    * 4.2.1 [Rendimiento](#421-rendimiento)
+    * 4.2.2 [Seguridad](#422-seguridad)
+    * 4.2.3 [Fiabilidad](#423-fiabilidad)
+    * 4.2.4 [Disponibilidad](#424-disponibilidad)
+  * 4.3 [Normativas aplicables](#43-normativas-aplicables)
+  * 4.4 [Diseño e implementación](#44-diseño-e-implementación)
+    * 4.4.1 [Instalación](#441-instalación)
+    * 4.4.2 [Mantenimiento](#442-mantenimiento)
+    * 4.4.3 [Coste](#443-coste)
+    * 4.4.4 [Fecha de Entrega](#444-fecha-de-entrega)
 * 5 [Verificación](#5-verificación)
   
 ## Versiones
 | Name |    Date    | Reason For Changes  | Versión   |
 |------|------------|---------------------|-----------|
 | NBP  | 13/04/2020 | Primera versión     | 0.1       |
+| NBP  | 02/05/2020 | Segunda versión     | 0.2       |
 
 
 ## 1. Introducción
@@ -167,74 +167,57 @@ La BDD será desarrollada en MySQL y por lo tanto necesitaremos hacer uso del pr
 | R46   | Rango de   valoración                                      | Las valoraciones   podrán ser del 1 al 5, siendo 1 la peor y 5 la mejor.                                                                                                                                          | Opcional    | R28 / R29   | No funcional    |
 | R47   | JVM                                                        | Todos los   equipos donde vaya a ser ejecutada nuestra aplicación necesitarán tener   preinstalados el JVM, ya que de por sí ninguna aplicación Java es ejecutada   de forma nativa por ningún sistema operativo. | Fundamental |             | No funcional    |
 
-
-### 4.2 Funcionales
-
-https://github.com/Jesusve99/IngSof2020/blob/master/Documentos/Casos%20de%20Uso.bak
-
-
-### 4.3 Calidad de Servicio
+### 4.2 Calidad de Servicio
  
-#### 4.3.1 Rendimiento
+#### 4.2.1 Rendimiento
+Puesto que nuestro producto es de carácter recreativo, no necesita una respuesta especialmente rápida. Aun así, garantizamos que las notificaciones se realicen en un intervalo de 5 minutos desde que se cumpla la condición para su emisión y que las nuevas ventanas carguen en menos de 1 segundo, para obtener una respuesta fluida entre el programa y los usuarios.
 
-Las notificaciones que envía el sistema tienen que ser enviadas en un plazo de 5 minutos.
-El sistema tiene que ser estable y fallar como máximo 1 vez cada 24 horas de uso.
-El resto del sistema no necesita una respuesta rápida puesto que la aplicación no está orientada a tiempo real.
+#### 4.2.2 Seguridad
+Nuestro objetivo es que el programa cumpla con la “Política de Seguridad de la Información” del ayuntamiento de Málaga (https://www.malaga.eu/visorcontenido/NRMDocumentDisplayer/665/DocumentoNormativa665), la cual establece un marco de gestión de la seguridad de la información según el Real Decreto 3/2010, por el que se regula el Esquema Nacional de Seguridad. 
 
+#### 4.2.3 Fiabilidad
+Puesto que el riesgo de que nuestro producto no funcione es prácticamente nulo, se pretende que el programa solo falle una cada 100 horas de uso.
 
-#### 4.3.2 Seguridad
+#### 4.2.4 Disponibilidad
+ * Su primera versión solo estará disponibles en ordenadores, las características iguales o superiores que necesitan para el correcto funcionamiento del programa son al menos 1GB de RAM y un Intel Celeron G4930 3.2Ghz. 
+ * El sistema deberá de ser consistente y resistente a fallos, pudiendo alcanzar como máximo 2 fallos/dia.
 
-El sistema podrá almacenar una serie de datos personales como email, contraseña y las preferencias de cada jugador, por lo que en versiones futuras se tendrá en cuenta que se encripte con un algoritmo que garantice su seguridad.
+### 4.3 Normativas aplicables
+Nuestra aplicación no tratará actualmente la normativa aplicables en sus primeras versiones. Pero, en las futuras versiones finales se regirá por "Política de Seguridad de la Información" (https://www.malaga.eu/visorcontenido/NRMDocumentDisplayer/665/DocumentoNormativa665).
 
-#### 4.3.3 Fiabilidad
-Puesto que el riesgo de que nuestro producto no funcione es prácticamente nulo, se pretende que el programa solo falle una cada 1000 horas de uso.
-
-#### 4.3.4 Disponibilidad
-Su primera versión solo estará disponibles en ordenadores, las características iguales o superiores que necesitan para el correcto funcionamiento del programa son al menos 1GB de RAM y un Intel Celeron G4930 3.2Ghz.
-El sistema deberá de ser consistente y resistente a fallos, pudiendo alcanzar como máximo 2 fallos/dia.
-
-### 4.4 Normativas aplicables
-Nuestra aplicación no tratará actualmente la normativa aplicables en sus primeras versiones. Pero, en las futuras versiones finales se regirá por "Política de Seguridad de la Información" (https://www.red.es/redes/sites/redes/files/Poli%CC%81tica%20de%20Seguridad.pdf).
-
-### 4.5 Diseño e implementación
+### 4.4 Diseño e implementación
 
 #### 4.4.1 Instalación
-
-El programa funcionará en una arquitectura de x64 con Java. El sistema donde se ejecute el programa no necesita ningún requerimiento más en concreto.
+El programa funcionará en una arquitectura tanto x32 como x64 con Java. El sistema donde se ejecute el programa no necesita ningún requerimiento más en concreto.
 
 #### 4.5.2 Mantenimiento
-
-Puesto que el programa usará un modelo de vista-controlador el mantenimiento de este estará separado en la distintas capas, aislando los problemas y haciendo más sencilla una modificación en alguna de estas.
+Puesto que el programa usará un modelo-vista-controlador el mantenimiento de este estará separado en los distintos módulos, aislando los problemas y haciendo más sencilla una modificación en alguna de estas.
 
 #### 4.5.3 Coste
-
 Los recursos que vamos a utilizar nos los proporciona la Universidad de Málaga.
-Además, el coste en personal será de 1297’53€.
-
+Además, el coste en personal será de 1,861.01 € (https://www.sinnaps.com/cloud/project/index?project=93634).
 
 #### 4.5.4 Fecha de entrega
-
 La entrega de este proyecto se realizará el 5 de junio de 2020.
 
 ## 5. Verificación
-
- * Registro de usuario: Se comprobará que el usuario ha rellenado los datos necesarios. Se comprobará que el correo a utilizar por el usuario no está asociado a otra cuenta. Se comprobará si el usuario ha sido registrado correctamente.
+ * Registro de usuario: Se comprobará que el usuario ha rellenado los datos necesarios. Se comprobará que el correo a utilizar por el usuario no está asociado a otra cuenta. Se comprobará si el usuario ha sido registrado correctamente. Se probará con datos erróneos para ver que se comporta de manera satisfactoria.
  * Registro único de correo: El sistema comprobará que no existen dos usuarios con el mismo correo en la base de datos. 
  * Contraseña válida: Se intentará registrarse con una contraseña de menos de 6 caracteres o más de 20.
- * Inicio de sesión de usuario: Se iniciará sesión en el sistema con usuarios que estén registrados en el sistema y se comprobará si se inicia sesión con usuarios no registrados.
+ * Inicio de sesión de usuario: Se iniciará sesión en el sistema con usuarios que estén registrados en este y se comprobará si se inicia sesión con usuarios no registrados.
  * Cierre de sesión de usuario: Se comprueba que se ha vuelto a la pantalla de registro/inicio de sesión.
  * Añadir pista: Se comprobará si han sido rellenados todos los datos necesarios sobre la pista y si esta pista no existe ya. Se comprobará si la pista se ha almacenado correctamente.
  * Modificar pista: Se comprobará que se han rellenado todos los datos necesarios. Se comprobará que la pista ha sido modificada correctamente .
  * Eliminar pista: Se comprobará que la pista existe. Se comprobará que la pista ha sido eliminada correctamente.
- * Crear partido: se comprobará si la pista y el horario que ha seleccionado el usuario deja de estar disponible.
- * Capacidad Partido: se intentará introducir más jugadores de lo posible en un partido.
+ * Crear partido: Se comprobará si la pista y el horario que ha seleccionado el usuario deja de estar disponible, intentando seleccionar la misma a la vez, procurando evitar las llamadas paralelas.
+ * Capacidad Partido: Se intentará introducir más jugadores de lo posible en un partido.
  * Limitación de crear partidos: Se comprobará que el usuario no haya creado un partido anteriormente durante ese día.
  * Eliminar partido: Se comprobará que el partido existe. Para eliminarlo se pueden dar tres casos: Se comprobará que el anfitrión del partido haya decidido eliminarlo. Se comprobará que el partido ha sido eliminado correctamente de la base de datos.
  * Eliminar partido por falta de integrantes: Se comprobará que el partido existe. Se comprobará que el partido está incompleto de jugadores 4 horas antes de su inicio.
  * Eliminar partido al finalizar: Se comprobará que el partido ya ha sido disputado hace 24h
  * Crear Equipo: Se comprobará que los datos necesarios han sido rellenados y que el nombre del equipo no haya sido utilizado en otro caso. Se comprobará que el equipo ha sido creado correctamente.
- * Modificar equipo:Se comprobará en el sistema la existencia de dicho equipo si ha habido alguna modificación con alguna versión antigua. 
- * Eliminar equipo: Si se ha eliminado el equipo se verificará que ya no está en el sistema ni en la lista de equipos de los usuarios.
+ * Modificar equipo: Se comprobará en el sistema la existencia de dicho equipo si ha habido alguna modificación con alguna versión antigua. 
+ * Eliminar equipo: Si se ha eliminado el equipo se verificará que ya no está en el sistema ni en la lista de equipos de los usuarios. Se probará a borrarlo por el creador y por otro que no sea el que lo ha probado.
  * Tamaño nombre equipo: Se intentará crear equipos sin esas características.
  * Máximo de jugadores por equipo: Se intentará añadir más jugadores al equipo validando que el equipo no acepte ningún jugador más.
 * Unirse a un partido: se comprueba que el usuario está introducido en ese partido.
@@ -255,7 +238,10 @@ La entrega de este proyecto se realizará el 5 de junio de 2020.
  * Idioma: Se verificará que todas las partes funcionales del sistema estarán traducidas al español o inglés dependiendo del idioma elegido por el usuario.
  * Conexión a internet: Se intentará navegar por el sistema con una conexión inferior a la dicha.
  * Manejabilidad: Se hará un estudio de 20 personas para ver si se cumplen los parámetros acordados.
- * Seguridad: Se intentará descubrir los datos de los usuarios comprobando la seguridad de la base de datos.
+ * Seguridad: Un equipo externo comprobará que el software cumple con la legislación mencionada anteriormente.
  * Tiempo de respuesta: Se harán testeos del sistema para ver cuánto tiempo máximo ha tardado el sistema en responder.
  * Ubicación BDD: Se comprobará que la ubicación física de nuestra BDD está en Málaga.
  * Almacenamiento base de datos: Se comprobará si todas esas especificaciones están en la base de datos del sistema.
+* Fiabilidad: Se comprobará manteniendo el programa ejecutando funcionalidades durante 100 horas.
+* Disponibilidad: Se comprobará ejecutando el programa en un ordenador de esas características.
+* Rendimiento: Se comprobará el tiempo de carga entre vistas.
