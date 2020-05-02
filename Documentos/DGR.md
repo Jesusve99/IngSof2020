@@ -49,52 +49,41 @@ Generada por NBP
 ## 1. Introducción
 
 ### 1.1 Objetivo del documento
-
 El objetivo de este documento es describir nuestro proyecto, aportando los requisitos que pensamos que debería tener. Nuestro público objetivo sería principalmente gente joven aficionada al fútbol y que le guste practicarlo, aunque también está enfocada para gente de mayor edad con estos gustos.
 
 ### 1.2 Ámbito del proyecto
-
-Este documento describe nuestro proyecto en su totalidad, que consiste en la creación de una aplicación de escritorio, donde el enfoque principal es la gestión de partidos de fútbol, los cuales podrán acercar a personas que no tengan un círculo social cercano con sus mismos intereses. Nuestro claro objetivo con esta aplicación es proporcionar una base de jugadores al usuario con los que poder practicar fútbol. En el caso de que tengas un equipo con el que jugar, podrás estar al tanto de la disponibilidad de las pistas de tu ciudad. 
+Este documento describe nuestro proyecto en su totalidad consiste en la creación de una aplicación de escritorio, donde el enfoque principal es la gestión de partidos de fútbol, los cuales podrán acercar a personas que no tengan un círculo social cercano con sus mismos intereses. Nuestro claro objetivo con esta aplicación es proporcionar una base de jugadores al usuario con los que poder practicar fútbol. En el caso de que tengas un equipo con el que jugar, podrás estar al tanto de la disponibilidad de las pistas de tu ciudad. 
 El objetivo comercial de esta app sería proporcionar a los distintos ayuntamientos y/o polideportivos este tipo de servicios.
 
-
 ### 1.3 Definiciones, acrónimos y abreviaturas
-
-NBP: Es la abreviatura del nombre completo de nuestra aplicación, la cual es Neo Balompié.
-Software: Programa que ofrece una funcionalidad.
-Hardware: Componentes físicos de un sistema.
-MADEJA: Marco de Desarrollo de la Junta de Andalucía.
-Requisitos Funcionales: Describen una característica o funcionalidad del sistema
-Requisitos no Funcionales: Describen una restricción sobre una característica o funcionalidad del sistema.
--Un usuario será definido como anfitrión al crear un partido, dándole la posibilidad de eliminar el partido y aceptar o no a los jugadores que quieran unirse.
--Definimos como administrador a aquellas cuentas con un permiso dado por el sistema que les permiten gestionar las pistas.
-
+ * NBP:  Nombre completo de nuestra aplicación, la cual es Neo Balompié.
+ * MADEJA: Marco de Desarrollo de la Junta de Andalucía. 
+ * Software: Programa que ofrece una funcionalidad.
+ * Hardware: Componentes físicos de un sistema.
+ * Requisitos Funcionales: Describen una característica o funcionalidad del sistema.
+ * Requisitos no Funcionales: Describen una restricción sobre una característica o funcionalidad del sistema.
+ * Usuario: Será definido como anfitrión al crear un partido, dándole la posibilidad de eliminar el partido y aceptar o no a los jugadores que quieran unirse.
+ * Administrador: Aquellas cuentas con un permiso dado por el sistema que les permiten gestionar las pistas.
 
 ### 1.4 Referencias
-
-Política de Seguridad de la Información del Ayuntamiento de Málaga, Mayo 2019: https://www.malaga.eu/visorcontenido/NRMDocumentDisplayer/665/DocumentoNormativa665<br>
-Normalización de Interfaces de MADEJA, versión 1.5.0 : http://www.juntadeandalucia.es/servicios/madeja/contenido/subsistemas/interfazusuario/normalizacion-interfaces
-
+ * Política de Seguridad de la Información del Ayuntamiento de Málaga, Mayo 2019 (https://www.malaga.eu/visorcontenido/NRMDocumentDisplayer/665/DocumentoNormativa665).
+ * Normalización de Interfaces de MADEJA, versión 1.5.0 (http://www.juntadeandalucia.es/servicios/madeja/contenido/subsistemas/interfazusuario/normalizacion-interfaces).
+ * Manual de Calidad del Ayuntamiento de Málaga, Edición 3, 15/11/2004 (https://calidad.malaga.eu/portal/menu/seccion_0003/documentos/Manual_Calidad_mlgmc.pdf).
+ * Ejemplo de Interfaz MADEJA (http://www.juntadeandalucia.es/servicios/madeja/contenido/libro-pautas/142).
 
 ### 1.5 Resumen del documento
-
 Empezamos exponiendo brevemente el producto y nuestra motivación para desarrollarlo. A continuación, hablaremos sobre las funcionalidades que aportará nuestra aplicación a los usuarios. Después veremos cómo el usuario interactúa con la interfaz del sistema; proseguiremos con los requisitos del sistema, con su explicación y cómo serán verificados.
 
 ## 2. Vista general del producto
 
-
 ### 2.1 Perspectiva del producto
-
 Nuestro producto surge de la necesidad de organizar partidos en las pistas municipales, debido al desconocimiento de la disponibilidad de estas, ya que esto dificulta el uso y disfrute de las instalaciones.
 Se trata de una aplicación nueva que resuelve el problema mencionado anteriormente, ofreciendo al usuario una herramienta, útil y fácil de utilizar, en la que los usuarios pueden reservar, conocer la disponibilidad de las pistas y encontrar gente con quien jugar.
 
-
 ### 2.2 Funciones del producto
-
 En primer lugar, el usuario deberá registrarse en la plataforma para poder acceder a las funcionalidades de la aplicación. Una vez iniciada sesión, podrá crear y unirse a partidos atendiendo a la disponibilidad de las pistas.
 Además, tendrá la opción de crear equipos, compartir partidos por redes sociales y valorar tanto pistas como jugadores con los que haya jugado.
 La aplicación ofrecerá un usuario con privilegios, el administrador, que contará con las mismas funcionalidades que un usuario normal y además podrá gestionar la disponibilidad de las pistas.
-
 
 
 ### 2.3 Perfiles de usuario
