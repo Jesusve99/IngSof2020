@@ -1,9 +1,9 @@
 ﻿# Especificación de requisitos 
 ## Del proyecto NBP
 
-Versión 0.1  
+Versión 0.2  
 Generada por NBP  
-13/04/2020  
+02/05/2020  
 
 Índice
 =================
