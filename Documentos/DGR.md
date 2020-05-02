@@ -214,7 +214,7 @@ Puesto que el riesgo de que nuestro producto no funcione es prácticamente nulo,
 Su primera versión solo estará disponibles en ordenadores, las características iguales o superiores que necesitan para el correcto funcionamiento del programa son al menos 1GB de RAM y un Intel Celeron G4930 3.2Ghz.
 El sistema deberá de ser consistente y resistente a fallos, pudiendo alcanzar como máximo 2 fallos/dia.
 
-#### 4.4 Normativas aplicables
+### 4.4 Normativas aplicables
 Nuestra aplicación no tratará actualmente la normativa aplicables en sus primeras versiones. Pero, en las futuras versiones finales se regirá por "Política de Seguridad de la Información" (https://www.red.es/redes/sites/redes/files/Poli%CC%81tica%20de%20Seguridad.pdf).
 
 ### 4.5 Diseño e implementación
