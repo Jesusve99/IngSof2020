@@ -7,8 +7,8 @@ public class Jugador extends Usuario {
 	private String nombre;
 	private String apellidos;
 	
-	public Jugador(String correo, String contraseña, String nick, String posicionfav, String nombre, String apellidos) {
-		super(correo, contraseña);
+	public Jugador(String correo, String contrasena, String nick, String posicionfav, String nombre, String apellidos) {
+		super(correo, contrasena);
 		this.nick = nick;
 		this.posicionfav = posicionfav;
 		this.nombre = nombre;

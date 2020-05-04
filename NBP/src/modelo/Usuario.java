@@ -14,10 +14,10 @@ public class Usuario {
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
-	public String getContraseña() {
+	public String getContrasena() {
 		return contrasena;
 	}
-	public void setContraseña(String contrasena) {
+	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
 	}
 	
