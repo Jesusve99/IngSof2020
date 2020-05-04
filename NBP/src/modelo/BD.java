@@ -21,13 +21,13 @@ public class BD
             } catch (ClassNotFoundException ex) {
                 System.out.println("Error al registrar el driver de MySQL: " + ex);
             }
-			String jdbcUrl = "jdbc:mysql://remotemysql.com:3306/rWiO7EseHz";
+			String Url = "jdbc:mysql://remotemysql.com:3306/rWiO7EseHz";
 
-			con = DriverManager.getConnection(jdbcUrl, "rWiO7EseHz", "vKa9rl8nd5");
+			con = DriverManager.getConnection(Url, "rWiO7EseHz", "vKa9rl8nd5");
 		}
-		catch (SQLException ex)
+		catch (SQLException e)
 		{
-			throw new BDException("Error al Conectar con la base de datos." + ex.getMessage());
+			throw new BDException("Error al Conectar con la base de datos." + e.getMessage());
 		}
 	}
 	
@@ -37,9 +37,9 @@ public class BD
 		{
 			if (con!=null)  con.close();
 		}
-		catch (SQLException ex)
+		catch (SQLException e)
 		{
-			throw new BDException("Error al Cerrar la Conexi�n." + ex.getMessage());
+			throw new BDException("Error al Cerrar la Conexi�n." + e.getMessage());
 		}
     }
 	
@@ -56,9 +56,9 @@ public class BD
 			rset.close();
 			stmt.close();
 		}
-		catch (SQLException ex)
+		catch (SQLException e)
 		{
-			throw new BDException("Error en el SELECT: " + sel + ". " + ex.getMessage());
+			throw new BDException("Error en el SELECT: " + sel + ". " + e.getMessage());
 		}		
 		
 		return res;
@@ -86,9 +86,9 @@ public class BD
 			rset.close();
 			stmt.close();
 		}
-		catch (SQLException ex)
+		catch (SQLException e)
 		{
-			throw new BDException("Error en el SELECT: " + sel+ ". " + ex.getMessage());
+			throw new BDException("Error en el SELECT: " + sel+ ". " + e.getMessage());
 		}		
 		
 		return lista;
@@ -102,9 +102,9 @@ public class BD
 			stmt.executeUpdate(ins);
 			stmt.close();
 		}
-		catch (SQLException ex)
+		catch (SQLException e)
 		{
-			throw new BDException("Error en el INSERT: " + ins+ ". " + ex.getMessage());
+			throw new BDException("Error en el INSERT: " + ins+ ". " + e.getMessage());
 		}
 	}
 
@@ -116,9 +116,9 @@ public class BD
 			stmt.executeUpdate(del);
 			stmt.close();
 		}
-		catch (SQLException ex)
+		catch (SQLException e)
 		{
-			throw new BDException("Error en el DELETE: " + del+ ". " + ex.getMessage());
+			throw new BDException("Error en el DELETE: " + del+ ". " + e.getMessage());
 		}
 	}
 
@@ -130,9 +130,9 @@ public class BD
 			stmt.executeUpdate(up);
 			stmt.close();
 		}
-		catch (SQLException ex)
+		catch (SQLException e)
 		{
-			throw new BDException("Error en el UPDATE: " + up+ ". " + ex.getMessage());
+			throw new BDException("Error en el UPDATE: " + up+ ". " + e.getMessage());
 		}
 	}
 
