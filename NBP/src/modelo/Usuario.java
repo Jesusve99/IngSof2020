@@ -2,11 +2,11 @@ package modelo;
 
 public class Usuario {
 	private String correo;
-	private String contraseña;
+	private String contrasena;
 	
-	public Usuario(String correo, String contraseña) {
+	public Usuario(String correo, String contrasena) {
 		this.correo = correo;
-		this.contraseña = contraseña;
+		this.contrasena = contrasena;
 	}
 	public String getCorreo() {
 		return correo;
@@ -15,10 +15,10 @@ public class Usuario {
 		this.correo = correo;
 	}
 	public String getContraseña() {
-		return contraseña;
+		return contrasena;
 	}
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setContraseña(String contrasena) {
+		this.contrasena = contrasena;
 	}
 	
 	

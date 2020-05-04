@@ -1,9 +1,20 @@
 package modelo;
 
-public class ValoracionJugador extends Valoracion{
-
+public class ValoracionJugador {
+	//private int id;
+	private int valoracion;
+	
 	public ValoracionJugador(int valoracion) {
-		super(valoracion);
+		this.valoracion = valoracion;
 	}
+
+	public int getValoracion() {
+		return valoracion;
+	}
+
+	public void setValoracion(int valoracion) {
+		this.valoracion = valoracion;
+	}
+	
 
 }
