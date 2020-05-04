@@ -1,6 +1,10 @@
 package modelo;
 
+import java.util.List;
+
 public class Jugador extends Usuario {
+	
+	BD mibd = new BD();
 	
 	private String nick;
 	private String posicionfav;
@@ -16,6 +20,11 @@ public class Jugador extends Usuario {
 	}
 
 	public String getNick() {
+		
+		List<Object[]> lista = mibd.Select("SELECT * FROM Jugador WHERE correo = 'prueba@';");
+		Object[] ob =  lista.get(0);
+		String nick = (String) ob[2];
+		
 		return nick;
 	}
 
