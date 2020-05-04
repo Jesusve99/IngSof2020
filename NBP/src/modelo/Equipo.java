@@ -2,22 +2,22 @@ package modelo;
 
 public class Equipo {
 	
-	private int tamaño;
+	private int tamano;
 	private String nombre;
 	private Jugador creador;
 	
-	public Equipo(int tamaño, String nombre, Jugador creador) {
-		this.tamaño = tamaño;
+	public Equipo(int tamano, String nombre, Jugador creador) {
+		this.tamano = tamano;
 		this.nombre = nombre;
 		this.creador = creador;
 	}
 
-	public int getTamaño() {
-		return tamaño;
+	public int getTamano() {
+		return tamano;
 	}
 
-	public void setTamaño(int tamaño) {
-		this.tamaño = tamaño;
+	public void setTamano(int tamano) {
+		this.tamano = tamano;
 	}
 
 	public String getNombre() {
