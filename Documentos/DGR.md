@@ -83,7 +83,7 @@ Se trata de una aplicación nueva que resuelve el problema mencionado anteriorme
 ### 2.2 Funciones del producto
 En primer lugar, el usuario deberá registrarse en la plataforma para poder acceder a las funcionalidades de la aplicación. Una vez iniciada sesión, podrá crear y unirse a partidos atendiendo a la disponibilidad de las pistas.
 Además, tendrá la opción de crear equipos, compartir partidos por redes sociales y valorar tanto pistas como jugadores con los que haya jugado.
-La aplicación ofrecerá un usuario con privilegios, el administrador, que contará con las mismas funcionalidades que un usuario normal y además podrá gestionar la disponibilidad de las pistas.
+La aplicación ofrecerá un tipo de usuario con privilegios, el administrador, que contará con las mismas funcionalidades que un usuario normal y además podrá gestionar la disponibilidad de las pistas.
 
 <img src="https://github.com/Jesusve99/IngSof2020/blob/master/Documentos/CasosDeUso.jpeg" alt="Diagrama Casos de Uso" style="vertical-align:middle">
 
@@ -110,7 +110,7 @@ Nuestro Software será desarrollado para arquitecturas x86_64.
 #### 3.3 Interfaces con el Software
 Nuestro producto está direccionado a ser multiplataforma, aunque por ahora la primera versión será una aplicación de escritorio.
 Vamos a crear una BDD MySQL remota.
-Utilizaremos una API de Java que nos será de gran utilidad a la hora de realizar las conexiones con la BDD ya que añade una biblioteca java.sql que contiene clases de gran utilidad, la API se conoce como Java Database Connectivity, o bien JDBC.
+Utilizaremos una API de Java para realizar las conexiones con la BDD: Java Database Connectivity (JDBC).
 La BDD será desarrollada en MySQL y por lo tanto necesitaremos hacer uso del protocolo propio del SGBDD Mysql Protocol.
 
 ## 4. Requisitos
@@ -121,15 +121,15 @@ La BDD será desarrollada en MySQL y por lo tanto necesitaremos hacer uso del pr
 |    ID | NOMBRE                                                     | DESCRIPCIÓN                                                                                                                                                                                                       | PRIORIDAD   | PRECEDENCIA | TIPO            |
 |-------|------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|-------------|-----------------|
 | R1    | Registrar   usuario                                        | Un usuario podrá   registrarse facilitando un correo, un nombre de usuario, su nombre y   apellidos reales, su fecha de nacimiento, demarcación favorita y una   contraseña válida.                               | Fundamental |             | Funcional       |
-| R2    | Registro único   de correo electrónico                     | No se podrán registrar varios usuarios con el   mismo correo.                                                                                                                                                     | Fundamental | R1          | No Funcional    |
-| R3    | Contraseña   válida                                        | Una contraseña   será válida cuando esté formada por una cadena alfanumérica con una longitud   de entre 6 y 20 caracteres.                                                                                       | Deseable    | R1          | No funcional    |
+| R2    | Registro único   de correo electrónico                     | No se podrán registrar varios usuarios con el   mismo correo.                                                                                                                                                     | Fundamental |        | No Funcional    |
+| R3    | Contraseña   válida                                        | Una contraseña   será válida cuando esté formada por una cadena alfanumérica con una longitud   de entre 6 y 20 caracteres.                                                                                       | Deseable    |          | No funcional    |
 | R4    | Iniciar sesión                                             | El usuario   tendrá que introducir su correo y su contraseña para poder acceder al sistema   y todas sus funcionalidades.                                                                                         | Fundamental | R1          | Funcional       |
 | R5    | Cerrar sesión                                              | El usuario podrá   salir de su cuenta. Esto lo llevará a la pantalla inicial de   registrarse/iniciar sesión.                                                                                                     | Fundamental | R4          | Funcional       |
 | R6    | Crear pista                                                | El administrador   podrá añadir nuevas pistas al sistema, introduciendo su nombre, ubicación y   horario.                                                                                                         | Fundamental |             | Funcional       |
 | R7    | Modificar pista                                            | El administrador   tendrá la posibilidad de modificar los datos una pista del sistema.                                                                                                                            | Deseable    | R6          | Funcional       |
 | R8    | Eliminar pista                                             | El administrador   tendrá la posibilidad de eliminar una pista del sistema.                                                                                                                                       | Fundamental | R6          | Funcional       |
 | R9    | Crear partido                                              | El usuario   contará con la posibilidad de crear un partido eligiendo una pista, un dia y   una hora ya no reservada en la pista.                                                                                 | Fundamental |             | Funcional       |
-| R11   | Capacidad de   partido                                     | Un partido   tendrá una capacidad máxima de 10 jugadores.                                                                                                                                                         | Fundamental | R9          | No funcional    |
+| R11   | Capacidad de   partido                                     | Un partido   tendrá una capacidad máxima de 10 jugadores.                                                                                                                                                         | Fundamental |           | No funcional    |
 | R12   | Limitación de   creación de partido                        | El usuario no   podrá crear más de un partido al día.                                                                                                                                                             | Deseable    | R9          | Funcional       |
 | R13   | Eliminar partido                                           | El sistema   cancelará el partido por petición del creador.                                                                                                                                                       | Fundamental | R9          | Funcional       |
 | R14   | Eliminar partido   por falta de integrantes                | El partido se   eliminará del sistema si a falta de 4 horas del partido todavía no hay   jugadores suficientes para disputarlo.                                                                                   | Deseable    | R9          | No funcional    |
@@ -137,8 +137,8 @@ La BDD será desarrollada en MySQL y por lo tanto necesitaremos hacer uso del pr
 | R16   | Crear equipo                                               | El usuario   añadirá al equipo jugadores por el nombre de usuario.                                                                                                                                                | Opcional    |             | Funcional       |
 | R17   | Modificar equipo                                           | El usuario podrá   modificar los datos los equipos que estén en su lista de equipos.                                                                                                                              | Opcional    | R16         | Funcional       |
 | R18   | Eliminar equipo                                            | El creador del   equipo podrá eliminar el equipo de su lista de equipos.                                                                                                                                          | Opcional    | R16         | Funcional       |
-| R19   | Tamaño nombre de   equipo                                  | El nombre de los   equipos deberá tener menos de 10 caracteres y solo podrán ser letras                                                                                                                           | Opcional    | R16         | No funcional    |
-| R20   | Máximo de   miembros de un equipo                          | Un equipo   permitirá inscribir hasta 10 jugadores.                                                                                                                                                               | Opcional    | R16         | No funcional    |
+| R19   | Tamaño nombre de   equipo                                  | El nombre de los   equipos deberá tener menos de 10 caracteres y solo podrán ser letras                                                                                                                           | Opcional    |          | No funcional    |
+| R20   | Máximo de   miembros de un equipo                          | Un equipo   permitirá inscribir hasta 10 jugadores.                                                                                                                                                               | Opcional    |          | No funcional    |
 | R21   | Unirse a un   partido                                      | El usuario   tendrá la opción de unirse a un partido solo.                                                                                                                                                        | Fundamental | R9          | Funcional       |
 | R22   | Añadir jugadores no registrados a un partido               | El usuario podrá añadir al partido jugadores no registrados en el sistema, determinando su edad y nombre.                                                                                                         | Deseable    | R21         | Funcional       |
 | R23   | Añadir miembros   de tu equipo a un partido                | El usuario podrá   añadir al partido usuarios que estén en su equipo.                                                                                                                                             | Deseable    | R21         | Funcional       |
@@ -155,7 +155,7 @@ La BDD será desarrollada en MySQL y por lo tanto necesitaremos hacer uso del pr
 | R34   | Notificación al   aceptar una solicitud de unión a partido | El sistema   mandará un correo al usuario cuando el anfitrión lo acepte o rechace en el   partido.                                                                                                                | Opcional    | R21         | Funcional       |
 | R35   | Notificación de   partido lleno                            | El sistema   mandará una notificación a los usuarios inscritos en el partido para avisar   que está completo.                                                                                                     | Opcional    | R24         | Funcional       |
 | R36   | Idioma                                                     | La aplicación   estará en español e inglés.                                                                                                                                                                       | Opcional    |             | No funcional    |
-| R37   | Conexión a   internet                                      | El sistema   contará con una conexión de aproximadamente 1Mbps para acceder a la base de   datos, gestionar partidos y ver el horario disponible.                                                                 | Deseable    |             | No funcional    |
+| R37   | Conexión a   internet                                      | El sistema   contará con una conexión mínima de 1Mbps para acceder a la base de   datos, gestionar partidos y ver el horario disponible.                                                                 | Deseable    |             | No funcional    |
 | R38   | Manejabilidad                                              | El usuario será   capaz de manejarse sin ningún tipo de ayuda por el sistema tras 15 minutos de   uso.                                                                                                            | Deseable    |             | No funcional    |
 | R39   | Seguridad                                                  | El sistema   estará sujeto a la legislación sobre seguridad del ayuntamiento de   Málaga                                                                                                                          | Opcional    |             | No funcional    |
 | R40   | Tiempo de   respuesta                                      | Al abrir la   aplicación, esta debe ser capaz de responder al usuario en menos de 5   segundos.                                                                                                                   | Deseable    |             | No funcional    |
@@ -167,27 +167,37 @@ La BDD será desarrollada en MySQL y por lo tanto necesitaremos hacer uso del pr
 | R46   | Rango de   valoración                                      | Las valoraciones   podrán ser del 1 al 5, siendo 1 la peor y 5 la mejor.                                                                                                                                          | Opcional    | R28 / R29   | No funcional    |
 | R47   | JVM                                                        | Todos los   equipos donde vaya a ser ejecutada nuestra aplicación necesitarán tener   preinstalados el JVM, ya que de por sí ninguna aplicación Java es ejecutada   de forma nativa por ningún sistema operativo. | Fundamental |             | No funcional    |
 
-### 4.2 Calidad de Servicio
+### 4.2 Funcionales
+#### R1 - Registrar   usuario
+Un usuario podrá registrarse facilitando un correo, un nombre de usuario, su nombre y   apellidos reales, su fecha de nacimiento, demarcación favorita y una contraseña válida. Aquí podéis extender y comentar como se registran los administradores
+.
+##### Dependencias 
+##### Prioridad
+Fundamental
+##### Justificación
+El registro de usuario es necesario en la aplicación para identificar a los usuarios y facilitar la creación de equipos.
+
+### 4.3 Calidad de Servicio
  
-#### 4.2.1 Rendimiento
+#### 4.3.1 Rendimiento
 Puesto que nuestro producto es de carácter recreativo, no necesita una respuesta especialmente rápida. Aun así, garantizamos que las notificaciones se realicen en un intervalo de 5 minutos desde que se cumpla la condición para su emisión y que las nuevas ventanas carguen en menos de 1 segundo, para obtener una respuesta fluida entre el programa y los usuarios.
 
-#### 4.2.2 Seguridad
+#### 4.3.2 Seguridad
 Nuestro objetivo es que el programa cumpla con la “Política de Seguridad de la Información” del ayuntamiento de Málaga (https://www.malaga.eu/visorcontenido/NRMDocumentDisplayer/665/DocumentoNormativa665), la cual establece un marco de gestión de la seguridad de la información según el Real Decreto 3/2010, por el que se regula el Esquema Nacional de Seguridad. 
 
-#### 4.2.3 Fiabilidad
+#### 4.3.3 Fiabilidad
 Puesto que el riesgo de que nuestro producto no funcione es prácticamente nulo, se pretende que el programa solo falle una cada 100 horas de uso.
 
-#### 4.2.4 Disponibilidad
+#### 4.3.4 Disponibilidad
  * Su primera versión solo estará disponibles en ordenadores, las características iguales o superiores que necesitan para el correcto funcionamiento del programa son al menos 1GB de RAM y un Intel Celeron G4930 3.2Ghz. 
  * El sistema deberá de ser consistente y resistente a fallos, pudiendo alcanzar como máximo 2 fallos/dia.
 
-### 4.3 Normativas aplicables
+### 4.4 Normativas aplicables
 Nuestra aplicación no tratará actualmente la normativa aplicables en sus primeras versiones. Pero, en las futuras versiones finales se regirá por "Política de Seguridad de la Información" (https://www.malaga.eu/visorcontenido/NRMDocumentDisplayer/665/DocumentoNormativa665).
 
-### 4.4 Diseño e implementación
+### 4.5 Diseño e implementación
 
-#### 4.4.1 Instalación
+#### 4.5.1 Instalación
 El programa funcionará en una arquitectura tanto x32 como x64 con Java. El sistema donde se ejecute el programa no necesita ningún requerimiento más en concreto.
 
 #### 4.5.2 Mantenimiento
