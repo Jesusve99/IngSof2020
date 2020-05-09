@@ -4,7 +4,7 @@ import java.beans.PropertyVetoException;
 import java.sql.*;
 import java.util.*;
 import java.sql.Date;
-import javax.activation.DataSource;
+//import javax.activation.DataSource;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
@@ -93,7 +93,7 @@ public class BD {
 				for (int i = 0; i < numCol; ++i) {
 					tupla[i] = rset.getObject(i + 1);
 				} //Crea una tupla con toda la fila del SELECT, agrupando los datos que pertenecen al mismo objeto
-				lista.add(tupla); //Añade a la coleccion de datos seleccionados por el SELECT, tantos como filas
+				lista.add(tupla); //Aï¿½ade a la coleccion de datos seleccionados por el SELECT, tantos como filas
 			}
 			rset.close(); //Cerramos recursos
 			stmt.close(); //Cerramos recursos
@@ -116,7 +116,7 @@ public class BD {
 		Connection con = null;
 		try {
 			con = connectToDatabase();//Se conecta a la BDD
-			Statement stmt = con.createStatement(); //Crea a partir de la conexion un objeto Statement que se enlazará a la BDD
+			Statement stmt = con.createStatement(); //Crea a partir de la conexion un objeto Statement que se enlazarï¿½ a la BDD
 			stmt.executeUpdate(ins); //Con dicha operacion en este objeto ejecutamos una instruccion SQL, el argumento que le entra es la propia instruccion SQL
 			stmt.close(); //Cerramos los recursos
 		} catch (SQLException e) {
@@ -137,7 +137,7 @@ public class BD {
 		Connection con = null;
 		try {
 			con = connectToDatabase(); //Se conecta a la BDD
-			Statement stmt = con.createStatement(); //Crea a partir de la conexion un objeto Statement que se enlazará a la BDD
+			Statement stmt = con.createStatement(); //Crea a partir de la conexion un objeto Statement que se enlazarï¿½ a la BDD
 			stmt.executeUpdate(del); //Con dicha operacion en este objeto ejecutamos una instruccion SQL, el argumento que le entra es la propia instruccion SQL
 			stmt.close(); //Cerramos los recursos
 		} catch (SQLException e) {
@@ -158,7 +158,7 @@ public class BD {
 		Connection con = null;
 		try {
 			con = connectToDatabase(); //Se conecta a la BDD
-			Statement stmt = con.createStatement(); //Crea a partir de la conexion un objeto Statement que se enlazará a la BDD
+			Statement stmt = con.createStatement(); //Crea a partir de la conexion un objeto Statement que se enlazarï¿½ a la BDD
 			stmt.executeUpdate(up); //Con dicha operacion en este objeto ejecutamos una instruccion SQL, el argumento que le entra es la propia instruccion SQL
 			stmt.close(); //Cerramos los recursos
 		} catch (SQLException e) {
