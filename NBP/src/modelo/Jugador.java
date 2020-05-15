@@ -96,4 +96,6 @@ public class Jugador extends Usuario {
 		}
 		return ok;
 	}
+
+
 }
