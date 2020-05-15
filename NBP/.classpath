@@ -14,5 +14,13 @@
 	<classpathentry exported="true" kind="lib" path="commons-email-1.5.jar"/>
 	<classpathentry exported="true" kind="lib" path="javax.mail.jar"/>
 	<classpathentry kind="lib" path="rs2xml.jar"/>
+	<classpathentry kind="lib" path="mysql-connector-java-8.0.18.jar"/>
+	<classpathentry kind="lib" path="c3p0-0.9.5.5.jar"/>
+	<classpathentry kind="lib" path="c3p0-oracle-thin-extras-0.9.5.5.jar"/>
+	<classpathentry kind="lib" path="mchange-commons-java-0.2.19.jar"/>
+	<classpathentry kind="lib" path="activation.jar"/>
+	<classpathentry kind="lib" path="commons-email-1.5.jar"/>
+	<classpathentry kind="lib" path="javax.mail.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
