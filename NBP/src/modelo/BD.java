@@ -1,12 +1,14 @@
 package modelo;
 
+
+
 import java.beans.PropertyVetoException;
 import java.sql.*;
-import java.util.*;
-import java.sql.Date;
-//import javax.activation.DataSource;
-
+import java.util.ArrayList;
+import java.util.List;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+
+import javax.activation.DataSource;
 
 //USER:rWiO7EseHz
 //PASS:vKa9rl8nd5
