@@ -67,7 +67,7 @@ public class Jugador extends Usuario {
 	}
 
 
-	public boolean registrarse(String correo, String contrasena){
+	public boolean registrarse(String correo, String contrasena) {
 		StringBuilder codigoBD = new StringBuilder();StringBuilder codigoBDJugador = new StringBuilder();
 		boolean ok= false;
 		List<Object[]> lista = baseDatos.Select("SELECT * FROM Jugador WHERE correo = '"+correo+"';");
