@@ -20,6 +20,10 @@ public class Jugador extends Usuario {
 		this.apellidos = apellidos;
 		this.fechaNacimiento = fechaNacimiento;
 	}
+	
+	public Jugador(String correo, String contrasena) {
+		super(correo, contrasena);
+	}
 
 	public String getNick() {
 		
@@ -68,7 +72,8 @@ public class Jugador extends Usuario {
 
 
 	public boolean registrarse(String correo, String contrasena){
-		StringBuilder codigoBD = new StringBuilder();StringBuilder codigoBDJugador = new StringBuilder();
+		StringBuilder codigoBD = new StringBuilder();
+		StringBuilder codigoBDJugador = new StringBuilder();
 		boolean ok= false;
 		List<Object[]> lista = baseDatos.Select("SELECT * FROM Jugador WHERE correo = '"+correo+"';");
 		if(lista.isEmpty()){ //La lista está vacia por lo tanto el usuario no existe en nuestra BD

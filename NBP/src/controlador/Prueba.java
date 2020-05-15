@@ -7,8 +7,10 @@ import org.apache.commons.mail.Email;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
 
+import modelo.Administrador;
 import modelo.BD;
 
+import modelo.Jugador;
 //Correo:ingsoftwarenbp@gmail.com
 //Contraseña:vKa9rl8nd5
 
@@ -16,7 +18,9 @@ public class Prueba {
 
 	public static void main(String[] args) throws EmailException {
 		//bd();
-		enviar("Que pasa fiera :)","marialopez57@uma.es");	
+		//enviar("Que pasa fiera :)","marialopez57@uma.es");	
+		Administrador ad = new Administrador("admin");
+		System.out.println(ad.getContrasena() + " " +ad.getCorreo()+" "+ad.getAyun());
 	}
 	
 	public static void enviar (String str,String destino) throws EmailException {
@@ -37,7 +41,7 @@ public class Prueba {
 	public static void bd() {
 		BD mibd = new BD();
 		
-		List<Object[]> lista = mibd.Select("SELECT * FROM Jugador WHERE correo = 'prueba@';");
+		List<Object[]> lista = mibd.Select("SELECT * FROM Jugador WHERE correo_jug = 'prueba@';");
 		Object[] ob =  lista.get(0);
 		String email = (String) ob[0];
 		String contrasena = (String) ob[1];
@@ -45,5 +49,12 @@ public class Prueba {
 		System.out.println(email);
 		System.out.println(contrasena);
 	}
-
+	String correo = "el que sea";
+	BD mibd = new BD();
+	Object[] ob = mibd.Select("SELECT * FROM Usuario WHERE email = '" + correo + "';").get(0);
+	String correobd = (String) ob[0];
+	String contrabd = (String) ob[1];	
+	
+	
+	
 }

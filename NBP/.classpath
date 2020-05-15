@@ -13,5 +13,6 @@
 	<classpathentry kind="lib" path="activation.jar"/>
 	<classpathentry kind="lib" path="commons-email-1.5.jar"/>
 	<classpathentry kind="lib" path="javax.mail.jar"/>
+	<classpathentry kind="lib" path="rs2xml.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
