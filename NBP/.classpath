@@ -15,6 +15,7 @@
 	<classpathentry exported="true" kind="lib" path="commons-email-1.5.jar"/>
 	<classpathentry exported="true" kind="lib" path="javax.mail.jar"/>
 	<classpathentry kind="lib" path="rs2xml.jar"/>
+<<<<<<< HEAD
 =======
 >>>>>>> parent of 2358860... Vista Unirse Partido
 	<classpathentry kind="lib" path="mysql-connector-java-8.0.18.jar"/>
@@ -31,5 +32,7 @@
 	<classpathentry kind="lib" path="rs2xml.jar"/>
 =======
 >>>>>>> parent of 2358860... Vista Unirse Partido
+=======
+>>>>>>> parent of 1215cdb... Merge branch 'master' of https://github.com/Jesusve99/IngSof2020
 	<classpathentry kind="output" path="bin"/>
 </classpath>

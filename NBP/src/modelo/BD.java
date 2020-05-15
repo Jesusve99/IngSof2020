@@ -5,9 +5,6 @@ import java.sql.*;
 <<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
-import java.util.*;
-//import javax.activation.DataSource;
-
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 =======
 import java.util.*;
