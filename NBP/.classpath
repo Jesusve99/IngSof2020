@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
+<<<<<<< HEAD
 	<classpathentry exported="true" kind="lib" path="mysql-connector-java-8.0.18.jar"/>
 	<classpathentry exported="true" kind="lib" path="c3p0-0.9.5.5.jar"/>
 	<classpathentry exported="true" kind="lib" path="c3p0-oracle-thin-extras-0.9.5.5.jar"/>
@@ -14,6 +15,8 @@
 	<classpathentry exported="true" kind="lib" path="commons-email-1.5.jar"/>
 	<classpathentry exported="true" kind="lib" path="javax.mail.jar"/>
 	<classpathentry kind="lib" path="rs2xml.jar"/>
+=======
+>>>>>>> parent of 2358860... Vista Unirse Partido
 	<classpathentry kind="lib" path="mysql-connector-java-8.0.18.jar"/>
 	<classpathentry kind="lib" path="c3p0-0.9.5.5.jar"/>
 	<classpathentry kind="lib" path="c3p0-oracle-thin-extras-0.9.5.5.jar"/>
@@ -21,9 +24,12 @@
 	<classpathentry kind="lib" path="activation.jar"/>
 	<classpathentry kind="lib" path="commons-email-1.5.jar"/>
 	<classpathentry kind="lib" path="javax.mail.jar"/>
+<<<<<<< HEAD
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="lib" path="jgoodies-common-1.8.0.jar" sourcepath="jgoodies-common-1.8.0-sources.jar"/>
 	<classpathentry kind="lib" path="jgoodies-forms-1.8.0.jar" sourcepath="jgoodies-forms-1.8.0-sources.jar"/>
 	<classpathentry kind="lib" path="rs2xml.jar"/>
+=======
+>>>>>>> parent of 2358860... Vista Unirse Partido
 	<classpathentry kind="output" path="bin"/>
 </classpath>

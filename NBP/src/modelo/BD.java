@@ -1,17 +1,21 @@
 package modelo;
 
-
-
 import java.beans.PropertyVetoException;
 import java.sql.*;
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
 import java.util.*;
 //import javax.activation.DataSource;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+=======
+import java.util.*;
+import java.sql.Date;
+//import javax.activation.DataSource;
+>>>>>>> parent of 2358860... Vista Unirse Partido
 
-import javax.activation.DataSource;
+import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 //USER:rWiO7EseHz
 //PASS:vKa9rl8nd5
