@@ -4,8 +4,24 @@ import java.util.List;
 
 public class Administrador extends Usuario {
 	private BD baseDatos = new BD();
+	private String ayuntamiento;
+	
 	public Administrador(String correo, String contrasena) {
 		super(correo, contrasena);
+	}
+	
+	public Administrador(String correo) {//Sacar Admin BD
+		super(correo);
+		try {
+		Object[] ob = baseDatos.Select("Select * From Administrador where email = '"+ correo +"';").get(0);
+		this.ayuntamiento = (String) ob[0];
+		}catch (Exception e) {
+		}
+		
+	}
+	
+	public String getAyuntamiento() {
+		return this.ayuntamiento;
 	}
 
 	@Override

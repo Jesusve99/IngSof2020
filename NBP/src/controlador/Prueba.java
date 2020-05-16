@@ -7,7 +7,10 @@ import org.apache.commons.mail.Email;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
 
+import modelo.Administrador;
 import modelo.BD;
+import modelo.Jugador;
+import modelo.Usuario;
 
 //Correo:ingsoftwarenbp@gmail.com
 //Contraseña:vKa9rl8nd5
@@ -16,7 +19,11 @@ public class Prueba {
 
 	public static void main(String[] args) throws EmailException {
 		//bd();
-		enviar("Que pasa fiera :)","marialopez57@uma.es");	
+		//enviar("Que pasa fiera :)","marialopez57@uma.es");	
+		Administrador admin = new Administrador("admin@");
+		System.out.println(admin.getCorreo()+"  "+admin.getContrasena()+" "+admin.getAyuntamiento());
+		Jugador jug = new Jugador("prueba@");
+		System.out.println(jug.getCorreo()+"  "+jug.getContrasena()+" "+jug.getNick()+" "+jug.getNombre()+" "+jug.getApellidos()+" "+jug.getFechaNacimiento());
 	}
 	
 	public static void enviar (String str,String destino) throws EmailException {

@@ -12,6 +12,21 @@ public class Jugador extends Usuario {
 	private BD baseDatos = new BD();
 	private Date fechaNacimiento;
 	
+	
+	public Jugador(String correo) {//Sacar Jugador bd
+		super(correo);
+		try {
+			Object[] ob = baseDatos.Select("Select * From Jugador where correo_jug = '"+ correo +"';").get(0);
+			this.nick = (String) ob[1];
+			this.posicionfav = Demarcacion.valueOf((String) ob[2]);
+			this.nombre = (String) ob[3];
+			this.apellidos = (String) ob[4];
+			this.fechaNacimiento = (Date) ob[5];
+		}catch(Exception e) {
+		}
+	}
+	
+	
 	public Jugador(String correo, String contrasena, String nick, Demarcacion posicionfav, String nombre, String apellidos,Date fechaNacimiento) {
 		super(correo, contrasena);
 		this.nick = nick;
@@ -22,11 +37,6 @@ public class Jugador extends Usuario {
 	}
 
 	public String getNick() {
-		
-		List<Object[]> lista = baseDatos.Select("SELECT * FROM Jugador WHERE correo = 'prueba@';");
-		Object[] ob =  lista.get(0);
-		String nick = (String) ob[2];
-		
 		return nick;
 	}
 
