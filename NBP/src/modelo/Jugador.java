@@ -10,7 +10,7 @@ public class Jugador extends Usuario {
 	private String nombre;
 	private String apellidos;
 	private BD baseDatos = new BD();
-	private Date fechaNacimiento;
+	private String fechaNacimiento;
 	
 	
 	public Jugador(String correo) {//Sacar Jugador bd
@@ -21,19 +21,19 @@ public class Jugador extends Usuario {
 			this.posicionfav = Demarcacion.valueOf((String) ob[2]);
 			this.nombre = (String) ob[3];
 			this.apellidos = (String) ob[4];
-			this.fechaNacimiento = (Date) ob[5];
+			this.fechaNacimiento = (String) ob[5].toString();
 		}catch(Exception e) {
 		}
 	}
 	
+	//Registro Basico
+	public Jugador(String correo, String contra) {
+		super(correo,contra);
+	}
 	
-	public Jugador(String correo, String contrasena, String nick, Demarcacion posicionfav, String nombre, String apellidos,Date fechaNacimiento) {
-		super(correo, contrasena);
-		this.nick = nick;
-		this.posicionfav = posicionfav;
-		this.nombre = nombre;
-		this.apellidos = apellidos;
-		this.fechaNacimiento = fechaNacimiento;
+	//Registro Completo
+	public Jugador(String correo, String nick, Demarcacion posicionfav, String nombre, String apellidos, String fechaNacimiento) {
+		baseDatos.Insert("INSERT INTO Jugador(correo_jug, nick, posicionfav, nombre, apellidos, Fecha_nacimiento) VALUES ('"+correo+"','"+nick+"','"+posicionfav+"','"+nombre+"','"+apellidos+"','"+fechaNacimiento+"');");
 	}
 
 	public String getNick() {
@@ -68,11 +68,11 @@ public class Jugador extends Usuario {
 		this.apellidos = apellidos;
 	}
 
-	public Date getFechaNacimiento() {
+	public String getFechaNacimiento() {
 		return fechaNacimiento;
 	}
 
-	public void setFechaNacimiento(Date fechaNacimiento) {
+	public void setFechaNacimiento(String fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 

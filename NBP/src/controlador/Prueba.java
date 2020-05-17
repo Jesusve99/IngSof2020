@@ -1,5 +1,10 @@
 package controlador;
 
+
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.apache.commons.mail.DefaultAuthenticator;
@@ -9,48 +14,29 @@ import org.apache.commons.mail.SimpleEmail;
 
 import modelo.Administrador;
 import modelo.BD;
+import modelo.Demarcacion;
 import modelo.Jugador;
 import modelo.Usuario;
-
+import modelo.EnviarCorreo;
 //Correo:ingsoftwarenbp@gmail.com
 //Contraseña:vKa9rl8nd5
 
 public class Prueba {
 
-	public static void main(String[] args) throws EmailException {
-		//bd();
-		//enviar("Que pasa fiera :)","marialopez57@uma.es");	
-		Administrador admin = new Administrador("admin@");
-		System.out.println(admin.getCorreo()+"  "+admin.getContrasena()+" "+admin.getAyuntamiento());
-		Jugador jug = new Jugador("prueba@");
-		System.out.println(jug.getCorreo()+"  "+jug.getContrasena()+" "+jug.getNick()+" "+jug.getNombre()+" "+jug.getApellidos()+" "+jug.getFechaNacimiento());
-	}
-	
-	public static void enviar (String str,String destino) throws EmailException {
-		Email email = new SimpleEmail();
-		email.setHostName("smtp.gmail.com");
-		email.setSmtpPort(465);
-		email.setSSLOnConnect(true);
-		email.setAuthenticator(new DefaultAuthenticator("ingsoftwarenbp@gmail.com", "vKa9rl8nd5"));
-		email.setSSLOnConnect(true);
-		email.setFrom("ingsoftwarenbp@gmail.com");
-		email.setSubject("TestMail");
-		email.setMsg(str);
-		email.addTo(destino);
-		email.send();
-		System.out.println("Mensaje enviado");
-	}
-	
-	public static void bd() {
-		BD mibd = new BD();
-		
-		List<Object[]> lista = mibd.Select("SELECT * FROM Jugador WHERE correo = 'prueba@';");
-		Object[] ob =  lista.get(0);
-		String email = (String) ob[0];
-		String contrasena = (String) ob[1];
-		
-		System.out.println(email);
-		System.out.println(contrasena);
-	}
+	public static void main(String[] args) throws EmailException, ParseException {
+		////ENVIAR CORREO
+		//EnviarCorreo env = new EnviarCorreo("marialopez57@uma.es");
+		//env.enviar("Tema","Mensaje");	
+		////OBTENER DATOS DE BD
+		//Administrador admin = new Administrador("admin@");
+		//System.out.println(admin.getCorreo()+"  "+admin.getContrasena()+" "+admin.getAyuntamiento());
+		////OBTENER DATOS DE BD
+		//Jugador jug = new Jugador("primero@");
+		//System.out.println(jug.getCorreo()+"  "+jug.getContrasena()+" "+jug.getNick()+" "+jug.getNombre()+" "+jug.getApellidos()+" "+jug.getFechaNacimiento());
+		////INSERTAR BASICO
+		//Jugador jug = new Jugador("primero@","primero");
+		////INSERTAR COMPLETO
+		//Jugador jug = new Jugador("primero@","nick1",Demarcacion.PORTERO,"nombre1","apellidos1","2002-02-02");
 
+	}	
 }

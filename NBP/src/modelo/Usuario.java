@@ -7,8 +7,14 @@ public abstract class Usuario {
 	private String contrasena;
 	private BD baseDatos = new BD();
 	
-	public Usuario(String correo, String contrasena) {//Introducir Usuario a bd
-		baseDatos.Insert("Insert into 'Usuario' ('Email', 'Contrasena') Values ('"+correo+"','"+contrasena+"');");
+	
+	public Usuario() {
+		//Usuario con Registro Basico
+	}
+	
+	//Registro Basico
+	public Usuario(String correo, String contrasena) {
+		baseDatos.Insert("Insert into Usuario (Email, Contrasena) Values ('"+correo+"','"+contrasena+"');");
 	}
 	
 	public Usuario(String correo) {//Sacar Usuario bd

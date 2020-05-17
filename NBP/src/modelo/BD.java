@@ -3,7 +3,6 @@ package modelo;
 import java.beans.PropertyVetoException;
 import java.sql.*;
 import java.util.*;
-import java.sql.Date;
 //import javax.activation.DataSource;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
