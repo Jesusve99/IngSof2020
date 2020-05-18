@@ -25,7 +25,6 @@ public class frmCrearPista extends JFrame {
 	private JTextField HorarioApertura;
 	private JTextField HorarioCierre;
 	private JTextField DiasDisponibles;
-	private JTextField Id;
 
 	/**
 	 * Launch the application.
@@ -93,7 +92,7 @@ public class frmCrearPista extends JFrame {
 		JButton btnCrearPista = new JButton("Crear Pista");
 		btnCrearPista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				crearPista(Id, Nombre, Ubicacion, HorarioApertura, HorarioCierre, DiasDisponibles);
+				crearPista(Nombre, Ubicacion, HorarioApertura, HorarioCierre);
 			}
 		});
 		btnCrearPista.setBounds(323, 215, 97, 25);
@@ -118,20 +117,11 @@ public class frmCrearPista extends JFrame {
 		DiasDisponibles.setBounds(152, 135, 116, 22);
 		contentPane.add(DiasDisponibles);
 		DiasDisponibles.setColumns(10);
-		
-		JLabel lblId = new JLabel("ID:");
-		lblId.setBounds(26, 167, 56, 16);
-		contentPane.add(lblId);
-		
-		Id = new JTextField();
-		Id.setBounds(152, 164, 116, 22);
-		contentPane.add(Id);
-		Id.setColumns(10);
 	}
 
-	protected void crearPista(JTextField id, JTextField nombre, JTextField ubicacion, JTextField horarioApertura,
-			JTextField horarioCierre, JTextField diasDisponibles) {
-		Pista pista = new Pista(id, nombre, ubicacion, horarioApertura, horarioCierre);
+	protected void crearPista(JTextField nombre, JTextField ubicacion, JTextField horarioApertura,
+			JTextField horarioCierre) {
+		Pista pista = new Pista(nombre, ubicacion, horarioApertura, horarioCierre);
 		GestionPista gP = new GestionPista();
 		gP.obtenerPista(pista);
 	}

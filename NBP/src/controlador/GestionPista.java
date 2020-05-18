@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import modelo.*;
 
@@ -13,24 +14,27 @@ public class GestionPista {
 		
 		BD bd = new BD();
 		Connection con = null;
-		PreparedStatement pst = null;
-		ResultSet n = null;
+		Statement pst = null;
+		int n ;
 		
 		try {
 			con = BD.connectToDatabase();
 			
-			String sql = "INSERT INTO Pista (nombre, ubicacion, Hora_inicio, Hora_fin, cod_pista) VALUES (?,?,?,?,?);";
+			String sql = "INSERT INTO Pista (nombre, ubicacion, Hora_inicio, Hora_fin) VALUES (\""+p.getNombre()+"\",\""+p.getUbicacion()+"\",\""+
+			p.getHorainicio()+"\",\""+p.getHorafin()+"\");";
 			
-			pst = con.prepareStatement(sql);
+			pst = con.createStatement();
 			
-			pst.setString(1, p.getNombre());
+			//pst = con.prepareStatement(sql);
+			
+			/*pst.setString(1, p.getNombre());
 			pst.setString(2, p.getUbicacion());
-			pst.setDate(3, (Date) p.getHorainicio());
-			pst.setDate(4, (Date) p.getHorafin());
-			pst.setInt(5, p.getId());
+			pst.setString(3, p.getHorainicio());
+			pst.setString(4, p.getHorafin());
 			//pst.setInt(6, p.getDiasDisponibles());
+			*/
 			
-			n = pst.executeQuery();
+			n = pst.executeUpdate(sql);
 			
 		}catch(SQLException e) {
 			System.out.println(e.getMessage());
