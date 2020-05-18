@@ -69,7 +69,8 @@ public class Iniciarsesion extends JFrame {
 		JButton btnSalir = new JButton("salir");
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				System.exit(0);
+				Inicio ini = new Inicio();
+				ini.setVisible(true);	
 			}
 		});
 		btnSalir.setBounds(44, 204, 97, 25);
