@@ -24,7 +24,6 @@ public class frmCrearPista extends JFrame {
 	private JTextField Ubicacion;
 	private JTextField HorarioApertura;
 	private JTextField HorarioCierre;
-	private JTextField DiasDisponibles;
 
 	/**
 	 * Launch the application.
@@ -108,15 +107,6 @@ public class frmCrearPista extends JFrame {
 		});
 		btnCancelar.setBounds(214, 215, 97, 25);
 		contentPane.add(btnCancelar);
-		
-		JLabel lblDiasDisponibles = new JLabel("D\u00EDas Disponibles:");
-		lblDiasDisponibles.setBounds(26, 138, 114, 16);
-		contentPane.add(lblDiasDisponibles);
-		
-		DiasDisponibles = new JTextField();
-		DiasDisponibles.setBounds(152, 135, 116, 22);
-		contentPane.add(DiasDisponibles);
-		DiasDisponibles.setColumns(10);
 	}
 
 	protected void crearPista(JTextField nombre, JTextField ubicacion, JTextField horarioApertura,
