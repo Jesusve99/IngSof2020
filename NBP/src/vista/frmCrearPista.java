@@ -1,4 +1,4 @@
-package formularios;
+package vista;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import mantenimientos.*;
+import controlador.GestionPista;
 import modelo.Pista;
 
 import javax.swing.JLabel;
