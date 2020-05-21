@@ -17,7 +17,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class frmCrearPista extends JFrame {
+public class CrearPista extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField Nombre;
@@ -32,7 +32,7 @@ public class frmCrearPista extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frmCrearPista frame = new frmCrearPista();
+					CrearPista frame = new CrearPista();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,7 +44,7 @@ public class frmCrearPista extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public frmCrearPista() {
+	public CrearPista() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -114,9 +114,15 @@ public class frmCrearPista extends JFrame {
 		Pista pista = new Pista(nombre, ubicacion, horarioApertura, horarioCierre);
 		GestionPista gP = new GestionPista();
 		gP.obtenerPista(pista);
+		//Redirigir a Menu
+		dispose();
+		MenuAdministrador mad = new MenuAdministrador();
+		mad.setVisible(true);
 	}
 
 	protected void cancelar() {
-		System.exit(0);
+		dispose();
+		MenuAdministrador mad = new MenuAdministrador();
+		mad.setVisible(true);
 	}
 }

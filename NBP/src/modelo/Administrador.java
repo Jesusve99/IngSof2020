@@ -14,7 +14,7 @@ public class Administrador extends Usuario {
 	
 	public Administrador(String correo) {//Sacar Admin BD
 		try {
-		Object[] ob = baseDatos.Select("Select * From Administrador where email = '"+ correo +"';").get(0);
+		Object[] ob = baseDatos.Select("Select * From Administrador where correo = '"+ correo +"';").get(0);
 		this.correo = (String) ob[0];
 		this.contrasena = (String) ob[1];
 		this.ayuntamiento = (String) ob[2];
@@ -27,6 +27,12 @@ public class Administrador extends Usuario {
 	
 	public String getAyuntamiento() {
 		return this.ayuntamiento;
+	}
+	public String getCorreo() {
+		return this.correo;
+	}
+	public String getContrasena() {
+		return this.contrasena;
 	}
 
 	public boolean estaenBD(){

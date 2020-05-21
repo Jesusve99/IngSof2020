@@ -61,7 +61,7 @@ public class PartidoInformacion {
 		
 		BD connection = new BD();
 		int id_partido = 1; 
-		String select = "SELECT Jugador.nick 'Nick', Jugador.posicionfav 'Posicion Favorita' FROM Jugador WHERE Jugador.correo_jug IN (SELECT Jugador_Partido.ID_jug FROM Jugador_Partido WHERE Jugador_Partido.partido ="+id_partido+")";
+		String select = "SELECT Jugador.nick 'Nick', Jugador.posicionfav 'Posicion Favorita' FROM Jugador WHERE Jugador.correo IN (SELECT Jugador_Partido.ID_jug FROM Jugador_Partido WHERE Jugador_Partido.partido ="+id_partido+")";
 		frame = new JFrame();
 		frame.setBounds(100, 100, 835, 610);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
