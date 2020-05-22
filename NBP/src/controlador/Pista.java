@@ -1,4 +1,4 @@
-package modelo;
+package controlador;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -13,16 +13,17 @@ public class Pista {
 	private int id;
 	private String nombre;
 	private String ubicacion;
-	private String horainicio;
-	private String horafin;
+	private Date horainicio;
+	private Date horafin;
 	//private int[] diasDisponibles;
 
-	public Pista(JTextField nombre2, JTextField ubicacion2, JTextField horarioApertura, JTextField horarioCierre) {
+	public Pista(JTextField id2, JTextField nombre2, JTextField ubicacion2, JTextField horarioApertura, JTextField horarioCierre) {
 		try {
+			id = Integer.parseInt(id2.getText());
 			nombre = nombre2.getText();
 			ubicacion = ubicacion2.getText();
-			horainicio = horarioApertura.getText();
-			horafin = horarioCierre.getText();
+			horainicio = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).parse(horarioApertura.getText());
+			horafin = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).parse(horarioCierre.getText());
 			
 			//int pos = 0;
 			//int dias = Integer.parseInt(diasDisponibles2.getText());
@@ -33,8 +34,8 @@ public class Pista {
 			}
 			
 			diasDisponibles = Arrays.copyOf(diasDisponibles, pos);*/
-		} catch (Exception e) {
-			e.getMessage();
+		} catch (ParseException e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -72,19 +73,19 @@ public class Pista {
 		this.ubicacion = ubicacion;
 	}
 
-	public String getHorainicio() {
+	public Date getHorainicio() {
 		return horainicio;
 	}
 
-	public void setHorainicio(String horainicio) {
+	public void setHorainicio(Date horainicio) {
 		this.horainicio = horainicio;
 	}
 
-	public String getHorafin() {
+	public Date getHorafin() {
 		return horafin;
 	}
 
-	public void setHorafin(String horafin) {
+	public void setHorafin(Date horafin) {
 		this.horafin = horafin;
 	}
 	

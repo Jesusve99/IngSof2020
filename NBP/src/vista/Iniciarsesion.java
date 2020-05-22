@@ -9,7 +9,9 @@ import javax.swing.border.EmptyBorder;
 
 import com.mysql.cj.protocol.Resultset;
 
+import modelo.Administrador;
 import modelo.BD;
+import modelo.Jugador;
 import modelo.Usuario;
 
 import javax.swing.JLabel;
@@ -69,7 +71,8 @@ public class Iniciarsesion extends JFrame {
 		JButton btnSalir = new JButton("salir");
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				System.exit(0);
+				Inicio ini = new Inicio();
+				ini.setVisible(true);	
 			}
 		});
 		btnSalir.setBounds(44, 204, 97, 25);
@@ -77,29 +80,31 @@ public class Iniciarsesion extends JFrame {
 		
 		btnEntrar = new JButton("Entrar");
 		btnEntrar.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent arg0) {
+				char[] contraseÃ±a = clave.getPassword();
+				String clavefinal = new String(contraseÃ±a);
 				
+				Administrador ad = new Administrador(textusuario.getText());
+				Jugador jug = new Jugador(textusuario.getText());
 				
-				BD mibd = new BD();
-			    Object[] ob = mibd.Select("SELECT * FROM Usuario WHERE email = '" + textusuario.getText() + "';").get(0);
-			    String correobd = (String) ob[0];
-			    String contrabd = (String) ob[1];
-				
-				char[] contraseña = clave.getPassword();
-				String clavefinal = new String(contraseña);
-				
-				if(textusuario.getText().equals(correobd) && clavefinal.equals(contrabd)) {
+				if(!ad.estaenBD() && !jug.estaenBD()) {//No existe en la BD
+					JOptionPane.showMessageDialog(null, "Usuario o Contraseï¿½a incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
+					textusuario.setText("");
+					clave.setText("");
+					textusuario.requestFocus();
+				}else if(jug.iniciosesion(clavefinal)) {
 					dispose();
-					JOptionPane.showMessageDialog(null, "Bienvenido al sistema","Ingresaste",JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Bienvenido al sistema,Jugador","Ingresaste",JOptionPane.INFORMATION_MESSAGE);
 					Pantallaprincipal p = new Pantallaprincipal();
 					p.setVisible(true);
-				}else {
-				JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
-				textusuario.setText("");
-				clave.setText("");
-				textusuario.requestFocus();
+				}else if(ad.iniciosesion(clavefinal)){
+					dispose();
+					//JOptionPane.showMessageDialog(null, "Bienvenido al sistema,Administrador","Ingresaste",JOptionPane.INFORMATION_MESSAGE);
+					MenuAdministrador mad = new MenuAdministrador();
+					mad.setVisible(true);
+					//Es un admin
 				}
-			
 			}
 
 			

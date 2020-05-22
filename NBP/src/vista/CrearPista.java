@@ -1,12 +1,19 @@
 package vista;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import modelo.Pista;
+
+public class frmCrearPista extends JFrame {
 import controlador.GestionPista;
 import modelo.Pista;
 
@@ -17,15 +24,13 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class frmCrearPista extends JFrame {
+public class CrearPista extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField Nombre;
 	private JTextField Ubicacion;
 	private JTextField HorarioApertura;
 	private JTextField HorarioCierre;
-	private JTextField DiasDisponibles;
-	private JTextField Id;
 
 	/**
 	 * Launch the application.
@@ -34,7 +39,7 @@ public class frmCrearPista extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frmCrearPista frame = new frmCrearPista();
+					CrearPista frame = new CrearPista();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,7 +51,7 @@ public class frmCrearPista extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public frmCrearPista() {
+	public CrearPista() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -93,7 +98,7 @@ public class frmCrearPista extends JFrame {
 		JButton btnCrearPista = new JButton("Crear Pista");
 		btnCrearPista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				crearPista(Id, Nombre, Ubicacion, HorarioApertura, HorarioCierre, DiasDisponibles);
+				crearPista(Nombre, Ubicacion, HorarioApertura, HorarioCierre);
 			}
 		});
 		btnCrearPista.setBounds(323, 215, 97, 25);
@@ -109,34 +114,22 @@ public class frmCrearPista extends JFrame {
 		});
 		btnCancelar.setBounds(214, 215, 97, 25);
 		contentPane.add(btnCancelar);
-		
-		JLabel lblDiasDisponibles = new JLabel("D\u00EDas Disponibles:");
-		lblDiasDisponibles.setBounds(26, 138, 114, 16);
-		contentPane.add(lblDiasDisponibles);
-		
-		DiasDisponibles = new JTextField();
-		DiasDisponibles.setBounds(152, 135, 116, 22);
-		contentPane.add(DiasDisponibles);
-		DiasDisponibles.setColumns(10);
-		
-		JLabel lblId = new JLabel("ID:");
-		lblId.setBounds(26, 167, 56, 16);
-		contentPane.add(lblId);
-		
-		Id = new JTextField();
-		Id.setBounds(152, 164, 116, 22);
-		contentPane.add(Id);
-		Id.setColumns(10);
 	}
 
-	protected void crearPista(JTextField id, JTextField nombre, JTextField ubicacion, JTextField horarioApertura,
-			JTextField horarioCierre, JTextField diasDisponibles) {
-		Pista pista = new Pista(id, nombre, ubicacion, horarioApertura, horarioCierre);
+	protected void crearPista(JTextField nombre, JTextField ubicacion, JTextField horarioApertura,
+			JTextField horarioCierre) {
+		Pista pista = new Pista(nombre, ubicacion, horarioApertura, horarioCierre);
 		GestionPista gP = new GestionPista();
 		gP.obtenerPista(pista);
+		//Redirigir a Menu
+		dispose();
+		MenuAdministrador mad = new MenuAdministrador();
+		mad.setVisible(true);
 	}
 
 	protected void cancelar() {
-		System.exit(0);
+		dispose();
+		MenuAdministrador mad = new MenuAdministrador();
+		mad.setVisible(true);
 	}
 }
