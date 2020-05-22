@@ -11,11 +11,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import modelo.Pista;
 
-public class frmCrearPista extends JFrame {
+
 import controlador.GestionPista;
-import modelo.Pista;
+import modelo.*;
+import vista.*;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
