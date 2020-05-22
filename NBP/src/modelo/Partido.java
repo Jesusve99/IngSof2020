@@ -19,7 +19,9 @@ public class Partido {
 		
 		try {
 			fecha = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).parse(fecha.getText());
-			hora = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).parse(hora.getText());
+			hora = hora.getText();
+			
+
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
