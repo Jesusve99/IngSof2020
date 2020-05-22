@@ -1,6 +1,9 @@
 package modelo;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class Partido {
 	
@@ -8,9 +11,16 @@ public class Partido {
 	private Date fecha;
 	private Date hora;
 	
-	public Partido(Date fecha, Date hora) {
-		this.fecha = fecha;
-		this.hora = hora;
+	public Partido(JTextField fecha, JTextField hora) {
+		
+		try {
+			fecha = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).parse(fecha.getText());
+			hora = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).parse(hora.getText());
+			
+
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 	}
 	public Date getFecha() {
 		return fecha;
