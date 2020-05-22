@@ -13,7 +13,6 @@ import javax.swing.border.EmptyBorder;
 
 import modelo.Pista;
 
-public class frmCrearPista extends JFrame {
 import controlador.GestionPista;
 import modelo.Pista;
 

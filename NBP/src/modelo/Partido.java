@@ -2,22 +2,24 @@ package modelo;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.Locale;
 
+import com.mysql.cj.protocol.a.MysqlBinaryValueDecoder;
+import com.mysql.cj.result.LocalTimeValueFactory;
+
 public class Partido {
 	
-	//private int id;
+	private int id;
 	private Date fecha;
-	private Date hora;
+	private LocalTimeValueFactory hora;
 	
 	public Partido(JTextField fecha, JTextField hora) {
 		
 		try {
 			fecha = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).parse(fecha.getText());
 			hora = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).parse(hora.getText());
-			
-
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -34,6 +36,5 @@ public class Partido {
 	public void setHora(Date hora) {
 		this.hora = hora;
 	}
-	
 	
 }

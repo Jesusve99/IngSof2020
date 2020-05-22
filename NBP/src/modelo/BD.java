@@ -10,7 +10,7 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 
 //USER:rWiO7EseHz
-//PASS:vKa9rl8nd5
+//PASS: vKa9rl8nd5
 //https://remotemysql.com/phpmyadmin/db_structure.php?db=rWiO7EseHz
 
 public class BD {
