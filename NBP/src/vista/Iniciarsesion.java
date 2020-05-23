@@ -71,6 +71,7 @@ public class Iniciarsesion extends JFrame {
 		JButton btnSalir = new JButton("salir");
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				dispose();
 				Inicio ini = new Inicio();
 				ini.setVisible(true);	
 			}
@@ -82,14 +83,14 @@ public class Iniciarsesion extends JFrame {
 		btnEntrar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent arg0) {
-				char[] contraseña = clave.getPassword();
-				String clavefinal = new String(contraseña);
+				char[] contrasena = clave.getPassword();
+				String clavefinal = new String(contrasena);
 				
 				Administrador ad = new Administrador(textusuario.getText());
 				Jugador jug = new Jugador(textusuario.getText());
 				
 				if(!ad.estaenBD() && !jug.estaenBD()) {//No existe en la BD
-					JOptionPane.showMessageDialog(null, "Usuario o Contrase�a incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Usuario o Contrasena incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
 					textusuario.setText("");
 					clave.setText("");
 					textusuario.requestFocus();
