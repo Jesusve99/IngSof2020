@@ -161,9 +161,7 @@ public class Registrarse extends JFrame {
 					txtCorreo.requestFocus();
 				
 				}else {
-					
-					//crearJugador(txtCorreo.getText(), txtNick.getText(), cmbPosicion.getAccessibleContext() , txtNombre.getText(), txtApellidos.getText(), txtFechaNac.getText() );
-					
+									
 					Jugador j = new Jugador(txtCorreo.getText(), contraFinal, txtNick.getText(), txtNombre.getText(), txtApellidos.getText(), txtFechaNac.getText());
 					
 					dispose();
@@ -186,12 +184,5 @@ public class Registrarse extends JFrame {
 		contentPane.add(txtFechaNac);
 		txtFechaNac.setColumns(10);
 		
-		/*protected void crearJugador(JTextField correo, JTextField nick, JComboBox posicion,
-				JTextField nombre, JTextField apellidos, JTextField fechanac) {
-			
-			Jugador jug = new Jugador(correo, nick, posicion, nombre, apellidos, fechanac);
-			GestionRegistro gR = new GestionRegistro();
-			gR.obtenerRegistro(registro);
-		}*/
 	}
 }
