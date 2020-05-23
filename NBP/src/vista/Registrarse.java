@@ -150,7 +150,6 @@ public class Registrarse extends JFrame {
 			   
 			    String posicion = cmbPosicion.getSelectedItem().toString();
 
-			    
 			    char[] contrasena = jpassContraseña.getPassword();
 			    String contraFinal = new String(contrasena);
 			    
@@ -166,6 +165,11 @@ public class Registrarse extends JFrame {
 					//crearJugador(txtCorreo.getText(), txtNick.getText(), cmbPosicion.getAccessibleContext() , txtNombre.getText(), txtApellidos.getText(), txtFechaNac.getText() );
 					
 					Jugador j = new Jugador(txtCorreo.getText(), contraFinal, txtNick.getText(), txtNombre.getText(), txtApellidos.getText(), txtFechaNac.getText());
+					
+					dispose();
+					JOptionPane.showMessageDialog(null, "Bienvenido a NBP","Cuenta creada con exito",JOptionPane.INFORMATION_MESSAGE);
+					Iniciarsesion i = new Iniciarsesion();
+					i.setVisible(true);
 				}
 			}
 		});
