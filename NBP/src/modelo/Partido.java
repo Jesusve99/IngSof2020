@@ -25,6 +25,7 @@ public class Partido {
 			e.printStackTrace();
 		}
 	}
+	
 	public int getIdPista() {
 		return idPista;
 	}

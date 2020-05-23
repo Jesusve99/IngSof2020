@@ -30,6 +30,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Scanner;
@@ -116,15 +117,15 @@ public class CrearPartido extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JLabel lblCrearPartido = new JLabel("Crear Partido");
-		lblCrearPartido.setBounds(36, 10, 117, 25);
-		lblCrearPartido.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		contentPane.add(lblCrearPartido);
-		
 		JLabel lblHoraInicio = new JLabel("Hora de inicio");
 		lblHoraInicio.setBounds(36, 112, 78, 16);
 		lblHoraInicio.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		contentPane.add(lblHoraInicio);
+		
+		JLabel lblCrearPartido = new JLabel("Crear Partido");
+		lblCrearPartido.setBounds(36, 10, 117, 25);
+		lblCrearPartido.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		contentPane.add(lblCrearPartido);
 		
 		JLabel lblFecha = new JLabel("Fecha");
 		lblFecha.setBounds(36, 83, 34, 16);
@@ -157,13 +158,13 @@ public class CrearPartido extends JFrame {
 		try {	
 			DefaultTableModel model = new DefaultTableModel();
 			
-			//model.addColumn(columnName);
+			model.addColumn("cod_pista");
 			model.addColumn("Nombre");
 			model.addColumn("Ubicacion");
 			model.addColumn("Hora_inicio");
 			model.addColumn("Hora_fin");
 			
-			String [] datos = new String[4];
+			String [] datos = new String[5];
 			
 			conexion = BD.connectToDatabase();
 			
@@ -173,16 +174,17 @@ public class CrearPartido extends JFrame {
 			ResultSet rs = pst.executeQuery(sql);
 			
 			while(rs.next()) {
-				datos[0] = rs.getString(1);
-				datos[1] = rs.getString(2);
-				datos[2] = rs.getString(3);
-				datos[3] = rs.getString(4);
+				datos[0] = rs.getObject(1).toString();
+				datos[1] = rs.getObject(2).toString();
+				datos[2] = rs.getObject(3).toString();
+				datos[3] = rs.getObject(4).toString();
+				datos[4] = rs.getObject(5).toString();
 				model.addRow(datos);
 			}
 			
 			dispose();
-			rs.close();
-			pst.close();
+			//rs.close();
+			//pst.close();
 			
 			JButton btnCrearPartido = new JButton("Crear Partido");
 			
@@ -207,8 +209,8 @@ public class CrearPartido extends JFrame {
 						}
 						
 						dispose();
-						rs.close();
-						pst.close();
+						//rs.close();
+						//pst.close();
 						
 						String sql1 = "SELECT Hora FROM Partido WHERE Pista = ?";
 						
@@ -219,11 +221,12 @@ public class CrearPartido extends JFrame {
 						
 						SortedSet<String> horas = new TreeSet<>();
 						
-						int i=0;
 						while(rs.next()) {
-							horas.add(rs.getObject(i).toString());
-							i++;
+							horas.add(rs.getObject(1).toString());
 						}
+												
+						rs.close();
+						pst.close();
 						
 						if(compararFechas(textField.getText(), o[0]) < 0 || compararFechas(textField.getText(), o[1]) > 0 
 								|| coincideHora(textField_1.getText(), horas)) {
@@ -235,6 +238,8 @@ public class CrearPartido extends JFrame {
 						Statement st = conexion.createStatement();
 						
 						st.executeUpdate(sql2);
+						
+						st.close();
 						
 					}catch(Exception ee) {
 						System.out.println(ee.getMessage());
