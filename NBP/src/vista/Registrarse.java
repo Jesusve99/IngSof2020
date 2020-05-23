@@ -33,7 +33,7 @@ public class Registrarse extends JFrame {
 	private JTextField txtNombre;
 	private JTextField txtApellidos;
 	private JTextField txtCorreo;
-	private JPasswordField jpassContraseña;
+	private JPasswordField jpassContrasena;
 	private JTextField txtNick;
 	private JTextField txtFechaNac;
 
@@ -116,9 +116,9 @@ public class Registrarse extends JFrame {
 		contentPane.add(txtCorreo);
 		txtCorreo.setColumns(10);
 		
-		jpassContraseña = new JPasswordField();
-		jpassContraseña.setBounds(147, 153, 116, 22);
-		contentPane.add(jpassContraseña);
+		jpassContrasena = new JPasswordField();
+		jpassContrasena.setBounds(147, 153, 116, 22);
+		contentPane.add(jpassContrasena);
 		
 		txtNick = new JTextField();
 		txtNick.setBounds(378, 97, 116, 29);
@@ -126,7 +126,8 @@ public class Registrarse extends JFrame {
 		txtNick.setColumns(10);
 		
 		final JComboBox cmbPosicion = new JComboBox();
-		cmbPosicion.setModel(new DefaultComboBoxModel(new String[] {"Portero", "Defensa", "Centrocampista", "Delantero"}));
+		//cmbPosicion.setModel(new DefaultComboBoxModel(new String[] {"Portero", "Defensa", "Centrocampista", "Delantero"}));
+		cmbPosicion.setModel(new DefaultComboBoxModel(Demarcacion.values()));
 		cmbPosicion.setBounds(378, 62, 116, 29);
 		contentPane.add(cmbPosicion);
 		
@@ -148,9 +149,11 @@ public class Registrarse extends JFrame {
 				BD bd = new BD();
 			    String correobd = "SELECT * FROM Usuario WHERE email = '" + txtCorreo.getText() + "';";
 			   
-			    String posicion = cmbPosicion.getSelectedItem().toString();
-
-			    char[] contrasena = jpassContraseña.getPassword();
+			    //String posicion = cmbPosicion.getSelectedItem().toString();
+			    
+			    Demarcacion pos = (Demarcacion) cmbPosicion.getSelectedItem();
+			    
+			    char[] contrasena = jpassContrasena.getPassword();
 			    String contraFinal = new String(contrasena);
 			    
 				if(txtCorreo.getText().equals(correobd)){
@@ -162,7 +165,7 @@ public class Registrarse extends JFrame {
 				
 				}else {
 									
-					Jugador j = new Jugador(txtCorreo.getText(), contraFinal, txtNick.getText(), txtNombre.getText(), txtApellidos.getText(), txtFechaNac.getText());
+					Jugador j = new Jugador(txtCorreo.getText(), contraFinal, txtNick.getText(), pos, txtNombre.getText(), txtApellidos.getText(), txtFechaNac.getText());
 					
 					dispose();
 					JOptionPane.showMessageDialog(null, "Bienvenido a NBP","Cuenta creada con exito",JOptionPane.INFORMATION_MESSAGE);
