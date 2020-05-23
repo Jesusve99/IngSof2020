@@ -5,33 +5,39 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.swing.JTextField;
+
 public class Partido {
 	
-	//private int id;
-	private Date fecha;
-	private Date hora;
+	private int idPista;
+	private String fecha;
+	private String hora;
 	
-	public Partido(JTextField fecha, JTextField hora) {
+	public Partido(JTextField id, JTextField f, JTextField h) {
 		
 		try {
-			fecha = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).parse(fecha.getText());
-			hora = hora.getText();
-			
 
-		} catch (ParseException e) {
+			idPista = Integer.parseInt(id.getText());
+			fecha = f.getText();
+			hora = h.getText();
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	public Date getFecha() {
+	public int getIdPista() {
+		return idPista;
+	}
+	public String getFecha() {
 		return fecha;
 	}
-	public void setFecha(Date fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
-	public Date getHora() {
+	public String getHora() {
 		return hora;
 	}
-	public void setHora(Date hora) {
+	public void setHora(String hora) {
 		this.hora = hora;
 	}
 	
