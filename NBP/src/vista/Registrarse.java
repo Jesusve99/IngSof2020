@@ -7,9 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Paquete.Principal;
 import controlador.GestionPista;
 import modelo.BD;
+import modelo.Demarcacion;
 import modelo.Jugador;
 import modelo.Pista;
 
@@ -142,12 +142,17 @@ public class Registrarse extends JFrame {
 		
 		JButton btnRegistrarse = new JButton("Registrarse");
 		btnRegistrarse.addActionListener(new ActionListener() {
+			@SuppressWarnings("unused")
 			public void actionPerformed(ActionEvent e) {
 				
 				BD bd = new BD();
-			    Object[] ob = bd.Select("SELECT * FROM Usuario WHERE email = '" + txtCorreo.getText() + "';").get(0);
-			    String correobd = (String) ob[0];
+			    String correobd = "SELECT * FROM Usuario WHERE email = '" + txtCorreo.getText() + "';";
+			   
 			    String posicion = cmbPosicion.getSelectedItem().toString();
+
+			    
+			    char[] contrasena = jpassContraseña.getPassword();
+			    String contraFinal = new String(contrasena);
 			    
 				if(txtCorreo.getText().equals(correobd)){
 					dispose();
@@ -158,8 +163,9 @@ public class Registrarse extends JFrame {
 				
 				}else {
 					
-					crearJugador(txtCorreo.getText(), txtNick.getText(), cmbPosicion.getAccessibleContext() , txtNombre.getText(), txtApellidos.getText(), txtFechaNac.getText() );
+					//crearJugador(txtCorreo.getText(), txtNick.getText(), cmbPosicion.getAccessibleContext() , txtNombre.getText(), txtApellidos.getText(), txtFechaNac.getText() );
 					
+					Jugador j = new Jugador(txtCorreo.getText(), contraFinal, txtNick.getText(), txtNombre.getText(), txtApellidos.getText(), txtFechaNac.getText());
 				}
 			}
 		});
@@ -176,12 +182,12 @@ public class Registrarse extends JFrame {
 		contentPane.add(txtFechaNac);
 		txtFechaNac.setColumns(10);
 		
-		protected void crearJugador(JTextField correo, JTextField nick, JComboBox posicion,
+		/*protected void crearJugador(JTextField correo, JTextField nick, JComboBox posicion,
 				JTextField nombre, JTextField apellidos, JTextField fechanac) {
 			
 			Jugador jug = new Jugador(correo, nick, posicion, nombre, apellidos, fechanac);
 			GestionRegistro gR = new GestionRegistro();
 			gR.obtenerRegistro(registro);
-		}
+		}*/
 	}
 }

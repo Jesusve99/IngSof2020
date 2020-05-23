@@ -20,7 +20,7 @@ public class GestionRegistro {
 		try {
 			con = BD.connectToDatabase();
 			
-			String sql = "INSERT INTO jugador (correo, nick, posicion, nombre, apellidos, fechanac) VALUES (\""+r.getCorreo()+"\",\""+r.getNick()+"\",\""+
+			String sql = "INSERT INTO jugador (correo, contra, nick, posicion, nombre, apellidos, fechanac) VALUES (\""+r.getCorreo()+"\",\""+r.getContrasena()+"\",\""+r.getNick()+"\",\""+
 			r.getPosicionfav()+"\",\""+r.getNombre()+"\",\""+r.getApellidos()+"\",\""+r.getFechaNacimiento()+"\");";
 			
 			pst = con.createStatement();
