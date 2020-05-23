@@ -90,7 +90,7 @@ public class Iniciarsesion extends JFrame {
 				Jugador jug = new Jugador(textusuario.getText());
 				
 				if(!ad.estaenBD() && !jug.estaenBD()) {//No existe en la BD
-					JOptionPane.showMessageDialog(null, "Usuario o Contrase�a incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Usuario o Contrasena incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
 					textusuario.setText("");
 					clave.setText("");
 					textusuario.requestFocus();
