@@ -41,9 +41,9 @@ public class ControladorInformacionPartido implements ActionListener {
 			}
 			String ins = "INSERT INTO Jugador_Partido (Jugador_Partido.ID_jug, Jugador_Partido.partido) VALUES (\""+idJugador+"\" ,"+this.vista.idPartido+")";
 			this.vista.bd.Insert(ins);
-			JOptionPane.showMessageDialog (this.vista, "Tu solicitud ha sido enviada adecuadamente");
+			JOptionPane.showMessageDialog (this.vista, "Tu solicitud ha sido enviada adecuadamente", "Unirse al partido", JOptionPane.INFORMATION_MESSAGE);
 		} catch (BDException er) {
-			JOptionPane.showMessageDialog(this.vista, er.getMessage());
+			JOptionPane.showMessageDialog(this.vista, er.getMessage(), "Unirse al partido", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 	private boolean partidoSolicitado(String idJug) {
