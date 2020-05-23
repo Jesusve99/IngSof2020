@@ -71,6 +71,7 @@ public class Iniciarsesion extends JFrame {
 		JButton btnSalir = new JButton("salir");
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				dispose();
 				Inicio ini = new Inicio();
 				ini.setVisible(true);	
 			}

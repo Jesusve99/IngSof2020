@@ -176,12 +176,12 @@ public class Registrarse extends JFrame {
 		contentPane.add(txtFechaNac);
 		txtFechaNac.setColumns(10);
 		
-		/*protected void crearJugador(JTextField correo, JTextField nick, JComboBox posicion,
+		protected void crearJugador(JTextField correo, JTextField nick, JComboBox posicion,
 				JTextField nombre, JTextField apellidos, JTextField fechanac) {
 			
 			Jugador jug = new Jugador(correo, nick, posicion, nombre, apellidos, fechanac);
 			GestionRegistro gR = new GestionRegistro();
 			gR.obtenerRegistro(registro);
-		}*/
+		}
 	}
 }

@@ -51,6 +51,7 @@ public class Inicio extends JFrame {
 		JButton btnIniciarSesin = new JButton("INICIAR SESI\u00D3N");
 		btnIniciarSesin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dispose();
 				Iniciarsesion i = new Iniciarsesion();
 				i.setVisible(true);	
 			}
@@ -61,6 +62,7 @@ public class Inicio extends JFrame {
 		JButton btnRegistrarse = new JButton("REGISTRARSE");
 		btnRegistrarse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dispose();
 				Registrarse r = new Registrarse();
 				r.setVisible(true);	
 			}
