@@ -82,8 +82,8 @@ public class Iniciarsesion extends JFrame {
 		btnEntrar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent arg0) {
-				char[] contraseña = clave.getPassword();
-				String clavefinal = new String(contraseña);
+				char[] contrasena = clave.getPassword();
+				String clavefinal = new String(contrasena);
 				
 				Administrador ad = new Administrador(textusuario.getText());
 				Jugador jug = new Jugador(textusuario.getText());
