@@ -14,11 +14,10 @@ public class Administrador extends Usuario {
 		ayuntamiento = ayun;
 	}
 
-	public Administrador(String correo) {
+	public static Administrador obtenerAdministrador(String correo) {
 		Object[] ob = bd.Select("Select * From Administrador where correo = '" + correo + "';").get(0);
-		this.correo = (String) ob[0];
-		this.contrasena = (String) ob[1];
-		this.ayuntamiento = (String) ob[2];
+		Administrador ad = new Administrador(ob[0].toString(), ob[1].toString(), ob[2].toString());
+		return ad;
 	}
 
 	public static void agregarAdministrador(Administrador admin) {
