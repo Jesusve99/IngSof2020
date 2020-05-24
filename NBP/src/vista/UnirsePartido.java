@@ -21,8 +21,12 @@ import java.awt.Font;
 
 public class UnirsePartido extends JFrame{
 
-	private JFrame frame;
+	//private JFrame frame;
 	private JTable table;
+	Connection conexion = null; //Creo la conexion
+	private JTextField textField;
+	private JLabel lblNewLabel;
+	private JButton btnVerPartido;
 
 	/**
 	 * Launch the application.
@@ -31,8 +35,8 @@ public class UnirsePartido extends JFrame{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					UnirsePartido window = new UnirsePartido();
-					window.frame.setVisible(true);
+					UnirsePartido frame = new UnirsePartido();
+					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -43,26 +47,24 @@ public class UnirsePartido extends JFrame{
 	/**
 	 * Create the application.
 	 */
+	/*
 	public UnirsePartido() {
 		initialize();
 	}
+	*/
 	
-	Connection conexion = null; //Creo la conexion
-	private JTextField textField;
-	private JLabel lblNewLabel;
-	private JButton btnVerPartido;
 	
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	public UnirsePartido() {
 		BD baseDatos = new BD();
 		conexion = baseDatos.connectToDatabase();
-		frame = new JFrame();
-		frame.getContentPane().setBackground(new Color(204, 255, 255));
-		frame.setBounds(100, 100, 572, 425);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		//frame = new JFrame();
+		getContentPane().setBackground(new Color(204, 255, 255));
+		setBounds(100, 100, 572, 425);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		getContentPane().setLayout(null);
 		
 		JButton btnGenerarPartidos = new JButton("Generar Lista Partidos");
 		btnGenerarPartidos.addActionListener(new ActionListener() {
@@ -82,24 +84,24 @@ public class UnirsePartido extends JFrame{
 			}
 		});
 		btnGenerarPartidos.setBounds(81, 24, 199, 36);
-		frame.getContentPane().add(btnGenerarPartidos);
+		getContentPane().add(btnGenerarPartidos);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 77, 347, 279);
-		frame.getContentPane().add(scrollPane);
+		getContentPane().add(scrollPane);
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		
 		textField = new JTextField();
 		textField.setBounds(404, 105, 104, 20);
-		frame.getContentPane().add(textField);
+		getContentPane().add(textField);
 		textField.setColumns(10);
 		
 		lblNewLabel = new JLabel("ID Partido :");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblNewLabel.setBounds(404, 78, 104, 14);
-		frame.getContentPane().add(lblNewLabel);
+		getContentPane().add(lblNewLabel);
 		
 		btnVerPartido = new JButton("VerPartido");
 		btnVerPartido.addActionListener(new ActionListener() {
@@ -129,7 +131,7 @@ public class UnirsePartido extends JFrame{
 			}
 		});
 		btnVerPartido.setBounds(403, 138, 105, 20);
-		frame.getContentPane().add(btnVerPartido);
+		getContentPane().add(btnVerPartido);
 		
 		JButton btnVolver = new JButton("Volver");
 		btnVolver.addActionListener(new ActionListener() {
@@ -140,6 +142,6 @@ public class UnirsePartido extends JFrame{
 			}
 		});
 		btnVolver.setBounds(404, 320, 104, 36);
-		frame.getContentPane().add(btnVolver);
+		getContentPane().add(btnVolver);
 	}
 }

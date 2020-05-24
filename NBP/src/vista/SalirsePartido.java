@@ -24,9 +24,9 @@ import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 
-public class SalirsePartido {
+public class SalirsePartido extends JFrame {
 
-	private JFrame frame;
+	//private JFrame frame;
 	private JTable table;
 	private JTextField textField;
 	Connection conexion = null; //Creo la conexion
@@ -37,8 +37,8 @@ public class SalirsePartido {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					SalirsePartido window = new SalirsePartido();
-					window.frame.setVisible(true);
+					SalirsePartido frame = new SalirsePartido();
+					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -49,25 +49,25 @@ public class SalirsePartido {
 	/**
 	 * Create the application.
 	 */
+	/*
 	public SalirsePartido() {
 		initialize();
 	}
-	
+	*/
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 532, 335);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+	public SalirsePartido() {
+		setBounds(100, 100, 532, 335);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		getContentPane().setLayout(null);
 		BD baseDatos = new BD();
 		conexion = baseDatos.connectToDatabase();
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(5, 81, 199, 129);
-		frame.getContentPane().add(scrollPane);
+		getContentPane().add(scrollPane);
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
@@ -89,16 +89,16 @@ public class SalirsePartido {
 			}
 		});
 		btnGenerarPartidos.setBounds(10, 29, 141, 23);
-		frame.getContentPane().add(btnGenerarPartidos);
+		getContentPane().add(btnGenerarPartidos);
 		
 		textField = new JTextField();
 		textField.setBounds(246, 128, 96, 20);
-		frame.getContentPane().add(textField);
+		getContentPane().add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Introduzca el ID del partido del que se quiere salir");
 		lblNewLabel.setBounds(226, 64, 304, 51);
-		frame.getContentPane().add(lblNewLabel);
+		getContentPane().add(lblNewLabel);
 		
 		JButton btnSalirPartido = new JButton("SalirPartido");
 		btnSalirPartido.addActionListener(new ActionListener() {
@@ -110,23 +110,39 @@ public class SalirsePartido {
 					pst2.setString(1, textField.getText());
 					ResultSet rs = pst2.executeQuery();
 					if(rs.first()) {
-						String id="hola@";
+						String id="jugador@";
 						String sql = "Delete from Jugador_Partido where partido=\""+textField.getText()+"\" and ID_jug=\""+id+"\"";
 						java.sql.Statement st = conexion.createStatement();
 						st.executeUpdate(sql);					
-						conexion.close();
+						dispose();
+						SalirsePartido sp = new SalirsePartido();
+						sp.setVisible(true);
+					}else {
+						JOptionPane.showMessageDialog(null, "No existe el ID","ERROR",JOptionPane.ERROR_MESSAGE);
+						dispose();
+						SalirsePartido sp = new SalirsePartido();
+						sp.setVisible(true);
+						
 					}
 					
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
-			
-				
-				
 				
 			}
 		});
-		btnSalirPartido.setBounds(391, 127, 89, 23);
-		frame.getContentPane().add(btnSalirPartido);
+		btnSalirPartido.setBounds(373, 127, 107, 23);
+		getContentPane().add(btnSalirPartido);
+		
+		JButton btnVolverMP = new JButton("Volver");
+		btnVolverMP.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Pantallaprincipal pp = new Pantallaprincipal();
+				pp.setVisible(true);
+				SalirsePartido.this.dispose();
+			}
+		});
+		btnVolverMP.setBounds(391, 262, 89, 23);
+		getContentPane().add(btnVolverMP);
 	}
 }
