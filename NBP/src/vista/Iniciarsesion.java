@@ -107,7 +107,7 @@ public class Iniciarsesion extends JFrame {
 				}else if(ad.iniciosesion(clavefinal)){
 					dispose();
 					//JOptionPane.showMessageDialog(null, "Bienvenido al sistema,Administrador","Ingresaste",JOptionPane.INFORMATION_MESSAGE);
-					MenuAdministrador mad = new MenuAdministrador();
+					MenuAdmin mad = new MenuAdmin();
 					mad.setVisible(true);
 					//Es un admin
 				}

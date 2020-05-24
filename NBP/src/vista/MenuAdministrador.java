@@ -15,77 +15,39 @@ import java.awt.Color;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MenuAdministrador extends JFrame{
 	
 	public MenuAdministrador() {
 		getContentPane().setBackground(new Color(204, 255, 255));
-		this.setSize(800,600);
 		getContentPane().setLayout(null);
 		
-		Label label = new Label("MENU ADMINISTRADOR :");
-		label.setAlignment(Label.CENTER);
-		label.setFont(new Font("Dialog", Font.BOLD, 25));
-		label.setBounds(220, 41, 376, 55);
-		getContentPane().add(label);
+		JLabel lblMenuAdministrador = new JLabel("Menu Administrador");
+		lblMenuAdministrador.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 35));
+		lblMenuAdministrador.setBounds(12, 13, 408, 34);
+		getContentPane().add(lblMenuAdministrador);
 		
-		Panel Crear = new Panel();
-		Crear.setBackground(new Color(64, 224, 208));
-		Crear.setBounds(295, 165, 200, 70);
-		getContentPane().add(Crear);
-		Crear.setLayout(null);
+		JButton btnCrearPista = new JButton("Crear Pista");
+		btnCrearPista.setBounds(38, 99, 133, 25);
+		getContentPane().add(btnCrearPista);
 		
-		JLabel lblCrear = new JLabel("        Crear Pista");
-		lblCrear.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblCrear.setBounds(10, 5, 180, 54);
-		Crear.add(lblCrear);
+		JButton btnEliminarPista = new JButton("Eliminar Pista");
+		btnEliminarPista.setBounds(38, 137, 133, 25);
+		getContentPane().add(btnEliminarPista);
 		
-		Panel Eliminar = new Panel();
-		Eliminar.setBackground(new Color(255, 0, 51));
-		Eliminar.setForeground(Color.WHITE);
-		Eliminar.setBounds(295, 276, 200, 70);
-		getContentPane().add(Eliminar);
-		Eliminar.setLayout(null);
-		
-		JLabel lblEliminar = new JLabel("      Eliminar Pista");
-		lblEliminar.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblEliminar.setBounds(10, 11, 180, 48);
-		Eliminar.add(lblEliminar);
-		
-		Panel CerrarSesion = new Panel();
-		CerrarSesion.setBackground(new Color(51, 255, 102));
-		CerrarSesion.setBounds(572, 473, 200, 70);
-		getContentPane().add(CerrarSesion);
-		CerrarSesion.setLayout(null);
-		
-		JLabel lblNewLabel = new JLabel("      Cerrar Sesion");
-		lblNewLabel.setBounds(12, 13, 180, 48);
-		CerrarSesion.add(lblNewLabel);
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		
-		Crear.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		JButton btnCerrarSesin = new JButton("Cerrar Sesi\u00F3n");
+		btnCerrarSesin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				dispose();
-				CrearPista cp = new CrearPista();
-				cp.setVisible(true);
+				Inicio i = new Inicio();
+				i.setVisible(true);
 			}
 		});
-		Eliminar.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				dispose();
-				EliminarPista cp = new EliminarPista();
-				cp.setVisible(true);
-			}
-		});
-		CerrarSesion.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				dispose();
-				Iniciarsesion is = new Iniciarsesion();
-				is.setVisible(true);
-			}
-		});
+		btnCerrarSesin.setBounds(241, 180, 143, 34);
+		getContentPane().add(btnCerrarSesin);
+		setBackground(new Color(153, 255, 255));
 	}
 }
