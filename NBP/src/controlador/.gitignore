@@ -5,3 +5,6 @@
 /GestionPartido.class
 /GestionUnirsePartido.class
 /ControladorRegistro.class
+/GestionEliminarPartido.class
+/ControladorIniciarSesion.class
+/GestionSalirsePartido.class

@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import controlador.GestionSalirsePartido;
 import controlador.GestionUnirsePartido;
 
 import javax.swing.JLabel;
@@ -96,6 +97,7 @@ public class Pantallaprincipal extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
 				SalirsePartido s = new SalirsePartido();
+				GestionSalirsePartido sp = new GestionSalirsePartido(s);
 				s.setVisible(true);	
 			}
 		});

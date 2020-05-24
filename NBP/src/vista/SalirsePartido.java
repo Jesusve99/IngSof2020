@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 
 import com.mysql.cj.xdevapi.Statement;
 
+import controlador.GestionSalirsePartido;
 import modelo.BD;
 import net.proteanit.sql.DbUtils;
 
@@ -29,9 +30,12 @@ import java.awt.Font;
 public class SalirsePartido extends JFrame {
 
 	//private JFrame frame;
-	private JTable table;
-	private JTextField textField;
-	Connection conexion = null; //Creo la conexion
+	public JTable table;
+	public JTextField textField;
+	public Connection conexion = null; //Creo la conexion
+	public JButton btnGenerarPartidos;
+	public JButton btnSalirPartido;
+	public JButton btnVolverMP;
 	/**
 	 * Launch the application.
 	 */
@@ -40,6 +44,7 @@ public class SalirsePartido extends JFrame {
 			public void run() {
 				try {
 					SalirsePartido frame = new SalirsePartido();
+					GestionSalirsePartido sp= new GestionSalirsePartido(frame);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -75,7 +80,8 @@ public class SalirsePartido extends JFrame {
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		
-		JButton btnGenerarPartidos = new JButton("Generar Lista Partidos");
+		btnGenerarPartidos = new JButton("Generar Lista Partidos");
+		/*
 		btnGenerarPartidos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -91,6 +97,7 @@ public class SalirsePartido extends JFrame {
 				
 			}
 		});
+		*/
 		btnGenerarPartidos.setBounds(44, 38, 173, 32);
 		getContentPane().add(btnGenerarPartidos);
 		
@@ -104,7 +111,8 @@ public class SalirsePartido extends JFrame {
 		lblNewLabel.setBounds(284, 38, 203, 58);
 		getContentPane().add(lblNewLabel);
 		
-		JButton btnSalirPartido = new JButton("Salir Partido");
+		btnSalirPartido = new JButton("Salir Partido");
+		/*
 		btnSalirPartido.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -135,17 +143,21 @@ public class SalirsePartido extends JFrame {
 				
 			}
 		});
+		*/
 		btnSalirPartido.setBounds(327, 156, 117, 32);
 		getContentPane().add(btnSalirPartido);
 		
-		JButton btnVolverMP = new JButton("Menu");
-		btnVolverMP.addActionListener(new ActionListener() {
+		btnVolverMP = new JButton("Menu");
+		/*
+		btnVolverMP.addActionListener(new ActionListener() {	
 			public void actionPerformed(ActionEvent e) {
 				Pantallaprincipal pp = new Pantallaprincipal();
 				pp.setVisible(true);
-				SalirsePartido.this.dispose();
+				dispose();
+				//SalirsePartido.this.dispose();
 			}
 		});
+		*/
 		btnVolverMP.setBounds(395, 252, 107, 25);
 		getContentPane().add(btnVolverMP);
 		
