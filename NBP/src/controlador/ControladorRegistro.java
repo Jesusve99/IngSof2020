@@ -57,7 +57,7 @@ public class ControladorRegistro implements ActionListener {
 						new String(this.vista.jpassContrasena.getPassword()), this.vista.txtNick.getText(), posicionFav,
 						this.vista.txtNombre.getText(), this.vista.txtApellidos.getText(),
 						this.vista.txtFechaNac.getText());
-				Jugador.agregarJugador(userJug);
+				userJug.agregarJugador();
 				this.vista.dispose();
 				JOptionPane.showMessageDialog(this.vista, "Bienvenido a NBP", "Cuenta creada con exito",
 						JOptionPane.INFORMATION_MESSAGE);
