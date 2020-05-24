@@ -64,6 +64,9 @@ public class Pantallaprincipal extends JFrame {
 		JButton btnCrearPartido = new JButton("CREAR PARTIDO");
 		btnCrearPartido.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dispose();
+				CrearPartido c = new CrearPartido();
+				c.setVisible(true);
 			}
 		});
 		btnCrearPartido.setBounds(163, 142, 153, 37);
