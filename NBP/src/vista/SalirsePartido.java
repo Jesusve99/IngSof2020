@@ -8,6 +8,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
+import com.mysql.cj.xdevapi.Statement;
+
 import modelo.BD;
 import net.proteanit.sql.DbUtils;
 
@@ -18,7 +20,9 @@ import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
+
 
 public class SalirsePartido {
 
@@ -99,6 +103,24 @@ public class SalirsePartido {
 		JButton btnSalirPartido = new JButton("SalirPartido");
 		btnSalirPartido.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try {
+					String codigo = "Select * from Jugador_Partido where partido= ?";
+					PreparedStatement pst2;
+					pst2 = conexion.prepareStatement(codigo);
+					pst2.setString(1, textField.getText());
+					ResultSet rs = pst2.executeQuery();
+					if(rs.first()) {
+						String id="hola@";
+						String sql = "Delete from Jugador_Partido where partido=\""+textField.getText()+"\" and ID_jug=\""+id+"\"";
+						java.sql.Statement st = conexion.createStatement();
+						st.executeUpdate(sql);					
+						conexion.close();
+					}
+					
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			
 				
 				
 				
