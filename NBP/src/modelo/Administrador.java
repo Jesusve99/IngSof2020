@@ -1,46 +1,60 @@
 package modelo;
 
-import java.util.List;
-
 public class Administrador extends Usuario {
-	private BD baseDatos = new BD();
+
 	private String ayuntamiento;
-	
-	public Administrador(String correo, String contrasena) {
-		super(correo, contrasena);
+
+	public Administrador(String corr, String contra) {
+		super(corr, contra);
+		ayuntamiento = "NO DEFINIDO";
 	}
-	
-	public Administrador(String correo) {//Sacar Admin BD
-		super(correo);
-		try {
-		Object[] ob = baseDatos.Select("Select * From Administrador where email = '"+ correo +"';").get(0);
-		this.ayuntamiento = (String) ob[0];
-		}catch (Exception e) {
-		}
-		
+
+	public Administrador(String corr, String contra, String ayun) {
+		super(corr, contra);
+		ayuntamiento = ayun;
 	}
-	
+
+	public static void agregarAdministrador(Administrador admin) {
+		String ins = "INSERT INTO Administrador (Administrador.correo, Administrador.contra, Administrador.ayuntamiento) VALUES (\""
+				+ admin.getCorreo() + "\", \"" + admin.getContrasena() + "\", " + admin.getContrasena() + "\", \""
+				+ admin.getAyuntamiento() + "\")";
+		bd.Insert(ins);
+	}
+
+	public String getCorreo() {
+		return this.correo;
+	}
+
+	private String getContrasena() {
+		return this.contrasena;
+	}
+
 	public String getAyuntamiento() {
 		return this.ayuntamiento;
 	}
 
-	@Override
-	boolean registrarse(String correo, String contrasena) {
-		StringBuilder codigoBD = new StringBuilder();StringBuilder codigoBDJugador = new StringBuilder();
-		boolean ok= false;
-		List<Object[]> lista = baseDatos.Select("SELECT * FROM Jugador WHERE correo = '"+correo+"';");
-		if(lista.isEmpty()){ //La lista está vacia por lo tanto el usuario no existe en nuestra BD
-			codigoBD.append("Insert into Usuario (correo,contrasena) ");
-			codigoBD.append("Values (");
-			codigoBD.append(correo);
-			codigoBD.append(",");
-			codigoBD.append(contrasena);
-			codigoBD.append(");");
-			baseDatos.Insert(codigoBD.toString());
-			codigoBDJugador.append("Insert into Jugador (correo,id,posicionFavorita,nombre,apellidos,fechaNacimiento) "); //!!!!!Revisar que está asi en la BD definitiva!!!!!
-			ok= true;
+	public void setAyuntamiento() {
+		if (datosInicioCorrecto()) {
+			String sel = "SELECT Administrador.ayuntamiento FROM Administrador WHERE Administrador.correo =\""
+					+ this.getCorreo() + "\"";
+			ayuntamiento = bd.SelectEscalar(sel).toString();
+		} else {
+			throw new BDException("Datos de inicio incorrectos");
 		}
-		return ok;
+	}
+
+	public boolean correoRegistrado() {
+		String sel = "SELECT COUNT(Administrador.correo) FROM Administrador WHERE Administrador.correo =\""
+				+ this.getCorreo() + "\"";
+		long count = (long) bd.SelectEscalar(sel);
+		return count == 1;
+	}
+
+	public boolean datosInicioCorrecto() {
+		String sel = "SELECT COUNT(Administrador.correo) FROM Administrador WHERE Administrador.correo =\""
+				+ this.getCorreo() + "\" AND Administrador.contra = \"" + this.getContrasena() + "\"";
+		long count = (long) bd.SelectEscalar(sel);
+		return count == 1;
 	}
 
 }

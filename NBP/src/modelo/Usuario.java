@@ -1,45 +1,18 @@
 package modelo;
 
-import java.util.List;
-
 public abstract class Usuario {
-	private String correo;
-	private String contrasena;
-	private BD baseDatos = new BD();
 	
+	protected static BD bd = new BD();
+	protected String correo;
+	protected String contrasena;
 	
-	public Usuario() {
-		//Usuario con Registro Basico
-	}
-	
-	//Registro Basico
-	public Usuario(String correo, String contrasena) {
-		baseDatos.Insert("Insert into Usuario (Email, Contrasena) Values ('"+correo+"','"+contrasena+"');");
+	public Usuario(String corr, String contra) {
+		correo = corr;
+		contrasena = contra;
 	}
 	
-	public Usuario(String correo) {//Sacar Usuario bd
-		try {
-			Object[] ob = baseDatos.Select("Select * From Usuario where Email = '"+ correo +"';").get(0);
-			this.correo = (String) ob[0];
-			this.contrasena = (String) ob[1];
-		}catch (Exception e) {
-		}
-	}
+	public abstract boolean correoRegistrado();
 	
-	public String getCorreo() {
-		return correo;
-	}
-	public void setCorreo(String correo) {
-		this.correo = correo;
-	}
-	public String getContrasena() {
-		return contrasena;
-	}
-	public void setContrasena(String contrasena) {
-		this.contrasena = contrasena;
-	}
-
-	abstract boolean registrarse(String correo, String contrasena);
-
+	public abstract boolean datosInicioCorrecto();
 	
 }
