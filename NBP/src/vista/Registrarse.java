@@ -65,7 +65,7 @@ public class Registrarse extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblRegistrarse = new JLabel("REGISTRARSE :");
+		JLabel lblRegistrarse = new JLabel("REGISTRARSE");
 		lblRegistrarse.setForeground(new Color(0, 0, 0));
 		lblRegistrarse.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblRegistrarse.setBounds(43, 13, 161, 31);
