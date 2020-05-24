@@ -14,15 +14,12 @@ public class Administrador extends Usuario {
 		ayuntamiento = ayun;
 	}
 
-	/*
-	 * Hace falta realmente? O bien, vamos a dar nosotros las cuentas
-	 * introduciendolas en la BDD de forma directa? public static void
-	 * agregarAdministrador(Administrador admin) { String ins =
-	 * "INSERT INTO Administrador (Administrador.correo, Administrador.contra, Administrador.ayuntamiento) VALUES (\""
-	 * + admin.getCorreo() + "\", \"" + admin.getContrasena() + "\", " +
-	 * admin.getContrasena() + "\", \"" + admin.getAyuntamiento() + "\")";
-	 * bd.Insert(ins); }
-	 */
+	public static void agregarAdministrador(Administrador admin) {
+		String ins = "INSERT INTO Administrador (Administrador.correo, Administrador.contra, Administrador.ayuntamiento) VALUES (\""
+				+ admin.getCorreo() + "\", \"" + admin.getContrasena() + "\", " + admin.getContrasena() + "\", \""
+				+ admin.getAyuntamiento() + "\")";
+		bd.Insert(ins);
+	}
 
 	public String getCorreo() {
 		return this.correo;
