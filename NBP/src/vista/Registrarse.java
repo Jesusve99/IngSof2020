@@ -133,6 +133,7 @@ public class Registrarse extends JFrame {
 		JButton btnIniciarSesion = new JButton("Iniciar Sesi\u00F3n");
 		btnIniciarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				dispose();
 				Iniciarsesion i = new Iniciarsesion();
 				i.setVisible(true);	
 			}

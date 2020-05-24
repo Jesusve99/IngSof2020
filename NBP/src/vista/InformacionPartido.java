@@ -44,6 +44,7 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.UIManager;
 import java.awt.CardLayout;
 import javax.swing.JTable;
+import java.awt.Color;
 
 public class InformacionPartido extends JFrame {
 
@@ -81,6 +82,7 @@ public class InformacionPartido extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 776, 483);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(204, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new MigLayout("", "[734px,grow]", "[grow][][grow][412px]"));
