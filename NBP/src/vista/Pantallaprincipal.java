@@ -37,7 +37,7 @@ public class Pantallaprincipal extends JFrame {
 	public Pantallaprincipal() {
 		getContentPane().setBackground(new Color(204, 255, 255));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 498, 366);
+		setBounds(100, 100, 499, 447);
 		getContentPane().setLayout(null);
 		
 		JLabel lblNbp = new JLabel("NBP");
@@ -84,8 +84,18 @@ public class Pantallaprincipal extends JFrame {
 				i.setVisible(true);	
 			}
 		});
-		btnCerrarSesion.setBounds(163, 242, 153, 37);
+		btnCerrarSesion.setBounds(163, 292, 153, 37);
 		getContentPane().add(btnCerrarSesion);
+		
+		JButton btnNewButton = new JButton("SALIR DE PARTIDO");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+				SalirsePartido s = new SalirsePartido();
+				s.setVisible(true);	
+			}
+		});
+		btnNewButton.setBounds(163, 242, 153, 37);
+		getContentPane().add(btnNewButton);
 	}
-
 }
