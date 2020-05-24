@@ -1,5 +1,5 @@
 package modelo;
 
 public enum Demarcacion {
-	PORTERO, DEFENSA, CENTROCAMPISTA, DELANTERO
+	PORTERO, DEFENSA, CENTROCAMPISTA, DELANTERO;
 }

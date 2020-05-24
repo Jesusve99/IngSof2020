@@ -28,8 +28,8 @@ public class Prueba {
 		//EnviarCorreo env = new EnviarCorreo("marialopez57@uma.es");
 		//env.enviar("Tema","Mensaje");	
 		////OBTENER ADMINISTRADOR
-		Administrador admin = new Administrador("admin@");
-		System.out.println(admin.estaenBD());
+		//Administrador admin = new Administrador("admin@");
+		//System.out.println(admin.estaenBD());
 		//System.out.println(admin.getCorreo()+"  "+admin.getContrasena()+" "+admin.getAyuntamiento());
 		////OBTENER JUGADOR
 		//Jugador jug = new Jugador("admin@");
