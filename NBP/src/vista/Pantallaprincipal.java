@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controlador.GestionUnirsePartido;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.Font;
@@ -55,6 +58,7 @@ public class Pantallaprincipal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				UnirsePartido up = new UnirsePartido();
+				GestionUnirsePartido c = new GestionUnirsePartido(up);
 				up.setVisible(true);				
 			}
 		});

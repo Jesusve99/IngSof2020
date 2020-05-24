@@ -39,7 +39,7 @@ public class UnirsePartido extends JFrame{
 			public void run() {
 				try {
 					UnirsePartido frame = new UnirsePartido();
-					GestionUnirsePartido controlador = new GestionUnirsePartido(frame);
+					GestionUnirsePartido con = new GestionUnirsePartido(frame);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
