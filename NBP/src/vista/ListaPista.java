@@ -71,7 +71,7 @@ public class ListaPista extends JFrame {
 				}
 			}
 		});
-		btnGenerarListaPistas.setBounds(59, 32, 187, 25);
+		btnGenerarListaPistas.setBounds(133, 30, 199, 39);
 		contentPane.add(btnGenerarListaPistas);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -89,7 +89,7 @@ public class ListaPista extends JFrame {
 				m.setVisible(true);
 			}
 		});
-		btnMenu.setBounds(487, 346, 97, 25);
+		btnMenu.setBounds(482, 338, 97, 33);
 		contentPane.add(btnMenu);
 	}
 }

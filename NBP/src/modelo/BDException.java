@@ -1,16 +1,12 @@
 package modelo;
 
+public class BDException extends RuntimeException {
 
-public class BDException extends RuntimeException  
-{
-
-	public BDException() 
-	{
+	public BDException() {
 		super();
 	}
 
-	public BDException(String arg0) 
-	{
+	public BDException(String arg0) {
 		super(arg0);
 	}
 }

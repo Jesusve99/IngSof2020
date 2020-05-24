@@ -72,12 +72,12 @@ public class CrearPista extends JFrame {
 		lblUbicacion.setBounds(40, 104, 80, 16);
 		contentPane.add(lblUbicacion);
 		
-		JLabel lblHoraDeApertura = new JLabel("Hora de Apertura :");
+		JLabel lblHoraDeApertura = new JLabel("Hora Apertura :");
 		lblHoraDeApertura.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblHoraDeApertura.setBounds(40, 130, 131, 16);
 		contentPane.add(lblHoraDeApertura);
 		
-		JLabel lblHoraDeCierre = new JLabel("Hora de Cierre :");
+		JLabel lblHoraDeCierre = new JLabel("Hora Cierre :");
 		lblHoraDeCierre.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblHoraDeCierre.setBounds(40, 159, 114, 16);
 		contentPane.add(lblHoraDeCierre);
@@ -122,7 +122,7 @@ public class CrearPista extends JFrame {
 		btnCancelar.setBounds(178, 208, 116, 32);
 		contentPane.add(btnCancelar);
 		
-		JLabel lblCrearPista = new JLabel("CREAR PISTA :");
+		JLabel lblCrearPista = new JLabel("CREAR PISTA");
 		lblCrearPista.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblCrearPista.setBounds(40, 13, 162, 32);
 		contentPane.add(lblCrearPista);

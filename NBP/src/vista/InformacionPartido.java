@@ -24,6 +24,7 @@ import com.jgoodies.forms.layout.RowSpec;
 
 import controlador.ControladorInformacionPartido;
 import modelo.BD;
+import java.awt.Color;
 
 public class InformacionPartido extends JFrame {
 
@@ -63,6 +64,7 @@ public class InformacionPartido extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 651, 583);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(204, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new CardLayout(0, 0));
@@ -74,11 +76,13 @@ public class InformacionPartido extends JFrame {
 		scrollPane.setColumnHeaderView(scrollPane_1);
 
 		JPanel panelPartido = new JPanel();
+		panelPartido.setBackground(new Color(204, 255, 255));
 		panelPartido.setBorder(new TitledBorder(null, "Partido:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		scrollPane_1.setViewportView(panelPartido);
 		panelPartido.setLayout(new BoxLayout(panelPartido, BoxLayout.X_AXIS));
 
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(204, 255, 255));
 		panelPartido.add(panel);
 		panel.setLayout(new FormLayout(
 				new ColumnSpec[] { FormSpecs.RELATED_GAP_COLSPEC, FormSpecs.DEFAULT_COLSPEC,

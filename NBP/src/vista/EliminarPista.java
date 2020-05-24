@@ -19,22 +19,24 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTable;
+import java.awt.Color;
 
 public class EliminarPista extends JFrame{
 	private JTable table;
 	private JTextField txtNombre;
 	
 	public EliminarPista() {
-		this.setSize(800,600);
+		getContentPane().setBackground(new Color(204, 255, 255));
+		this.setSize(548,359);
 		getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Eliminar Pista");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		lblNewLabel.setBounds(302, 11, 188, 54);
+		JLabel lblNewLabel = new JLabel("ELIMINAR PISTA");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblNewLabel.setBounds(178, 13, 190, 54);
 		getContentPane().add(lblNewLabel);
 		
 		table = new JTable();
-		table.setBounds(53, 77, 685, 403);
+		table.setBounds(40, 65, 450, 219);
 		Connection c = BD.connectToDatabase();
 		PreparedStatement stmt;
 		try {

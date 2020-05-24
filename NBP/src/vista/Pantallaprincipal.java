@@ -37,7 +37,7 @@ public class Pantallaprincipal extends JFrame {
 	public Pantallaprincipal() {
 		getContentPane().setBackground(new Color(204, 255, 255));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 499, 447);
+		setBounds(100, 100, 494, 401);
 		getContentPane().setLayout(null);
 		
 		JLabel lblNbp = new JLabel("NBP");

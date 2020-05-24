@@ -38,7 +38,7 @@ public class MenuAdmin extends JFrame {
 	 */
 	public MenuAdmin() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 285);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(204, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -46,8 +46,8 @@ public class MenuAdmin extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblMenuAdministrador = new JLabel("Menu Administrador");
-		lblMenuAdministrador.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 30));
-		lblMenuAdministrador.setBounds(40, 13, 323, 39);
+		lblMenuAdministrador.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblMenuAdministrador.setBounds(40, 27, 216, 39);
 		contentPane.add(lblMenuAdministrador);
 		
 		JButton btnCrearPista = new JButton("Crear pista");
@@ -58,7 +58,7 @@ public class MenuAdmin extends JFrame {
 				c.setVisible(true);
 			}
 		});
-		btnCrearPista.setBounds(40, 99, 145, 25);
+		btnCrearPista.setBounds(40, 89, 145, 34);
 		contentPane.add(btnCrearPista);
 		
 		JButton btnEliminarPista = new JButton("Eliminar pista");
@@ -69,7 +69,7 @@ public class MenuAdmin extends JFrame {
 				ep.setVisible(true);
 			}
 		});
-		btnEliminarPista.setBounds(42, 137, 143, 25);
+		btnEliminarPista.setBounds(40, 136, 143, 34);
 		contentPane.add(btnEliminarPista);
 		
 		JButton btnCerrarSesin = new JButton("Cerrar Sesi\u00F3n");
@@ -80,7 +80,7 @@ public class MenuAdmin extends JFrame {
 				i.setVisible(true);
 			}
 		});
-		btnCerrarSesin.setBounds(286, 197, 134, 34);
+		btnCerrarSesin.setBounds(259, 184, 134, 34);
 		contentPane.add(btnCerrarSesin);
 		
 		JButton btnNewButton = new JButton("Lista de pistas");
@@ -91,7 +91,7 @@ public class MenuAdmin extends JFrame {
 				l.setVisible(true);
 			}
 		});
-		btnNewButton.setBounds(40, 175, 144, 25);
+		btnNewButton.setBounds(40, 184, 145, 34);
 		contentPane.add(btnNewButton);
 	}
 

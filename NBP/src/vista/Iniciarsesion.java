@@ -63,9 +63,9 @@ public class Iniciarsesion extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblIniciarSesin = new JLabel("INICIAR SESI\u00D3N :");
+		JLabel lblIniciarSesin = new JLabel("INICIAR SESI\u00D3N");
 		lblIniciarSesin.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblIniciarSesin.setBounds(60, 30, 198, 25);
+		lblIniciarSesin.setBounds(40, 30, 198, 25);
 		contentPane.add(lblIniciarSesin);
 		
 		JLabel lblCorreo = new JLabel("Correo :");

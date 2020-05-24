@@ -7,8 +7,15 @@ public abstract class Usuario {
 	protected String contrasena;
 	
 	public Usuario(String corr, String contra) {
-		correo = corr;
+		this(corr);
 		contrasena = contra;
+	}
+	
+	public Usuario (String corr){
+		correo = corr;
+	}
+	public Usuario() {
+		
 	}
 	
 	public abstract boolean correoRegistrado();
