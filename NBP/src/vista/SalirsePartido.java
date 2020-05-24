@@ -22,6 +22,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 
 public class SalirsePartido extends JFrame {
@@ -59,6 +60,7 @@ public class SalirsePartido extends JFrame {
 	 * Initialize the contents of the frame.
 	 */
 	public SalirsePartido() {
+		getContentPane().setBackground(new Color(204, 255, 255));
 		setBounds(100, 100, 532, 335);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
@@ -66,7 +68,7 @@ public class SalirsePartido extends JFrame {
 		conexion = baseDatos.connectToDatabase();
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(5, 81, 199, 129);
+		scrollPane.setBounds(25, 83, 229, 178);
 		getContentPane().add(scrollPane);
 		
 		table = new JTable();
@@ -88,19 +90,19 @@ public class SalirsePartido extends JFrame {
 				
 			}
 		});
-		btnGenerarPartidos.setBounds(10, 29, 141, 23);
+		btnGenerarPartidos.setBounds(44, 38, 173, 32);
 		getContentPane().add(btnGenerarPartidos);
 		
 		textField = new JTextField();
-		textField.setBounds(246, 128, 96, 20);
+		textField.setBounds(294, 137, 48, 32);
 		getContentPane().add(textField);
 		textField.setColumns(10);
 		
-		JLabel lblNewLabel = new JLabel("Introduzca el ID del partido del que se quiere salir");
-		lblNewLabel.setBounds(226, 64, 304, 51);
+		JLabel lblNewLabel = new JLabel("<html>Introduzca el ID del partido del que desea salir : </html>");
+		lblNewLabel.setBounds(307, 74, 162, 50);
 		getContentPane().add(lblNewLabel);
 		
-		JButton btnSalirPartido = new JButton("SalirPartido");
+		JButton btnSalirPartido = new JButton("Salir Partido");
 		btnSalirPartido.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -131,7 +133,7 @@ public class SalirsePartido extends JFrame {
 				
 			}
 		});
-		btnSalirPartido.setBounds(373, 127, 107, 23);
+		btnSalirPartido.setBounds(368, 137, 117, 32);
 		getContentPane().add(btnSalirPartido);
 		
 		JButton btnVolverMP = new JButton("Volver");
@@ -142,7 +144,7 @@ public class SalirsePartido extends JFrame {
 				SalirsePartido.this.dispose();
 			}
 		});
-		btnVolverMP.setBounds(391, 262, 89, 23);
+		btnVolverMP.setBounds(325, 229, 117, 32);
 		getContentPane().add(btnVolverMP);
 	}
 }
