@@ -4,80 +4,108 @@ import java.util.Date;
 import java.util.List;
 
 public class Jugador extends Usuario {
-	
-	
-	
+
+	private String nick;
+	private Demarcacion posicionfav;
 	private String nombre;
 	private String apellidos;
-	private String nick;
+	private BD baseDatos = new BD();
 	private String fechaNacimiento;
-	private Demarcacion posicionfav;
+	
 	
 	public Jugador(String correo) {//Sacar Jugador bd
+		super(correo);
 		try {
-			Object[] ob = baseDatos.Select("Select * From Jugador where correo = '"+ correo +"';").get(0);
-			this.correo = (String) ob[0];
-			this.contrasena = (String) ob[1];
-			this.nick = (String) ob[2];
-			this.posicionfav = Demarcacion.valueOf((String) ob[3]);
-			this.nombre = (String) ob[4];
-			this.apellidos = (String) ob[5];
-			this.fechaNacimiento = (String) ob[6].toString();
+			Object[] ob = baseDatos.Select("Select * From Jugador where correo_jug = '"+ correo +"';").get(0);
+			this.nick = (String) ob[1];
+			this.posicionfav = Demarcacion.valueOf((String) ob[2]);
+			this.nombre = (String) ob[3];
+			this.apellidos = (String) ob[4];
+			this.fechaNacimiento = (String) ob[5].toString();
 		}catch(Exception e) {
-			this.correo = "";
-			this.contrasena = "";
 		}
 	}
 	
 	//Registro Basico
-	public Jugador(String correo, String contrasena) {
-		baseDatos.Insert("Insert into Jugador(correo, contra) Values ('"+correo+"','"+contrasena+"');");
+	public Jugador(String correo, String contra) {
+		super(correo,contra);
 	}
 	
 	//Registro Completo
-	public Jugador(String correo,String contra, String nick, Demarcacion posicionfav, String nombre, String apellidos, String fechaNacimiento) {
-		baseDatos.Insert("INSERT INTO Jugador(correo, contra, nick, posicionfav, nombre, apellidos, Fecha_nacimiento) VALUES ('"+correo+"','"+contra+"','"+nick+"','"+posicionfav+"','"+nombre+"','"+apellidos+"','"+fechaNacimiento+"');");
-	}
-
-	public String getCorreo() {
-		return correo;
-	}
-
-	public String getContrasena() {
-		return contrasena;
+	public Jugador(String correo, String nick, Demarcacion posicionfav, String nombre, String apellidos, String fechaNacimiento) {
+		baseDatos.Insert("INSERT INTO Jugador(correo_jug, nick, posicionfav, nombre, apellidos, Fecha_nacimiento) VALUES ('"+correo+"','"+nick+"','"+posicionfav+"','"+nombre+"','"+apellidos+"','"+fechaNacimiento+"');");
 	}
 
 	public String getNick() {
 		return nick;
 	}
 
+	public void setNick(String nick) {
+		this.nick = nick;
+	}
+
 	public Demarcacion getPosicionfav() {
 		return posicionfav;
 	}
 
+	public void setPosicionfav(Demarcacion posicionfav) {
+		this.posicionfav = posicionfav;
+	}
 
 	public String getNombre() {
 		return nombre;
 	}
 
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
 	public String getApellidos() {
 		return apellidos;
+	}
+
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
 	}
 
 	public String getFechaNacimiento() {
 		return fechaNacimiento;
 	}
 
-
-	public boolean estaenBD(){
-		return correo != "" ? true : false;
+	public void setFechaNacimiento(String fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
 	}
 
+
+	public boolean registrarse(String correo, String contrasena){
+		StringBuilder codigoBD = new StringBuilder();StringBuilder codigoBDJugador = new StringBuilder();
+		boolean ok= false;
+		List<Object[]> lista = baseDatos.Select("SELECT * FROM Jugador WHERE correo = '"+correo+"';");
+		if(lista.isEmpty()){ //La lista está vacia por lo tanto el usuario no existe en nuestra BD
+			codigoBD.append("Insert into Usuario (correo,contrasena) ");
+			codigoBD.append("Values (");
+			codigoBD.append(correo);
+			codigoBD.append(",");
+			codigoBD.append(contrasena);
+			codigoBD.append(");");
+			baseDatos.Insert(codigoBD.toString());
+			codigoBDJugador.append("Insert into Jugador (correo,id,posicionFavorita,nombre,apellidos,fechaNacimiento) "); //!!!!!Revisar que está asi en la BD definitiva!!!!!
+			codigoBDJugador.append("Values (");
+			codigoBDJugador.append(getNick());
+			codigoBDJugador.append(",");
+			codigoBDJugador.append(getNombre());
+			codigoBDJugador.append(",");
+			codigoBDJugador.append(getApellidos());
+			codigoBDJugador.append(",");
+			codigoBDJugador.append(getPosicionfav());
+			codigoBDJugador.append(",");
+			codigoBDJugador.append(correo);
+			codigoBDJugador.append(");");
+			baseDatos.Insert(codigoBDJugador.toString());
+			ok= true;
+		}
+		return ok;
+	}
 	
-	public boolean inicioSesion(String contra) {
-		return contrasena.equals(contra);
-	}
-
 	
 }

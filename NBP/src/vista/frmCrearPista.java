@@ -1,21 +1,14 @@
 package vista;
 
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-
-
 import controlador.GestionPista;
-import modelo.*;
-import vista.*;
+import modelo.Pista;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -23,16 +16,15 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.Color;
-import java.awt.Font;
 
-public class CrearPista extends JFrame {
+public class frmCrearPista extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField Nombre;
 	private JTextField Ubicacion;
 	private JTextField HorarioApertura;
 	private JTextField HorarioCierre;
+	private JTextField DiasDisponibles;
 
 	/**
 	 * Launch the application.
@@ -41,7 +33,7 @@ public class CrearPista extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CrearPista frame = new CrearPista();
+					frmCrearPista frame = new frmCrearPista();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -53,52 +45,47 @@ public class CrearPista extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public CrearPista() {
+	public frmCrearPista() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(204, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNombre = new JLabel("Nombre :");
-		lblNombre.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNombre.setBounds(40, 75, 80, 16);
+		JLabel lblNombre = new JLabel("Nombre:");
+		lblNombre.setBounds(26, 27, 56, 16);
 		contentPane.add(lblNombre);
 		
-		JLabel lblUbicacion = new JLabel("Ubicaci\u00F3n :");
-		lblUbicacion.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblUbicacion.setBounds(40, 104, 80, 16);
+		JLabel lblUbicacion = new JLabel("Ubicaci\u00F3n:");
+		lblUbicacion.setBounds(26, 56, 59, 16);
 		contentPane.add(lblUbicacion);
 		
-		JLabel lblHoraDeApertura = new JLabel("Hora de Apertura :");
-		lblHoraDeApertura.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblHoraDeApertura.setBounds(40, 130, 131, 16);
+		JLabel lblHoraDeApertura = new JLabel("Hora de Apertura:");
+		lblHoraDeApertura.setBounds(26, 82, 114, 16);
 		contentPane.add(lblHoraDeApertura);
 		
-		JLabel lblHoraDeCierre = new JLabel("Hora de Cierre :");
-		lblHoraDeCierre.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblHoraDeCierre.setBounds(40, 159, 114, 16);
+		JLabel lblHoraDeCierre = new JLabel("Hora de Cierre:");
+		lblHoraDeCierre.setBounds(26, 111, 114, 16);
 		contentPane.add(lblHoraDeCierre);
 		
 		Nombre = new JTextField();
-		Nombre.setBounds(178, 72, 116, 22);
+		Nombre.setBounds(152, 24, 116, 22);
 		contentPane.add(Nombre);
 		Nombre.setColumns(10);
 		
 		Ubicacion = new JTextField();
-		Ubicacion.setBounds(178, 101, 116, 22);
+		Ubicacion.setBounds(152, 53, 116, 22);
 		contentPane.add(Ubicacion);
 		Ubicacion.setColumns(10);
 		
 		HorarioApertura = new JTextField();
-		HorarioApertura.setBounds(178, 127, 116, 22);
+		HorarioApertura.setBounds(152, 79, 116, 22);
 		contentPane.add(HorarioApertura);
 		HorarioApertura.setColumns(10);
 		
 		HorarioCierre = new JTextField();
-		HorarioCierre.setBounds(178, 156, 116, 22);
+		HorarioCierre.setBounds(152, 108, 116, 22);
 		contentPane.add(HorarioCierre);
 		HorarioCierre.setColumns(10);
 		
@@ -108,7 +95,7 @@ public class CrearPista extends JFrame {
 				crearPista(Nombre, Ubicacion, HorarioApertura, HorarioCierre);
 			}
 		});
-		btnCrearPista.setBounds(306, 208, 114, 32);
+		btnCrearPista.setBounds(323, 215, 97, 25);
 		contentPane.add(btnCrearPista);
 		
 		JButton btnCancelar = new JButton("Cancelar");
@@ -119,13 +106,17 @@ public class CrearPista extends JFrame {
 			
 			
 		});
-		btnCancelar.setBounds(178, 208, 116, 32);
+		btnCancelar.setBounds(214, 215, 97, 25);
 		contentPane.add(btnCancelar);
 		
-		JLabel lblCrearPista = new JLabel("CREAR PISTA :");
-		lblCrearPista.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblCrearPista.setBounds(40, 13, 162, 32);
-		contentPane.add(lblCrearPista);
+		JLabel lblDiasDisponibles = new JLabel("D\u00EDas Disponibles:");
+		lblDiasDisponibles.setBounds(26, 138, 114, 16);
+		contentPane.add(lblDiasDisponibles);
+		
+		DiasDisponibles = new JTextField();
+		DiasDisponibles.setBounds(152, 135, 116, 22);
+		contentPane.add(DiasDisponibles);
+		DiasDisponibles.setColumns(10);
 	}
 
 	protected void crearPista(JTextField nombre, JTextField ubicacion, JTextField horarioApertura,
@@ -133,15 +124,9 @@ public class CrearPista extends JFrame {
 		Pista pista = new Pista(nombre, ubicacion, horarioApertura, horarioCierre);
 		GestionPista gP = new GestionPista();
 		gP.obtenerPista(pista);
-		//Redirigir a Menu
-		dispose();
-		MenuAdministrador mad = new MenuAdministrador();
-		mad.setVisible(true);
 	}
 
 	protected void cancelar() {
-		dispose();
-		MenuAdministrador mad = new MenuAdministrador();
-		mad.setVisible(true);
+		System.exit(0);
 	}
 }

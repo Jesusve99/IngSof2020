@@ -1,48 +1,27 @@
 package modelo;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
-
-import javax.swing.JTextField;
-
-
-import com.mysql.cj.protocol.a.MysqlBinaryValueDecoder;
-import com.mysql.cj.result.LocalTimeValueFactory;
 
 public class Partido {
 	
-	private int idPista;
-	private String fecha;
-	private String hora;
+	//private int id;
+	private Date fecha;
+	private Date hora;
 	
-	public Partido(JTextField id, JTextField f, JTextField h) {
-		
-		try {
-
-			idPista = Integer.parseInt(id.getText());
-			fecha = f.getText();
-			hora = h.getText();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	public Partido(Date fecha, Date hora) {
+		this.fecha = fecha;
+		this.hora = hora;
 	}
-	
-	public int getIdPista() {
-		return idPista;
-	}
-	public String getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
-	public void setFecha(String fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-	public String getHora() {
+	public Date getHora() {
 		return hora;
 	}
-	public void setHora(String hora) {
+	public void setHora(Date hora) {
 		this.hora = hora;
 	}
 	
