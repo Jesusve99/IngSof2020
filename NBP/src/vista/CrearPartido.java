@@ -195,7 +195,7 @@ public class CrearPartido extends JFrame {
 			//pst.close();
 			
 			JButton btnCrearPartido = new JButton("Crear Partido");
-			btnCrearPartido.setBounds(330, 208, 96, 45);
+			btnCrearPartido.setBounds(341, 214, 85, 33);
 			
 			btnCrearPartido.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -265,6 +265,11 @@ public class CrearPartido extends JFrame {
 			table.setModel(model);
 			
 			contentPane.add(table);
+			
+			JButton btnNewButton = new JButton("Cancelar");
+			
+			btnNewButton.setBounds(235, 214, 96, 33);
+			contentPane.add(btnNewButton);
 			
 			rs.close();
 			pst.close();
