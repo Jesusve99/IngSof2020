@@ -14,13 +14,14 @@ public class Administrador extends Usuario {
 		ayuntamiento = ayun;
 	}
 
-	public static Administrador obtenerAdministrador(String correo) {
+	public Administrador(String corr) {
 		Object[] ob = bd.Select("Select * From Administrador where correo = '" + correo + "';").get(0);
-		Administrador ad = new Administrador(ob[0].toString(), ob[1].toString(), ob[2].toString());
-		return ad;
+		this.correo = ob[0].toString();
+		this.contrasena = ob[1].toString();
+		this.ayuntamiento = ob[2].toString();
 	}
-
-	public static void agregarAdministrador(Administrador admin) {
+	
+	public void agregarAdministrador(Administrador admin) {
 		String ins = "INSERT INTO Administrador (Administrador.correo, Administrador.contra, Administrador.ayuntamiento) VALUES (\""
 				+ admin.getCorreo() + "\", \"" + admin.getContrasena() + "\", " + admin.getContrasena() + "\", \""
 				+ admin.getAyuntamiento() + "\")";
@@ -38,7 +39,11 @@ public class Administrador extends Usuario {
 	public String getAyuntamiento() {
 		return this.ayuntamiento;
 	}
-
+	
+	public void setAyuntamiento(String ayun) {
+		this.ayuntamiento = ayun;
+	}
+	
 	public void setAyuntamiento() {
 		if (datosInicioCorrecto()) {
 			String sel = "SELECT Administrador.ayuntamiento FROM Administrador WHERE Administrador.correo =\""
