@@ -92,7 +92,7 @@ public class UnirsePartido extends JFrame{
 		getContentPane().add(btnGenerarPartidos);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 77, 347, 279);
+		scrollPane.setBounds(23, 77, 344, 279);
 		getContentPane().add(scrollPane);
 		
 		table = new JTable();
