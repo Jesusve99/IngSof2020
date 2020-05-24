@@ -27,16 +27,20 @@ public class Prueba {
 		////ENVIAR CORREO
 		//EnviarCorreo env = new EnviarCorreo("marialopez57@uma.es");
 		//env.enviar("Tema","Mensaje");	
-		////OBTENER DATOS DE BD
+		////OBTENER ADMINISTRADOR
 		//Administrador admin = new Administrador("admin@");
+		//System.out.println(admin.estaenBD());
 		//System.out.println(admin.getCorreo()+"  "+admin.getContrasena()+" "+admin.getAyuntamiento());
-		////OBTENER DATOS DE BD
-		//Jugador jug = new Jugador("primero@");
-		//System.out.println(jug.getCorreo()+"  "+jug.getContrasena()+" "+jug.getNick()+" "+jug.getNombre()+" "+jug.getApellidos()+" "+jug.getFechaNacimiento());
+		////OBTENER JUGADOR
+		//Jugador jug = new Jugador("admin@");
+		//System.out.println(jug.getCorreo()+" "+jug.getContrasena()+" "+jug.getNick()+" "+jug.getPosicionfav()+" "+jug.getNombre()+" "+jug.getApellidos()+" "+jug.getFechaNacimiento());
 		////INSERTAR BASICO
 		//Jugador jug = new Jugador("primero@","primero");
 		////INSERTAR COMPLETO
-		//Jugador jug = new Jugador("primero@","nick1",Demarcacion.PORTERO,"nombre1","apellidos1","2002-02-02");
+		//Jugador jug = new Jugador("primero@","primero@","nick1",Demarcacion.PORTERO,"nombre1","apellidos1","2002-02-02");
+		////COMPROBAR SI SE PUEDE REGISTRAR
+		//Jugador jug = new Jugador("admin@");
+		//System.out.println(jug.estaenBD());
 
 	}	
 }
