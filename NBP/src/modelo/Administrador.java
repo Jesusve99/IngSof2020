@@ -14,6 +14,13 @@ public class Administrador extends Usuario {
 		ayuntamiento = ayun;
 	}
 
+	public Administrador(String correo) {
+		Object[] ob = bd.Select("Select * From Administrador where correo = '" + correo + "';").get(0);
+		this.correo = (String) ob[0];
+		this.contrasena = (String) ob[1];
+		this.ayuntamiento = (String) ob[2];
+	}
+
 	public static void agregarAdministrador(Administrador admin) {
 		String ins = "INSERT INTO Administrador (Administrador.correo, Administrador.contra, Administrador.ayuntamiento) VALUES (\""
 				+ admin.getCorreo() + "\", \"" + admin.getContrasena() + "\", " + admin.getContrasena() + "\", \""

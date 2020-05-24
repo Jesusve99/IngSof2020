@@ -1,49 +1,45 @@
 package modelo;
 
-import java.util.Date;
 import java.util.List;
 
 public class Jugador extends Usuario {
-	
-	
-	
+
+	private String nick;
+	private Demarcacion posicionfav;
 	private String nombre;
 	private String apellidos;
-	private String nick;
 	private String fechaNacimiento;
-	private Demarcacion posicionfav;
-	
-	public Jugador(String correo) {//Sacar Jugador bd
-		try {
-			Object[] ob = baseDatos.Select("Select * From Jugador where correo = '"+ correo +"';").get(0);
-			this.correo = (String) ob[0];
-			this.contrasena = (String) ob[1];
-			this.nick = (String) ob[2];
-			this.posicionfav = Demarcacion.valueOf((String) ob[3]);
-			this.nombre = (String) ob[4];
-			this.apellidos = (String) ob[5];
-			this.fechaNacimiento = (String) ob[6].toString();
-		}catch(Exception e) {
-			this.correo = "";
-			this.contrasena = "";
-		}
+
+	public Jugador(String corr, String contra) {
+		super(corr, contra);
+		posicionfav = null;
+		nombre = "";
+		apellidos = "";
+		fechaNacimiento = "";
 	}
-	
-	//Registro Basico
-	public Jugador(String correo, String contrasena) {
-		baseDatos.Insert("Insert into Jugador(correo, contra) Values ('"+correo+"','"+contrasena+"');");
+
+	public Jugador(String corr, String contra, String nick, Demarcacion demarc, String nombr, String apell,
+			String fechaN) {
+		super(corr, contra);
+		posicionfav = demarc;
+		nombre = nombr;
+		apellidos = apell;
+		fechaNacimiento = fechaN;
 	}
-	
-	//Registro Completo
-	public Jugador(String correo,String contra, String nick, Demarcacion posicionfav, String nombre, String apellidos, String fechaNacimiento) {
-		baseDatos.Insert("INSERT INTO Jugador(correo, contra, nick, posicionfav, nombre, apellidos, Fecha_nacimiento) VALUES ('"+correo+"','"+contra+"','"+nick+"','"+posicionfav+"','"+nombre+"','"+apellidos+"','"+fechaNacimiento+"');");
+
+	public static void agregarJugador(Jugador j) {
+		String ins = "INSERT INTO Jugador (Jugador.correo, Jugador.contra, Jugador.nick, Jugador.posicionfav, Jugador.nombre, Jugador.apellidos, Jugador.Fecha_nacimiento) VALUES (\""
+				+ j.getCorreo() + "\", \"" + j.getContrasena() + "\", \"" + j.getNick() + "\", \""
+				+ j.getPosicionfav().toString() + "\", \"" + j.getNombre() + "\", \"" + j.getApellidos() + "\", \""
+				+ j.getFechaNacimiento() + "\")";
+		bd.Insert(ins);
 	}
 
 	public String getCorreo() {
 		return correo;
 	}
 
-	public String getContrasena() {
+	private String getContrasena() {
 		return contrasena;
 	}
 
@@ -55,11 +51,9 @@ public class Jugador extends Usuario {
 		return posicionfav;
 	}
 
-
 	public String getNombre() {
 		return nombre;
 	}
-
 
 	public String getApellidos() {
 		return apellidos;
@@ -69,15 +63,32 @@ public class Jugador extends Usuario {
 		return fechaNacimiento;
 	}
 
-
-	public boolean estaenBD(){
-		return correo != "" ? true : false;
+	public void setJugador() {
+		if (datosInicioCorrecto()) {
+			String sel = "SELECT Jugador.nick, Jugador.posicionfav, Jugador.nombre, Jugador.apellidos, Jugador.Fecha_nacimiento FROM Jugador WHERE Jugador.correo =\""
+					+ this.getCorreo() + "\"";
+			List<Object[]> datosJug = bd.Select(sel);
+			Object[] datos = datosJug.get(0);
+			this.nick = datos[0].toString();
+			this.posicionfav = Demarcacion.valueOf(datos[1].toString());
+			this.nombre = datos[2].toString();
+			this.apellidos = datos[3].toString();
+			this.fechaNacimiento = datos[4].toString();
+		} else {
+			throw new BDException("Datos de inicio incorrectos");
+		}
 	}
 
-	
-	public boolean inicioSesion(String contra) {
-		return contrasena.equals(contra);
+	public boolean correoRegistrado() {
+		String sel = "SELECT COUNT(Jugador.correo) FROM Jugador WHERE Jugador.correo =\"" + this.getCorreo() + "\"";
+		long count = (long) bd.SelectEscalar(sel);
+		return count == 1;
 	}
 
-	
+	public boolean datosInicioCorrecto() {
+		String sel = "SELECT COUNT(Jugador.correo) FROM Jugador WHERE Jugador.correo =\"" + this.getCorreo()
+				+ "\" AND Jugador.contra = \"" + this.getContrasena() + "\"";
+		long count = (long) bd.SelectEscalar(sel);
+		return count == 1;
+	}
 }

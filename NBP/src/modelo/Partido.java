@@ -1,50 +1,53 @@
 package modelo;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-
 import javax.swing.JTextField;
 
-
-import com.mysql.cj.protocol.a.MysqlBinaryValueDecoder;
-import com.mysql.cj.result.LocalTimeValueFactory;
-
 public class Partido {
-	
-	private int idPista;
+
+	private long codPartido;
+	private long idPista;
 	private String fecha;
 	private String hora;
-	
-	public Partido(JTextField id, JTextField f, JTextField h) {
-		
-		try {
+	private String idAnfitrion;
 
-			idPista = Integer.parseInt(id.getText());
-			fecha = f.getText();
-			hora = h.getText();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	public Partido(long idPista, String fecha, String hora, String idAnfitrion) {
+		this.idPista = idPista;
+		this.fecha = fecha;
+		this.hora = hora;
+		this.idAnfitrion = idAnfitrion;
+	}
+	public static void agregarPartido(Partido p) {
+		String ins = "INSERT INTO Partido (Partido.Pista, Partido.Fecha, Partido.Hora, Partido.id_anfitrion) VALUES ("+p.getIdPista()+", ")";
 	}
 	
-	public int getIdPista() {
+	public long getCodPartido() {
+		return this.codPartido;
+	}
+	public String getIdAnfitrion() {
+		return this.idAnfitrion;
+	}
+	
+	public long getIdPista() {
 		return idPista;
 	}
+
 	public String getFecha() {
 		return fecha;
+	}
+	
+	public void setCodPartido() {
+		
 	}
 	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
+
 	public String getHora() {
 		return hora;
 	}
+
 	public void setHora(String hora) {
 		this.hora = hora;
 	}
-	
-	
+
 }

@@ -18,24 +18,10 @@ public class Pista {
 	//private int[] diasDisponibles;
 
 	public Pista(JTextField nombre2, JTextField ubicacion2, JTextField horarioApertura, JTextField horarioCierre) {
-		try {
-			nombre = nombre2.getText();
-			ubicacion = ubicacion2.getText();
-			horainicio = horarioApertura.getText();
-			horafin = horarioCierre.getText();
-			
-			//int pos = 0;
-			//int dias = Integer.parseInt(diasDisponibles2.getText());
-			
-		/*	while(dias > 0) {
-				diasDisponibles[pos] = dias%10;
-				pos++;
-			}
-			
-			diasDisponibles = Arrays.copyOf(diasDisponibles, pos);*/
-		} catch (Exception e) {
-			e.getMessage();
-		}
+		nombre = nombre2.getText();
+		ubicacion = ubicacion2.getText();
+		horainicio = horarioApertura.getText();
+		horafin = horarioCierre.getText();
 	}
 
 	public int getId() {
