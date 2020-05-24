@@ -25,6 +25,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import java.awt.Font;
 
 public class Iniciarsesion extends JFrame {
 
@@ -54,21 +56,24 @@ public class Iniciarsesion extends JFrame {
 	 */
 	public Iniciarsesion() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 423, 302);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(204, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblIniciarSesin = new JLabel("Iniciar Sesi\u00F3n");
-		lblIniciarSesin.setBounds(138, 32, 142, 25);
+		JLabel lblIniciarSesin = new JLabel("INICIAR SESI\u00D3N :");
+		lblIniciarSesin.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblIniciarSesin.setBounds(60, 30, 198, 25);
 		contentPane.add(lblIniciarSesin);
 		
-		JLabel lblCorreo = new JLabel("Correo");
-		lblCorreo.setBounds(34, 88, 56, 16);
+		JLabel lblCorreo = new JLabel("Correo :");
+		lblCorreo.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblCorreo.setBounds(60, 88, 56, 16);
 		contentPane.add(lblCorreo);
 		
-		JButton btnSalir = new JButton("salir");
+		JButton btnSalir = new JButton("Volver");
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
@@ -76,7 +81,7 @@ public class Iniciarsesion extends JFrame {
 				ini.setVisible(true);	
 			}
 		});
-		btnSalir.setBounds(44, 204, 97, 25);
+		btnSalir.setBounds(60, 197, 128, 31);
 		contentPane.add(btnSalir);
 		
 		btnEntrar = new JButton("Entrar");
@@ -102,7 +107,7 @@ public class Iniciarsesion extends JFrame {
 				}else if(ad.iniciosesion(clavefinal)){
 					dispose();
 					//JOptionPane.showMessageDialog(null, "Bienvenido al sistema,Administrador","Ingresaste",JOptionPane.INFORMATION_MESSAGE);
-					MenuAdministrador mad = new MenuAdministrador();
+					MenuAdmin mad = new MenuAdmin();
 					mad.setVisible(true);
 					//Es un admin
 				}
@@ -110,20 +115,21 @@ public class Iniciarsesion extends JFrame {
 
 			
 		});
-		btnEntrar.setBounds(267, 204, 97, 25);
+		btnEntrar.setBounds(223, 197, 128, 30);
 		contentPane.add(btnEntrar);
 		
 		textusuario = new JTextField();
-		textusuario.setBounds(152, 85, 116, 22);
+		textusuario.setBounds(164, 85, 130, 22);
 		contentPane.add(textusuario);
 		textusuario.setColumns(10);
 		
-		JLabel lblContrasea = new JLabel("contrase\u00F1a");
-		lblContrasea.setBounds(34, 143, 107, 31);
+		JLabel lblContrasea = new JLabel("Contrase\u00F1a :");
+		lblContrasea.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblContrasea.setBounds(60, 117, 107, 31);
 		contentPane.add(lblContrasea);
 		
 		clave = new JPasswordField();
-		clave.setBounds(152, 147, 116, 22);
+		clave.setBounds(164, 120, 130, 22);
 		contentPane.add(clave);
 	}
 }

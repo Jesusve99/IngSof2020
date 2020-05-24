@@ -30,6 +30,7 @@ public class GestionPista {
 			pst.setString(4, p.getHorafin());
 			//pst.setInt(6, p.getDiasDisponibles());
 			*/
+					
 			n = pst.executeUpdate(sql);
 			
 		}catch(SQLException e) {
