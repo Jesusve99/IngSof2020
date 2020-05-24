@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import controlador.GestionUnirsePartido;
 import modelo.BD;
 import net.proteanit.sql.DbUtils;
 
@@ -22,11 +23,13 @@ import java.awt.Font;
 public class UnirsePartido extends JFrame{
 
 	//private JFrame frame;
-	private JTable table;
-	Connection conexion = null; //Creo la conexion
-	private JTextField textField;
+	public JTable table;
+	public Connection conexion = null; //Creo la conexion
+	public JTextField textField;
 	private JLabel lblNewLabel;
-	private JButton btnVerPartido;
+	public JButton btnVerPartido;
+	public JButton btnVolver;
+	public JButton btnGenerarPartidos;
 
 	/**
 	 * Launch the application.
@@ -36,6 +39,7 @@ public class UnirsePartido extends JFrame{
 			public void run() {
 				try {
 					UnirsePartido frame = new UnirsePartido();
+					GestionUnirsePartido controlador = new GestionUnirsePartido(frame);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -66,8 +70,8 @@ public class UnirsePartido extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
 		
-		JButton btnGenerarPartidos = new JButton("Generar Lista Partidos");
-		btnGenerarPartidos.addActionListener(new ActionListener() {
+		btnGenerarPartidos = new JButton("Generar Lista Partidos");
+		/*btnGenerarPartidos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { //QUE PASA CUANDO PULSO EL BOTON DE GENERAR PARTIDO
 				
 				try {
@@ -83,6 +87,7 @@ public class UnirsePartido extends JFrame{
 				
 			}
 		});
+		*/
 		btnGenerarPartidos.setBounds(81, 24, 199, 36);
 		getContentPane().add(btnGenerarPartidos);
 		
@@ -104,7 +109,7 @@ public class UnirsePartido extends JFrame{
 		getContentPane().add(lblNewLabel);
 		
 		btnVerPartido = new JButton("VerPartido");
-		btnVerPartido.addActionListener(new ActionListener() {
+		/*btnVerPartido.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					String codigo = "Select * from Partido where cod_partido= ?";
@@ -130,17 +135,19 @@ public class UnirsePartido extends JFrame{
 				
 			}
 		});
+		*/
 		btnVerPartido.setBounds(403, 138, 105, 20);
 		getContentPane().add(btnVerPartido);
 		
-		JButton btnVolver = new JButton("Volver");
-		btnVolver.addActionListener(new ActionListener() {
+		btnVolver = new JButton("Volver");
+		/*btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
 				Pantallaprincipal p = new Pantallaprincipal();
 				p.setVisible(true);
 			}
 		});
+		*/
 		btnVolver.setBounds(404, 320, 104, 36);
 		getContentPane().add(btnVolver);
 	}
