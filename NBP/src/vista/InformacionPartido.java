@@ -1,65 +1,45 @@
 package vista;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.CardLayout;
+import java.awt.Component;
+import java.awt.ComponentOrientation;
+import java.awt.Dimension;
+import java.util.List;
 
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
-import javax.swing.table.TableColumnModel;
-import javax.swing.table.TableModel;
-import javax.swing.JLabel;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.List;
-import java.awt.FlowLayout;
-import javax.swing.BoxLayout;
-import java.awt.GridLayout;
-import com.jgoodies.forms.layout.FormLayout;
+
 import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.FormSpecs;
 import com.jgoodies.forms.layout.RowSpec;
-import com.mysql.cj.xdevapi.Statement;
 
 import controlador.ControladorInformacionPartido;
 import modelo.BD;
-import modelo.BDException;
-import net.miginfocom.swing.MigLayout;
-import net.proteanit.sql.DbUtils;
-
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.SwingConstants;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.UIManager;
-import java.awt.CardLayout;
-import javax.swing.JTable;
-import java.awt.Color;
 
 public class InformacionPartido extends JFrame {
 
-	private BD bd = new BD();
+	public BD bd = new BD();
 	private JPanel contentPane;
 	private JTable tablaJugadores;
-	private int idPartido = 1;
-	private Connection c = null;
-	private int totalJugadores;
-	private String lugar;
-	private String hora;
+	public int idPartido = 8;
+	private long totalJugadores = 0;
+	private String lugar = "";
+	private String hora = "";
+	public JButton unirsePartido;
+	public JButton volverLista;
 	/*
 	 * CAMBIAR AQUI PARA HACERLO GENERAL A CUALQUIER ID DE PARTIDO
 	 */
-	private TableModel modelo = null;
+	private DefaultTableModel modelo = null;
 
 	/**
 	 * Launch the application.
@@ -68,27 +48,27 @@ public class InformacionPartido extends JFrame {
 		InformacionPartido v = new InformacionPartido();
 		ControladorInformacionPartido c = new ControladorInformacionPartido(v);
 		v.setVisible(true);
-		v.setLocationRelativeTo(v);
+		v.setLocationRelativeTo(null);
 	}
 
 	/**
 	 * Create the frame.
 	 */
 	public InformacionPartido() {
-		
-		// Operaciones con la BD
-		operacionesBD(idPartido);
-		//
+		// Obtenemos los datos:
+		obtenerUbicacionPista(idPartido);
+		totalJugadores(idPartido);
+		obtenerHoraPartido(idPartido);
+		// ---------------------
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 776, 483);
+		setBounds(100, 100, 651, 583);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(204, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new MigLayout("", "[734px,grow]", "[grow][][grow][412px]"));
-		
+		contentPane.setLayout(new CardLayout(0, 0));
+
 		JScrollPane scrollPane = new JScrollPane();
-		contentPane.add(scrollPane, "cell 0 1 1 3,grow");
+		contentPane.add(scrollPane, "name_16908185335300");
 
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane.setColumnHeaderView(scrollPane_1);
@@ -96,112 +76,99 @@ public class InformacionPartido extends JFrame {
 		JPanel panelPartido = new JPanel();
 		panelPartido.setBorder(new TitledBorder(null, "Partido:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		scrollPane_1.setViewportView(panelPartido);
-		panelPartido.setLayout(new MigLayout("", "[56px][]", "[16px][][]"));
+		panelPartido.setLayout(new BoxLayout(panelPartido, BoxLayout.X_AXIS));
 
-		JLabel lugar = new JLabel("Lugar:");
-		panelPartido.add(lugar, "cell 0 0,alignx right,aligny top");
+		JPanel panel = new JPanel();
+		panelPartido.add(panel);
+		panel.setLayout(new FormLayout(
+				new ColumnSpec[] { FormSpecs.RELATED_GAP_COLSPEC, FormSpecs.DEFAULT_COLSPEC,
+						FormSpecs.RELATED_GAP_COLSPEC, FormSpecs.DEFAULT_COLSPEC, FormSpecs.RELATED_GAP_COLSPEC,
+						FormSpecs.DEFAULT_COLSPEC, },
+				new RowSpec[] { FormSpecs.RELATED_GAP_ROWSPEC, RowSpec.decode("default:grow"),
+						FormSpecs.RELATED_GAP_ROWSPEC, RowSpec.decode("default:grow"), FormSpecs.RELATED_GAP_ROWSPEC,
+						RowSpec.decode("default:grow"), }));
 
-		JLabel lugarV = new JLabel(this.lugar);
-		panelPartido.add(lugarV, "cell 1 0");
+		JLabel lugar_1 = new JLabel("Lugar:");
+		panel.add(lugar_1, "2, 2");
 
-		JLabel hora = new JLabel("Hora del partido:");
-		panelPartido.add(hora, "cell 0 1,alignx right");
+		JLabel valorLugar = new JLabel(lugar);
+		panel.add(valorLugar, "4, 2");
 
-		JLabel horaV = new JLabel(this.hora);
-		panelPartido.add(horaV, "cell 1 1");
+		JLabel hora_1 = new JLabel("Hora del partido:");
+		panel.add(hora_1, "2, 4");
 
-		JLabel totalJugadores = new JLabel("Total Jugadores:");
-		panelPartido.add(totalJugadores, "cell 0 2,alignx right");
+		JLabel horaV = new JLabel(hora.toString());
+		panel.add(horaV, "4, 4");
+
+		JLabel totalJugadores_1 = new JLabel("Total Jugadores:");
+		panel.add(totalJugadores_1, "2, 6");
 		JLabel totalJugadoresV = new JLabel();
-		totalJugadoresV.setText(Integer.toString(this.totalJugadores));
-		panelPartido.add(totalJugadoresV, "cell 1 2");
+		panel.add(totalJugadoresV, "4, 6");
+		totalJugadoresV.setText(Long.toString(totalJugadores));
+
+		unirsePartido = new JButton("Unirse");
+		unirsePartido.setAlignmentX(Component.CENTER_ALIGNMENT);
+		panelPartido.add(unirsePartido);
+
+		volverLista = new JButton("Volver");
+		panelPartido.add(volverLista);
 
 		JScrollPane scrollPane_2 = new JScrollPane();
+		scrollPane_2.setViewportBorder(
+				new TitledBorder(null, "Jugadores:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		scrollPane.setViewportView(scrollPane_2);
 
-		JPanel panelTablaJugadores = new JPanel();
-		panelTablaJugadores
-				.setBorder(new TitledBorder(null, "Jugadores:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		scrollPane_2.setViewportView(panelTablaJugadores);
-		panelTablaJugadores.setLayout(new CardLayout(0, 0));
+		JScrollPane scrollPane_3 = new JScrollPane();
+		scrollPane_3.setMaximumSize(new Dimension(32706, 32767));
+		scrollPane_2.setViewportView(scrollPane_3);
 
-		tablaJugadores = new JTable();
+		tablaModelo(idPartido);
+		tablaJugadores = new JTable(modelo);
+		tablaJugadores.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+		tablaJugadores.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		tablaJugadores.setEnabled(false);
 		tablaJugadores.setRowSelectionAllowed(false);
-		tablaJugadores.setModel(modelo);
-		panelTablaJugadores.add(tablaJugadores, "name_262268824221600");
+		scrollPane_3.setViewportView(tablaJugadores);
 	}
 
-	private void operacionesBD(int id) {
-		try {
-			c = bd.connectToDatabase();
-			obtenerUbicacionPista(id);
-			obtenerHoraPartido(id);
-			this.totalJugadores = totalJugadores(id);
-			tablaModelo(id);
-		} catch (SQLException e) {
-			throw new BDException("Error en las operaciones de obtener informacion del partido: " + e.getMessage());
-		} finally {
-			if (c != null) {
-				try {
-					c.close(); // Cerramos la conexion
-				} catch (SQLException e) {
-					throw new BDException("Error al cerrar la conexion con la BDD.");
-				}
-			}
+	// SELECT datos de la pista en la que se juega
+	private void obtenerUbicacionPista(int id) {
+		String sel = "SELECT Pista.Nombre, Pista.Ubicacion FROM Pista WHERE Pista.cod_pista IN (SELECT Partido.Pista FROM Partido WHERE Partido.cod_partido ="
+				+ id + ")";
+		List<Object[]> pista = bd.Select(sel);
+		if (pista.size() > 0) {
+			lugar = pista.get(0)[0].toString() + ". " + pista.get(0)[1];
 		}
 	}
-	//SELECT datos de la pista en la que se juega
-	private void obtenerUbicacionPista(int id) throws SQLException {
-		java.sql.Statement pst = null;
-		ResultSet rs = null;
-		String sel = "SELECT Pista.Nombre, Pista.Ubicacion FROM Pista WHERE Pista.Nombre IN (SELECT Partido.Pista FROM Partido WHERE Partido.cod_partido ="+id+")";
-		pst = c.createStatement();
-		rs = pst.executeQuery(sel);
-		if (rs.next()) {
-			lugar = rs.getObject(1).toString()+". "+rs.getObject(2).toString();
+
+	// SELECT datos de la hora del partido a la que se juega
+	private void obtenerHoraPartido(int id) {
+		String sel = "SELECT Partido.Hora, Partido.Fecha FROM Partido WHERE Partido.cod_partido =" + id;
+		List<Object[]> horaPart = bd.Select(sel);
+		if (horaPart.size() > 0) {
+			hora = horaPart.get(0)[0].toString() + " el " + horaPart.get(0)[1].toString();
 		}
-		rs.close();
-		pst.close();
 	}
-	//SELECT datos de la hora del partido a la que se juega
-	private void obtenerHoraPartido(int id) throws SQLException {
-		java.sql.Statement pst = null;
-		ResultSet rs = null;
-		String sel = "SELECT Partido.Hora, Partido.Fecha FROM Partido WHERE Partido.cod_partido ="+ id;
-		pst = c.createStatement();
-		rs = pst.executeQuery(sel);
-		if (rs.next()) {
-			hora = rs.getObject(1).toString()+" el "+rs.getObject(2).toString();
-		}
-		rs.close();
-		pst.close();
-	}
-	//COUNT del total de jugadores en el partido buscado
-	private int totalJugadores(int id) throws SQLException {
-		int count = 0;
-		java.sql.Statement pst = null;
-		ResultSet rs = null;
+
+	// COUNT del total de jugadores en el partido buscado
+	private long totalJugadores(int id) {
+		long count = 0;
 		String sel = "SELECT COUNT(Jugador.correo) FROM Jugador WHERE Jugador.correo IN (SELECT Jugador_Partido.ID_jug FROM Jugador_Partido WHERE Jugador_Partido.partido ="
 				+ id + " AND Jugador_Partido.estado_solicitud = 1)";
-		pst = c.createStatement();
-		rs = pst.executeQuery(sel);
-		if (rs.next()) {
-			count = rs.getInt(1);
-		}
-		rs.close();
-		pst.close(); // Cerramos recursos
+		count = (long) bd.SelectEscalar(sel);
 		return count;
 	}
-	//SELECT de la info de los jugadores que hay ahora mismo en el partido
-	private void tablaModelo(int id) throws SQLException {
+
+	// SELECT de la info de los jugadores que hay ahora mismo en el partido
+	private void tablaModelo(int id) {
 		String sel = "SELECT Jugador.nick, Jugador.posicionfav, Jugador.Fecha_nacimiento FROM Jugador WHERE Jugador.correo IN (SELECT Jugador_Partido.ID_jug FROM Jugador_Partido WHERE Jugador_Partido.partido ="
 				+ id + " AND Jugador_Partido.estado_solicitud = 1)";
-		PreparedStatement pst = c.prepareStatement(sel);
-		ResultSet rs = pst.executeQuery();
-		modelo = DbUtils.resultSetToTableModel(rs);
-		rs.close();
-		pst.close(); // Cerramos recursos
+		modelo = new DefaultTableModel();
+		modelo.setColumnIdentifiers(new String[] { "Nick", "Posicion Favorita", "Fecha de nacimiento" });
+		List<Object[]> jugadores = bd.Select(sel);
+		for (int i = 0; i < jugadores.size(); i++) {
+			modelo.addRow(jugadores.get(i));
+		}
 	}
 
 }
