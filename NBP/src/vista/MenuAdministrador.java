@@ -19,17 +19,19 @@ import javax.swing.border.Border;
 public class MenuAdministrador extends JFrame{
 	
 	public MenuAdministrador() {
+		getContentPane().setBackground(new Color(204, 255, 255));
 		this.setSize(800,600);
 		getContentPane().setLayout(null);
 		
-		Label label = new Label("Menu Administrador");
-		label.setFont(new Font("Dialog", Font.PLAIN, 30));
-		label.setBounds(245, 10, 275, 55);
+		Label label = new Label("MENU ADMINISTRADOR :");
+		label.setAlignment(Label.CENTER);
+		label.setFont(new Font("Dialog", Font.BOLD, 25));
+		label.setBounds(220, 41, 376, 55);
 		getContentPane().add(label);
 		
 		Panel Crear = new Panel();
 		Crear.setBackground(new Color(64, 224, 208));
-		Crear.setBounds(295, 164, 200, 70);
+		Crear.setBounds(295, 165, 200, 70);
 		getContentPane().add(Crear);
 		Crear.setLayout(null);
 		
@@ -41,7 +43,7 @@ public class MenuAdministrador extends JFrame{
 		Panel Eliminar = new Panel();
 		Eliminar.setBackground(new Color(255, 0, 51));
 		Eliminar.setForeground(Color.WHITE);
-		Eliminar.setBounds(295, 307, 200, 70);
+		Eliminar.setBounds(295, 276, 200, 70);
 		getContentPane().add(Eliminar);
 		Eliminar.setLayout(null);
 		
@@ -52,14 +54,14 @@ public class MenuAdministrador extends JFrame{
 		
 		Panel CerrarSesion = new Panel();
 		CerrarSesion.setBackground(new Color(51, 255, 102));
-		CerrarSesion.setBounds(574, 481, 200, 70);
+		CerrarSesion.setBounds(572, 473, 200, 70);
 		getContentPane().add(CerrarSesion);
 		CerrarSesion.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("      Cerrar Sesion");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel.setBounds(10, 11, 180, 48);
+		lblNewLabel.setBounds(12, 13, 180, 48);
 		CerrarSesion.add(lblNewLabel);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		
 		Crear.addMouseListener(new MouseAdapter() {
 			@Override
