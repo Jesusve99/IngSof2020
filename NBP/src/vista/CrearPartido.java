@@ -119,79 +119,46 @@ public class CrearPartido extends JFrame {
 		conexion = bd.connectToDatabase();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 458, 301);
+		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(204, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-<<<<<<< HEAD
-		JLabel lblCrearPartido = new JLabel("CREAR PARTIDO:");
-		lblCrearPartido.setBounds(26, 11, 185, 51);
-		lblCrearPartido.setFont(new Font("Tahoma", Font.BOLD, 20));
-		contentPane.add(lblCrearPartido);
-		
-		JLabel lblFecha = new JLabel("Fecha:");
-		lblFecha.setBounds(26, 58, 47, 45);
-=======
+
 		JLabel lblCrearPartido = new JLabel("CREAR PARTIDO");
 		lblCrearPartido.setBounds(34, 13, 186, 51);
 		lblCrearPartido.setFont(new Font("Tahoma", Font.BOLD, 20));
 		contentPane.add(lblCrearPartido);
 		
 		JLabel lblFecha = new JLabel("Fecha :");
-		lblFecha.setBounds(26, 72, 47, 45);
->>>>>>> 63c5e55d389ecc5382bb74b3d3f7ef79ab9c3914
+		lblFecha.setBounds(26, 60, 47, 45);
 		lblFecha.setFont(new Font("Tahoma", Font.BOLD, 13));
 		contentPane.add(lblFecha);
 		
 		textField = new JTextField();
-<<<<<<< HEAD
 		textField.setBounds(124, 72, 106, 25);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		JLabel lblHoraInicio = new JLabel("Hora de inicio:");
-		lblHoraInicio.setBounds(26, 93, 96, 51);
-=======
-		textField.setBounds(114, 83, 106, 25);
-		contentPane.add(textField);
-		textField.setColumns(10);
 		
 		JLabel lblHoraInicio = new JLabel("Hora inicio :");
-		lblHoraInicio.setBounds(23, 105, 96, 51);
->>>>>>> 63c5e55d389ecc5382bb74b3d3f7ef79ab9c3914
+		lblHoraInicio.setBounds(26, 90, 96, 51);
 		lblHoraInicio.setFont(new Font("Tahoma", Font.BOLD, 13));
 		contentPane.add(lblHoraInicio);
 		
 		textField_1 = new JTextField();
-<<<<<<< HEAD
 		textField_1.setBounds(124, 104, 106, 25);
-=======
-		textField_1.setBounds(114, 118, 106, 25);
->>>>>>> 63c5e55d389ecc5382bb74b3d3f7ef79ab9c3914
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
-		
-		
-<<<<<<< HEAD
 		JLabel lblNewLabel_2 = new JLabel("Pista:");
-		lblNewLabel_2.setBounds(26, 136, 47, 45);
-=======
-		JLabel lblNewLabel_2 = new JLabel("Pista :");
-		lblNewLabel_2.setBounds(26, 143, 58, 45);
->>>>>>> 63c5e55d389ecc5382bb74b3d3f7ef79ab9c3914
+		lblNewLabel_2.setBounds(26, 130, 47, 45);
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 13));
 		contentPane.add(lblNewLabel_2);
 		
 		textField_2 = new JTextField();
-<<<<<<< HEAD
 		textField_2.setBounds(124, 139, 106, 25);
-=======
-		textField_2.setBounds(114, 153, 106, 25);
->>>>>>> 63c5e55d389ecc5382bb74b3d3f7ef79ab9c3914
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
 		
@@ -228,11 +195,11 @@ public class CrearPartido extends JFrame {
 			//pst.close();
 			
 			JButton btnCrearPartido = new JButton("Crear Partido");
-<<<<<<< HEAD
-			btnCrearPartido.setBounds(341, 214, 85, 33);
-=======
-			btnCrearPartido.setBounds(277, 195, 124, 45);
->>>>>>> 63c5e55d389ecc5382bb74b3d3f7ef79ab9c3914
+
+			btnCrearPartido.setBounds(290, 200, 130, 50);
+
+		
+
 			
 			btnCrearPartido.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -313,7 +280,7 @@ public class CrearPartido extends JFrame {
 				
 			});
 			
-			btnCancelar.setBounds(235, 214, 96, 33);
+			btnCancelar.setBounds(150, 200, 130, 50);
 			contentPane.add(btnCancelar);
 			
 			rs.close();
