@@ -80,8 +80,19 @@ public class MenuAdmin extends JFrame {
 				i.setVisible(true);
 			}
 		});
-		btnCerrarSesin.setBounds(262, 182, 134, 34);
+		btnCerrarSesin.setBounds(286, 197, 134, 34);
 		contentPane.add(btnCerrarSesin);
+		
+		JButton btnNewButton = new JButton("Lista de pistas");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				ListaPista l = new ListaPista();
+				l.setVisible(true);
+			}
+		});
+		btnNewButton.setBounds(40, 175, 144, 25);
+		contentPane.add(btnNewButton);
 	}
 
 }
