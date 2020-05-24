@@ -22,6 +22,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import java.awt.Font;
 
 
 public class SalirsePartido extends JFrame {
@@ -59,6 +61,7 @@ public class SalirsePartido extends JFrame {
 	 * Initialize the contents of the frame.
 	 */
 	public SalirsePartido() {
+		getContentPane().setBackground(new Color(204, 255, 255));
 		setBounds(100, 100, 532, 335);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
@@ -66,7 +69,7 @@ public class SalirsePartido extends JFrame {
 		conexion = baseDatos.connectToDatabase();
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(5, 81, 199, 129);
+		scrollPane.setBounds(25, 83, 229, 178);
 		getContentPane().add(scrollPane);
 		
 		table = new JTable();
@@ -88,19 +91,20 @@ public class SalirsePartido extends JFrame {
 				
 			}
 		});
-		btnGenerarPartidos.setBounds(10, 29, 141, 23);
+		btnGenerarPartidos.setBounds(44, 38, 173, 32);
 		getContentPane().add(btnGenerarPartidos);
 		
 		textField = new JTextField();
-		textField.setBounds(246, 128, 96, 20);
+		textField.setBounds(355, 109, 117, 25);
 		getContentPane().add(textField);
 		textField.setColumns(10);
 		
-		JLabel lblNewLabel = new JLabel("Introduzca el ID del partido del que se quiere salir");
-		lblNewLabel.setBounds(226, 64, 304, 51);
+		JLabel lblNewLabel = new JLabel("Partido del que desea salirse");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblNewLabel.setBounds(284, 38, 203, 58);
 		getContentPane().add(lblNewLabel);
 		
-		JButton btnSalirPartido = new JButton("SalirPartido");
+		JButton btnSalirPartido = new JButton("Salir Partido");
 		btnSalirPartido.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -131,10 +135,10 @@ public class SalirsePartido extends JFrame {
 				
 			}
 		});
-		btnSalirPartido.setBounds(373, 127, 107, 23);
+		btnSalirPartido.setBounds(327, 156, 117, 32);
 		getContentPane().add(btnSalirPartido);
 		
-		JButton btnVolverMP = new JButton("Volver");
+		JButton btnVolverMP = new JButton("Menu");
 		btnVolverMP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Pantallaprincipal pp = new Pantallaprincipal();
@@ -142,7 +146,12 @@ public class SalirsePartido extends JFrame {
 				SalirsePartido.this.dispose();
 			}
 		});
-		btnVolverMP.setBounds(391, 262, 89, 23);
+		btnVolverMP.setBounds(395, 252, 107, 25);
 		getContentPane().add(btnVolverMP);
+		
+		JLabel lblId = new JLabel("Id :");
+		lblId.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
+		lblId.setBounds(294, 110, 56, 16);
+		getContentPane().add(lblId);
 	}
 }
