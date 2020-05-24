@@ -9,7 +9,8 @@ public class Jugador extends Usuario {
 	private String nombre;
 	private String apellidos;
 	private String fechaNacimiento;
-
+	
+	//Constructor para acceder a metodos para iniciar sesion
 	public Jugador(String corr, String contra) {
 		super(corr, contra);
 		posicionfav = null;
@@ -17,7 +18,8 @@ public class Jugador extends Usuario {
 		apellidos = "";
 		fechaNacimiento = "";
 	}
-
+	
+	//Constructor para introducir todos los datos...Despues llamar a agregarJugador para introducir en BD
 	public Jugador(String corr, String contra, String nick, Demarcacion demarc, String nombr, String apell,
 			String fechaN) {
 		super(corr, contra);
@@ -27,17 +29,18 @@ public class Jugador extends Usuario {
 		fechaNacimiento = fechaN;
 	}
 	
+	//Obtener objeto Jugador de la BD
 	public static Jugador obtenerJugador(String correo) {
 		Object[] ob = bd.Select("Select * From Jugador where correo = '" + correo + "';").get(0);
-		Jugador jug = new Jugador(ob[0].toString(), ob[1].toString(), ob[2].toString(), Demarcacion.valueOf(ob[3].toString()), ob[4].toString(), ob[5].toString(), ob[6].toString());
-		return jug;
+		return new Jugador(ob[0].toString(), ob[1].toString(), ob[2].toString(), Demarcacion.valueOf(ob[3].toString()), ob[4].toString(), ob[5].toString(), ob[6].toString());
 	}
 	
-	public static void agregarJugador(Jugador j) {
+	//Insertar Jugador
+	public void agregarJugador() {
 		String ins = "INSERT INTO Jugador (Jugador.correo, Jugador.contra, Jugador.nick, Jugador.posicionfav, Jugador.nombre, Jugador.apellidos, Jugador.Fecha_nacimiento) VALUES (\""
-				+ j.getCorreo() + "\", \"" + j.getContrasena() + "\", \"" + j.getNick() + "\", \""
-				+ j.getPosicionfav().toString() + "\", \"" + j.getNombre() + "\", \"" + j.getApellidos() + "\", \""
-				+ j.getFechaNacimiento() + "\")";
+				+ super.correo + "\", \"" +super.contrasena + "\", \"" + this.nick + "\", \""
+				+ this.posicionfav.toString() + "\", \"" + this.nombre + "\", \"" + this.apellidos + "\", \""
+				+ this.fechaNacimiento + "\")";
 		bd.Insert(ins);
 	}
 
@@ -67,22 +70,6 @@ public class Jugador extends Usuario {
 
 	public String getFechaNacimiento() {
 		return fechaNacimiento;
-	}
-
-	public void setJugador() {
-		if (datosInicioCorrecto()) {
-			String sel = "SELECT Jugador.nick, Jugador.posicionfav, Jugador.nombre, Jugador.apellidos, Jugador.Fecha_nacimiento FROM Jugador WHERE Jugador.correo =\""
-					+ this.getCorreo() + "\"";
-			List<Object[]> datosJug = bd.Select(sel);
-			Object[] datos = datosJug.get(0);
-			this.nick = datos[0].toString();
-			this.posicionfav = Demarcacion.valueOf(datos[1].toString());
-			this.nombre = datos[2].toString();
-			this.apellidos = datos[3].toString();
-			this.fechaNacimiento = datos[4].toString();
-		} else {
-			throw new BDException("Datos de inicio incorrectos");
-		}
 	}
 
 	public boolean correoRegistrado() {

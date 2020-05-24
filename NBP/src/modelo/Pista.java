@@ -15,15 +15,30 @@ public class Pista {
 	private String ubicacion;
 	private String horainicio;
 	private String horafin;
+	private BD bd;
 	//private int[] diasDisponibles;
-
-	public Pista(JTextField nombre2, JTextField ubicacion2, JTextField horarioApertura, JTextField horarioCierre) {
-		nombre = nombre2.getText();
-		ubicacion = ubicacion2.getText();
-		horainicio = horarioApertura.getText();
-		horafin = horarioCierre.getText();
+	
+	//Construir objeto
+	public Pista(String nombre, String ubi, String horarioApertura, String horarioCierre) {
+		this.nombre = nombre;
+		this.ubicacion = ubi;
+		this.horainicio = horarioApertura;
+		this.horafin = horarioCierre;
 	}
-
+	//Sacar objeto de BD
+	public Pista(String nombre) {
+		Object[] ob = bd.Select("Select * From Jugador where correo = '"+ nombre +"';").get(0);
+		this.nombre = (String) ob[0];
+		this.ubicacion = (String) ob[1];
+		this.horainicio = (String) ob[2];
+		this.horafin = (String) ob[3];
+	}
+	//Metodo para introducir un objeto
+	public void insertarPista() {
+		bd.Insert("INSERT INTO Pista(Nombre, Ubicacion, Hora_inicio, Hora_fin) VALUES"
+				+ " ('"+this.nombre+"','"+this.ubicacion+"','"+this.horainicio+"','"+this.horafin+"')");
+	}
+	
 	public int getId() {
 		return id;
 	}

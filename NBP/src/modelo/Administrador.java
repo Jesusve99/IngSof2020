@@ -3,28 +3,26 @@ package modelo;
 public class Administrador extends Usuario {
 
 	private String ayuntamiento;
-
+	
+	//Constructor para comprobar inicio sesion
 	public Administrador(String corr, String contra) {
 		super(corr, contra);
 		ayuntamiento = "NO DEFINIDO";
 	}
-
+	//Constructor del objeto
 	public Administrador(String corr, String contra, String ayun) {
 		super(corr, contra);
 		ayuntamiento = ayun;
 	}
-
-	public Administrador(String corr) {
+	//Sacar de la BD
+	public static Administrador obtenerAdministrador(String correo) {
 		Object[] ob = bd.Select("Select * From Administrador where correo = '" + correo + "';").get(0);
-		this.correo = ob[0].toString();
-		this.contrasena = ob[1].toString();
-		this.ayuntamiento = ob[2].toString();
+		return new Administrador(ob[0].toString(),ob[1].toString(),ob[2].toString());
 	}
-	
-	public void agregarAdministrador(Administrador admin) {
+	//Insertar a la BD
+	public void agregarAdministrador() {
 		String ins = "INSERT INTO Administrador (Administrador.correo, Administrador.contra, Administrador.ayuntamiento) VALUES (\""
-				+ admin.getCorreo() + "\", \"" + admin.getContrasena() + "\", " + admin.getContrasena() + "\", \""
-				+ admin.getAyuntamiento() + "\")";
+				+ super.correo + "\", \"" + super.contrasena + "\", " + this.ayuntamiento +"\")";
 		bd.Insert(ins);
 	}
 

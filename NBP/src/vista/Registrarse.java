@@ -152,7 +152,6 @@ public class Registrarse extends JFrame {
 				String correobd = "SELECT * FROM Usuario WHERE email = '" + txtCorreo.getText() + "';";
 
 				// String posicion = cmbPosicion.getSelectedItem().toString();
-
 				Demarcacion pos = (Demarcacion) cmbPosicion.getSelectedItem();
 
 				char[] contrasena = jpassContrasena.getPassword();
