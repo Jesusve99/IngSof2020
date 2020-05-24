@@ -17,7 +17,7 @@ public class Partido {
 		this.idAnfitrion = idAnfitrion;
 	}
 	public static void agregarPartido(Partido p) {
-		String ins = "INSERT INTO Partido (Partido.Pista, Partido.Fecha, Partido.Hora, Partido.id_anfitrion) VALUES ("+p.getIdPista()+", ")";
+		String ins = "INSERT INTO Partido (Partido.Pista, Partido.Fecha, Partido.Hora, Partido.id_anfitrion) VALUES ("+p.getIdPista()+", "+")";
 	}
 	
 	public long getCodPartido() {
