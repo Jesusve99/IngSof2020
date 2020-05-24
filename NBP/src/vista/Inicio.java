@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-
+import controlador.ControladorRegistro;
 
 import java.awt.Color;
 import javax.swing.JButton;
@@ -29,6 +29,7 @@ public class Inicio extends JFrame {
 				try {
 					Inicio frame = new Inicio();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -63,8 +64,9 @@ public class Inicio extends JFrame {
 		btnRegistrarse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Registrarse r = new Registrarse();
-				r.setVisible(true);	
+				ControladorRegistro cr = new ControladorRegistro(new Registrarse());
+				cr.setVisible(true);
+				cr.setLocationRelativeTo(null);
 			}
 		});
 		btnRegistrarse.setBounds(132, 141, 159, 45);

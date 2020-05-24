@@ -1,7 +1,5 @@
 package modelo;
 
-import java.util.List;
-
 public class Jugador extends Usuario {
 
 	private String nick;
@@ -13,6 +11,7 @@ public class Jugador extends Usuario {
 	public Jugador(String corr, String contra) {
 		super(corr, contra);
 		posicionfav = null;
+		nick = "";
 		nombre = "";
 		apellidos = "";
 		fechaNacimiento = "";
@@ -21,10 +20,11 @@ public class Jugador extends Usuario {
 	public Jugador(String corr, String contra, String nick, Demarcacion demarc, String nombr, String apell,
 			String fechaN) {
 		super(corr, contra);
-		posicionfav = demarc;
-		nombre = nombr;
-		apellidos = apell;
-		fechaNacimiento = fechaN;
+		this.posicionfav = demarc;
+		this.nick = nick;
+		this.nombre = nombr;
+		this.apellidos = apell;
+		this.fechaNacimiento = fechaN;
 	}
 	
 	public static Jugador obtenerJugador(String correo) {
@@ -35,7 +35,7 @@ public class Jugador extends Usuario {
 	
 	public static void agregarJugador(Jugador j) {
 		String ins = "INSERT INTO Jugador (Jugador.correo, Jugador.contra, Jugador.nick, Jugador.posicionfav, Jugador.nombre, Jugador.apellidos, Jugador.Fecha_nacimiento) VALUES (\""
-				+ j.getCorreo() + "\", \"" + j.getContrasena() + "\", \"" + j.getNick() + "\", \""
+				+ j.getCorreo() + "\", \"" + j.getContrasena() + "\", \"" + j.getNick() +"\", \""
 				+ j.getPosicionfav().toString() + "\", \"" + j.getNombre() + "\", \"" + j.getApellidos() + "\", \""
 				+ j.getFechaNacimiento() + "\")";
 		bd.Insert(ins);
@@ -67,22 +67,6 @@ public class Jugador extends Usuario {
 
 	public String getFechaNacimiento() {
 		return fechaNacimiento;
-	}
-
-	public void setJugador() {
-		if (datosInicioCorrecto()) {
-			String sel = "SELECT Jugador.nick, Jugador.posicionfav, Jugador.nombre, Jugador.apellidos, Jugador.Fecha_nacimiento FROM Jugador WHERE Jugador.correo =\""
-					+ this.getCorreo() + "\"";
-			List<Object[]> datosJug = bd.Select(sel);
-			Object[] datos = datosJug.get(0);
-			this.nick = datos[0].toString();
-			this.posicionfav = Demarcacion.valueOf(datos[1].toString());
-			this.nombre = datos[2].toString();
-			this.apellidos = datos[3].toString();
-			this.fechaNacimiento = datos[4].toString();
-		} else {
-			throw new BDException("Datos de inicio incorrectos");
-		}
 	}
 
 	public boolean correoRegistrado() {

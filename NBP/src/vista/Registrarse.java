@@ -1,56 +1,46 @@
 package vista;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
-import controlador.GestionPista;
-import modelo.BD;
-import modelo.Demarcacion;
-import modelo.Jugador;
-import modelo.Pista;
-
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
+import java.awt.Color;
 import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
-import javax.swing.JComboBox;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
-import java.awt.Color;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+
+import controlador.ControladorRegistro;
 import modelo.BD;
+import modelo.Demarcacion;
 
 public class Registrarse extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txtNombre;
-	private JTextField txtApellidos;
-	private JTextField txtCorreo;
-	private JPasswordField jpassContrasena;
-	private JTextField txtNick;
-	private JTextField txtFechaNac;
+	public JTextField txtNombre;
+	public JTextField txtApellidos;
+	public JTextField txtCorreo;
+	public JPasswordField jpassContrasena;
+	public JTextField txtNick;
+	public JTextField txtFechaNac;
+	public JButton btnRegistrarse;
+	public BD bd = new BD();
+	public JComboBox<Demarcacion> cmbPosicion;
+	public JButton btnVolver;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Registrarse frame = new Registrarse();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		Registrarse v = new Registrarse();
+		ControladorRegistro c = new ControladorRegistro(v);
+		c.setVisible(true);
+		c.setLocationRelativeTo(null);
 	}
 
 	/**
@@ -125,59 +115,16 @@ public class Registrarse extends JFrame {
 		contentPane.add(txtNick);
 		txtNick.setColumns(10);
 
-		final JComboBox cmbPosicion = new JComboBox();
-		// cmbPosicion.setModel(new DefaultComboBoxModel(new String[] {"Portero",
-		// "Defensa", "Centrocampista", "Delantero"}));
-		cmbPosicion.setModel(new DefaultComboBoxModel(Demarcacion.values()));
+		cmbPosicion = new JComboBox<Demarcacion>();
+		cmbPosicion.setModel(new DefaultComboBoxModel<Demarcacion>(Demarcacion.values()));
 		cmbPosicion.setBounds(378, 62, 116, 29);
 		contentPane.add(cmbPosicion);
 
-		JButton btnIniciarSesion = new JButton("Iniciar Sesi\u00F3n");
-		btnIniciarSesion.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				dispose();
-				Iniciarsesion i = new Iniciarsesion();
-				i.setVisible(true);
-			}
-		});
-		btnIniciarSesion.setBounds(113, 211, 126, 38);
-		contentPane.add(btnIniciarSesion);
+		btnVolver = new JButton("Volver");
+		btnVolver.setBounds(113, 211, 126, 38);
+		contentPane.add(btnVolver);
 
-		JButton btnRegistrarse = new JButton("Registrarse");
-		btnRegistrarse.addActionListener(new ActionListener() {
-			@SuppressWarnings("unused")
-			public void actionPerformed(ActionEvent e) {
-
-				BD bd = new BD();
-				String correobd = "SELECT * FROM Usuario WHERE email = '" + txtCorreo.getText() + "';";
-
-				// String posicion = cmbPosicion.getSelectedItem().toString();
-
-				Demarcacion pos = (Demarcacion) cmbPosicion.getSelectedItem();
-
-				char[] contrasena = jpassContrasena.getPassword();
-				String contraFinal = new String(contrasena);
-
-				if (txtCorreo.getText().equals(correobd)) {
-					dispose();
-					JOptionPane.showMessageDialog(null, "Ya existe una cuenta con este correo", "Error al registrarse",
-							JOptionPane.ERROR_MESSAGE);
-					txtCorreo.setText("");
-					txtCorreo.requestFocus();
-
-				} else {
-
-					Jugador j = new Jugador(txtCorreo.getText(), contraFinal, txtNick.getText(), pos,
-							txtNombre.getText(), txtApellidos.getText(), txtFechaNac.getText());
-
-					dispose();
-					JOptionPane.showMessageDialog(null, "Bienvenido a NBP", "Cuenta creada con exito",
-							JOptionPane.INFORMATION_MESSAGE);
-					Iniciarsesion i = new Iniciarsesion();
-					i.setVisible(true);
-				}
-			}
-		});
+		btnRegistrarse = new JButton("Registrarse");
 		btnRegistrarse.setBounds(285, 211, 126, 38);
 		contentPane.add(btnRegistrarse);
 

@@ -14,11 +14,10 @@ public class Administrador extends Usuario {
 		ayuntamiento = ayun;
 	}
 
-	public Administrador(String corr) {
-		Object[] ob = bd.Select("Select * From Administrador where correo = '" + correo + "';").get(0);
-		this.correo = ob[0].toString();
-		this.contrasena = ob[1].toString();
-		this.ayuntamiento = ob[2].toString();
+	public static Administrador obtenerAdministrador(String corr) {
+		Object[] ob = bd.Select("Select * From Administrador where correo = '" + corr + "';").get(0);
+		Administrador admin = new Administrador(ob[0].toString(), ob[1].toString(), ob[2].toString());
+		return admin;
 	}
 	
 	public void agregarAdministrador(Administrador admin) {
@@ -42,16 +41,6 @@ public class Administrador extends Usuario {
 	
 	public void setAyuntamiento(String ayun) {
 		this.ayuntamiento = ayun;
-	}
-	
-	public void setAyuntamiento() {
-		if (datosInicioCorrecto()) {
-			String sel = "SELECT Administrador.ayuntamiento FROM Administrador WHERE Administrador.correo =\""
-					+ this.getCorreo() + "\"";
-			ayuntamiento = bd.SelectEscalar(sel).toString();
-		} else {
-			throw new BDException("Datos de inicio incorrectos");
-		}
 	}
 
 	public boolean correoRegistrado() {

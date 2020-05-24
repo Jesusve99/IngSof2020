@@ -1,5 +1,6 @@
 package controlador;
 
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -67,5 +68,13 @@ public class ControladorInformacionPartido implements ActionListener {
 				+ this.vista.idPartido + " AND Jugador_Partido.estado_solicitud = 1";
 		long count = (long) this.vista.bd.SelectEscalar(sel);
 		return (count == 10);
+	}
+
+	public void setVisible(boolean b) {
+		this.vista.setVisible(b);
+	}
+
+	public void setLocationRelativeTo(Component c) {
+		this.vista.setLocationRelativeTo(c);
 	}
 }
