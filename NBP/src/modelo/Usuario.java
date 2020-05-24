@@ -1,15 +1,18 @@
 package modelo;
 
-import java.util.List;
-
 public abstract class Usuario {
-
 	
-	public Usuario() {
-		//Usuario con Registro Basico
+	protected static BD bd = new BD();
+	protected String correo;
+	protected String contrasena;
+	
+	public Usuario(String corr, String contra) {
+		correo = corr;
+		contrasena = contra;
 	}
-	abstract boolean estaenBD();
 	
-	abstract boolean iniciosesion(String contra);
+	public abstract boolean correoRegistrado();
+	
+	public abstract boolean datosInicioCorrecto();
 	
 }

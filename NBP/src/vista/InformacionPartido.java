@@ -36,7 +36,7 @@ public class InformacionPartido extends JFrame {
 	private JTable tablaJugadores;
 	public int idPartido = 8;
 	private Connection c = null;
-	private int totalJugadores = 0;	
+	private long totalJugadores = 0;
 	private String lugar = "";
 	private String hora = "";
 	public JButton unirsePartido;
@@ -60,10 +60,11 @@ public class InformacionPartido extends JFrame {
 	 * Create the frame.
 	 */
 	public InformacionPartido() {
-
-		// Operaciones con la BD
-		operacionesBD(idPartido);
-		//
+		// Obtenemos los datos:
+		obtenerUbicacionPista(idPartido);
+		totalJugadores(idPartido);
+		obtenerHoraPartido(idPartido);
+		// ---------------------
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 651, 583);
 		contentPane = new JPanel();
@@ -94,7 +95,7 @@ public class InformacionPartido extends JFrame {
 
 		JLabel lugar_1 = new JLabel("Lugar:");
 		panel.add(lugar_1, "2, 2");
-		
+
 		JLabel valorLugar = new JLabel(lugar);
 		panel.add(valorLugar, "4, 2");
 
@@ -108,7 +109,7 @@ public class InformacionPartido extends JFrame {
 		panel.add(totalJugadores_1, "2, 6");
 		JLabel totalJugadoresV = new JLabel();
 		panel.add(totalJugadoresV, "4, 6");
-		totalJugadoresV.setText(Integer.toString(this.totalJugadores));
+		totalJugadoresV.setText(Long.toString(totalJugadores));
 
 		unirsePartido = new JButton("Unirse");
 		unirsePartido.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -135,68 +136,31 @@ public class InformacionPartido extends JFrame {
 		scrollPane_3.setViewportView(tablaJugadores);
 	}
 
-	private void operacionesBD(int id) {
-		try {
-			c = bd.connectToDatabase();
-			obtenerUbicacionPista(id);
-			obtenerHoraPartido(id);
-			this.totalJugadores = totalJugadores(id);
-		} catch (SQLException e) {
-			throw new BDException("Error en las operaciones de obtener informacion del partido: " + e.getMessage());
-		} finally {
-			if (c != null) {
-				try {
-					c.close(); // Cerramos la conexion
-				} catch (SQLException e) {
-					throw new BDException("Error al cerrar la conexion con la BDD.");
-				}
-			}
-		}
-	}
-
 	// SELECT datos de la pista en la que se juega
-	private void obtenerUbicacionPista(int id) throws SQLException {
-		java.sql.Statement pst = null;
-		ResultSet rs = null;
+	private void obtenerUbicacionPista(int id) {
 		String sel = "SELECT Pista.Nombre, Pista.Ubicacion FROM Pista WHERE Pista.cod_pista IN (SELECT Partido.Pista FROM Partido WHERE Partido.cod_partido ="
 				+ id + ")";
-		pst = c.createStatement();
-		rs = pst.executeQuery(sel);
-		if (rs.next()) {
-			lugar = rs.getObject(1).toString() + ". " + rs.getObject(2).toString();
+		List<Object[]> pista = bd.Select(sel);
+		if (pista.size() > 0) {
+			lugar = pista.get(0)[0].toString() + ". " + pista.get(0)[1];
 		}
-		rs.close();
-		pst.close();
 	}
 
 	// SELECT datos de la hora del partido a la que se juega
-	private void obtenerHoraPartido(int id) throws SQLException {
-		java.sql.Statement pst = null;
-		ResultSet rs = null;
+	private void obtenerHoraPartido(int id) {
 		String sel = "SELECT Partido.Hora, Partido.Fecha FROM Partido WHERE Partido.cod_partido =" + id;
-		pst = c.createStatement();
-		rs = pst.executeQuery(sel);
-		if (rs.next()) {
-			hora = rs.getObject(1).toString() + " el " + rs.getObject(2).toString();
+		List<Object[]> horaPart = bd.Select(sel);
+		if (horaPart.size() > 0) {
+			hora = horaPart.get(0)[0].toString() + " el " + horaPart.get(0)[1].toString();
 		}
-		rs.close();
-		pst.close();
 	}
 
 	// COUNT del total de jugadores en el partido buscado
-	private int totalJugadores(int id) throws SQLException {
-		int count = 0;
-		java.sql.Statement pst = null;
-		ResultSet rs = null;
+	private long totalJugadores(int id) {
+		long count = 0;
 		String sel = "SELECT COUNT(Jugador.correo) FROM Jugador WHERE Jugador.correo IN (SELECT Jugador_Partido.ID_jug FROM Jugador_Partido WHERE Jugador_Partido.partido ="
 				+ id + " AND Jugador_Partido.estado_solicitud = 1)";
-		pst = c.createStatement();
-		rs = pst.executeQuery(sel);
-		if (rs.next()) {
-			count = rs.getInt(1);
-		}
-		rs.close();
-		pst.close(); // Cerramos recursos
+		count = (long) bd.SelectEscalar(sel);
 		return count;
 	}
 
