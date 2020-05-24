@@ -35,7 +35,7 @@ public class Jugador extends Usuario {
 	}
 	
 	//Registro Completo
-	public Jugador(String correo,String contra, String nick, /*Demarcacion posicionfav,*/ String nombre, String apellidos, String fechaNacimiento) {
+	public Jugador(String correo,String contra, String nick, Demarcacion posicionfav, String nombre, String apellidos, String fechaNacimiento) {
 		baseDatos.Insert("INSERT INTO Jugador(correo, contra, nick, posicionfav, nombre, apellidos, Fecha_nacimiento) VALUES ('"+correo+"','"+contra+"','"+nick+"','"+posicionfav+"','"+nombre+"','"+apellidos+"','"+fechaNacimiento+"');");
 	}
 
