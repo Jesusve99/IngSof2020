@@ -133,15 +133,17 @@ public class CrearPista extends JFrame {
 		Pista pista = new Pista(nombre, ubicacion, horarioApertura, horarioCierre);
 		GestionPista gP = new GestionPista();
 		gP.obtenerPista(pista);
+		
 		//Redirigir a Menu
 		dispose();
-		MenuAdministrador mad = new MenuAdministrador();
+		JOptionPane.showMessageDialog(null, "Pista creada con exito","creacion de pista completada",JOptionPane.INFORMATION_MESSAGE);
+		MenuAdmin mad = new MenuAdmin();
 		mad.setVisible(true);
 	}
 
 	protected void cancelar() {
 		dispose();
-		MenuAdministrador mad = new MenuAdministrador();
+		MenuAdmin mad = new MenuAdmin();
 		mad.setVisible(true);
 	}
 }
