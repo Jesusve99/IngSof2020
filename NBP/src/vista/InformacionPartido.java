@@ -76,11 +76,13 @@ public class InformacionPartido extends JFrame {
 		scrollPane.setColumnHeaderView(scrollPane_1);
 
 		JPanel panelPartido = new JPanel();
+		panelPartido.setBackground(new Color(204, 255, 255));
 		panelPartido.setBorder(new TitledBorder(null, "Partido:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		scrollPane_1.setViewportView(panelPartido);
 		panelPartido.setLayout(new BoxLayout(panelPartido, BoxLayout.X_AXIS));
 
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(204, 255, 255));
 		panelPartido.add(panel);
 		panel.setLayout(new FormLayout(
 				new ColumnSpec[] { FormSpecs.RELATED_GAP_COLSPEC, FormSpecs.DEFAULT_COLSPEC,
