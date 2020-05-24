@@ -18,11 +18,13 @@ public class Partido {
 		this.hora = hora;
 		this.idAnfitrion = idAnfitrion;
 	}
+
 	//Introducir objeto en la BD
-	public void agregarPartido(Partido p) {
+	public void agregarPartido() {
 		String ins = "INSERT INTO Partido (Partido.Pista, Partido.Fecha, Partido.Hora, Partido.id_anfitrion) VALUES "
 				+ "('"+this.idPista+"','"+this.fecha +"','"+this.hora+"','"+this.idAnfitrion+"')";
 	}
+	
 	//Obtener objeto de la BD
 	public static Partido obtenerPartido(long cod) {
 		Object[] ob = bd.Select("Select * From Partido where cod_partido = '" +cod+ "';").get(0);
