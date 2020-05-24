@@ -2,6 +2,7 @@ package vista;
 
 import java.awt.BorderLayout;
 
+
 import modelo.BD;
 import modelo.BDException;
 import modelo.Partido;
@@ -44,6 +45,12 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.Color;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import java.awt.GridLayout;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.FormSpecs;
+import com.jgoodies.forms.layout.RowSpec;
 
 public class CrearPartido extends JFrame {
 	
@@ -116,41 +123,42 @@ public class CrearPartido extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		
-		JLabel lblHoraInicio = new JLabel("Hora de inicio");
-		lblHoraInicio.setBounds(36, 112, 78, 16);
-		lblHoraInicio.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		contentPane.add(lblHoraInicio);
+		contentPane.setLayout(null);
 		
 		JLabel lblCrearPartido = new JLabel("Crear Partido");
-		lblCrearPartido.setBounds(36, 10, 117, 25);
+		lblCrearPartido.setBounds(26, 11, 163, 51);
 		lblCrearPartido.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		contentPane.add(lblCrearPartido);
 		
 		JLabel lblFecha = new JLabel("Fecha");
-		lblFecha.setBounds(36, 83, 34, 16);
+		lblFecha.setBounds(26, 58, 47, 45);
 		lblFecha.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		contentPane.add(lblFecha);
 		
 		textField = new JTextField();
-		textField.setBounds(126, 109, 116, 22);
+		textField.setBounds(114, 69, 106, 25);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
+		JLabel lblHoraInicio = new JLabel("Hora de inicio");
+		lblHoraInicio.setBounds(26, 93, 96, 51);
+		lblHoraInicio.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		contentPane.add(lblHoraInicio);
+		
 		textField_1 = new JTextField();
-		textField_1.setBounds(126, 80, 116, 22);
+		textField_1.setBounds(114, 104, 106, 25);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
 		
 		
 		JLabel lblNewLabel_2 = new JLabel("Pista");
-		lblNewLabel_2.setBounds(36, 48, 27, 16);
+		lblNewLabel_2.setBounds(26, 136, 37, 45);
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		contentPane.add(lblNewLabel_2);
 		
 		textField_2 = new JTextField();
-		textField_2.setBounds(126, 48, 116, 22);
+		textField_2.setBounds(114, 139, 106, 25);
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
 		
@@ -187,6 +195,7 @@ public class CrearPartido extends JFrame {
 			//pst.close();
 			
 			JButton btnCrearPartido = new JButton("Crear Partido");
+			btnCrearPartido.setBounds(330, 208, 96, 45);
 			
 			btnCrearPartido.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -248,12 +257,10 @@ public class CrearPartido extends JFrame {
 				}
 
 			});
-			
-			btnCrearPartido.setBounds(287, 215, 109, 25);
 			contentPane.add(btnCrearPartido);
 			
 			table = new JTable();
-			table.setBounds(410, 52, 0, 0);
+			table.setBounds(241, 55, 185, 109);
 			
 			table.setModel(model);
 			
@@ -284,6 +291,4 @@ public class CrearPartido extends JFrame {
 		MenuAdministrador mad = new MenuAdministrador();
 		mad.setVisible(true);
 	}
-	
-	
 }
