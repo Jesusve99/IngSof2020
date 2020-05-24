@@ -130,7 +130,7 @@ public class CrearPista extends JFrame {
 
 	protected void crearPista(JTextField nombre, JTextField ubicacion, JTextField horarioApertura,
 			JTextField horarioCierre) {
-		Pista pista = new Pista(nombre, ubicacion, horarioApertura, horarioCierre);
+		Pista pista = new Pista(nombre.getText(), ubicacion.getText(), horarioApertura.getText(), horarioCierre.getText());
 		GestionPista gP = new GestionPista();
 		gP.obtenerPista(pista);
 		

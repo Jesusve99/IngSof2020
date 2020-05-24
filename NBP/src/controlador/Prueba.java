@@ -41,6 +41,8 @@ public class Prueba {
 		////COMPROBAR SI SE PUEDE REGISTRAR
 		//Jugador jug = new Jugador("admin@");
 		//System.out.println(jug.estaenBD());
-
+		String a = "";
+		String b = null;
+		System.out.println(a.length());
 	}	
 }

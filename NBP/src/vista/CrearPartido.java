@@ -273,11 +273,11 @@ public class CrearPartido extends JFrame {
 			JButton btnCancelar = new JButton("Cancelar");
 			btnCancelar.setForeground(Color.BLACK);
 			btnCancelar.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent arg0) {
-					cancelar();
+				public void actionPerformed(ActionEvent e) {
+					Pantallaprincipal pp = new Pantallaprincipal();
+					pp.setVisible(true);
+					CrearPartido.this.dispose();
 				}
-				
-				
 			});
 			
 			btnCancelar.setBounds(150, 200, 130, 50);

@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 
 import com.mysql.cj.protocol.Resultset;
 
+import controlador.ControladorIniciarSesion;
 import modelo.Administrador;
 import modelo.BD;
 import modelo.Jugador;
@@ -31,25 +32,19 @@ import java.awt.Font;
 public class Iniciarsesion extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textusuario;
-	private JPasswordField clave;
-	private JButton btnEntrar;
-
+	public JTextField textusuario;
+	public JPasswordField clave;
+	public JButton btnEntrar;
+	public JButton Salir;
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Iniciarsesion frame = new Iniciarsesion();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	/*public static void main(String[] args) {
+		Iniciarsesion is = new Iniciarsesion();
+		ControladorIniciarSesion c = new ControladorIniciarSesion(is);
+		is.setVisible(true);
+		is.setLocationRelativeTo(null);
+	}*/
 
 	/**
 	 * Create the frame.
@@ -85,36 +80,6 @@ public class Iniciarsesion extends JFrame {
 		contentPane.add(btnSalir);
 		
 		btnEntrar = new JButton("Entrar");
-		btnEntrar.addActionListener(new ActionListener() {
-			
-			public void actionPerformed(ActionEvent arg0) {
-				char[] contrasena = clave.getPassword();
-				String clavefinal = new String(contrasena);
-				
-				Administrador ad = new Administrador(textusuario.getText());
-				Jugador jug = new Jugador(textusuario.getText());
-				
-				if(!ad.estaenBD() && !jug.estaenBD()) {//No existe en la BD
-					JOptionPane.showMessageDialog(null, "Usuario o Contrasena incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
-					textusuario.setText("");
-					clave.setText("");
-					textusuario.requestFocus();
-				}else if(jug.iniciosesion(clavefinal)) {
-					dispose();
-					JOptionPane.showMessageDialog(null, "Bienvenido al sistema,Jugador","Ingresaste",JOptionPane.INFORMATION_MESSAGE);
-					Pantallaprincipal p = new Pantallaprincipal();
-					p.setVisible(true);
-				}else if(ad.iniciosesion(clavefinal)){
-					dispose();
-					//JOptionPane.showMessageDialog(null, "Bienvenido al sistema,Administrador","Ingresaste",JOptionPane.INFORMATION_MESSAGE);
-					MenuAdmin mad = new MenuAdmin();
-					mad.setVisible(true);
-					//Es un admin
-				}
-			}
-
-			
-		});
 		btnEntrar.setBounds(223, 197, 128, 30);
 		contentPane.add(btnEntrar);
 		

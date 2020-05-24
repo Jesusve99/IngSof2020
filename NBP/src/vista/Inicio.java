@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controlador.ControladorRegistro;
+import controlador.ControladorIniciarSesion;
 
 import java.awt.Color;
 import javax.swing.JButton;
@@ -53,8 +54,10 @@ public class Inicio extends JFrame {
 		btnIniciarSesin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Iniciarsesion i = new Iniciarsesion();
-				i.setVisible(true);	
+				Iniciarsesion is = new Iniciarsesion();
+				ControladorIniciarSesion c = new ControladorIniciarSesion(is);
+				is.setVisible(true);
+				is.setLocationRelativeTo(null);
 			}
 		});
 		btnIniciarSesin.setBounds(132, 83, 159, 45);
