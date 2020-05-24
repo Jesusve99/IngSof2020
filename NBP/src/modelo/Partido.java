@@ -7,6 +7,10 @@ import java.util.Locale;
 
 import javax.swing.JTextField;
 
+
+import com.mysql.cj.protocol.a.MysqlBinaryValueDecoder;
+import com.mysql.cj.result.LocalTimeValueFactory;
+
 public class Partido {
 	
 	private int idPista;

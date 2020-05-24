@@ -1,45 +1,60 @@
 package modelo;
 
-import java.util.List;
-
 public class Administrador extends Usuario {
-	private BD baseDatos = new BD();
-	private String correo;
-	private String contrasena;
+
 	private String ayuntamiento;
-	
-	public Administrador(String correo, String contrasena,String ayuntamiento) {//Registro Completo
-		baseDatos.Insert("Insert into Administrador (Email, Contrasena, Ayuntamiento) Values ('"+correo+"','"+contrasena+"','"+ayuntamiento+"');");                            
+
+	public Administrador(String corr, String contra) {
+		super(corr, contra);
+		ayuntamiento = "NO DEFINIDO";
 	}
-	
-	public Administrador(String correo) {//Sacar Admin BD
-		try {
-		Object[] ob = baseDatos.Select("Select * From Administrador where correo = '"+ correo +"';").get(0);
-		this.correo = (String) ob[0];
-		this.contrasena = (String) ob[1];
-		this.ayuntamiento = (String) ob[2];
-		}catch (Exception e) {
-			this.correo = "";
-			this.contrasena = "";
-		}
-		
+
+	public Administrador(String corr, String contra, String ayun) {
+		super(corr, contra);
+		ayuntamiento = ayun;
 	}
-	
-	public String getAyuntamiento() {
-		return this.ayuntamiento;
+
+	public static void agregarAdministrador(Administrador admin) {
+		String ins = "INSERT INTO Administrador (Administrador.correo, Administrador.contra, Administrador.ayuntamiento) VALUES (\""
+				+ admin.getCorreo() + "\", \"" + admin.getContrasena() + "\", " + admin.getContrasena() + "\", \""
+				+ admin.getAyuntamiento() + "\")";
+		bd.Insert(ins);
 	}
+
 	public String getCorreo() {
 		return this.correo;
 	}
-	public String getContrasena() {
+
+	private String getContrasena() {
 		return this.contrasena;
 	}
 
-	public boolean estaenBD(){
-		return correo != "" ? true : false;
+	public String getAyuntamiento() {
+		return this.ayuntamiento;
 	}
-	public boolean iniciosesion(String contra) {
-		return contrasena.equals(contra);
+
+	public void setAyuntamiento() {
+		if (datosInicioCorrecto()) {
+			String sel = "SELECT Administrador.ayuntamiento FROM Administrador WHERE Administrador.correo =\""
+					+ this.getCorreo() + "\"";
+			ayuntamiento = bd.SelectEscalar(sel).toString();
+		} else {
+			throw new BDException("Datos de inicio incorrectos");
+		}
+	}
+
+	public boolean correoRegistrado() {
+		String sel = "SELECT COUNT(Administrador.correo) FROM Administrador WHERE Administrador.correo =\""
+				+ this.getCorreo() + "\"";
+		long count = (long) bd.SelectEscalar(sel);
+		return count == 1;
+	}
+
+	public boolean datosInicioCorrecto() {
+		String sel = "SELECT COUNT(Administrador.correo) FROM Administrador WHERE Administrador.correo =\""
+				+ this.getCorreo() + "\" AND Administrador.contra = \"" + this.getContrasena() + "\"";
+		long count = (long) bd.SelectEscalar(sel);
+		return count == 1;
 	}
 
 }

@@ -4,15 +4,14 @@ import java.util.Date;
 import java.util.List;
 
 public class Jugador extends Usuario {
-	private String correo;
-	private String contrasena;
-	private String nick;
-	private Demarcacion posicionfav;
+	
+	
+	
 	private String nombre;
 	private String apellidos;
-	private BD baseDatos = new BD();
+	private String nick;
 	private String fechaNacimiento;
-	
+	private Demarcacion posicionfav;
 	
 	public Jugador(String correo) {//Sacar Jugador bd
 		try {
@@ -37,7 +36,7 @@ public class Jugador extends Usuario {
 	
 	//Registro Completo
 	public Jugador(String correo,String contra, String nick, Demarcacion posicionfav, String nombre, String apellidos, String fechaNacimiento) {
-		baseDatos.Insert("INSERT INTO Jugador(correo,contra, nick, posicionfav, nombre, apellidos, Fecha_nacimiento) VALUES ('"+correo+"','"+contra+"','"+nick+"','"+posicionfav+"','"+nombre+"','"+apellidos+"','"+fechaNacimiento+"');");
+		baseDatos.Insert("INSERT INTO Jugador(correo, contra, nick, posicionfav, nombre, apellidos, Fecha_nacimiento) VALUES ('"+correo+"','"+contra+"','"+nick+"','"+posicionfav+"','"+nombre+"','"+apellidos+"','"+fechaNacimiento+"');");
 	}
 
 	public String getCorreo() {
@@ -76,7 +75,7 @@ public class Jugador extends Usuario {
 	}
 
 	
-	public boolean iniciosesion(String contra) {
+	public boolean inicioSesion(String contra) {
 		return contrasena.equals(contra);
 	}
 
