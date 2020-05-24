@@ -23,6 +23,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.awt.Font;
 
 
 public class SalirsePartido extends JFrame {
@@ -94,12 +95,13 @@ public class SalirsePartido extends JFrame {
 		getContentPane().add(btnGenerarPartidos);
 		
 		textField = new JTextField();
-		textField.setBounds(294, 137, 48, 32);
+		textField.setBounds(355, 109, 117, 25);
 		getContentPane().add(textField);
 		textField.setColumns(10);
 		
-		JLabel lblNewLabel = new JLabel("<html>Introduzca el ID del partido del que desea salir : </html>");
-		lblNewLabel.setBounds(307, 74, 162, 50);
+		JLabel lblNewLabel = new JLabel("Partido del que desea salirse");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblNewLabel.setBounds(284, 38, 203, 58);
 		getContentPane().add(lblNewLabel);
 		
 		JButton btnSalirPartido = new JButton("Salir Partido");
@@ -133,10 +135,10 @@ public class SalirsePartido extends JFrame {
 				
 			}
 		});
-		btnSalirPartido.setBounds(368, 137, 117, 32);
+		btnSalirPartido.setBounds(327, 156, 117, 32);
 		getContentPane().add(btnSalirPartido);
 		
-		JButton btnVolverMP = new JButton("Volver");
+		JButton btnVolverMP = new JButton("Menu");
 		btnVolverMP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Pantallaprincipal pp = new Pantallaprincipal();
@@ -144,7 +146,12 @@ public class SalirsePartido extends JFrame {
 				SalirsePartido.this.dispose();
 			}
 		});
-		btnVolverMP.setBounds(325, 229, 117, 32);
+		btnVolverMP.setBounds(395, 252, 107, 25);
 		getContentPane().add(btnVolverMP);
+		
+		JLabel lblId = new JLabel("Id :");
+		lblId.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
+		lblId.setBounds(294, 110, 56, 16);
+		getContentPane().add(lblId);
 	}
 }
