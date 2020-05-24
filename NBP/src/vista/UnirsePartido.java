@@ -112,7 +112,9 @@ public class UnirsePartido extends JFrame{
 					
 					if(rs.first()) {
 						dispose();
-						JOptionPane.showMessageDialog(null, "Bienvenido al partido","Ingresastes",JOptionPane.INFORMATION_MESSAGE);
+						InformacionPartido ip = new InformacionPartido();
+						ip.setVisible(true);						
+						//JOptionPane.showMessageDialog(null, "Bienvenido al partido","Ingresastes",JOptionPane.INFORMATION_MESSAGE);
 						conexion.close();
 					}else {
 						JOptionPane.showMessageDialog(null, "No existe el ID","ERROR",JOptionPane.ERROR_MESSAGE);

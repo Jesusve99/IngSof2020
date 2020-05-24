@@ -55,7 +55,7 @@ public class Pantallaprincipal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				UnirsePartido up = new UnirsePartido();
-				up.setVisible(true);	
+				up.setVisible(true);				
 			}
 		});
 		btnUnirseAPartido.setBounds(163, 92, 153, 37);
