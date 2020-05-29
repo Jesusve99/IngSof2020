@@ -48,8 +48,8 @@ public class InformacionPartido extends JFrame {
 	public static void main(String[] args) {
 		InformacionPartido v = new InformacionPartido();
 		ControladorInformacionPartido c = new ControladorInformacionPartido(v);
-		v.setVisible(true);
-		v.setLocationRelativeTo(null);
+		c.setVisible(true);
+		c.setLocationRelativeTo(null);
 	}
 
 	/**
