@@ -95,7 +95,7 @@ public class SalirsePartido extends JFrame {
 		getContentPane().add(textField);
 		textField.setColumns(10);
 		
-		JLabel lblNewLabel = new JLabel("Partido del que desea salirse");
+		JLabel lblNewLabel = new JLabel("Partido del que desea salir");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblNewLabel.setBounds(284, 38, 203, 58);
 		getContentPane().add(lblNewLabel);

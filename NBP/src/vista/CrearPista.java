@@ -117,6 +117,14 @@ public class CrearPista extends JFrame {
 		lblCrearPista.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblCrearPista.setBounds(40, 13, 162, 32);
 		contentPane.add(lblCrearPista);
+		
+		JLabel lblNewLabel = new JLabel("(hh:mm:ss)");
+		lblNewLabel.setBounds(304, 133, 61, 13);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("(hh:mm:ss)");
+		lblNewLabel_1.setBounds(304, 162, 61, 13);
+		contentPane.add(lblNewLabel_1);
 	}
 
 	protected void crearPista(JTextField nombre, JTextField ubicacion, JTextField horarioApertura,

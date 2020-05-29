@@ -143,22 +143,22 @@ public class CrearPartido extends JFrame {
 		
 		
 		JLabel lblHoraInicio = new JLabel("Hora inicio :");
-		lblHoraInicio.setBounds(26, 90, 96, 51);
+		lblHoraInicio.setBounds(26, 109, 96, 51);
 		lblHoraInicio.setFont(new Font("Tahoma", Font.BOLD, 13));
 		contentPane.add(lblHoraInicio);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(124, 104, 106, 25);
+		textField_1.setBounds(124, 123, 106, 25);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("Pista:");
-		lblNewLabel_2.setBounds(26, 130, 47, 45);
+		lblNewLabel_2.setBounds(26, 157, 47, 45);
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 13));
 		contentPane.add(lblNewLabel_2);
 		
 		textField_2 = new JTextField();
-		textField_2.setBounds(124, 139, 106, 25);
+		textField_2.setBounds(124, 168, 106, 25);
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
 		
@@ -264,7 +264,7 @@ public class CrearPartido extends JFrame {
 			contentPane.add(btnCrearPartido);
 			
 			table = new JTable();
-			table.setBounds(241, 69, 185, 109);
+			table.setBounds(240, 69, 186, 124);
 			
 			table.setModel(model);
 			
@@ -282,6 +282,39 @@ public class CrearPartido extends JFrame {
 			
 			btnCancelar.setBounds(150, 200, 130, 50);
 			contentPane.add(btnCancelar);
+			
+			JLabel lblNewLabel = new JLabel("Nombre");
+			lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 8));
+			lblNewLabel.setBounds(241, 51, 45, 13);
+			contentPane.add(lblNewLabel);
+			
+			JLabel lblNewLabel_1 = new JLabel("C\u00F3digo");
+			lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 8));
+			lblNewLabel_1.setBounds(391, 51, 45, 13);
+			contentPane.add(lblNewLabel_1);
+			
+			JLabel lblNewLabel_3 = new JLabel("Ubicaci\u00F3n");
+			lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 8));
+			lblNewLabel_3.setBounds(279, 51, 45, 13);
+			contentPane.add(lblNewLabel_3);
+			
+			JLabel lblNewLabel_4 = new JLabel("Apertura");
+			lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 8));
+			lblNewLabel_4.setBounds(316, 51, 45, 13);
+			contentPane.add(lblNewLabel_4);
+			
+			JLabel lblNewLabel_5 = new JLabel("Cierre");
+			lblNewLabel_5.setFont(new Font("Tahoma", Font.PLAIN, 8));
+			lblNewLabel_5.setBounds(355, 51, 45, 13);
+			contentPane.add(lblNewLabel_5);
+			
+			JLabel lblNewLabel_6 = new JLabel("hh:mm:ss");
+			lblNewLabel_6.setBounds(124, 148, 67, 13);
+			contentPane.add(lblNewLabel_6);
+			
+			JLabel lblNewLabel_7 = new JLabel("yyyy-mm-dd");
+			lblNewLabel_7.setBounds(124, 100, 70, 13);
+			contentPane.add(lblNewLabel_7);
 			
 			rs.close();
 			pst.close();
