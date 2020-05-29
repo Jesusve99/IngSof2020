@@ -20,7 +20,7 @@ public class Pista {
 		this.estado = true;
 	}
 
-	public Pista(String nombre, String ubi, String horarioApertura, String horarioCierre, Boolean estado, long id) {
+	public Pista(String nombre, String ubi, String horarioApertura, String horarioCierre, long id, Boolean estado) {
 		this.nombre = nombre;
 		this.ubicacion = ubi;
 		this.horaInicio = horarioApertura;
@@ -36,7 +36,7 @@ public class Pista {
 				+ "\"";
 		Object[] ob = bd.Select(sel).get(0);
 		return new Pista(ob[0].toString(), ob[1].toString(), ob[2].toString(), ob[3].toString(),
-				Boolean.parseBoolean(ob[5].toString()), (long) ob[4]);
+				Long.parseLong(ob[4].toString()), Boolean.parseBoolean(ob[5].toString()));
 	}
 
 	// Metodo para introducir un objeto Pista en la BD

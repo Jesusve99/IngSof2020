@@ -7,7 +7,7 @@ public class Partido {
 	private String fecha;
 	private String hora;
 	private String idAnfitrion;
-	private static BD bd;
+	private static BD bd = new BD();
 
 	// Construir objeto
 	public Partido(long idPista, String fecha, String hora, String idAnfitrion) {
@@ -29,8 +29,8 @@ public class Partido {
 
 	// Introducir objeto en la BD
 	public void agregarPartido() {
-		String ins = "INSERT INTO Partido (Pista, Fecha, Hora, id_anfitrion) VALUES (" + this.getIdPista() + ",\""
-				+ this.getFecha() + "\", \"" + this.getHora() + "\", \"" + this.getIdAnfitrion() + ")";
+		String ins = "INSERT INTO Partido (Pista, Fecha, Hora, id_anfitrion) VALUES (" + this.getIdPista() + ", \""
+				+ this.getFecha() + "\", \"" + this.getHora() + "\", \"" + this.getIdAnfitrion() + "\")";
 		bd.Insert(ins);
 	}
 
@@ -40,9 +40,8 @@ public class Partido {
 		return new Partido((long) ob[0], (long) ob[1], ob[2].toString(), ob[3].toString(), (String) ob[4].toString());
 	}
 
-	public static int getTotalPartidos() {
-		Object ob = bd.SelectEscalar("SELECT COUNT(cod_partido) FROM Partido");
-		return (int) ob;
+	public static long getTotalPartidos() {
+		return Long.parseLong(bd.SelectEscalar("SELECT COUNT(cod_partido) FROM Partido").toString());
 	}
 	
 	public long getCodPartido() {

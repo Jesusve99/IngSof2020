@@ -5,6 +5,9 @@ import java.text.ParseException;
 
 import org.apache.commons.mail.EmailException;
 
+import modelo.Jugador;
+import modelo.Partido;
+
 public class Prueba {
 
 	public static void main(String[] args) throws EmailException, ParseException {
@@ -25,8 +28,13 @@ public class Prueba {
 		////COMPROBAR SI SE PUEDE REGISTRAR
 		//Jugador jug = new Jugador("admin@");
 		//System.out.println(jug.estaenBD());
-		String a = "";
-		String b = null;
-		System.out.println(a.length());
+////		String a = "";
+////		String b = null;
+//		System.out.println(a.length());
+//		System.out.println(Partido.getTotalPartidos());
+//		Partido p = new Partido(5, "2020-05-29", "17:00:00", "juanma@gmail.com");
+//		p.agregarPartido();
+//		Jugador j = Jugador.obtenerJugador("prueba@prueba.com");
+//		System.out.println(j.getCorreo());
 	}	
 }

@@ -32,7 +32,7 @@ public class Jugador extends Usuario {
 
 	// Obtener objeto Jugador de la BD
 	public static Jugador obtenerJugador(String correo) {
-		Object[] ob = bd.Select("Select * From Jugador where correo = '" + correo + "';").get(0);
+		Object[] ob = bd.Select("Select * From Jugador where correo = \"" + correo + "\"").get(0);
 		return new Jugador(ob[0].toString(), ob[1].toString(), ob[2].toString(), Demarcacion.valueOf(ob[3].toString()),
 				ob[4].toString(), ob[5].toString(), ob[6].toString());
 	}
