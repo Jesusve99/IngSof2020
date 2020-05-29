@@ -72,7 +72,7 @@ public class Partido {
 		this.idAnfitrion = idAnfitrion;
 	}
 
-	// Devuelve TRUE si el anfitrion no ha creado ningún otro partido en ese día, en
+	// Devuelve TRUE si el anfitrion ha creado ningún otro partido en ese día, en
 	// caso contrario devuelve FALSE
 	public boolean anfitrionOtroPartido() {
 		String sel = "SELECT COUNT(Partido.cod_partido) WHERE Partido.Fecha =\"" + this.getFecha()
@@ -82,7 +82,7 @@ public class Partido {
 	}
 
 	// Devuelve TRUE si la pista está sin utilizar en ese dia y hora, en caso
-	// contrario devuelve FALSE.
+	// contrario devuelve FALSE
 	public boolean pistaDisponibleTiempo() {
 		String sel = "SELECT COUNT(Partido.cod_partido) WHERE Partido.Fecha =\"" + this.getFecha()
 				+ "\" AND Partido.Hora =\"" + this.getHora() + "\" AND Partido.Pista =" + this.getIdPista();
