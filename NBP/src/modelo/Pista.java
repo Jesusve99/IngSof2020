@@ -1,53 +1,35 @@
 package modelo;
 
 public class Pista {
-	
-	private int id;
+
+	private long id;
 	private String nombre;
 	private String ubicacion;
-	private String horainicio;
-	private String horafin;
-	private BD bd;
-	//private int[] diasDisponibles;
-	
-	//Construir objeto
+	private String horaInicio;
+	private String horaFin;
+	private boolean estado;
+	private BD bd = new BD();
+	// private int[] diasDisponibles;
+
+	// Construir objeto Pista
 	public Pista(String nombre, String ubi, String horarioApertura, String horarioCierre) {
 		this.nombre = nombre;
 		this.ubicacion = ubi;
-		this.horainicio = horarioApertura;
-		this.horafin = horarioCierre;
+		this.horaInicio = horarioApertura;
+		this.horaFin = horarioCierre;
+		this.estado = true;
 	}
-	//Sacar objeto de BD
-	public Pista(String nombre) {
-		Object[] ob = bd.Select("Select * From Jugador where correo = '"+ nombre +"';").get(0);
-		this.nombre = (String) ob[0];
-		this.ubicacion = (String) ob[1];
-		this.horainicio = (String) ob[2];
-		this.horafin = (String) ob[3];
+
+	// Metodo para introducir un objeto Pista en la BD
+	public void agregarPista() {
+		String sel = "INSERT INTO Pista(Nombre, Ubicacion, Hora_inicio, Hora_fin) VALUES" + " ('" + this.getNombre()
+				+ "','" + this.getUbicacion() + "','" + this.getHoraInicio() + "','" + this.getHoraFin() + "')";
+		bd.Insert(sel);
 	}
-	//Metodo para introducir un objeto
-	public void insertarPista() {
-		bd.Insert("INSERT INTO Pista(Nombre, Ubicacion, Hora_inicio, Hora_fin) VALUES"
-				+ " ('"+this.nombre+"','"+this.ubicacion+"','"+this.horainicio+"','"+this.horafin+"')");
-	}
-	
-	public int getId() {
+
+	public long getId() {
 		return id;
 	}
-
-	/*public int getDiasDisponibles() {
-		int dias;
-		StringBuilder sb = new StringBuilder();
-		for(int i=0; i<diasDisponibles.length; i++) {
-			sb.append(diasDisponibles[i]);
-		}
-		dias = Integer.parseInt(sb.toString());
-		return dias;
-	}*/
-
-	/*public void setDiasDisponibles(int[] diasDisponibles) {
-		this.diasDisponibles = diasDisponibles;
-	}*/
 
 	public String getNombre() {
 		return nombre;
@@ -61,24 +43,59 @@ public class Pista {
 		return ubicacion;
 	}
 
+	public boolean getEstado() {
+		return estado;
+	}
+
+	public String getHoraFin() {
+		return horaFin;
+	}
+
 	public void setUbicacion(String ubicacion) {
 		this.ubicacion = ubicacion;
 	}
 
-	public String getHorainicio() {
-		return horainicio;
+	public String getHoraInicio() {
+		return horaInicio;
 	}
 
 	public void setHorainicio(String horainicio) {
-		this.horainicio = horainicio;
-	}
-
-	public String getHorafin() {
-		return horafin;
+		this.horaInicio = horainicio;
 	}
 
 	public void setHorafin(String horafin) {
-		this.horafin = horafin;
+		this.horaFin = horafin;
 	}
-	
+
+	public void deshabilitarPista() {
+		this.estado = false;
+	}
+
+	public void habilitarPista() {
+		this.estado = true;
+	}
+
+	// Actualiza el estado en la BD
+	public void actualizarEstado() {
+		String up = "UPDATE Pista SET Pista.estado =" + this.getEstado() + "WHERE Pista.cod_pista =" + this.getId();
+		bd.Update(up);
+	}
+
+	// Elimina la pista de la BD
+	public void eliminarPista() {
+		String del = "DELETE FROM Pista WHERE Pista.cod_pista =" + this.getId();
+		bd.Delete(del);
+	}
+
+	// Devuelve TRUE si existe una pista que se va a crear identica a una creada en
+	// la BD, en caso contrario devuelve FALSE
+	public boolean existePistaEnBD() {
+		String sel = "SELECT COUNT(Pista.cod_pista) WHERE Pista.Nombre =\"" + this.getNombre()
+				+ "\" AND Pista.Ubicacion =\"" + this.getUbicacion() + "\"AND Pista.Hora_inicio =\""
+				+ this.getHoraInicio() + "\" AND Pista.Hora_fin =\"" + this.getHoraFin() + "\" AND Pista.Hora_fin =\""
+				+ this.getHoraFin() + "\"";
+		long cnt = (long) bd.SelectEscalar(sel);
+		return cnt == 1;
+	}
+
 }
