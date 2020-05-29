@@ -73,7 +73,8 @@ public class Iniciarsesion extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
 				Inicio ini = new Inicio();
-				ini.setVisible(true);	
+				ini.setVisible(true);
+				ini.setLocationRelativeTo(null);
 			}
 		});
 		btnSalir.setBounds(60, 197, 128, 31);
