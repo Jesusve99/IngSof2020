@@ -11,7 +11,6 @@ import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 import vista.Pantallaprincipal;
 import vista.SalirsePartido;
-import vista.UnirsePartido;
 
 public class GestionSalirsePartido implements ActionListener {
 	private SalirsePartido vista = new SalirsePartido();

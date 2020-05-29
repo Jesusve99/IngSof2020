@@ -1,23 +1,19 @@
 package vista;
 
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.sql.Connection;
 
-import javax.swing.JFrame;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.JTextField;
 
 import controlador.GestionUnirsePartido;
 import modelo.BD;
-import net.proteanit.sql.DbUtils;
-
-import javax.swing.JScrollPane;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.sql.*;
-import javax.swing.*;
-import java.awt.Color;
-import java.awt.Font;
 
 
 public class UnirsePartido extends JFrame{

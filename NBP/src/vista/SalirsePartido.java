@@ -1,30 +1,19 @@
 package vista;
 
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.sql.Connection;
 
-import javax.swing.JFrame;
-import javax.swing.JTable;
-import javax.swing.JScrollPane;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
-
-import com.mysql.cj.xdevapi.Statement;
 
 import controlador.GestionSalirsePartido;
 import modelo.BD;
-import net.proteanit.sql.DbUtils;
-
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
-import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.awt.event.ActionEvent;
-import java.awt.Color;
-import java.awt.Font;
 
 
 public class SalirsePartido extends JFrame {

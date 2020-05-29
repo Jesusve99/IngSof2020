@@ -14,7 +14,7 @@ import modelo.Demarcacion;
 import modelo.Jugador;
 import modelo.Usuario;
 import vista.Iniciarsesion;
-import vista.Inicio;
+import vista.MenuInicio;
 import vista.Registrarse;
 
 public class ControladorRegistro implements ActionListener {
@@ -71,9 +71,9 @@ public class ControladorRegistro implements ActionListener {
 
 		if (e.getSource() == this.vista.btnVolver) {
 			this.vista.dispose();
-			Inicio in = new Inicio();
-			in.setVisible(true);
-			in.setLocationRelativeTo(null);
+			ControladorMenuInicio cm = new ControladorMenuInicio(new MenuInicio());
+			cm.setVisible(true);
+			cm.setLocationRelativeTo(null);
 		}
 
 	}

@@ -1,25 +1,9 @@
 package controlador;
 
 
-import java.util.Date;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.List;
 
-import org.apache.commons.mail.DefaultAuthenticator;
-import org.apache.commons.mail.Email;
 import org.apache.commons.mail.EmailException;
-import org.apache.commons.mail.SimpleEmail;
-
-import modelo.Administrador;
-import modelo.BD;
-import modelo.Demarcacion;
-import modelo.Jugador;
-import modelo.Usuario;
-import modelo.EnviarCorreo;
-//Correo:ingsoftwarenbp@gmail.com
-//Contraseña:vKa9rl8nd5
 
 public class Prueba {
 

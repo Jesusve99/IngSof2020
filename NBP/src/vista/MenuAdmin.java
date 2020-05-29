@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controlador.ControladorMenuInicio;
+
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -76,8 +79,9 @@ public class MenuAdmin extends JFrame {
 		btnCerrarSesin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Inicio i = new Inicio();
-				i.setVisible(true);
+				ControladorMenuInicio cm = new ControladorMenuInicio(new MenuInicio());
+				cm.setVisible(true);
+				cm.setLocationRelativeTo(null);
 			}
 		});
 		btnCerrarSesin.setBounds(259, 184, 134, 34);

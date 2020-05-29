@@ -1,5 +1,6 @@
 package controlador;
 
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -7,7 +8,6 @@ import javax.swing.JOptionPane;
 
 import modelo.Administrador;
 import modelo.Jugador;
-import vista.InformacionPartido;
 import vista.Iniciarsesion;
 import vista.MenuAdmin;
 import vista.Pantallaprincipal;
@@ -51,5 +51,13 @@ public class ControladorIniciarSesion implements ActionListener {
 				//Es un admin
 			}
 		}
+	}
+	
+	public void setVisible(boolean b) {
+		this.vista.setVisible(b);
+	}
+
+	public void setLocationRelativeTo(Component c) {
+		this.vista.setLocationRelativeTo(c);
 	}
 }
