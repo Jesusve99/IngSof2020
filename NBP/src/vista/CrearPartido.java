@@ -283,6 +283,31 @@ public class CrearPartido extends JFrame {
 			btnCancelar.setBounds(150, 200, 130, 50);
 			contentPane.add(btnCancelar);
 			
+			JLabel lblNewLabel = new JLabel("Nombre");
+			lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 8));
+			lblNewLabel.setBounds(241, 51, 45, 13);
+			contentPane.add(lblNewLabel);
+			
+			JLabel lblNewLabel_1 = new JLabel("C\u00F3digo");
+			lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 8));
+			lblNewLabel_1.setBounds(391, 51, 45, 13);
+			contentPane.add(lblNewLabel_1);
+			
+			JLabel lblNewLabel_3 = new JLabel("Ubicaci\u00F3n");
+			lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 8));
+			lblNewLabel_3.setBounds(279, 51, 45, 13);
+			contentPane.add(lblNewLabel_3);
+			
+			JLabel lblNewLabel_4 = new JLabel("Apertura");
+			lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 8));
+			lblNewLabel_4.setBounds(316, 51, 45, 13);
+			contentPane.add(lblNewLabel_4);
+			
+			JLabel lblNewLabel_5 = new JLabel("Cierre");
+			lblNewLabel_5.setFont(new Font("Tahoma", Font.PLAIN, 8));
+			lblNewLabel_5.setBounds(355, 51, 45, 13);
+			contentPane.add(lblNewLabel_5);
+			
 			rs.close();
 			pst.close();
 			

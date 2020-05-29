@@ -32,6 +32,8 @@ public class Registrarse extends JFrame {
 	public BD bd = new BD();
 	public JComboBox<Demarcacion> cmbPosicion;
 	public JButton btnVolver;
+	private JLabel lblNewLabel;
+	private JLabel lblNewLabel_1;
 
 	/**
 	 * Launch the application.
@@ -137,6 +139,14 @@ public class Registrarse extends JFrame {
 		txtFechaNac.setBounds(379, 139, 116, 28);
 		contentPane.add(txtFechaNac);
 		txtFechaNac.setColumns(10);
+		
+		lblNewLabel = new JLabel("Debe tener una may\u00FAscula y un n\u00FAmero.");
+		lblNewLabel.setBounds(43, 181, 353, 13);
+		contentPane.add(lblNewLabel);
+		
+		lblNewLabel_1 = new JLabel("yyyy-mm-dd");
+		lblNewLabel_1.setBounds(400, 177, 74, 13);
+		contentPane.add(lblNewLabel_1);
 
 	}
 }
