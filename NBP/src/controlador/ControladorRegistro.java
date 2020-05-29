@@ -52,7 +52,6 @@ public class ControladorRegistro implements ActionListener {
 					throw new BDException("Rellena todos los campos. Detectado campos vacios.");
 				}
 				Demarcacion posicionFav = (Demarcacion) this.vista.cmbPosicion.getSelectedItem();
-//				Demarcacion.valueOf(this.vista.cmbPosicion.getSelectedItem().toString());
 				userJug = new Jugador(this.vista.txtCorreo.getText(),
 						new String(this.vista.jpassContrasena.getPassword()), this.vista.txtNick.getText(), posicionFav,
 						this.vista.txtNombre.getText(), this.vista.txtApellidos.getText(),
@@ -95,7 +94,7 @@ public class ControladorRegistro implements ActionListener {
 	}
 
 	public boolean contrasenaValida() {
-		Pattern pattern = Pattern.compile("^(?=\\w*\\d)(?=\\w*[A-Z])(?=\\w*[a-z])\\S{8,16}$");
+		Pattern pattern = Pattern.compile("^(?=\\w*\\d)(?=\\w*[A-Z])(?=\\w*[a-z])\\S{6,20}$");
 		Matcher mather = pattern.matcher(new String(this.vista.jpassContrasena.getPassword()));
 		return mather.find();
 	}
