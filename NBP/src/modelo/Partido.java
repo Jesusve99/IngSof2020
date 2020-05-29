@@ -40,6 +40,11 @@ public class Partido {
 		return new Partido((long) ob[0], (long) ob[1], ob[2].toString(), ob[3].toString(), (String) ob[4].toString());
 	}
 
+	public static int getTotalPartidos() {
+		Object ob = bd.SelectEscalar("SELECT COUNT(cod_partido) FROM Partido");
+		return (int) ob;
+	}
+	
 	public long getCodPartido() {
 		return this.codPartido;
 	}
