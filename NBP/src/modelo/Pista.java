@@ -8,7 +8,7 @@ public class Pista {
 	private String horaInicio;
 	private String horaFin;
 	private boolean estado;
-	private BD bd = new BD();
+	private static BD bd = new BD();
 	// private int[] diasDisponibles;
 
 	// Construir objeto Pista
@@ -18,6 +18,25 @@ public class Pista {
 		this.horaInicio = horarioApertura;
 		this.horaFin = horarioCierre;
 		this.estado = true;
+	}
+
+	public Pista(String nombre, String ubi, String horarioApertura, String horarioCierre, Boolean estado, long id) {
+		this.nombre = nombre;
+		this.ubicacion = ubi;
+		this.horaInicio = horarioApertura;
+		this.horaFin = horarioCierre;
+		this.estado = estado;
+		this.id = id;
+	}
+
+	// Metodo con el que podremos crear una Pista obteniendo todos los datos
+	// actualizados de la BD
+	public static Pista obtenerPista(String nombre, String ubicacion) {
+		String sel = "SELECT * FROM Pista WHERE Pista.Nombre =\"" + nombre + "\" AND Pista.Ubicacion =\"" + ubicacion
+				+ "\"";
+		Object[] ob = bd.Select(sel).get(0);
+		return new Pista(ob[0].toString(), ob[1].toString(), ob[2].toString(), ob[3].toString(),
+				Boolean.parseBoolean(ob[5].toString()), (long) ob[4]);
 	}
 
 	// Metodo para introducir un objeto Pista en la BD
