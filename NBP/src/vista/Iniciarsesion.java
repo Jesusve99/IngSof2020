@@ -13,6 +13,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import controlador.ControladorMenuInicio;
+
 public class Iniciarsesion extends JFrame {
 
 	private JPanel contentPane;
@@ -56,9 +58,9 @@ public class Iniciarsesion extends JFrame {
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
-				MenuInicio ini = new MenuInicio();
-				ini.setVisible(true);
-				ini.setLocationRelativeTo(null);
+				ControladorMenuInicio cm = new ControladorMenuInicio(new MenuInicio());
+				cm.setVisible(true);
+				cm.setLocationRelativeTo(null);
 			}
 		});
 		btnSalir.setBounds(60, 197, 128, 31);
