@@ -23,7 +23,6 @@ public class TestPartido {
 
 	@Test
 	public void agregarPartido() {
-		System.out.println(pistaPrueba.getId());
 		Partido p = new Partido(pistaPrueba.getId(), "2020-05-29", "17:00:00", jugadorPrueba.getCorreo());
 		long totalPartidos = Partido.getTotalPartidos();
 		p.agregarPartido();

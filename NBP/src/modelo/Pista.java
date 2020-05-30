@@ -38,6 +38,11 @@ public class Pista {
 		return new Pista(ob[0].toString(), ob[1].toString(), ob[2].toString(), ob[3].toString(),
 				Long.parseLong(ob[4].toString()), Boolean.parseBoolean(ob[5].toString()));
 	}
+	
+	//Metodo que devuelve el total de pistas que hay en la BD
+	public static long getTotalPistas() {
+		return Long.parseLong(bd.SelectEscalar("SELECT COUNT(cod_pista) FROM Pista").toString());
+	}
 
 	// Metodo para introducir un objeto Pista en la BD
 	public void agregarPista() {
