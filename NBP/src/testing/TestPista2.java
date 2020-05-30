@@ -40,20 +40,26 @@ public class TestPista2 {
 		assertEquals(totalPistas + 1, Pista.getTotalPistas());
 	}*/
 	
-	/*@Test
+	@Test
 	public void actualizarEstado() {
-		System.out.println(pistaPrueba.getEstado());
+		pistaPrueba.deshabilitarPista();
+		pistaPrueba.actualizarEstado();
 		assertFalse(pistaPrueba.getEstado());
 		
-	}*/
+		pistaPrueba.habilitarPista();
+		pistaPrueba.actualizarEstado();
+		assertTrue(pistaPrueba.getEstado());
+	}
 	
 	
 	//************FUNCIONA***************
 	@Test
 	public void existePistaEnBD(){
-		Pista p = new Pista("pista", "pista", "13:00:00", "17:00:00");
+		//p = pistaNoExistente
+		Pista p = new Pista("peta", "zeta", "11:00:00", "20:00:00");
 		
-		assertTrue(p.existePistaEnBD());
+		assertTrue(pistaPrueba.existePistaEnBD());
+		assertFalse(p.existePistaEnBD());
 	}
 	
 }

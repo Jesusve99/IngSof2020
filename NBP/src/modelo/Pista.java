@@ -101,7 +101,7 @@ public class Pista {
 
 	// Actualiza el estado en la BD
 	public void actualizarEstado() {
-		String up = "UPDATE Pista SET Pista.estado = \"" + !this.getEstado() + "\" WHERE Pista.cod_pista = \"" + this.getId()+"\"";
+		String up = "UPDATE Pista SET Pista.estado = \"" + this.getEstado() + "\" WHERE Pista.cod_pista = \"" + this.getId()+"\"";
 		bd.Update(up);
 	}
 
