@@ -136,7 +136,7 @@ public class CrearPista extends JFrame {
 		//Redirigir a Menu
 		dispose();
 		JOptionPane.showMessageDialog(null, "Pista creada con exito","creacion de pista completada",JOptionPane.INFORMATION_MESSAGE);
-		ListaPista l = new ListaPista();;
+		ListaPista l = new ListaPista();
 		l.setVisible(true);
 	}
 
