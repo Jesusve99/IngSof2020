@@ -26,7 +26,6 @@ public class TestAdministrador {
 		assertEquals(numAdministradoresPrincipio+1, numAdministradorPostAgregacion);
 		//Prueba de que no agrega Administrradores con correo a NULL
 		Administrador adminIncorrecto = new Administrador(null, "");
-		System.out.println(adminIncorrecto.getCorreo());
 		assertFalse(adminIncorrecto.agregarAdministrador());
 	}
 	
