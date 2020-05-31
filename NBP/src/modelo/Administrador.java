@@ -3,6 +3,7 @@ package modelo;
 public class Administrador extends Usuario {
 
 	private String ayuntamiento;
+	private static BD bd = new BD();
 	
 	//Constructor para comprobar inicio sesion
 	public Administrador(String corr, String contra) {
@@ -24,6 +25,15 @@ public class Administrador extends Usuario {
 		String ins = "INSERT INTO Administrador (Administrador.correo, Administrador.contra, Administrador.ayuntamiento) VALUES (\""
 				+ super.correo + "\", \"" + super.contrasena + "\", " + this.ayuntamiento +"\")";
 		bd.Insert(ins);
+	}
+	
+	public static long getTotalAdministrador() {
+		return Long.parseLong(bd.SelectEscalar("SELECT COUNT(correo) FROM Administrador").toString());
+	}
+	
+	public void eliminarAdministrador() {
+		String del = "DELETE FROM Administrador WHERE Administrador.correo = \"" + this.getCorreo()+"\"";
+		bd.Delete(del);
 	}
 
 	public String getCorreo() {
