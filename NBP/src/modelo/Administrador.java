@@ -21,10 +21,18 @@ public class Administrador extends Usuario {
 		return new Administrador(ob[0].toString(),ob[1].toString(),ob[2].toString());
 	}
 	//Insertar a la BD
-	public void agregarAdministrador() {
-		String ins = "INSERT INTO Administrador (Administrador.correo, Administrador.contra, Administrador.ayuntamiento) VALUES (\""
-				+ super.correo + "\", \"" + super.contrasena + "\", " + this.ayuntamiento +"\")";
-		bd.Insert(ins);
+	public boolean agregarAdministrador() {
+		boolean ok ;
+		if(super.correo == null) {
+			ok = false;
+		}else {
+			ok = true;
+			String ins = "INSERT INTO Administrador (Administrador.correo, Administrador.contra, Administrador.ayuntamiento) VALUES (\""
+					+ super.correo + "\", \"" + super.contrasena + "\", \"" + this.ayuntamiento +"\")";
+			bd.Insert(ins);
+		}
+		
+		return ok;
 	}
 	
 	public static long getTotalAdministrador() {
