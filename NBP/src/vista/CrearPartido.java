@@ -274,7 +274,7 @@ public class CrearPartido extends JFrame {
 			btnCancelar.setForeground(Color.BLACK);
 			btnCancelar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Pantallaprincipal pp = new Pantallaprincipal();
+					MenuJugador pp = new MenuJugador();
 					pp.setVisible(true);
 					CrearPartido.this.dispose();
 				}

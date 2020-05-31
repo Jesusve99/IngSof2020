@@ -11,10 +11,10 @@ import modelo.Jugador;
 import vista.Iniciarsesion;
 import vista.MenuAdmin;
 import vista.MenuInicio;
-import vista.Pantallaprincipal;
+import vista.MenuJugador;
 
 public class ControladorIniciarSesion implements ActionListener {
-	
+
 	private Iniciarsesion vista = new Iniciarsesion();
 
 	public ControladorIniciarSesion(Iniciarsesion v) {
@@ -53,9 +53,9 @@ public class ControladorIniciarSesion implements ActionListener {
 					if (jug.datosInicioCorrecto()) {
 
 						this.vista.dispose();
-						Pantallaprincipal p = new Pantallaprincipal();
-						p.setVisible(true);
-						p.setLocationRelativeTo(null);
+						ControladorMenuJugador cmj = new ControladorMenuJugador(new MenuJugador());
+						cmj.setVisible(true);
+						cmj.setLocationRelativeTo(null);
 
 					} else {
 						JOptionPane.showMessageDialog(this.vista,

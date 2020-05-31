@@ -1,5 +1,6 @@
 package controlador;
 
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.PreparedStatement;
@@ -9,7 +10,7 @@ import javax.swing.JOptionPane;
 
 import net.proteanit.sql.DbUtils;
 import vista.InformacionPartido;
-import vista.Pantallaprincipal;
+import vista.MenuJugador;
 import vista.UnirsePartido;
 
 public class GestionUnirsePartido implements ActionListener {
@@ -50,7 +51,7 @@ public class GestionUnirsePartido implements ActionListener {
 	}
 	public void volverMenu() {
 		vista.dispose();
-		Pantallaprincipal p = new Pantallaprincipal();
+		MenuJugador p = new MenuJugador();
 		p.setVisible(true);
 	}
 	
@@ -77,6 +78,14 @@ public class GestionUnirsePartido implements ActionListener {
 			exp.printStackTrace();
 		}
 		
+	}
+	
+	public void setVisible(boolean b) {
+		this.vista.setVisible(b);
+	}
+
+	public void setLocationRelativeTo(Component c) {
+		this.vista.setLocationRelativeTo(c);
 	}
 		
 }

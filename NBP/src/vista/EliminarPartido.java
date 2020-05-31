@@ -101,7 +101,7 @@ public class EliminarPartido extends JFrame {
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
-				Pantallaprincipal p = new Pantallaprincipal();
+				MenuJugador p = new MenuJugador();
 				p.setVisible(true);
 			}
 		});
