@@ -2,8 +2,6 @@ package vista;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,7 +11,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import controlador.ControladorMenuInicio;
+import controlador.ControladorIniciarSesion;
 
 public class Iniciarsesion extends JFrame {
 
@@ -21,16 +19,17 @@ public class Iniciarsesion extends JFrame {
 	public JTextField textusuario;
 	public JPasswordField clave;
 	public JButton btnEntrar;
-	public JButton Salir;
+	public JButton btnVolver;
+
 	/**
 	 * Launch the application.
 	 */
-	/*
-	 * public static void main(String[] args) { Iniciarsesion is = new
-	 * Iniciarsesion(); ControladorIniciarSesion c = new
-	 * ControladorIniciarSesion(is); is.setVisible(true);
-	 * is.setLocationRelativeTo(null); }
-	 */
+	public static void main(String[] args) {
+
+		ControladorIniciarSesion cis = new ControladorIniciarSesion(new Iniciarsesion());
+		cis.setVisible(true);
+		cis.setLocationRelativeTo(null);
+	}
 
 	/**
 	 * Create the frame.
@@ -54,17 +53,9 @@ public class Iniciarsesion extends JFrame {
 		lblCorreo.setBounds(60, 88, 56, 16);
 		contentPane.add(lblCorreo);
 
-		JButton btnSalir = new JButton("Volver");
-		btnSalir.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				dispose();
-				ControladorMenuInicio cm = new ControladorMenuInicio(new MenuInicio());
-				cm.setVisible(true);
-				cm.setLocationRelativeTo(null);
-			}
-		});
-		btnSalir.setBounds(60, 197, 128, 31);
-		contentPane.add(btnSalir);
+		btnVolver = new JButton("Volver");
+		btnVolver.setBounds(60, 197, 128, 31);
+		contentPane.add(btnVolver);
 
 		btnEntrar = new JButton("Entrar");
 		btnEntrar.setBounds(223, 197, 128, 30);

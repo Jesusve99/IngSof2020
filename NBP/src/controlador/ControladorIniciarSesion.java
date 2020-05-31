@@ -10,49 +10,80 @@ import modelo.Administrador;
 import modelo.Jugador;
 import vista.Iniciarsesion;
 import vista.MenuAdmin;
+import vista.MenuInicio;
 import vista.Pantallaprincipal;
 
 public class ControladorIniciarSesion implements ActionListener {
+	
 	private Iniciarsesion vista = new Iniciarsesion();
 
 	public ControladorIniciarSesion(Iniciarsesion v) {
 		this.vista = v;
 		this.vista.btnEntrar.addActionListener(this);
+		this.vista.btnVolver.addActionListener(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("actionperfoemedad");
+
+		/********** Entrar en el servicio de la aplicacion ******************/
+
 		if (e.getSource() == vista.btnEntrar) {
-			System.out.println("action");
-			char[] contrasena = vista.clave.getPassword();
-			String clave = new String(contrasena);
-			
-			Administrador ad = new Administrador(vista.textusuario.getText(),clave);
-			Jugador jug = new Jugador(vista.textusuario.getText(),clave);
-			
-			if(!ad.correoRegistrado() && !jug.correoRegistrado()) {//No existe en la BD
-				System.out.println("niunoniotro");
-				JOptionPane.showMessageDialog(null, "Usuario o Contrasena incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
-				vista.textusuario.setText("");
-				vista.clave.setText("");
-				vista.textusuario.requestFocus();
-			}else if(jug.datosInicioCorrecto()) {
-				System.out.println("jugador");
-				vista.dispose();
-				JOptionPane.showMessageDialog(null, "Bienvenido al sistema,Jugador","Ingresaste",JOptionPane.INFORMATION_MESSAGE);
-				Pantallaprincipal p = new Pantallaprincipal();
-				p.setVisible(true);
-			}else if(ad.datosInicioCorrecto()){
-				System.out.println("admin");
-				vista.dispose();
-				MenuAdmin mad = new MenuAdmin();
-				mad.setVisible(true);
-				//Es un admin
+
+			if ((!this.vista.textusuario.getText().isEmpty())
+					&& (!(new String(this.vista.clave.getPassword()).isEmpty()))) {
+
+				Administrador admin = new Administrador(this.vista.textusuario.getText(),
+						new String(this.vista.clave.getPassword()));
+				Jugador jug = new Jugador(this.vista.textusuario.getText(), new String(this.vista.clave.getPassword()));
+				if (admin.correoRegistrado()) {
+					if (admin.datosInicioCorrecto()) {
+
+						this.vista.dispose();
+						MenuAdmin m = new MenuAdmin();
+						m.setVisible(true);
+						m.setLocationRelativeTo(null);
+
+					} else {
+						JOptionPane.showMessageDialog(this.vista,
+								"Los datos de correo y contraseña no coinciden con los correctos",
+								"Error al Iniciar Sesion", JOptionPane.ERROR_MESSAGE);
+					}
+				} else if (jug.correoRegistrado()) {
+					if (jug.datosInicioCorrecto()) {
+
+						this.vista.dispose();
+						Pantallaprincipal p = new Pantallaprincipal();
+						p.setVisible(true);
+						p.setLocationRelativeTo(null);
+
+					} else {
+						JOptionPane.showMessageDialog(this.vista,
+								"Los datos de correo y contraseña no coinciden con los correctos",
+								"Error al Iniciar Sesion", JOptionPane.ERROR_MESSAGE);
+					}
+				} else {
+					JOptionPane.showMessageDialog(this.vista,
+							"Correo no registrado, intente registrarse en la plataforma", "Error al Iniciar Sesion",
+							JOptionPane.ERROR_MESSAGE);
+				}
+			} else {
+				JOptionPane.showMessageDialog(this.vista, "Rellene ambos campos", "Error al Iniciar Sesion",
+						JOptionPane.ERROR_MESSAGE);
 			}
 		}
+
+		/************ Volver a MenuInicio *********************/
+
+		if (e.getSource() == this.vista.btnVolver) {
+			this.vista.dispose();
+			ControladorMenuInicio cm = new ControladorMenuInicio(new MenuInicio());
+			cm.setVisible(true);
+			cm.setLocationRelativeTo(null);
+		}
+
 	}
-	
+
 	public void setVisible(boolean b) {
 		this.vista.setVisible(b);
 	}
