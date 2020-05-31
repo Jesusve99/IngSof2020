@@ -7,9 +7,10 @@ import org.junit.Before;
 import modelo.Administrador;
 import org.junit.jupiter.api.Test;
 
-class TestAdministrador {
+public class TestAdministrador {
 	private Administrador adminPrueba;
 	private Administrador adminNoRegistrado;
+	
 	@Before
 	public void init() {
 		adminPrueba = new Administrador("prueba@gmail.com", "Prueba2000", "Málaga");
