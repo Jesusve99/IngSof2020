@@ -21,7 +21,7 @@ public class GestionPista {
 			con = BD.connectToDatabase();
 			
 			String sql = "INSERT INTO Pista (nombre, ubicacion, Hora_inicio, Hora_fin) VALUES (\""+p.getNombre()+"\",\""+p.getUbicacion()+"\",\""+
-			p.getHorainicio()+"\",\""+p.getHorafin()+"\");";
+			p.getHoraInicio()+"\",\""+p.getHoraFin()+"\");";
 			pst = con.createStatement();
 			//pst = con.prepareStatement(sql);
 			/*pst.setString(1, p.getNombre());
