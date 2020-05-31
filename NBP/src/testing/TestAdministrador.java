@@ -10,6 +10,7 @@ import org.junit.Test;
 public class TestAdministrador {
 	private Administrador adminPrueba;
 	private Administrador adminNoRegistrado;
+	
 	@Before
 	public void init() {
 		adminPrueba = new Administrador("prueba@gmail.com", "Prueba2000", "Málaga");
