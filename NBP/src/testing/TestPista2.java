@@ -18,27 +18,31 @@ public class TestPista2 {
 	public void init() {
 		pistaPrueba = new Pista("pista", "pista", "13:00:00", "17:00:00");
 	}
-
-	/*@Test
-	public void eliminarPista() {
-		long totalPistas = Pista.getTotalPistas();
-		
-		pistaPrueba.eliminarPista();
-
-		assertEquals(totalPistas - 1, Pista.getTotalPistas());
-	}*/
 	
 	
 	//************FUNCIONA***************
-	/*@Test
+	@Test
 	public void agregarPista() {
 		
-		long totalPistas = Pista.getTotalPistas();
+		int totalPistas = (int)Pista.getTotalPistas();
 		
 		pistaPrueba.agregarPista();
 
-		assertEquals(totalPistas + 1, Pista.getTotalPistas());
-	}*/
+		assertEquals(totalPistas + 1, (int)Pista.getTotalPistas());
+		
+		pistaPrueba.eliminarPista(); //Pongo esto para que el eiminar pista no se queje
+	}
+	
+	@Test
+	public void eliminarPista() {
+		
+		pistaPrueba.agregarPista();
+		int totalPistas = (int) Pista.getTotalPistas();
+		
+		pistaPrueba.eliminarPista();
+
+		assertEquals(totalPistas - 1,  (int) Pista.getTotalPistas());
+	}
 	
 	@Test
 	public void actualizarEstado() {
