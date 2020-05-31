@@ -1,40 +1,63 @@
 package controlador;
 
-
 import java.text.ParseException;
 
 import org.apache.commons.mail.EmailException;
 
+import modelo.Administrador;
+import modelo.Demarcacion;
 import modelo.Jugador;
 import modelo.Partido;
+import modelo.Pista;
 
 public class Prueba {
 
 	public static void main(String[] args) throws EmailException, ParseException {
-		////ENVIAR CORREO
-		//EnviarCorreo env = new EnviarCorreo("marialopez57@uma.es");
-		//env.enviar("Tema","Mensaje");	
-		////OBTENER ADMINISTRADOR
-		//Administrador admin = new Administrador("admin@");
-		//System.out.println(admin.estaenBD());
-		//System.out.println(admin.getCorreo()+"  "+admin.getContrasena()+" "+admin.getAyuntamiento());
-		////OBTENER JUGADOR
-		//Jugador jug = new Jugador("admin@");
-		//System.out.println(jug.getCorreo()+" "+jug.getContrasena()+" "+jug.getNick()+" "+jug.getPosicionfav()+" "+jug.getNombre()+" "+jug.getApellidos()+" "+jug.getFechaNacimiento());
-		////INSERTAR BASICO
-		//Jugador jug = new Jugador("primero@","primero");
-		////INSERTAR COMPLETO
-		//Jugador jug = new Jugador("primero@","primero@","nick1",Demarcacion.PORTERO,"nombre1","apellidos1","2002-02-02");
-		////COMPROBAR SI SE PUEDE REGISTRAR
-		//Jugador jug = new Jugador("admin@");
-		//System.out.println(jug.estaenBD());
-////		String a = "";
-////		String b = null;
-//		System.out.println(a.length());
-//		System.out.println(Partido.getTotalPartidos());
-//		Partido p = new Partido(5, "2020-05-29", "17:00:00", "juanma@gmail.com");
-//		p.agregarPartido();
-//		Jugador j = Jugador.obtenerJugador("prueba@prueba.com");
-//		System.out.println(j.getCorreo());
-	}	
+		// Prueba jugador
+		/*
+		 * Jugador j = Jugador.obtenerJugador("juanma@gmail.com");
+		 * System.out.println(j.getNick());
+		 * System.out.println("Existe correo: "+j.correoRegistrado());
+		 * System.out.println("Datos correctos: "+j.datosInicioCorrecto());
+		 */
+		// Prueba administrador
+		/*
+		 * Administrador admin =
+		 * Administrador.obtenerAdministrador("prueba@prueba.com");
+		 * System.out.println(admin.getAyuntamiento());
+		 * System.out.println("Existe correo: "+admin.correoRegistrado());
+		 * System.out.println("Datos correctos: "+admin.datosInicioCorrecto());
+		 */
+		// Prueba Pista
+/*
+		Pista pista = new Pista("prueba", "prueba", "10:00:00", "22:00:00");
+		pista.agregarPista();
+		pista = Pista.obtenerPista("prueba", "prueba");
+		System.out.println(pista.getId());
+		System.out.println("Estado: " + pista.getEstado());
+		pista.deshabilitarPista();
+		pista.actualizarEstado();
+		pista = Pista.obtenerPista("prueba", "prueba");
+		System.out.println("Estado: " + pista.getEstado());
+		System.out.println("Existe en BD: "+pista.existePistaEnBD());
+		pista.eliminarPista();
+		System.out.println("Existe en BD: "+pista.existePistaEnBD());
+*/
+		//Prueba Partido
+/*
+		Jugador j = new Jugador("prueba@prueba.es", "contra", "Prueba", Demarcacion.valueOf("DELANTERO"), "prueba", "prueba", "2000-09-02");
+		j.agregarJugador();
+		Pista pista = new Pista("prueba", "prueba", "10:00:00", "22:00:00");
+		pista.agregarPista();
+		pista = Pista.obtenerPista(pista.getNombre(), pista.getUbicacion());
+		Partido p = new Partido(pista.getId(), "2020-05-06", "17:00:00", j.getCorreo());
+		System.out.println("Anfitrion otro? "+p.anfitrionOtroPartido());
+		System.out.println("Disponible? "+p.pistaDisponibleTiempo());
+		p.agregarPartido();
+		System.out.println("Anfitrion otro? "+p.anfitrionOtroPartido());
+		System.out.println("Disponible? "+p.pistaDisponibleTiempo());
+		p.eliminarPartido();
+		pista.eliminarPista();
+*/
+	}
 }

@@ -101,7 +101,7 @@ public class Pista {
 
 	// Actualiza el estado en la BD
 	public void actualizarEstado() {
-		String up = "UPDATE Pista SET Pista.estado = \"" + this.getEstado() + "\" WHERE Pista.cod_pista = \"" + this.getId()+"\"";
+		String up = "UPDATE Pista SET Pista.estado = \"" + (this.getEstado() ? 1 : 0)+ "\" WHERE Pista.cod_pista = \"" + this.getId()+"\"";
 		bd.Update(up);
 	}
 
@@ -115,8 +115,7 @@ public class Pista {
 	// la BD, en caso contrario devuelve FALSE
 	public boolean existePistaEnBD() {
 		String sel = "SELECT COUNT(Pista.cod_pista) FROM Pista WHERE Pista.Nombre =\"" + this.getNombre()
-				+ "\" AND Pista.Ubicacion =\"" + this.getUbicacion() + "\"AND Pista.Hora_inicio =\""
-				+ this.getHoraInicio() + "\" AND Pista.Hora_fin =\"" + this.getHoraFin() + "\"";
+				+ "\" AND Pista.Ubicacion =\""+this.getUbicacion()+ "\"";
 		long cnt = (long) bd.SelectEscalar(sel);
 		return cnt == 1;
 	}

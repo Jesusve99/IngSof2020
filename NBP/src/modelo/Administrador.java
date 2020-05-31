@@ -4,43 +4,46 @@ public class Administrador extends Usuario {
 
 	private String ayuntamiento;
 	private static BD bd = new BD();
-	
-	//Constructor para comprobar inicio sesion
+
+	// Constructor para comprobar inicio sesion
 	public Administrador(String corr, String contra) {
 		super(corr, contra);
 		ayuntamiento = "NO DEFINIDO";
 	}
-	//Constructor del objeto
+
+	// Constructor del objeto
 	public Administrador(String corr, String contra, String ayun) {
 		super(corr, contra);
 		ayuntamiento = ayun;
 	}
-	//Sacar de la BD
+
+	// Sacar de la BD
 	public static Administrador obtenerAdministrador(String correo) {
 		Object[] ob = bd.Select("Select * From Administrador where correo = '" + correo + "';").get(0);
-		return new Administrador(ob[0].toString(),ob[1].toString(),ob[2].toString());
+		return new Administrador(ob[0].toString(), ob[1].toString(), ob[2].toString());
 	}
-	//Insertar a la BD
+
+	// Insertar a la BD
 	public boolean agregarAdministrador() {
-		boolean ok ;
-		if(super.correo == null) {
+		boolean ok;
+		if (super.correo == null) {
 			ok = false;
-		}else {
+		} else {
 			ok = true;
 			String ins = "INSERT INTO Administrador (Administrador.correo, Administrador.contra, Administrador.ayuntamiento) VALUES (\""
-					+ super.correo + "\", \"" + super.contrasena + "\", \"" + this.ayuntamiento +"\")";
+					+ super.correo + "\", \"" + super.contrasena + "\", \"" + this.ayuntamiento + "\")";
 			bd.Insert(ins);
 		}
-		
+
 		return ok;
 	}
-	
+
 	public static long getTotalAdministrador() {
 		return Long.parseLong(bd.SelectEscalar("SELECT COUNT(correo) FROM Administrador").toString());
 	}
-	
+
 	public void eliminarAdministrador() {
-		String del = "DELETE FROM Administrador WHERE Administrador.correo = \"" + this.getCorreo()+"\"";
+		String del = "DELETE FROM Administrador WHERE Administrador.correo = \"" + this.getCorreo() + "\"";
 		bd.Delete(del);
 	}
 
@@ -55,7 +58,7 @@ public class Administrador extends Usuario {
 	public String getAyuntamiento() {
 		return this.ayuntamiento;
 	}
-	
+
 	public void setAyuntamiento(String ayun) {
 		this.ayuntamiento = ayun;
 	}

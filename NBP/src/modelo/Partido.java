@@ -33,7 +33,7 @@ public class Partido {
 				+ this.getFecha() + "\", \"" + this.getHora() + "\", \"" + this.getIdAnfitrion() + "\")";
 		bd.Insert(ins);
 	}
-	
+
 	public void eliminarPartido() {
 		String sql = "DELETE FROM Partido WHERE cod_partido = " + this.getCodPartido();
 		bd.Delete(sql);
@@ -48,7 +48,7 @@ public class Partido {
 	public static long getTotalPartidos() {
 		return Long.parseLong(bd.SelectEscalar("SELECT COUNT(cod_partido) FROM Partido").toString());
 	}
-	
+
 	public long getCodPartido() {
 		return this.codPartido;
 	}
@@ -81,20 +81,20 @@ public class Partido {
 		this.idAnfitrion = idAnfitrion;
 	}
 
-	// Devuelve TRUE si el anfitrion ha creado ningún otro partido en ese día, en
+	// Devuelve TRUE si el anfitrion ha creado otro partido en ese día, en
 	// caso contrario devuelve FALSE
 	public boolean anfitrionOtroPartido() {
 		String sel = "SELECT COUNT(cod_partido) FROM Partido WHERE Fecha =\"" + this.getFecha()
 				+ "\" AND id_anfitrion =\"" + this.getIdAnfitrion() + "\"";
 		long cnt = (long) bd.SelectEscalar(sel);
-		return cnt == 0;
+		return cnt == 1;
 	}
 
 	// Devuelve TRUE si la pista está sin utilizar en ese dia y hora, en caso
 	// contrario devuelve FALSE
 	public boolean pistaDisponibleTiempo() {
-		String sel = "SELECT COUNT(cod_partido) FROM Partido WHERE Fecha =\"" + this.getFecha()
-				+ "\" AND Hora =\"" + this.getHora() + "\" AND Pista =" + this.getIdPista();
+		String sel = "SELECT COUNT(cod_partido) FROM Partido WHERE Fecha =\"" + this.getFecha() + "\" AND Hora =\""
+				+ this.getHora() + "\" AND Pista =" + this.getIdPista();
 		long cnt = (long) bd.SelectEscalar(sel);
 		return cnt == 0;
 	}
