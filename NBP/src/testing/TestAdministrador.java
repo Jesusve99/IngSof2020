@@ -17,7 +17,7 @@ class TestAdministrador {
 	}
 	
 	@Test
-	void testAgregarAdministrador() {
+	public void testAgregarAdministrador() {
 		//Prueba de que agrega bien el Administrador 
 		int numAdministradoresPrincipio = (int) Administrador.getTotalAdministrador();
 		adminPrueba.agregarAdministrador();
@@ -30,7 +30,7 @@ class TestAdministrador {
 	}
 	
 	@Test
-	void testCorreoRegistrado() {
+	public void testCorreoRegistrado() {
 		//Comprobamos que el correo que esta registrado con un correo ya agregado
 		adminPrueba.agregarAdministrador();
 		assertTrue(adminPrueba.correoRegistrado());
@@ -41,7 +41,7 @@ class TestAdministrador {
 	
 	
 	@Test
-	void testInicioCorrecto() {
+	public void testInicioCorrecto() {
 		//Comprobamos que los datos esta registrado con un Administrador ya agregado
 		adminPrueba.agregarAdministrador();
 		assertTrue(adminPrueba.datosInicioCorrecto());
@@ -51,7 +51,7 @@ class TestAdministrador {
 	}
 	
 	@Test
-	void testEliminarAdministrador() {
+	public void testEliminarAdministrador() {
 		adminPrueba.agregarAdministrador();
 		int numAdministradores = (int) Administrador.getTotalAdministrador();
 		adminPrueba.eliminarAdministrador();
