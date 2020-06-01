@@ -2,6 +2,7 @@ package testing;
 
 import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -12,6 +13,7 @@ import modelo.Jugador;
 public class TestJugador {
 
 	private Jugador j;
+	private Jugador jugador;
 	
 	@Before
 	public void init() {
@@ -28,6 +30,12 @@ public class TestJugador {
 	@Test
 	public void testCorreoRegistrado() {
 		assertTrue(j.correoRegistrado());
+	}
+	
+	@Test
+	public void testObtenerJugador() {
+		assertEquals(Jugador.obtenerJugador("holi@uma.es"),j);
+		
 	}
 	
 	@Test
