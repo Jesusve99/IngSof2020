@@ -13,7 +13,6 @@ import modelo.Jugador;
 public class TestJugador {
 
 	private Jugador j;
-	private Jugador jugador;
 	
 	@Before
 	public void init() {
@@ -34,7 +33,7 @@ public class TestJugador {
 	
 	@Test
 	public void testObtenerJugador() {
-		assertEquals(Jugador.obtenerJugador("holi@uma.es"),j);
+		assertEquals(Jugador.obtenerJugador("holi@uma.es").getCorreo(),j.getCorreo());
 		
 	}
 	
