@@ -85,7 +85,7 @@ public class ListaPista extends JFrame {
 		btnMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				MenuAdmin m = new MenuAdmin();
+				MenuAdministrador m = new MenuAdministrador();
 				m.setVisible(true);
 			}
 		});

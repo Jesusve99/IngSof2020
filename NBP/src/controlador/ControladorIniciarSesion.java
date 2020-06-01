@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 import modelo.Administrador;
 import modelo.Jugador;
 import vista.Iniciarsesion;
-import vista.MenuAdmin;
+import vista.MenuAdministrador;
 import vista.MenuInicio;
 import vista.MenuJugador;
 
@@ -40,7 +40,7 @@ public class ControladorIniciarSesion implements ActionListener {
 					if (admin.datosInicioCorrecto()) {
 
 						this.vista.dispose();
-						MenuAdmin m = new MenuAdmin();
+						MenuAdministrador m = new MenuAdministrador();
 						m.setVisible(true);
 						m.setLocationRelativeTo(null);
 
