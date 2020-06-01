@@ -43,7 +43,7 @@ public class TestJugador {
 	}
 	
 	@Test
-	public void testEliminarAdministrador() {
+	public void testEliminarJugador() {
 		int numJugadores = (int) Jugador.getTotalJugadores();
 		j.eliminarJugador();
 		assertEquals(numJugadores-1, Jugador.getTotalJugadores());
