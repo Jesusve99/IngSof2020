@@ -17,7 +17,6 @@ public class MenuInicio extends JFrame {
 	public JButton btnIniciarSesion;
 	public JButton btnRegistrarse;
 	public JButton btnSalir;
-
 	/**
 	 * Launch the application.
 	 */

@@ -41,6 +41,7 @@ public class ControladorIniciarSesion implements ActionListener {
 
 						this.vista.dispose();
 						ControladorMenuAdministrador cma = new ControladorMenuAdministrador(new MenuAdministrador());
+						cma.setAdministrador(Administrador.obtenerAdministrador(admin.getCorreo()));
 						cma.setVisible(true);
 						cma.setLocationRelativeTo(null);
 
@@ -54,6 +55,7 @@ public class ControladorIniciarSesion implements ActionListener {
 
 						this.vista.dispose();
 						ControladorMenuJugador cmj = new ControladorMenuJugador(new MenuJugador());
+						cmj.setJugador(Jugador.obtenerJugador(jug.getCorreo()));
 						cmj.setVisible(true);
 						cmj.setLocationRelativeTo(null);
 
@@ -91,4 +93,5 @@ public class ControladorIniciarSesion implements ActionListener {
 	public void setLocationRelativeTo(Component c) {
 		this.vista.setLocationRelativeTo(c);
 	}
+
 }

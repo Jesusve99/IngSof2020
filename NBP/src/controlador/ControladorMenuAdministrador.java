@@ -4,6 +4,7 @@ import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import modelo.Administrador;
 import vista.CrearPista;
 import vista.EliminarPista;
 import vista.ListaPista;
@@ -58,6 +59,10 @@ public class ControladorMenuAdministrador implements ActionListener {
 
 	public void setLocationRelativeTo(Component c) {
 		this.vista.setLocationRelativeTo(c);
+	}
+
+	public void setAdministrador(Administrador admin) {
+		this.vista.administrador = admin;
 	}
 
 }

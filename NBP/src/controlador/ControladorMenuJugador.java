@@ -4,6 +4,7 @@ import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import modelo.Jugador;
 import vista.CrearPartido;
 import vista.MenuInicio;
 import vista.MenuJugador;
@@ -31,11 +32,10 @@ public class ControladorMenuJugador implements ActionListener {
 		if (e.getSource() == this.vista.btnUnirseAPartido) {
 
 			this.vista.dispose();
-			UnirsePartido up = new UnirsePartido();
-			GestionUnirsePartido c = new GestionUnirsePartido(up);
-			c.setVisible(true);
-			c.setLocationRelativeTo(null);
-
+			GestionUnirsePartido gup = new GestionUnirsePartido(new UnirsePartido());
+			gup.setJugador(this.vista.getJugador());
+			gup.setVisible(true);
+			gup.setLocationRelativeTo(null);
 		}
 
 		if (e.getSource() == this.vista.btnCrearPartido) {
@@ -77,6 +77,10 @@ public class ControladorMenuJugador implements ActionListener {
 
 	public void setLocationRelativeTo(Component c) {
 		this.vista.setLocationRelativeTo(c);
+	}
+
+	public void setJugador(Jugador j) {
+		this.vista.setJugador(j);
 	}
 
 }

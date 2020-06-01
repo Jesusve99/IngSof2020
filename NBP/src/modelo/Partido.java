@@ -41,8 +41,9 @@ public class Partido {
 
 	// Obtener objeto de la BD
 	public static Partido obtenerPartido(long cod) {
-		Object[] ob = bd.Select("Select * From Partido where cod_partido = '" + cod).get(0);
-		return new Partido((long) ob[0], (long) ob[1], ob[2].toString(), ob[3].toString(), (String) ob[4].toString());
+		Object[] ob = bd.Select("Select * From Partido where cod_partido = " + cod).get(0);
+		return new Partido(Long.parseLong(ob[0].toString()), Long.parseLong(ob[1].toString()), ob[2].toString(),
+				ob[3].toString(), (String) ob[4].toString());
 	}
 
 	public static long getTotalPartidos() {

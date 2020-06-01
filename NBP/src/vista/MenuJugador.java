@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import controlador.ControladorMenuJugador;
+import modelo.Jugador;
 
 public class MenuJugador extends JFrame {
 
@@ -19,14 +19,7 @@ public class MenuJugador extends JFrame {
 	public JButton btnCerrarSesion;
 	public JButton btnSalirPartido;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		ControladorMenuJugador cmj = new ControladorMenuJugador(new MenuJugador());
-		cmj.setVisible(true);
-		cmj.setLocationRelativeTo(null);
-	}
+	public Jugador jugador;
 
 	/**
 	 * Create the frame.
@@ -70,5 +63,13 @@ public class MenuJugador extends JFrame {
 		btnSalirPartido.setBounds(163, 242, 153, 37);
 		contentPane.add(btnSalirPartido);
 
+	}
+
+	public Jugador getJugador() {
+		return jugador;
+	}
+	
+	public void setJugador(Jugador j) {
+		jugador = j;
 	}
 }

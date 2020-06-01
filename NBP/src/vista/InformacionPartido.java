@@ -1,6 +1,7 @@
 package vista;
 
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
@@ -22,21 +23,21 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.FormSpecs;
 import com.jgoodies.forms.layout.RowSpec;
 
-import controlador.ControladorInformacionPartido;
 import modelo.BD;
-import java.awt.Color;
+import modelo.Jugador;
+import modelo.Partido;
 
 public class InformacionPartido extends JFrame {
 
 	public BD bd = new BD();
 	private JPanel contentPane;
 	private JTable tablaJugadores;
-	public int idPartido = 8;
-	private long totalJugadores = 0;
-	private String lugar = "";
-	private String hora = "";
 	public JButton unirsePartido;
 	public JButton volverLista;
+	private String lugar = "";
+
+	public Partido partido;
+	public Jugador jugador;
 	/*
 	 * CAMBIAR AQUI PARA HACERLO GENERAL A CUALQUIER ID DE PARTIDO
 	 */
@@ -45,21 +46,15 @@ public class InformacionPartido extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		InformacionPartido v = new InformacionPartido();
-		ControladorInformacionPartido c = new ControladorInformacionPartido(v);
-		c.setVisible(true);
-		c.setLocationRelativeTo(null);
-	}
 
 	/**
 	 * Create the frame.
 	 */
-	public InformacionPartido() {
+	public InformacionPartido(Partido p) {
 		// Obtenemos los datos:
-		obtenerUbicacionPista(idPartido);
-		totalJugadores(idPartido);
-		obtenerHoraPartido(idPartido);
+		partido = p;
+		obtenerUbicacionPista((int) partido.getIdPista());
+
 		// ---------------------
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 651, 583);
@@ -101,14 +96,14 @@ public class InformacionPartido extends JFrame {
 		JLabel hora_1 = new JLabel("Hora del partido:");
 		panel.add(hora_1, "2, 4");
 
-		JLabel horaV = new JLabel(hora.toString());
+		JLabel horaV = new JLabel(partido.getHora() + " el " + partido.getFecha());
 		panel.add(horaV, "4, 4");
 
 		JLabel totalJugadores_1 = new JLabel("Total Jugadores:");
 		panel.add(totalJugadores_1, "2, 6");
 		JLabel totalJugadoresV = new JLabel();
 		panel.add(totalJugadoresV, "4, 6");
-		totalJugadoresV.setText(Long.toString(totalJugadores));
+		totalJugadoresV.setText(Long.toString(totalJugadores((int) partido.getCodPartido())));
 
 		unirsePartido = new JButton("Unirse");
 		unirsePartido.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -126,7 +121,7 @@ public class InformacionPartido extends JFrame {
 		scrollPane_3.setMaximumSize(new Dimension(32706, 32767));
 		scrollPane_2.setViewportView(scrollPane_3);
 
-		tablaModelo(idPartido);
+		tablaModelo((int) partido.getCodPartido());
 		tablaJugadores = new JTable(modelo);
 		tablaJugadores.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		tablaJugadores.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
@@ -137,29 +132,19 @@ public class InformacionPartido extends JFrame {
 
 	// SELECT datos de la pista en la que se juega
 	private void obtenerUbicacionPista(int id) {
-		String sel = "SELECT Pista.Nombre, Pista.Ubicacion FROM Pista WHERE Pista.cod_pista IN (SELECT Partido.Pista FROM Partido WHERE Partido.cod_partido ="
-				+ id + ")";
+		String sel = "SELECT Pista.Nombre, Pista.Ubicacion FROM Pista WHERE Pista.cod_pista = " + id;
 		List<Object[]> pista = bd.Select(sel);
 		if (pista.size() > 0) {
 			lugar = pista.get(0)[0].toString() + ". " + pista.get(0)[1];
 		}
 	}
 
-	// SELECT datos de la hora del partido a la que se juega
-	private void obtenerHoraPartido(int id) {
-		String sel = "SELECT Partido.Hora, Partido.Fecha FROM Partido WHERE Partido.cod_partido =" + id;
-		List<Object[]> horaPart = bd.Select(sel);
-		if (horaPart.size() > 0) {
-			hora = horaPart.get(0)[0].toString() + " el " + horaPart.get(0)[1].toString();
-		}
-	}
-
 	// COUNT del total de jugadores en el partido buscado
 	private long totalJugadores(int id) {
 		long count = 0;
-		String sel = "SELECT COUNT(Jugador.correo) FROM Jugador WHERE Jugador.correo IN (SELECT Jugador_Partido.ID_jug FROM Jugador_Partido WHERE Jugador_Partido.partido ="
-				+ id + " AND Jugador_Partido.estado_solicitud = 1)";
-		count = (long) bd.SelectEscalar(sel);
+		String sel = "SELECT COUNT(Jugador_Partido.ID_jug) FROM Jugador_Partido WHERE Jugador_Partido.partido =" + id
+				+ " AND Jugador_Partido.estado_solicitud = 1";
+		count = Long.parseLong(bd.SelectEscalar(sel).toString());
 		return count;
 	}
 

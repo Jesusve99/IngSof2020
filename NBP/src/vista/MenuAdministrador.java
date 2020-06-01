@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controlador.ControladorMenuAdministrador;
+import modelo.Administrador;
 
 public class MenuAdministrador extends JFrame {
 
@@ -18,6 +19,8 @@ public class MenuAdministrador extends JFrame {
 	public JButton btnEliminarPista;
 	public JButton btnCerrarSesin;
 	public JButton btnListaPistas;
+
+	public Administrador administrador;
 
 	/**
 	 * Launch the application.
@@ -60,6 +63,11 @@ public class MenuAdministrador extends JFrame {
 		btnListaPistas = new JButton("Lista de pistas");
 		btnListaPistas.setBounds(40, 184, 145, 34);
 		contentPane.add(btnListaPistas);
+
+	}
+
+	public void setAdministrador(Administrador admin) {
+		administrador = admin;
 	}
 
 }

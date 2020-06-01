@@ -7,12 +7,13 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import modelo.BDException;
+import modelo.Jugador;
 import vista.InformacionPartido;
+import vista.UnirsePartido;
 
 public class ControladorInformacionPartido implements ActionListener {
 
-	private InformacionPartido vista = new InformacionPartido();
-	private String idJugador = "jugador@";
+	private InformacionPartido vista;
 
 	public ControladorInformacionPartido(InformacionPartido v) {
 		this.vista = v;
@@ -25,20 +26,27 @@ public class ControladorInformacionPartido implements ActionListener {
 		if (e.getSource() == vista.unirsePartido) {
 			unirAPartido();
 		}
+		if (e.getSource() == this.vista.volverLista) {
+			this.vista.dispose();
+			GestionUnirsePartido gup = new GestionUnirsePartido(new UnirsePartido());
+			gup.setJugador(this.vista.jugador);
+			gup.setVisible(true);
+			gup.setLocationRelativeTo(null);
+		}
 	}
 
 	public void unirAPartido() {
 		try {
-			if (partidoSolicitado(idJugador)) {
+			if (partidoSolicitado(this.vista.jugador.getCorreo())) {
 				throw new BDException("Ya has solicitado unirte");
-			} else if (partidoUnido(idJugador)) {
+			} else if (partidoUnido(this.vista.jugador.getCorreo())) {
 				throw new BDException("Ya te has unido al partido");
 			}
-			if (partidoLleno(idJugador)) {
+			if (partidoLleno(this.vista.jugador.getCorreo())) {
 				throw new BDException("Lo siento, el partido ya está lleno");
 			}
 			String ins = "INSERT INTO Jugador_Partido (Jugador_Partido.ID_jug, Jugador_Partido.partido) VALUES (\""
-					+ idJugador + "\" ," + this.vista.idPartido + ")";
+					+ this.vista.jugador.getCorreo() + "\" ," + this.vista.partido.getCodPartido() + ")";
 			this.vista.bd.Insert(ins);
 			JOptionPane.showMessageDialog(this.vista, "Tu solicitud ha sido enviada adecuadamente", "Unirse al partido",
 					JOptionPane.INFORMATION_MESSAGE);
@@ -49,7 +57,7 @@ public class ControladorInformacionPartido implements ActionListener {
 
 	private boolean partidoSolicitado(String idJug) {
 		String sel = "SELECT COUNT(Jugador_Partido.ID_jug) FROM Jugador_Partido WHERE Jugador_Partido.ID_jug = \""
-				+ idJug + "\" AND Jugador_Partido.partido =" + this.vista.idPartido
+				+ idJug + "\" AND Jugador_Partido.partido =" + this.vista.partido.getCodPartido()
 				+ " AND Jugador_Partido.estado_solicitud = 0";
 		long count = (long) this.vista.bd.SelectEscalar(sel);
 		return (count == 1);
@@ -57,7 +65,7 @@ public class ControladorInformacionPartido implements ActionListener {
 
 	private boolean partidoUnido(String idJug) {
 		String sel = "SELECT COUNT(Jugador_Partido.ID_jug) FROM Jugador_Partido WHERE Jugador_Partido.ID_jug = \""
-				+ idJug + "\" AND Jugador_Partido.partido =" + this.vista.idPartido
+				+ idJug + "\" AND Jugador_Partido.partido =" + this.vista.partido.getCodPartido()
 				+ " AND Jugador_Partido.estado_solicitud = 1";
 		long count = (long) this.vista.bd.SelectEscalar(sel);
 		return (count == 1);
@@ -65,7 +73,7 @@ public class ControladorInformacionPartido implements ActionListener {
 
 	private boolean partidoLleno(String idJug) {
 		String sel = "SELECT COUNT(Jugador_Partido.ID_jug) FROM Jugador_Partido WHERE Jugador_Partido.partido ="
-				+ this.vista.idPartido + " AND Jugador_Partido.estado_solicitud = 1";
+				+ this.vista.partido.getCodPartido() + " AND Jugador_Partido.estado_solicitud = 1";
 		long count = (long) this.vista.bd.SelectEscalar(sel);
 		return (count == 10);
 	}
@@ -76,5 +84,9 @@ public class ControladorInformacionPartido implements ActionListener {
 
 	public void setLocationRelativeTo(Component c) {
 		this.vista.setLocationRelativeTo(c);
+	}
+
+	public void setJugador(Jugador j) {
+		this.vista.jugador = j;
 	}
 }
