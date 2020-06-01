@@ -37,7 +37,6 @@ public class TestJugador {
 	@Test
 	public void testObtenerJugador() {
 		assertEquals(Jugador.obtenerJugador("holi@uma.es").getCorreo(),j.getCorreo());
-		
 	}
 	
 	@Test

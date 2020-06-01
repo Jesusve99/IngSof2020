@@ -19,6 +19,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
+import controlador.ControladorMenuJugador;
 import modelo.BD;
 import net.proteanit.sql.DbUtils;
 
@@ -102,6 +103,7 @@ public class EliminarPartido extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
 				MenuJugador p = new MenuJugador();
+				ControladorMenuJugador c = new ControladorMenuJugador(p);
 				p.setVisible(true);
 			}
 		});

@@ -50,6 +50,12 @@ public class Pista {
 				+ "','" + this.getUbicacion() + "','" + this.getHoraInicio() + "','" + this.getHoraFin() + "')";
 		bd.Insert(sel);
 	}
+	
+	// Elimina la pista de la BD
+	public void eliminarPista() {
+		String del = "DELETE FROM Pista WHERE cod_pista = " + this.getId();
+		bd.Delete(del);
+	}	
 
 	public long getId() {
 		return id;
@@ -103,12 +109,6 @@ public class Pista {
 	public void actualizarEstado() {
 		String up = "UPDATE Pista SET Pista.estado = \"" + (this.getEstado() ? 1 : 0)+ "\" WHERE Pista.cod_pista = \"" + this.getId()+"\"";
 		bd.Update(up);
-	}
-
-	// Elimina la pista de la BD
-	public void eliminarPista() {
-		String del = "DELETE FROM Pista WHERE Pista.cod_pista =" + this.getId();
-		bd.Delete(del);
 	}
 
 	// Devuelve TRUE si existe una pista que se va a crear identica a una creada en
