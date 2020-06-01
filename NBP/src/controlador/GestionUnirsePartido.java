@@ -53,8 +53,10 @@ public class GestionUnirsePartido implements ActionListener {
 
 	public void volverMenu() {
 		vista.dispose();
-		MenuJugador p = new MenuJugador();
-		p.setVisible(true);
+		ControladorMenuJugador cmj = new ControladorMenuJugador(new MenuJugador());
+		cmj.setJugador(this.vista.jugador);
+		cmj.setVisible(true);
+		cmj.setLocationRelativeTo(null);
 	}
 
 	public void verPartido() {

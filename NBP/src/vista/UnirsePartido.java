@@ -22,7 +22,7 @@ public class UnirsePartido extends JFrame {
 	public JButton btnVerPartido;
 	public JButton btnVolver;
 	public JButton btnGenerarPartidos;
-	
+
 	public Jugador jugador;
 
 	/**
