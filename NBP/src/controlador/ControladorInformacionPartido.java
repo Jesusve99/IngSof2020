@@ -28,7 +28,7 @@ public class ControladorInformacionPartido implements ActionListener {
 		}
 		if (e.getSource() == this.vista.volverLista) {
 			this.vista.dispose();
-			GestionUnirsePartido gup = new GestionUnirsePartido(new UnirsePartido());
+			ControladorUnirsePartido gup = new ControladorUnirsePartido(new UnirsePartido());
 			gup.setJugador(this.vista.jugador);
 			gup.setVisible(true);
 			gup.setLocationRelativeTo(null);

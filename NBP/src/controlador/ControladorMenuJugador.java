@@ -32,7 +32,7 @@ public class ControladorMenuJugador implements ActionListener {
 		if (e.getSource() == this.vista.btnUnirseAPartido) {
 
 			this.vista.dispose();
-			GestionUnirsePartido gup = new GestionUnirsePartido(new UnirsePartido());
+			ControladorUnirsePartido gup = new ControladorUnirsePartido(new UnirsePartido());
 			gup.setJugador(this.vista.getJugador());
 			gup.setVisible(true);
 			gup.setLocationRelativeTo(null);

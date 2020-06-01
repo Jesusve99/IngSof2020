@@ -1,13 +1,11 @@
 package controlador;
 
 import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import modelo.*;
+import modelo.BD;
+import modelo.Pista;
 
 public class GestionPista {
 	public void obtenerPista(Pista p) {

@@ -10,7 +10,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-import controlador.GestionUnirsePartido;
+import controlador.ControladorUnirsePartido;
 import modelo.Jugador;
 
 public class UnirsePartido extends JFrame {
@@ -29,7 +29,7 @@ public class UnirsePartido extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		GestionUnirsePartido c = new GestionUnirsePartido(new UnirsePartido());
+		ControladorUnirsePartido c = new ControladorUnirsePartido(new UnirsePartido());
 		c.setVisible(true);
 		c.setLocationRelativeTo(null);
 	}

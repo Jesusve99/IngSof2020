@@ -15,12 +15,12 @@ import vista.InformacionPartido;
 import vista.MenuJugador;
 import vista.UnirsePartido;
 
-public class GestionUnirsePartido implements ActionListener {
+public class ControladorUnirsePartido implements ActionListener {
 
 	private UnirsePartido vista;
 	private BD bd = new BD();
 
-	public GestionUnirsePartido(UnirsePartido v) {
+	public ControladorUnirsePartido(UnirsePartido v) {
 		this.vista = v;
 		this.vista.btnGenerarPartidos.addActionListener(this);
 		this.vista.btnVerPartido.addActionListener(this);
