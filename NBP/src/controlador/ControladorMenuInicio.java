@@ -4,7 +4,7 @@ import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import vista.Iniciarsesion;
+import vista.IniciarSesion;
 import vista.MenuInicio;
 import vista.Registrarse;
 
@@ -24,7 +24,7 @@ public class ControladorMenuInicio implements ActionListener {
 
 		if (e.getSource() == vista.btnIniciarSesion) {
 			vista.dispose();
-			Iniciarsesion is = new Iniciarsesion();
+			IniciarSesion is = new IniciarSesion();
 			ControladorIniciarSesion c = new ControladorIniciarSesion(is);
 			c.setVisible(true);
 			c.setLocationRelativeTo(null);

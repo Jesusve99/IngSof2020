@@ -8,16 +8,16 @@ import javax.swing.JOptionPane;
 
 import modelo.Administrador;
 import modelo.Jugador;
-import vista.Iniciarsesion;
+import vista.IniciarSesion;
 import vista.MenuAdministrador;
 import vista.MenuInicio;
 import vista.MenuJugador;
 
 public class ControladorIniciarSesion implements ActionListener {
 
-	private Iniciarsesion vista = new Iniciarsesion();
+	private IniciarSesion vista = new IniciarSesion();
 
-	public ControladorIniciarSesion(Iniciarsesion v) {
+	public ControladorIniciarSesion(IniciarSesion v) {
 		this.vista = v;
 		this.vista.btnEntrar.addActionListener(this);
 		this.vista.btnVolver.addActionListener(this);
@@ -40,9 +40,9 @@ public class ControladorIniciarSesion implements ActionListener {
 					if (admin.datosInicioCorrecto()) {
 
 						this.vista.dispose();
-						MenuAdministrador m = new MenuAdministrador();
-						m.setVisible(true);
-						m.setLocationRelativeTo(null);
+						ControladorMenuAdministrador cma = new ControladorMenuAdministrador(new MenuAdministrador());
+						cma.setVisible(true);
+						cma.setLocationRelativeTo(null);
 
 					} else {
 						JOptionPane.showMessageDialog(this.vista,
