@@ -9,3 +9,5 @@
 /ControladorIniciarSesion.class
 /GestionSalirsePartido.class
 /ControladorMenuInicio.class
+/ControladorMenuAdministrador.class
+/ControladorMenuJugador.class
