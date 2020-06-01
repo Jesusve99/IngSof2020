@@ -13,7 +13,7 @@ import modelo.BDException;
 import modelo.Demarcacion;
 import modelo.Jugador;
 import modelo.Usuario;
-import vista.Iniciarsesion;
+import vista.IniciarSesion;
 import vista.MenuInicio;
 import vista.Registrarse;
 
@@ -58,10 +58,11 @@ public class ControladorRegistro implements ActionListener {
 						this.vista.txtFechaNac.getText());
 				userJug.agregarJugador();
 				this.vista.dispose();
-				JOptionPane.showMessageDialog(this.vista, "Bienvenido a NBP", "Cuenta creada con exito",
+				JOptionPane.showMessageDialog(this.vista, "Bienvenido a NBP", "Registro con exito!",
 						JOptionPane.INFORMATION_MESSAGE);
-				Iniciarsesion i = new Iniciarsesion();
-				i.setVisible(true);
+				ControladorIniciarSesion cis = new ControladorIniciarSesion(new IniciarSesion());
+				cis.setVisible(true);
+				cis.setLocationRelativeTo(null);
 			} catch (BDException err) {
 				JOptionPane.showMessageDialog(this.vista, err.getMessage(), "Error al registrarse",
 						JOptionPane.ERROR_MESSAGE);

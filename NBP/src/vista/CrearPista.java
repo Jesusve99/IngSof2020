@@ -142,7 +142,7 @@ public class CrearPista extends JFrame {
 
 	protected void cancelar() {
 		dispose();
-		MenuAdmin mad = new MenuAdmin();
+		MenuAdministrador mad = new MenuAdministrador();
 		mad.setVisible(true);
 	}
 }

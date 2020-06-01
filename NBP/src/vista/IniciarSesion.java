@@ -13,7 +13,7 @@ import javax.swing.border.EmptyBorder;
 
 import controlador.ControladorIniciarSesion;
 
-public class Iniciarsesion extends JFrame {
+public class IniciarSesion extends JFrame {
 
 	private JPanel contentPane;
 	public JTextField textusuario;
@@ -26,7 +26,7 @@ public class Iniciarsesion extends JFrame {
 	 */
 	public static void main(String[] args) {
 
-		ControladorIniciarSesion cis = new ControladorIniciarSesion(new Iniciarsesion());
+		ControladorIniciarSesion cis = new ControladorIniciarSesion(new IniciarSesion());
 		cis.setVisible(true);
 		cis.setLocationRelativeTo(null);
 	}
@@ -34,7 +34,7 @@ public class Iniciarsesion extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Iniciarsesion() {
+	public IniciarSesion() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 423, 302);
 		contentPane = new JPanel();
