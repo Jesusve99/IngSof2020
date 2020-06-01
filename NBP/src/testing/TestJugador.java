@@ -13,10 +13,12 @@ import modelo.Jugador;
 public class TestJugador {
 
 	private Jugador j;
+	private Jugador jugador;
 	
 	@Before
 	public void init() {
 		j = new Jugador("holi@uma.es","Holiwi2","Del",Demarcacion.DEFENSA,"mari","lopez","2000-10-10");
+		jugador = new Jugador("mari@uma.es","Holiwi2","Del",Demarcacion.DEFENSA,"mari","lopez","2000-10-10");
 	}
 	
 	@Test
@@ -29,6 +31,7 @@ public class TestJugador {
 	@Test
 	public void testCorreoRegistrado() {
 		assertTrue(j.correoRegistrado());
+		assertFalse(jugador.correoRegistrado());
 	}
 	
 	@Test
@@ -40,6 +43,7 @@ public class TestJugador {
 	@Test
 	public void testInicioCorrecto() {
 		assertTrue(j.datosInicioCorrecto());
+		assertFalse(jugador.datosInicioCorrecto());
 	}
 	
 	@Test
