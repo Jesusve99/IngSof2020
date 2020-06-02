@@ -19,6 +19,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
+import controlador.ControladorMenuInicio;
 import controlador.ControladorMenuJugador;
 import modelo.BD;
 import net.proteanit.sql.DbUtils;
@@ -127,6 +128,12 @@ public class EliminarPartido extends JFrame {
 						st.executeUpdate(sql);					
 						dispose();
 						JOptionPane.showMessageDialog(null, "Partido eliminado","",JOptionPane.INFORMATION_MESSAGE);
+					
+						dispose();
+						ControladorMenuJugador cm = new ControladorMenuJugador(new MenuJugador());
+						cm.setVisible(true);
+						cm.setLocationRelativeTo(null);
+						
 					}else {
 						JOptionPane.showMessageDialog(null, "No existe el ID","ERROR",JOptionPane.ERROR_MESSAGE);
 						dispose();
