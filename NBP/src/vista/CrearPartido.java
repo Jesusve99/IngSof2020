@@ -31,6 +31,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Locale;
@@ -78,21 +80,18 @@ public class CrearPartido extends JFrame {
 		
 	}
 
-	@SuppressWarnings("deprecation")
-	private static Date convertir(String f1) {
-		Date d = null;
-		int y, m, dy;
-		try (Scanner sc = new Scanner(f1)){
-			sc.useDelimiter("-");
-			sc.useLocale(Locale.ENGLISH);
-			y = sc.nextInt();
-			m = sc.nextInt();
-			dy = sc.nextInt();
-			d = new Date(y, m, dy);
-		}catch(Exception e) {
-			e.getMessage();
-		}
-		return d;
+	private static Date convertir(String fecha) {
+		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        Date fechaDate = null;
+        try {
+            fechaDate = formato.parse(fecha);
+            System.out.println(fechaDate);
+        } 
+        catch (ParseException ex) 
+        {
+            System.out.println(ex);
+        }
+        return fechaDate;
 	}
 	
 	/**

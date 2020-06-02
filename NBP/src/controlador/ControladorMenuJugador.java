@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import modelo.Jugador;
 import vista.CrearPartido;
+import vista.EliminarPartido;
 import vista.MenuInicio;
 import vista.MenuJugador;
 import vista.SalirsePartido;
@@ -46,9 +47,6 @@ public class ControladorMenuJugador implements ActionListener {
 			c.setLocationRelativeTo(null);
 		}
 
-		if (e.getSource() == this.vista.btnEliminarPartido) {
-
-		}
 
 		if (e.getSource() == this.vista.btnCerrarSesion) {
 
@@ -60,12 +58,12 @@ public class ControladorMenuJugador implements ActionListener {
 		}
 
 		if (e.getSource() == this.vista.btnEliminarPartido) {
-
+			
 			this.vista.dispose();
-			SalirsePartido s = new SalirsePartido();
-			GestionSalirsePartido sp = new GestionSalirsePartido(s);
-			sp.setVisible(true);
-			sp.setLocationRelativeTo(null);
+			EliminarPartido ep = new EliminarPartido();
+			//GestionEliminarPartido ep = new GestionEliminarPartido(c);
+			ep.setVisible(true);
+			ep.setLocationRelativeTo(null);
 
 		}
 

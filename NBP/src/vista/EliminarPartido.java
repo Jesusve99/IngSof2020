@@ -120,7 +120,7 @@ public class EliminarPartido extends JFrame {
 					pst2 = conexion.prepareStatement(codigo);
 					pst2.setString(1, textField.getText());
 					ResultSet rs = pst2.executeQuery();
-					String id="jugador@";
+					String id="ruben.goga2000@gmail.com";
 					if(rs.first() && comparaAnfitrion(rs, id)) {
 						String sql = "Delete from Partido where cod_partido=\""+textField.getText()+"\"";
 						java.sql.Statement st = conexion.createStatement();
