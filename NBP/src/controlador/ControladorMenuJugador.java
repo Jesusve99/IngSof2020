@@ -74,6 +74,7 @@ public class ControladorMenuJugador implements ActionListener {
 			
 			this.vista.dispose();
 			GestionSalirsePartido sp = new GestionSalirsePartido(new SalirsePartido());
+			sp.setJugador(this.vista.getJugador());
 			sp.setVisible(true);
 			sp.setLocationRelativeTo(null);
 
