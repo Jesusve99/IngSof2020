@@ -9,13 +9,15 @@ import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
+import modelo.Jugador;
 import net.proteanit.sql.DbUtils;
 import vista.MenuJugador;
 import vista.SalirsePartido;
 
 public class GestionSalirsePartido implements ActionListener {
 	private SalirsePartido vista = new SalirsePartido();
-	public String id = "jugador@";
+	//public String id = "jugador@";
+	private Jugador jugador;
 
 	public GestionSalirsePartido(SalirsePartido v) {
 		this.vista = v;
@@ -38,7 +40,7 @@ public class GestionSalirsePartido implements ActionListener {
 
 	private void generarPartido() {
 		try {
-			String codigo = "Select * from Jugador_Partido";
+			String codigo = "Select * from Jugador_Partido where ID_jug= \""+jugador.getCorreo()+"\"";
 			PreparedStatement pst = vista.conexion.prepareStatement(codigo);
 			ResultSet rs = pst.executeQuery();
 			vista.table.setModel(DbUtils.resultSetToTableModel(rs));
@@ -58,16 +60,20 @@ public class GestionSalirsePartido implements ActionListener {
 			if (rs.first()) {
 
 				String sql = "Delete from Jugador_Partido where partido=\"" + vista.textField.getText()
-						+ "\" and ID_jug=\"" + id + "\"";
+						+ "\" and ID_jug=\"" + jugador.getCorreo() + "\"";
 				java.sql.Statement st = vista.conexion.createStatement();
 				st.executeUpdate(sql);
 				vista.dispose();
 				SalirsePartido sp = new SalirsePartido();
+				GestionSalirsePartido gsp = new GestionSalirsePartido(sp);
+				gsp.setJugador(jugador);
 				sp.setVisible(true);
 			} else {
 				JOptionPane.showMessageDialog(null, "No existe el ID", "ERROR", JOptionPane.ERROR_MESSAGE);
 				vista.dispose();
 				SalirsePartido sp = new SalirsePartido();
+				GestionSalirsePartido gsp = new GestionSalirsePartido(sp);
+				gsp.setJugador(jugador);
 				sp.setVisible(true);
 
 			}
@@ -79,6 +85,8 @@ public class GestionSalirsePartido implements ActionListener {
 
 	private void volverMP() {
 		MenuJugador pp = new MenuJugador();
+		ControladorMenuJugador cmp  = new ControladorMenuJugador(pp);
+		cmp.setJugador(jugador);
 		pp.setVisible(true);
 		vista.dispose();
 		// SalirsePartido.this.dispose();
@@ -91,5 +99,7 @@ public class GestionSalirsePartido implements ActionListener {
 	public void setLocationRelativeTo(Component c) {
 		this.vista.setLocationRelativeTo(c);
 	}
-
+	public void setJugador(Jugador j) {
+		this.jugador = j;
+	}
 }

@@ -53,7 +53,7 @@ public class EliminarPartido extends JFrame {
 	 * Create the frame.
 	 */
 	public EliminarPartido() {
-		BD baseDatos = new BD();
+		BD baseDatos = BD.getBD();
 		conexion = baseDatos.connectToDatabase();
 		//frame = new JFrame();
 		getContentPane().setBackground(new Color(204, 255, 255));
