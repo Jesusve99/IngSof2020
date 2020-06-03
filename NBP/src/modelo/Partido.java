@@ -1,10 +1,6 @@
 package modelo;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.SortedSet;
-import java.util.TreeSet;
 
 public class Partido {
 
@@ -13,7 +9,7 @@ public class Partido {
 	private String fecha;
 	private String hora;
 	private String idAnfitrion;
-	private static BD bd = new BD();
+	private static BD bd = BD.getBD();
 
 	// Construir objeto
 	public Partido(long idPista, String fecha, String hora, String idAnfitrion) {
@@ -51,16 +47,17 @@ public class Partido {
 		return new Partido(Long.parseLong(ob[0].toString()), Long.parseLong(ob[1].toString()), ob[2].toString(),
 				ob[3].toString(), (String) ob[4].toString());
 	}
-	
+
 	public static String[] horasOcupadas(String fecha, long idPista) {
-		List<Object[]> ob = bd.Select("Select Partido.Hora From Partido where Partido.Fecha='"+fecha+"' and Partido.Pista="+idPista+"");
+		List<Object[]> ob = bd.Select("Select Partido.Hora From Partido where Partido.Fecha='" + fecha
+				+ "' and Partido.Pista=" + idPista + "");
 		String[] res = new String[ob.size()];
-		for(int i=0;i<ob.size();i++) {
+		for (int i = 0; i < ob.size(); i++) {
 			res[i] = (String) ob.get(i)[0];
 		}
 		return res;
 	}
-	
+
 	public static long getTotalPartidos() {
 		return Long.parseLong(bd.SelectEscalar("SELECT COUNT(cod_partido) FROM Partido").toString());
 	}

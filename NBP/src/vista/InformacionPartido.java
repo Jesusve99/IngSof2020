@@ -29,7 +29,7 @@ import modelo.Partido;
 
 public class InformacionPartido extends JFrame {
 
-	public BD bd = new BD();
+	public BD bd = BD.getBD();
 	private JPanel contentPane;
 	private JTable tablaJugadores;
 	public JButton unirsePartido;

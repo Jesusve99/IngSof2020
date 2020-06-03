@@ -10,7 +10,7 @@ import modelo.Pista;
 public class GestionPista {
 	public void obtenerPista(Pista p) {
 		
-		BD bd = new BD();
+		BD bd = BD.getBD();
 		Connection con = null;
 		Statement pst = null;
 		int n ;

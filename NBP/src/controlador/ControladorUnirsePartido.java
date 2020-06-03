@@ -18,7 +18,7 @@ import vista.UnirsePartido;
 public class ControladorUnirsePartido implements ActionListener {
 
 	private UnirsePartido vista;
-	private BD bd = new BD();
+	private BD bd = BD.getBD();
 
 	public ControladorUnirsePartido(UnirsePartido v) {
 		this.vista = v;

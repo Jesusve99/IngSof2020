@@ -2,8 +2,6 @@ package vista;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -29,7 +27,7 @@ public class Registrarse extends JFrame {
 	public JTextField txtNick;
 	public JTextField txtFechaNac;
 	public JButton btnRegistrarse;
-	public BD bd = new BD();
+	public BD bd = BD.getBD();
 	public JComboBox<Demarcacion> cmbPosicion;
 	public JButton btnVolver;
 	private JLabel lblNewLabel;

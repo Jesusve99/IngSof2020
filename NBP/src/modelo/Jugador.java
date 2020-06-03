@@ -37,11 +37,11 @@ public class Jugador extends Usuario {
 				ob[4].toString(), ob[5].toString(), ob[6].toString());
 	}
 
-	//Numero total de jugadores en la BD
+	// Numero total de jugadores en la BD
 	public static long getTotalJugadores() {
 		return Long.parseLong(bd.SelectEscalar("SELECT COUNT(correo) FROM Jugador").toString());
 	}
-	
+
 	// Insertar Jugador
 	public void agregarJugador() {
 		String ins = "INSERT INTO Jugador (Jugador.correo, Jugador.contra, Jugador.nick, Jugador.posicionfav, Jugador.nombre, Jugador.apellidos, Jugador.Fecha_nacimiento) VALUES (\""
@@ -50,11 +50,12 @@ public class Jugador extends Usuario {
 				+ this.fechaNacimiento + "\")";
 		bd.Insert(ins);
 	}
-	
+
 	public void eliminarJugador() {
 		String del = "DELETE FROM Jugador Where Jugador.correo = \"" + this.getCorreo() + "\"";
 		bd.Delete(del);
 	}
+
 	public String getCorreo() {
 		return correo;
 	}
