@@ -119,11 +119,11 @@ public class CrearPista extends JFrame {
 		contentPane.add(lblCrearPista);
 		
 		JLabel lblNewLabel = new JLabel("(hh:mm:ss)");
-		lblNewLabel.setBounds(304, 133, 61, 13);
+		lblNewLabel.setBounds(304, 133, 80, 13);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("(hh:mm:ss)");
-		lblNewLabel_1.setBounds(304, 162, 61, 13);
+		lblNewLabel_1.setBounds(304, 162, 80, 13);
 		contentPane.add(lblNewLabel_1);
 	}
 
