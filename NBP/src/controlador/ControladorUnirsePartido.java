@@ -11,7 +11,7 @@ import javax.swing.table.DefaultTableModel;
 import modelo.BD;
 import modelo.Jugador;
 import modelo.Partido;
-import vista.InformacionPartido;
+import vista.InformacionPartidoUnirse;
 import vista.MenuJugador;
 import vista.UnirsePartido;
 
@@ -65,8 +65,8 @@ public class ControladorUnirsePartido implements ActionListener {
 		long existe = Long.parseLong(bd.SelectEscalar(sel).toString());
 		if (existe > 0) {
 			vista.dispose();
-			ControladorInformacionPartido cip = new ControladorInformacionPartido(
-					new InformacionPartido(Partido.obtenerPartido(cod)));
+			ControladorInformacionPartidoUnirse cip = new ControladorInformacionPartidoUnirse(
+					new InformacionPartidoUnirse(Partido.obtenerPartido(cod)));
 			cip.setJugador(this.vista.jugador);
 			cip.setVisible(true);
 			cip.setLocationRelativeTo(null);

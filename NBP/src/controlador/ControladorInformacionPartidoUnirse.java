@@ -8,14 +8,14 @@ import javax.swing.JOptionPane;
 
 import modelo.BDException;
 import modelo.Jugador;
-import vista.InformacionPartido;
+import vista.InformacionPartidoUnirse;
 import vista.UnirsePartido;
 
-public class ControladorInformacionPartido implements ActionListener {
+public class ControladorInformacionPartidoUnirse implements ActionListener {
 
-	private InformacionPartido vista;
+	private InformacionPartidoUnirse vista;
 
-	public ControladorInformacionPartido(InformacionPartido v) {
+	public ControladorInformacionPartidoUnirse(InformacionPartidoUnirse v) {
 		this.vista = v;
 		this.vista.unirsePartido.addActionListener(this);
 		this.vista.volverLista.addActionListener(this);

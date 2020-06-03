@@ -3,11 +3,8 @@ package controlador;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseListener;
 
 import javax.swing.JOptionPane;
-
-import org.w3c.dom.events.MouseEvent;
 
 import modelo.Jugador;
 import vista.SolicitudesUnirse;
@@ -36,19 +33,32 @@ public class ControladorSolicitudesUnirse implements ActionListener {
 						JOptionPane.ERROR_MESSAGE);
 			} else {
 				String idJug = this.vista.tablaSolicitudes.getValueAt(this.vista.seleccionado, 2).toString();
-				String up = "UPDATE Jugador_Partido SET Jugador_Partido.estado_solicitud = 1 WHERE Jugador_Partido.ID_jug = "
-						+ idJug;
-				this.vista.bd.Update(up);
+				String up = "UPDATE Jugador_Partido SET Jugador_Partido.estado_solicitud = 1 WHERE Jugador_Partido.ID_jug = \""
+						+ idJug + "\" AND Jugador_Partido.partido = " + this.vista.partido.getCodPartido();
+				SolicitudesUnirse.bd.Update(up);
 				this.vista.establecerModeloTabla();
 			}
 		}
 
 		if (e.getSource() == this.vista.btnDenegar) {
 
+			if ((this.vista.seleccionado == null) || (this.vista.seleccionado < 0)) {
+				JOptionPane.showMessageDialog(this.vista, "No hay seleccionado ningun Jugador",
+						"Solicitud no procesada", JOptionPane.ERROR_MESSAGE);
+
+			} else {
+				String idJug = this.vista.tablaSolicitudes.getValueAt(this.vista.seleccionado, 2).toString();
+				String del = "DELETE FROM Jugador_Partido WHERE Jugador_Partido.ID_jug = \"" + idJug
+						+ "\" AND Jugador_Partido.partido = " + this.vista.partido.getCodPartido();
+				SolicitudesUnirse.bd.Delete(del);
+				this.vista.establecerModeloTabla();
+			} 
+
 		}
 
 		if (e.getSource() == this.vista.btnVolver) {
-
+			this.vista.dispose();
+			
 		}
 	}
 
@@ -67,7 +77,7 @@ public class ControladorSolicitudesUnirse implements ActionListener {
 	private boolean partidoLleno() {
 		String sel = "SELECT COUNT(Jugador_Partido.ID_jug) FROM Jugador_Partido WHERE Jugador_Partido.partido ="
 				+ this.vista.partido.getCodPartido() + " AND Jugador_Partido.estado_solicitud = 1";
-		long count = (long) this.vista.bd.SelectEscalar(sel);
+		long count = (long) SolicitudesUnirse.bd.SelectEscalar(sel);
 		return (count == 10);
 	}
 
