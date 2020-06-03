@@ -31,7 +31,7 @@ public class TestPista2 {
 	@Test
 	public void agregarPista() {
 		pistaPrueba.agregarPista();
-		pistaPrueba = Pista.obtenerPista("pista15", "pista15");
+		pistaPrueba = Pista.obtenerPista("pista15");
 		pistaPrueba.eliminarPista();
 		
 		int totalPistas = (int)Pista.getTotalPistas();
@@ -40,14 +40,14 @@ public class TestPista2 {
 
 		assertEquals(totalPistas + 1, (int)Pista.getTotalPistas());
 		
-		pistaPrueba = Pista.obtenerPista("pista15", "pista15");
+		pistaPrueba = Pista.obtenerPista("pista15");
 		pistaPrueba.eliminarPista(); //Pongo esto para que el eliminar pista no se queje
 	}
 	
 	@Test
 	public void eliminarPista() {
 		pistaPrueba.agregarPista();
-		pistaPrueba = Pista.obtenerPista("pista15", "pista15");
+		pistaPrueba = Pista.obtenerPista("pista15");
 		int totalPistas = (int) Pista.getTotalPistas();
 		
 		pistaPrueba.eliminarPista();
@@ -58,7 +58,7 @@ public class TestPista2 {
 	@Test
 	public void actualizarEstado() {
 		pistaPrueba.agregarPista();
-		pistaPrueba = Pista.obtenerPista("pista15", "pista15");
+		pistaPrueba = Pista.obtenerPista("pista15");
 		pistaPrueba.deshabilitarPista();
 		pistaPrueba.actualizarEstado();
 		assertFalse(pistaPrueba.getEstado());
@@ -67,7 +67,7 @@ public class TestPista2 {
 		pistaPrueba.actualizarEstado();
 		assertTrue(pistaPrueba.getEstado());
 		
-		pistaPrueba = Pista.obtenerPista("pista15", "pista15");
+		pistaPrueba = Pista.obtenerPista("pista15");
 		pistaPrueba.eliminarPista();
 		
 	}
@@ -80,7 +80,7 @@ public class TestPista2 {
 		Pista p = new Pista("peta", "zeta", "11:00:00", "20:00:00");
 		
 		pistaPrueba.agregarPista();
-		pistaPrueba = Pista.obtenerPista("pista15", "pista15");
+		pistaPrueba = Pista.obtenerPista("pista15");
 		
 		assertTrue(pistaPrueba.existePistaEnBD());
 		assertFalse(p.existePistaEnBD());

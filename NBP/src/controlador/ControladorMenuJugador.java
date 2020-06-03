@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import modelo.Jugador;
-import vista.CrearPartido;
+import vista.CrearPartido2;
 import vista.EliminarPartido;
 import vista.MenuInicio;
 import vista.MenuJugador;
@@ -40,11 +40,14 @@ public class ControladorMenuJugador implements ActionListener {
 		}
 
 		if (e.getSource() == this.vista.btnCrearPartido) {
-
 			this.vista.dispose();
-			CrearPartido c = new CrearPartido();
-			c.setVisible(true);
+			//CrearPartido c = new CrearPartido();
+			//c.setVisible(true);
+			//c.setLocationRelativeTo(null);
+			ControladorCrearPartido2 c = new ControladorCrearPartido2(new CrearPartido2());
+			c.setJugador(this.vista.getJugador());
 			c.setLocationRelativeTo(null);
+			c.setVisible(true);
 		}
 
 

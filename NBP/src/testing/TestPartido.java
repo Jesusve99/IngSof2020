@@ -25,7 +25,7 @@ public class TestPartido {
 		jugadorPrueba = Jugador.obtenerJugador("prueba@prueba.com");
 		jugadorUnPartido = Jugador.obtenerJugador("notengopartido@correo.es");
 		
-		pistaPrueba = Pista.obtenerPista("prueba", "prueba");
+		pistaPrueba = Pista.obtenerPista("prueba");
 		
 		partidoPrueba = new Partido(pistaPrueba.getId(), "2020-05-29", "17:00:00", jugadorPrueba.getCorreo());
 		anfitrionRepetido = new Partido(pistaPrueba.getId(), "2020-05-29", "16:00:00", jugadorPrueba.getCorreo());
@@ -42,7 +42,7 @@ public class TestPartido {
 		assertEquals(totalPartidos + 1, Partido.getTotalPartidos());
 	}
 	
-	// Devuelve TRUE si el anfitrion no ha creado ningún otro partido en ese día, en
+	// Devuelve TRUE si el anfitrion no ha creado ningï¿½n otro partido en ese dï¿½a, en
 	// caso contrario devuelve FALSE
 	@Test
 	public void anfitrionOtroPartido() {
@@ -52,7 +52,7 @@ public class TestPartido {
 		
 	}
 	
-	// Devuelve TRUE si la pista está sin utilizar en ese dia y hora, en caso
+	// Devuelve TRUE si la pista estï¿½ sin utilizar en ese dia y hora, en caso
 	//contrario devuelve FALSE
 	@Test
 	public void pistaDisponibleTiempo() {

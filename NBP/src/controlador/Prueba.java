@@ -1,6 +1,12 @@
 package controlador;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Map;
+import java.util.Random;
 
 import org.apache.commons.mail.EmailException;
 
@@ -9,6 +15,8 @@ import modelo.Demarcacion;
 import modelo.Jugador;
 import modelo.Partido;
 import modelo.Pista;
+import modelo.BD;
+import modelo.BDException;
 
 public class Prueba {
 
@@ -59,5 +67,40 @@ public class Prueba {
 		p.eliminarPartido();
 		pista.eliminarPista();
 */
+		//System.out.println("here");
+		//Pista pista =Pista.obtenerPista("prueba", "prueba");
+		//pista.agregarPista();
+		//pista.eliminarPista();
+		//System.out.println(pista.getNombre());
+		//BD bd = new BD();
+		//bd.SelectEscalar("");bdexception
+		//bd.SelectEscalar(null);bdexception
+		//p.eliminarPartido();
+		//pista.eliminarPista();
+		/*SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+		//MIN*60000
+		Date d = new Date();
+		d.setYear(120);
+		d.setMonth(6);
+		d.setDate(7);
+		d.setHours(10);
+		d.setMinutes(30);
+		d.setSeconds(0);
+		System.out.println(d.toString());
+		
+		String fecha = "2020-05-06";
+		String[] sf = fecha.split("-");
+		Date actual = new Date();
+		Date df = new Date();
+		df.setYear(Integer.parseInt(sf[0])-1900);
+		df.setMonth(Integer.parseInt(sf[1])-1);
+		df.setDate(Integer.parseInt(sf[2]));
+		df.setHours(0);
+		df.setMinutes(0);
+		df.setSeconds(0);
+		System.out.println(df.toString());
+		System.out.println((actual.before(df)));
+		*/
+		
 	}
 }
