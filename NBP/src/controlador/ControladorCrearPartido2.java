@@ -50,6 +50,7 @@ public class ControladorCrearPartido2 implements ActionListener {
 							partido.agregarAnfitrion();
 							
 							ControladorMenuJugador pp = new ControladorMenuJugador(new MenuJugador());
+							pp.setJugador(this.getJugador());
 							pp.setVisible(true);
 							this.vista.dispose();
 						} else {

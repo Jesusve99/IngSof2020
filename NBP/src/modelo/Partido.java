@@ -123,7 +123,6 @@ public class Partido {
 		
 		String ins = "INSERT INTO Jugador_Partido (Jugador_Partido.ID_jug, Jugador_Partido.partido, Jugador_Partido.estado_solicitud) VALUES (\""
 				+ this.getIdAnfitrion() + "\" ," + ob.get(0)[0] + ", 1)";
-		System.out.println(ins);
 		bd.Insert(ins);
 	}
 }
