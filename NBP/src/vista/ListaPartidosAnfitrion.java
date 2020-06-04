@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
 import modelo.BD;
 import modelo.Jugador;
 
-public class ListaPartidos extends JFrame {
+public class ListaPartidosAnfitrion extends JFrame {
 
 	private JPanel contentPane;
 	public JTable tablaListaPartidos;
@@ -34,7 +34,7 @@ public class ListaPartidos extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ListaPartidos(Jugador j) {
+	public ListaPartidosAnfitrion(Jugador j) {
 
 		jugador = j;
 
@@ -106,8 +106,8 @@ public class ListaPartidos extends JFrame {
 			}
 		};
 		modelo.setColumnIdentifiers(new String[] { "Pista", "Fecha", "Hora", "Anfitrion", "codPartido" });
-		String sel = "SELECT Partido.Pista, Partido.Fecha, Partido.Hora, Partido.id_anfitrion, Partido.cod_partido FROM Partido WHERE Partido.cod_partido IN (SELECT Jugador_Partido.partido FROM Jugador_Partido WHERE Jugador_Partido.ID_jug =\""
-				+ jugador.getCorreo() + "\" AND Jugador_Partido.estado_solicitud = 1)";
+		String sel = "SELECT Partido.Pista, Partido.Fecha, Partido.Hora, Partido.id_anfitrion, Partido.cod_partido FROM Partido WHERE Partido.id_anfitrion =\""
+				+ jugador.getCorreo() + "\"";
 		List<Object[]> ob = bd.Select(sel);
 		for (Object[] o : ob) {
 			sel = "SELECT Pista.Nombre FROM Pista WHERE Pista.cod_pista = " + o[0].toString();

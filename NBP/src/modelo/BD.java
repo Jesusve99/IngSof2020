@@ -47,7 +47,7 @@ public class BD {
 		}
 		return bd;
 	}
-	
+
 	public static BD getBDPersonalizado(String user, String pass) {
 		if (bdPersonalizado == null) {
 			bdPersonalizado = new BD(user, pass);

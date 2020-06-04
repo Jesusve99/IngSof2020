@@ -4,9 +4,12 @@ import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
 import modelo.Jugador;
 import vista.CrearPartido2;
 import vista.ListaPartidos;
+import vista.ListaPartidosAnfitrion;
 import vista.MenuInicio;
 import vista.MenuJugador;
 import vista.SalirsePartido;
@@ -71,9 +74,23 @@ public class ControladorMenuJugador implements ActionListener {
 
 		if (e.getSource() == this.vista.btnListaPartidos) {
 			this.vista.dispose();
+			JOptionPane.showMessageDialog(this.vista,
+					"Solo te aparecerán los partidos a los que ya estes unido y tu solicitud haya sido aceptada",
+					"Solicitud no procesada", JOptionPane.INFORMATION_MESSAGE);
 			ControladorListaPartidos clp = new ControladorListaPartidos(new ListaPartidos(this.vista.getJugador()));
 			clp.setVisible(true);
 			clp.setLocationRelativeTo(null);
+		}
+
+		if (e.getSource() == this.vista.btnListaPartidosAnfitrion) {
+			this.vista.dispose();
+			JOptionPane.showMessageDialog(this.vista,
+					"Solo te aparecerán los partidos de los cuales tu eres el anfitrion", "Gestion Partidos",
+					JOptionPane.INFORMATION_MESSAGE);
+			ControladorListaPartidosAnfitrion clpa = new ControladorListaPartidosAnfitrion(
+					new ListaPartidosAnfitrion(this.vista.getJugador()));
+			clpa.setVisible(true);
+			clpa.setLocationRelativeTo(null);
 		}
 
 	}

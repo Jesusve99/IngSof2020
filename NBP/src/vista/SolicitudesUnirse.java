@@ -18,7 +18,6 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import controlador.ControladorSolicitudesUnirse;
 import modelo.BD;
 import modelo.Jugador;
 import modelo.Partido;
@@ -36,16 +35,6 @@ public class SolicitudesUnirse extends JFrame {
 	public Partido partido;
 	public Jugador jugador;
 	public Integer seleccionado;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		ControladorSolicitudesUnirse c = new ControladorSolicitudesUnirse(
-				new SolicitudesUnirse(Partido.obtenerPartido(38)));
-		c.setVisible(true);
-		c.setLocationRelativeTo(null);
-	}
 
 	/**
 	 * Create the frame.

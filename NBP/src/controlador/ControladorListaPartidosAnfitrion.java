@@ -8,15 +8,15 @@ import javax.swing.JOptionPane;
 
 import modelo.Jugador;
 import modelo.Partido;
-import vista.InformacionPartidoLista;
-import vista.ListaPartidos;
+import vista.ListaPartidosAnfitrion;
 import vista.MenuJugador;
+import vista.SolicitudesUnirse;
 
-public class ControladorListaPartidos implements ActionListener {
+public class ControladorListaPartidosAnfitrion implements ActionListener {
 
-	private ListaPartidos vista;
+	private ListaPartidosAnfitrion vista;
 
-	public ControladorListaPartidos(ListaPartidos v) {
+	public ControladorListaPartidosAnfitrion(ListaPartidosAnfitrion v) {
 		this.vista = v;
 		this.vista.btnEntrarInfoPartido.addActionListener(this);
 		this.vista.btnVolver.addActionListener(this);
@@ -30,17 +30,17 @@ public class ControladorListaPartidos implements ActionListener {
 				JOptionPane.showMessageDialog(this.vista, "No hay seleccionado ningun partido",
 						"Solicitud no procesada", JOptionPane.ERROR_MESSAGE);
 				JOptionPane.showMessageDialog(this.vista,
-						"Para poder acceder a la informacion pincha en alguna fila de los partidos que te aparecen y pulsa en Entrar",
+						"Para poder acceder a las solicitudes pincha en alguna fila de los partidos que te aparecen y pulsa en Entrar",
 						"Ayuda", JOptionPane.INFORMATION_MESSAGE);
 			} else {
 				this.vista.dispose();
 				long cod = Long
 						.parseLong(this.vista.tablaListaPartidos.getValueAt(this.vista.seleccionado, 4).toString());
-				ControladorInformacionPartidoLista cipl = new ControladorInformacionPartidoLista(
-						new InformacionPartidoLista(Partido.obtenerPartido(cod)));
-				cipl.setJugador(this.getJugador());
-				cipl.setVisible(true);
-				cipl.setLocationRelativeTo(null);
+				ControladorSolicitudesUnirse csu = new ControladorSolicitudesUnirse(
+						new SolicitudesUnirse(Partido.obtenerPartido(cod)));
+				csu.setJugador(this.getJugador());
+				csu.setVisible(true);
+				csu.setLocationRelativeTo(null);
 			}
 		}
 

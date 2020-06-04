@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import modelo.Jugador;
+import vista.ListaPartidosAnfitrion;
 import vista.SolicitudesUnirse;
 
 public class ControladorSolicitudesUnirse implements ActionListener {
@@ -27,6 +28,9 @@ public class ControladorSolicitudesUnirse implements ActionListener {
 			if ((this.vista.seleccionado == null) || (this.vista.seleccionado < 0)) {
 				JOptionPane.showMessageDialog(this.vista, "No hay seleccionado ningun Jugador",
 						"Solicitud no procesada", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(this.vista,
+						"Para poder aceptar/denegar a un jugador pulse en la fila que le corresponda y luego pulse el boton Aceptar/Denegar, respectivamente",
+						"Ayuda", JOptionPane.INFORMATION_MESSAGE);
 
 			} else if (partidoLleno()) {
 				JOptionPane.showMessageDialog(this.vista, "Ya esta lleno el partido", "Solicitud no procesada",
@@ -52,13 +56,16 @@ public class ControladorSolicitudesUnirse implements ActionListener {
 						+ "\" AND Jugador_Partido.partido = " + this.vista.partido.getCodPartido();
 				SolicitudesUnirse.bd.Delete(del);
 				this.vista.establecerModeloTabla();
-			} 
+			}
 
 		}
 
 		if (e.getSource() == this.vista.btnVolver) {
 			this.vista.dispose();
-			
+			ControladorListaPartidosAnfitrion clpa = new ControladorListaPartidosAnfitrion(
+					new ListaPartidosAnfitrion(this.getJugador()));
+			clpa.setVisible(true);
+			clpa.setLocationRelativeTo(null);
 		}
 	}
 
@@ -79,6 +86,10 @@ public class ControladorSolicitudesUnirse implements ActionListener {
 				+ this.vista.partido.getCodPartido() + " AND Jugador_Partido.estado_solicitud = 1";
 		long count = (long) SolicitudesUnirse.bd.SelectEscalar(sel);
 		return (count == 10);
+	}
+
+	public Jugador getJugador() {
+		return this.vista.jugador;
 	}
 
 }

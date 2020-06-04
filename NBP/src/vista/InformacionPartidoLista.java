@@ -2,7 +2,6 @@ package vista;
 
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import java.util.List;
@@ -32,7 +31,6 @@ public class InformacionPartidoLista extends JFrame {
 	public BD bd = BD.getBD();
 	private JPanel contentPane;
 	private JTable tablaJugadores;
-	public JButton unirsePartido;
 	public JButton volverLista;
 	private String lugar = "";
 
@@ -104,10 +102,6 @@ public class InformacionPartidoLista extends JFrame {
 		JLabel totalJugadoresV = new JLabel();
 		panel.add(totalJugadoresV, "4, 6");
 		totalJugadoresV.setText(Long.toString(totalJugadores((int) partido.getCodPartido())));
-
-		unirsePartido = new JButton("Unirse");
-		unirsePartido.setAlignmentX(Component.CENTER_ALIGNMENT);
-		panelPartido.add(unirsePartido);
 
 		volverLista = new JButton("Volver");
 		panelPartido.add(volverLista);
