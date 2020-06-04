@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.List;
+
 public class Partido {
 
 	private long codPartido;
@@ -7,7 +9,7 @@ public class Partido {
 	private String fecha;
 	private String hora;
 	private String idAnfitrion;
-	private static BD bd = new BD();
+	private static BD bd = BD.getBD();
 
 	// Construir objeto
 	public Partido(long idPista, String fecha, String hora, String idAnfitrion) {
@@ -46,6 +48,16 @@ public class Partido {
 				ob[3].toString(), (String) ob[4].toString());
 	}
 
+	public static String[] horasOcupadas(String fecha, long idPista) {
+		List<Object[]> ob = bd.Select("Select Partido.Hora From Partido where Partido.Fecha='" + fecha
+				+ "' and Partido.Pista=" + idPista + "");
+		String[] res = new String[ob.size()];
+		for (int i = 0; i < ob.size(); i++) {
+			res[i] = (String) ob.get(i)[0];
+		}
+		return res;
+	}
+
 	public static long getTotalPartidos() {
 		return Long.parseLong(bd.SelectEscalar("SELECT COUNT(cod_partido) FROM Partido").toString());
 	}
@@ -82,7 +94,7 @@ public class Partido {
 		this.idAnfitrion = idAnfitrion;
 	}
 
-	// Devuelve TRUE si el anfitrion ha creado otro partido en ese día, en
+	// Devuelve TRUE si el anfitrion ha creado otro partido en ese dï¿½a, en
 	// caso contrario devuelve FALSE
 	public boolean anfitrionOtroPartido() {
 		String sel = "SELECT COUNT(cod_partido) FROM Partido WHERE Fecha =\"" + this.getFecha()
@@ -91,7 +103,7 @@ public class Partido {
 		return cnt == 1;
 	}
 
-	// Devuelve TRUE si la pista está sin utilizar en ese dia y hora, en caso
+	// Devuelve TRUE si la pista estï¿½ sin utilizar en ese dia y hora, en caso
 	// contrario devuelve FALSE
 	public boolean pistaDisponibleTiempo() {
 		String sel = "SELECT COUNT(cod_partido) FROM Partido WHERE Fecha =\"" + this.getFecha() + "\" AND Hora =\""

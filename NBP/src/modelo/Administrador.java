@@ -3,7 +3,6 @@ package modelo;
 public class Administrador extends Usuario {
 
 	private String ayuntamiento;
-	private static BD bd = new BD();
 
 	// Constructor para comprobar inicio sesion
 	public Administrador(String corr, String contra) {

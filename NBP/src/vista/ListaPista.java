@@ -46,7 +46,7 @@ public class ListaPista extends JFrame {
 	 * Create the frame.
 	 */
 	public ListaPista() {
-		BD baseDatos = new BD();
+		BD baseDatos = BD.getBD();
 		conexion = baseDatos.connectToDatabase();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 630, 440);

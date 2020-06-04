@@ -27,9 +27,9 @@ import modelo.BD;
 import modelo.Jugador;
 import modelo.Partido;
 
-public class InformacionPartido extends JFrame {
+public class InformacionPartidoUnirse extends JFrame {
 
-	public BD bd = new BD();
+	public BD bd = BD.getBD();
 	private JPanel contentPane;
 	private JTable tablaJugadores;
 	public JButton unirsePartido;
@@ -50,7 +50,7 @@ public class InformacionPartido extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public InformacionPartido(Partido p) {
+	public InformacionPartidoUnirse(Partido p) {
 		// Obtenemos los datos:
 		partido = p;
 		obtenerUbicacionPista((int) partido.getIdPista());

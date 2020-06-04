@@ -24,8 +24,7 @@ public class ControladorMenuInicio implements ActionListener {
 
 		if (e.getSource() == vista.btnIniciarSesion) {
 			vista.dispose();
-			IniciarSesion is = new IniciarSesion();
-			ControladorIniciarSesion c = new ControladorIniciarSesion(is);
+			ControladorIniciarSesion c = new ControladorIniciarSesion(new IniciarSesion());
 			c.setVisible(true);
 			c.setLocationRelativeTo(null);
 		}

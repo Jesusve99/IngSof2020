@@ -59,7 +59,7 @@ public class SalirsePartido extends JFrame {
 		setBounds(100, 100, 532, 335);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
-		BD baseDatos = new BD();
+		BD baseDatos = BD.getBD();
 		conexion = baseDatos.connectToDatabase();
 		
 		JScrollPane scrollPane = new JScrollPane();

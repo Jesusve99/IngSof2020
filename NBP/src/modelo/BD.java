@@ -18,14 +18,16 @@ public class BD {
 	private static String usernamedefault = "rWiO7EseHz";
 	private static String passworddefault = "vKa9rl8nd5";
 	private static ComboPooledDataSource datosConexion;
+	private static BD bd;
+	private static BD bdPersonalizado;
 
 //	Constructores:
 
-	public BD() {
+	private BD() {
 		this(usernamedefault, passworddefault);
 	}
 
-	public BD(String user, String pass) {
+	private BD(String user, String pass) {
 		datosConexion = new ComboPooledDataSource();
 		try {
 			datosConexion.setDriverClass(driver);
@@ -35,6 +37,22 @@ public class BD {
 		} catch (PropertyVetoException e) {
 			throw new BDException("Error al acceder al driver");
 		}
+	}
+
+	// Metodo para acceder a la BD
+
+	public static BD getBD() {
+		if (bd == null) {
+			bd = new BD();
+		}
+		return bd;
+	}
+
+	public static BD getBDPersonalizado(String user, String pass) {
+		if (bdPersonalizado == null) {
+			bdPersonalizado = new BD(user, pass);
+		}
+		return bdPersonalizado;
 	}
 
 //	Crea conexion con la BDD a partir de los datos almacenados en datosConexion:
