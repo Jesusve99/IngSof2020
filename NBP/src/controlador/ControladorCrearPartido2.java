@@ -12,6 +12,7 @@ import modelo.Jugador;
 import modelo.Partido;
 import modelo.Pista;
 import vista.CrearPartido2;
+import vista.InformacionPartidoLista;
 import vista.MenuJugador;
 
 public class ControladorCrearPartido2 implements ActionListener {
@@ -46,6 +47,8 @@ public class ControladorCrearPartido2 implements ActionListener {
 						if (!coincideHora(hora, ocupadas)) {
 							Partido partido = new Partido(p.getId(), fecha, hora, jugador.getCorreo());
 							partido.agregarPartido();
+							partido.agregarAnfitrion();
+							
 							ControladorMenuJugador pp = new ControladorMenuJugador(new MenuJugador());
 							pp.setVisible(true);
 							this.vista.dispose();

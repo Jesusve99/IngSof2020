@@ -111,4 +111,19 @@ public class Partido {
 		long cnt = (long) bd.SelectEscalar(sel);
 		return cnt == 0;
 	}
+	
+	//Añade al partido al anfitrion del partido
+	public void agregarAnfitrion() {
+		//SELECT cod_partido FROM Partido WHERE Pista = 266 and Fecha = "2020-12-16" and Hora = "15:00:00" and id_anfitrion = "ruben.goga2000@gmail.com"
+		String cod = "SELECT cod_partido FROM Partido WHERE Pista = \"" + this.getIdPista()
+		+ "\" and Fecha = \"" + this.getFecha() + "\" and Hora = \"" + this.getHora() + "\" and id_anfitrion = \""
+		+ this.getIdAnfitrion() + "\"";
+		
+		List<Object[]> ob = bd.Select(cod);
+		
+		String ins = "INSERT INTO Jugador_Partido (Jugador_Partido.ID_jug, Jugador_Partido.partido, Jugador_Partido.estado_solicitud) VALUES (\""
+				+ this.getIdAnfitrion() + "\" ," + ob.get(0)[0] + ", 1)";
+		System.out.println(ins);
+		bd.Insert(ins);
+	}
 }

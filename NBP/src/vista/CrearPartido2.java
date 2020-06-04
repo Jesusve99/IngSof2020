@@ -12,7 +12,6 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import modelo.BD;
-import modelo.Jugador;
 
 public class CrearPartido2 extends JFrame {
 
