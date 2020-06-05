@@ -57,7 +57,7 @@ public class InformacionPartidoUnirse extends JFrame {
 
 		// ---------------------
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 651, 583);
+		setBounds(100, 100, 540, 375);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(204, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

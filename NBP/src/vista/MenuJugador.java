@@ -12,6 +12,8 @@ import modelo.Jugador;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MenuJugador extends JFrame {
 
@@ -31,70 +33,49 @@ public class MenuJugador extends JFrame {
 	public MenuJugador() {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 507, 299);
+		setBounds(100, 100, 540, 375);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(204, 255, 255));
 		setContentPane(contentPane);
 
 		JLabel lblNbp = new JLabel("NBP");
+		lblNbp.setBounds(228, 25, 64, 27);
 		lblNbp.setFont(new Font("Tahoma", Font.BOLD, 30));
 
-		JLabel lblNeoBalompi = new JLabel("Neo Balompi\u00E9");
-		lblNeoBalompi.setFont(new Font("Tahoma", Font.BOLD, 15));
+		JLabel lblNeoBalompi = new JLabel("MEN\u00DA DE USUARIO");
+		lblNeoBalompi.setBounds(193, 54, 165, 16);
+		lblNeoBalompi.setFont(new Font("Tahoma", Font.BOLD, 14));
 
 		btnUnirseAPartido = new JButton("UNIRSE A PARTIDO");
+		btnUnirseAPartido.setBounds(287, 112, 165, 37);
 
 		btnCrearPartido = new JButton("CREAR PARTIDO");
+		btnCrearPartido.setBounds(58, 112, 165, 37);
 
 		btnCerrarSesion = new JButton("CERRAR SESION");
+		btnCerrarSesion.setBounds(287, 240, 165, 37);
 
 		btnSalirPartido = new JButton("SALIR DE PARTIDO");
+		btnSalirPartido.setBounds(58, 174, 165, 37);
 
 		btnListaPartidos = new JButton("LISTA PARTIDOS");
+		btnListaPartidos.setBounds(287, 174, 165, 37);
 
 		btnListaPartidosAnfitrion = new JButton("GESTIONAR PARTIDOS");
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
-				.createSequentialGroup().addGap(55)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addComponent(btnCrearPartido, GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
-										.addComponent(btnSalirPartido, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-								.addGap(86))
-						.addGroup(gl_contentPane.createSequentialGroup().addComponent(btnListaPartidosAnfitrion)
-								.addPreferredGap(ComponentPlacement.RELATED)))
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnCerrarSesion, GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
-						.addComponent(btnListaPartidos, GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
-						.addComponent(btnUnirseAPartido, GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE))
-				.addGap(78))
-				.addGroup(gl_contentPane.createSequentialGroup().addGap(197)
-						.addComponent(lblNeoBalompi, GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE).addGap(203))
-				.addGroup(gl_contentPane.createSequentialGroup().addGap(219)
-						.addComponent(lblNbp, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addGap(232)));
-		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup().addGap(25)
-						.addComponent(lblNbp, GroupLayout.PREFERRED_SIZE, 27, Short.MAX_VALUE)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(lblNeoBalompi, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-								.addComponent(btnCrearPartido, GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-								.addComponent(btnUnirseAPartido, GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
-						.addGap(18)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-								.addComponent(btnSalirPartido, GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-								.addComponent(btnListaPartidos, GroupLayout.PREFERRED_SIZE, 37,
-										GroupLayout.PREFERRED_SIZE))
-						.addGap(18)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-								.addComponent(btnListaPartidosAnfitrion, GroupLayout.PREFERRED_SIZE, 37,
-										GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnCerrarSesion, GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
-						.addGap(90)));
-		contentPane.setLayout(gl_contentPane);
+		btnListaPartidosAnfitrion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnListaPartidosAnfitrion.setBounds(58, 240, 165, 37);
+		contentPane.setLayout(null);
+		contentPane.add(btnCrearPartido);
+		contentPane.add(btnSalirPartido);
+		contentPane.add(btnListaPartidosAnfitrion);
+		contentPane.add(btnCerrarSesion);
+		contentPane.add(btnListaPartidos);
+		contentPane.add(btnUnirseAPartido);
+		contentPane.add(lblNeoBalompi);
+		contentPane.add(lblNbp);
 
 	}
 

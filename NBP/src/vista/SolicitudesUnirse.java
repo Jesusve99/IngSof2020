@@ -21,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
 import modelo.BD;
 import modelo.Jugador;
 import modelo.Partido;
+import java.awt.Color;
 
 public class SolicitudesUnirse extends JFrame {
 
@@ -42,58 +43,27 @@ public class SolicitudesUnirse extends JFrame {
 	public SolicitudesUnirse(Partido p) {
 		partido = p;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 675, 429);
+		setBounds(100, 100, 540, 375);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(204, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
 		btnAceptar = new JButton("Aceptar");
+		btnAceptar.setBounds(429, 72, 81, 36);
 
 		btnDenegar = new JButton("Denegar");
+		btnDenegar.setBounds(429, 121, 81, 36);
 
 		JLabel lblTitulo = new JLabel("Solicitudes pendientes");
-		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblTitulo.setBounds(89, 26, 273, 36);
+		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 20));
 
 		btnVolver = new JButton("Volver");
+		btnVolver.setBounds(429, 279, 77, 36);
 
 		scrollPane = new JScrollPane();
-
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup().addGap(41)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane
-										.createSequentialGroup().addPreferredGap(ComponentPlacement.RELATED)
-										.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 491,
-												GroupLayout.PREFERRED_SIZE)
-										.addPreferredGap(ComponentPlacement.RELATED))
-								.addGroup(gl_contentPane.createSequentialGroup()
-										.addComponent(lblTitulo, GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
-										.addGap(323)))
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup()
-										.addComponent(btnVolver, GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
-										.addGap(29))
-								.addGroup(gl_contentPane.createSequentialGroup()
-										.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-												.addComponent(btnAceptar, GroupLayout.DEFAULT_SIZE,
-														GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-												.addComponent(btnDenegar, GroupLayout.DEFAULT_SIZE,
-														GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-										.addPreferredGap(ComponentPlacement.RELATED, 29, Short.MAX_VALUE)))
-						.addGap(0)));
-		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING).addGroup(gl_contentPane
-				.createSequentialGroup().addGap(21)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblTitulo, GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-						.addComponent(btnVolver, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup().addGap(87)
-								.addComponent(btnAceptar, GroupLayout.PREFERRED_SIZE, 23, Short.MAX_VALUE).addGap(62)
-								.addComponent(btnDenegar, GroupLayout.PREFERRED_SIZE, 23, Short.MAX_VALUE).addGap(170))
-						.addGroup(gl_contentPane.createSequentialGroup().addGap(25)
-								.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 274, GroupLayout.PREFERRED_SIZE)
-								.addContainerGap()))));
+		scrollPane.setBounds(12, 75, 405, 240);
 
 		tablaSolicitudes = new JTable();
 		tablaSolicitudes.addMouseListener(new MouseAdapter() {
@@ -107,8 +77,13 @@ public class SolicitudesUnirse extends JFrame {
 		tablaSolicitudes.getColumn("Correo").setMinWidth(0);
 		tablaSolicitudes.getColumn("Correo").setMaxWidth(0);
 		tablaSolicitudes.getColumn("Correo").setPreferredWidth(0);
+		contentPane.setLayout(null);
 		scrollPane.setViewportView(tablaSolicitudes);
-		contentPane.setLayout(gl_contentPane);
+		contentPane.add(scrollPane);
+		contentPane.add(lblTitulo);
+		contentPane.add(btnVolver);
+		contentPane.add(btnAceptar);
+		contentPane.add(btnDenegar);
 	}
 
 	public void establecerModeloTabla() {

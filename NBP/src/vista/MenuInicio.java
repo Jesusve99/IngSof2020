@@ -31,7 +31,7 @@ public class MenuInicio extends JFrame {
 	 */
 	public MenuInicio() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 467, 319);
+		setBounds(100, 100, 541, 374);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setBackground(new Color(204, 255, 255));
@@ -39,28 +39,28 @@ public class MenuInicio extends JFrame {
 		setContentPane(contentPane);
 
 		btnIniciarSesion = new JButton("INICIAR SESI\u00D3N");
-		btnIniciarSesion.setBounds(132, 83, 159, 45);
+		btnIniciarSesion.setBounds(180, 93, 159, 45);
 		contentPane.add(btnIniciarSesion);
 
 		btnRegistrarse = new JButton("REGISTRARSE");
-		btnRegistrarse.setBounds(132, 141, 159, 45);
+		btnRegistrarse.setBounds(180, 167, 159, 45);
 		contentPane.add(btnRegistrarse);
 
 		JLabel lblNbp = new JLabel("NBP");
 		lblNbp.setBackground(new Color(240, 240, 240));
 		lblNbp.setForeground(new Color(0, 0, 0));
 		lblNbp.setFont(new Font("Tahoma", Font.BOLD, 30));
-		lblNbp.setBounds(179, 13, 66, 50);
+		lblNbp.setBounds(225, 13, 66, 50);
 		contentPane.add(lblNbp);
 
 		JLabel lblBienvenido = new JLabel("Bienvenido");
 		lblBienvenido.setForeground(new Color(0, 0, 0));
 		lblBienvenido.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblBienvenido.setBounds(167, 54, 115, 16);
+		lblBienvenido.setBounds(207, 54, 115, 16);
 		contentPane.add(lblBienvenido);
 
 		btnSalir = new JButton("SALIR");
-		btnSalir.setBounds(132, 199, 159, 45);
+		btnSalir.setBounds(180, 238, 159, 45);
 		contentPane.add(btnSalir);
 	}
 

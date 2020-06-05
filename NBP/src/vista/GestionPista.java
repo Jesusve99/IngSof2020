@@ -19,6 +19,7 @@ import javax.swing.table.DefaultTableModel;
 
 import modelo.Administrador;
 import modelo.BD;
+import java.awt.Color;
 
 public class GestionPista extends JFrame {
 
@@ -40,53 +41,28 @@ public class GestionPista extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 629, 449);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(204, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
-		JLabel lblTitulo = new JLabel("GESTIONAR PISTA:");
-		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		JLabel lblTitulo = new JLabel("GESTIONAR PISTAS");
+		lblTitulo.setBounds(147, 28, 199, 22);
+		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 18));
 
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(23, 70, 452, 309);
 
 		btnVolver = new JButton("Volver");
+		btnVolver.setBounds(495, 307, 99, 37);
 
 		btnHabilitar = new JButton("Habilitar");
+		btnHabilitar.setBounds(495, 99, 99, 40);
 
 		btnDeshabilitar = new JButton("Deshabilitar");
+		btnDeshabilitar.setBounds(495, 171, 99, 43);
 
 		btnEliminar = new JButton("Eliminar");
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup().addGap(32)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 430, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblTitulo))
-						.addPreferredGap(ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(btnVolver, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
-										Short.MAX_VALUE)
-								.addComponent(btnHabilitar, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(btnDeshabilitar, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(btnEliminar, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-						.addContainerGap()));
-		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
-				.createSequentialGroup().addContainerGap()
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE).addComponent(lblTitulo)
-						.addComponent(btnVolver, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup().addGap(45).addComponent(scrollPane,
-								GroupLayout.PREFERRED_SIZE, 294, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup().addGap(68)
-								.addComponent(btnHabilitar, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-								.addGap(59)
-								.addComponent(btnDeshabilitar, GroupLayout.PREFERRED_SIZE, 33,
-										GroupLayout.PREFERRED_SIZE)
-								.addGap(56)
-								.addComponent(btnEliminar, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)))
-				.addContainerGap(24, Short.MAX_VALUE)));
+		btnEliminar.setBounds(495, 239, 99, 41);
 
 		tablaListaPistas = new JTable();
 		tablaListaPistas.addMouseListener(new MouseAdapter() {
@@ -99,8 +75,14 @@ public class GestionPista extends JFrame {
 		tablaListaPistas.getColumn("codPartido").setMinWidth(0);
 		tablaListaPistas.getColumn("codPartido").setMaxWidth(0);
 		tablaListaPistas.getColumn("codPartido").setPreferredWidth(0);
+		contentPane.setLayout(null);
 		scrollPane.setViewportView(tablaListaPistas);
-		contentPane.setLayout(gl_contentPane);
+		contentPane.add(scrollPane);
+		contentPane.add(lblTitulo);
+		contentPane.add(btnHabilitar);
+		contentPane.add(btnVolver);
+		contentPane.add(btnEliminar);
+		contentPane.add(btnDeshabilitar);
 	}
 
 	public void establecerModeloTabla() {
