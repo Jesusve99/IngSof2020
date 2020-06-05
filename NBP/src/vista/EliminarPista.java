@@ -1,6 +1,7 @@
 package vista;
 
 import java.awt.Color;
+import java.awt.EventQueue;
 import java.awt.Font;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,6 +19,18 @@ import net.proteanit.sql.DbUtils;
 public class EliminarPista extends JFrame{
 	private JTable table;
 	private JTextField txtNombre;
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					EliminarPista frame = new EliminarPista();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 	
 	public EliminarPista() {
 		getContentPane().setBackground(new Color(204, 255, 255));
@@ -31,7 +44,8 @@ public class EliminarPista extends JFrame{
 		
 		table = new JTable();
 		table.setBounds(40, 65, 450, 219);
-		Connection c = BD.connectToDatabase();
+		BD baseDatos = BD.getBD();
+		Connection c = baseDatos.connectToDatabase();
 		PreparedStatement stmt;
 		try {
 			stmt = c.prepareStatement("Select Nombre, Ubicacion, Hora_inicio, Hora_fin, cod_pista From Pista");

@@ -14,3 +14,7 @@
 /ControladorCrearPartido2.class
 /ControladorSolicitudesUnirse.class
 /ControladorUnirsePartido.class
+/ControladorInformacionPartidoLista.class
+/ControladorInformacionPartidoUnirse.class
+/ControladorListaPartidos.class
+/ControladorListaPartidosAnfitrion.class

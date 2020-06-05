@@ -46,13 +46,20 @@ public class ControladorCrearPartido2 implements ActionListener {
 					if (dentroHorario(hora, p.getHoraInicio(), p.getHoraFin())) {
 						if (!coincideHora(hora, ocupadas)) {
 							Partido partido = new Partido(p.getId(), fecha, hora, jugador.getCorreo());
-							partido.agregarPartido();
-							partido.agregarAnfitrion();
+							if(!partido.anfitrionOtroPartido()) {
+								partido.agregarPartido();
+								partido.agregarAnfitrion();
+								
+								ControladorMenuJugador pp = new ControladorMenuJugador(new MenuJugador());
+								pp.setJugador(this.getJugador());
+								pp.setVisible(true);
+								this.vista.dispose();
+							}else{
+								JOptionPane.showMessageDialog(this.vista, "Ya has creado un partido en ese dia");
+								vista.txtFecha.setText("");
+								vista.txtHora.setText("");
+							}
 							
-							ControladorMenuJugador pp = new ControladorMenuJugador(new MenuJugador());
-							pp.setJugador(this.getJugador());
-							pp.setVisible(true);
-							this.vista.dispose();
 						} else {
 							JOptionPane.showMessageDialog(this.vista, "Ya existe un partido a esa hora");
 							vista.txtFecha.setText("");

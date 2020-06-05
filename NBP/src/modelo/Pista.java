@@ -131,5 +131,13 @@ public class Pista {
 		long cnt = (long) bd.SelectEscalar(sel);
 		return cnt == 1;
 	}
+	// Devuelve TRUE si existe una pista que se va a crear con el mismo nombre a una creada en
+		// la BD, en caso contrario devuelve FALSE
+		public boolean nombreIgual() {
+			String sel = "SELECT COUNT(Pista.cod_pista) FROM Pista WHERE Pista.Nombre =\"" + this.getNombre()
+					+ "\" ";
+			long cnt = (long) bd.SelectEscalar(sel);
+			return cnt == 1;
+		}
 
 }

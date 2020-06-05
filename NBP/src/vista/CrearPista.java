@@ -28,6 +28,7 @@ public class CrearPista extends JFrame {
 	/**
 	 * Launch the application.
 	 */
+	/*
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -40,7 +41,7 @@ public class CrearPista extends JFrame {
 			}
 		});
 	}
-
+	*/
 	/**
 	 * Create the frame.
 	 */
@@ -129,15 +130,24 @@ public class CrearPista extends JFrame {
 
 	protected void crearPista(JTextField nombre, JTextField ubicacion, JTextField horarioApertura,
 			JTextField horarioCierre) {
-		Pista pista = new Pista(nombre.getText(), ubicacion.getText(), horarioApertura.getText(), horarioCierre.getText());
-		GestionPista gP = new GestionPista();
-		gP.obtenerPista(pista);
+		if(nombre.getText().equals("")||ubicacion.getText().equals("")||horarioApertura.getText().equals("")||horarioCierre.getText().equals("")) {
+			JOptionPane.showMessageDialog(null, "Tienes que rellenar todos los datos por favor.","ERORR CREAR PISTA!!!!",JOptionPane.ERROR_MESSAGE);
+		}else {
+			Pista pista = new Pista(nombre.getText(), ubicacion.getText(), horarioApertura.getText(), horarioCierre.getText());
+			if(pista.nombreIgual()) {
+				JOptionPane.showMessageDialog(null, "Ese nombre ya esta en uso.","ERORR CREAR PISTA!!!!",JOptionPane.ERROR_MESSAGE);
+			}else {
+			GestionPista gP = new GestionPista();
+			gP.obtenerPista(pista);
+			
+			//Redirigir a Menu
+			dispose();
+			JOptionPane.showMessageDialog(null, "Pista creada con exito","creacion de pista completada",JOptionPane.INFORMATION_MESSAGE);
+			ListaPista l = new ListaPista();
+			l.setVisible(true);
+			}
+		}
 		
-		//Redirigir a Menu
-		dispose();
-		JOptionPane.showMessageDialog(null, "Pista creada con exito","creacion de pista completada",JOptionPane.INFORMATION_MESSAGE);
-		ListaPista l = new ListaPista();
-		l.setVisible(true);
 	}
 
 	protected void cancelar() {
