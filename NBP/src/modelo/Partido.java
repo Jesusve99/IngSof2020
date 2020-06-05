@@ -61,6 +61,11 @@ public class Partido {
 	public static long getTotalPartidos() {
 		return Long.parseLong(bd.SelectEscalar("SELECT COUNT(cod_partido) FROM Partido").toString());
 	}
+	
+	public int getTotalJugadores() {
+		this.obtenerCodPartido(this.getIdPista(), this.getFecha(), this.getHora(), this.getIdAnfitrion());
+		return Integer.parseInt(bd.SelectEscalar("SELECT COUNT(ID_Jug) FROM Jugador_Partido WHERE partido = " + this.getCodPartido()).toString());
+	}
 
 	public long getCodPartido() {
 		return this.codPartido;
@@ -115,14 +120,23 @@ public class Partido {
 	//Añade al partido al anfitrion del partido
 	public void agregarAnfitrion() {
 		//SELECT cod_partido FROM Partido WHERE Pista = 266 and Fecha = "2020-12-16" and Hora = "15:00:00" and id_anfitrion = "ruben.goga2000@gmail.com"
+		obtenerCodPartido(this.getIdPista(), this.getFecha(), this.getHora(), this.getIdAnfitrion());
+		
+		String ins = "INSERT INTO Jugador_Partido (Jugador_Partido.ID_jug, Jugador_Partido.partido, Jugador_Partido.estado_solicitud) VALUES (\""
+				+ this.getIdAnfitrion() + "\" ," + this.getCodPartido() + ", 1)";
+		bd.Insert(ins);
+	}
+	
+	//Devuelve codigo del partido
+	public void obtenerCodPartido(long idPista, String fecha, String hora, String idAnfitrion) {
 		String cod = "SELECT cod_partido FROM Partido WHERE Pista = \"" + this.getIdPista()
 		+ "\" and Fecha = \"" + this.getFecha() + "\" and Hora = \"" + this.getHora() + "\" and id_anfitrion = \""
 		+ this.getIdAnfitrion() + "\"";
 		
 		List<Object[]> ob = bd.Select(cod);
 		
-		String ins = "INSERT INTO Jugador_Partido (Jugador_Partido.ID_jug, Jugador_Partido.partido, Jugador_Partido.estado_solicitud) VALUES (\""
-				+ this.getIdAnfitrion() + "\" ," + ob.get(0)[0] + ", 1)";
-		bd.Insert(ins);
+		this.codPartido = Integer.parseInt(ob.get(0)[0].toString());
+		
 	}
+	
 }

@@ -72,7 +72,7 @@ public class ControladorCrearPartido2 implements ActionListener {
 						vista.txtHora.setText("");
 					}
 				} else {
-					JOptionPane.showMessageDialog(this.vista, "La fecha ha pasado ya tt");
+					JOptionPane.showMessageDialog(this.vista, "La fecha introducida es anterior a la fecha actual");
 					vista.txtFecha.setText("");
 					vista.txtHora.setText("");
 				}

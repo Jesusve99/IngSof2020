@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.sql.SQLException;
 import java.util.Random;
 
 import org.junit.Test;
@@ -97,7 +98,6 @@ public class TestBD {
 		} catch (Exception e) {
 			ob = bd.Select("Select * From Pista where Pista.Nombre='pista2'").get(0);
 		}
-		System.out.println((String) ob[0] + " " + (String) ob[1]);
 		assertEquals((String) ob[0], "pista2");
 		assertEquals((String) ob[1], "ubi");
 	}
@@ -127,7 +127,7 @@ public class TestBD {
 	@Test
 	public void insert() {
 		Random r = new Random();
-		Integer aux = r.nextInt(50);
+		Integer aux = r.nextInt(100);
 		bd.Insert("INSERT INTO Pista(Nombre, Ubicacion, Hora_inicio, Hora_fin) VALUES" + " ('" + "pista"
 				+ aux.toString() + "" + "','" + "ubi" + "','" + "" + "','" + "" + "')");
 		String pis = (String) bd
@@ -160,7 +160,7 @@ public class TestBD {
 	@Test
 	public void delete() {
 		Random r = new Random();
-		Integer aux = r.nextInt(50);
+		Integer aux = r.nextInt(100);
 		String pis = ";";
 		bd.Insert("INSERT INTO Pista(Nombre, Ubicacion, Hora_inicio, Hora_fin) VALUES" + " ('" + "pista"
 				+ aux.toString() + "" + "','" + "ubi" + "','" + "" + "','" + "" + "')");
@@ -195,7 +195,7 @@ public class TestBD {
 	@Test
 	public void update() {
 		Random r = new Random();
-		Integer aux = r.nextInt(50);
+		Integer aux = r.nextInt(100);
 		Integer aux2 = r.nextInt(100);
 		bd.Insert("INSERT INTO Pista(Nombre, Ubicacion, Hora_inicio, Hora_fin) VALUES" + " ('" + "pista"
 				+ aux.toString() + "" + "','" + "ubi" + "','" + "" + "','" + "" + "')");
@@ -203,7 +203,6 @@ public class TestBD {
 				+ "', Ubicacion='ubicacion', Hora_inicio='',Hora_fin='' Where Pista.Nombre='pista" + aux.toString()
 				+ "'");
 		Object[] ob = bd.Select("Select * From Pista where Pista.Nombre='pista" + aux2.toString() + "'").get(0);
-		System.out.println(ob[0] + " " + ob[1]);
 		assertEquals((String) ob[0], "pista" + aux2.toString());
 		assertEquals((String) ob[1], "ubicacion");
 	}

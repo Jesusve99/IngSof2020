@@ -28,8 +28,7 @@ public class ControladorMenuAdministrador implements ActionListener {
 
 		if (e.getSource() == this.vista.btnCrearPista) {
 			this.vista.dispose();
-			CrearPista c = new CrearPista();
-			c.setAdministrador(this.getAdministrador());
+			ControladorCrearPista c = new ControladorCrearPista(new CrearPista());
 			c.setVisible(true);
 			c.setLocationRelativeTo(null);
 		}
