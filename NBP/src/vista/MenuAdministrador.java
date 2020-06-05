@@ -11,6 +11,8 @@ import javax.swing.border.EmptyBorder;
 
 import controlador.ControladorMenuAdministrador;
 import modelo.Administrador;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MenuAdministrador extends JFrame {
 
@@ -36,38 +38,46 @@ public class MenuAdministrador extends JFrame {
 	 */
 	public MenuAdministrador() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 285);
+		setBounds(100, 100, 540, 374);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(204, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JLabel lblMenuAdministrador = new JLabel("Menu Administrador");
-		lblMenuAdministrador.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblMenuAdministrador.setBounds(40, 27, 216, 39);
+		JLabel lblMenuAdministrador = new JLabel("NBP");
+		lblMenuAdministrador.setBounds(224, 24, 82, 39);
+		lblMenuAdministrador.setFont(new Font("Tahoma", Font.BOLD, 30));
 		contentPane.add(lblMenuAdministrador);
 
 		btnCrearPista = new JButton("Crear pista");
-		btnCrearPista.setBounds(40, 89, 145, 34);
+		btnCrearPista.setBounds(66, 125, 145, 39);
 		contentPane.add(btnCrearPista);
 
 		btnGestionPista = new JButton("Gestionar Pistas");
-		btnGestionPista.setBounds(40, 136, 143, 34);
+		btnGestionPista.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnGestionPista.setBounds(293, 125, 145, 39);
 		contentPane.add(btnGestionPista);
 
 		btnCerrarSesin = new JButton("Cerrar Sesi\u00F3n");
-		btnCerrarSesin.setBounds(259, 184, 134, 34);
+		btnCerrarSesin.setBounds(293, 217, 145, 37);
 		contentPane.add(btnCerrarSesin);
 
 		btnListaPistas = new JButton("Lista de pistas");
-		btnListaPistas.setBounds(40, 184, 145, 34);
+		btnListaPistas.setBounds(66, 216, 145, 39);
 		contentPane.add(btnListaPistas);
+		
+		JLabel lblNewLabel = new JLabel("MEN\u00DA DE ADMINISTRADOR");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel.setBounds(158, 62, 234, 16);
+		contentPane.add(lblNewLabel);
 
 	}
 
 	public void setAdministrador(Administrador admin) {
 		administrador = admin;
 	}
-
 }

@@ -12,6 +12,8 @@ import javax.swing.JTextField;
 
 import controlador.ControladorUnirsePartido;
 import modelo.Jugador;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class UnirsePartido extends JFrame {
 
@@ -41,37 +43,41 @@ public class UnirsePartido extends JFrame {
 
 		// frame = new JFrame();
 		getContentPane().setBackground(new Color(204, 255, 255));
-		setBounds(100, 100, 572, 425);
+		setBounds(100, 100, 540, 375);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
 
 		btnGenerarPartidos = new JButton("Generar Lista Partidos");
-		btnGenerarPartidos.setBounds(81, 24, 199, 36);
+		btnGenerarPartidos.setBounds(100, 13, 199, 36);
 		getContentPane().add(btnGenerarPartidos);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(23, 77, 344, 279);
+		scrollPane.setBounds(12, 62, 380, 253);
 		getContentPane().add(scrollPane);
 
 		table = new JTable();
 		scrollPane.setViewportView(table);
 
 		textField = new JTextField();
-		textField.setBounds(404, 105, 104, 20);
+		textField.setBounds(404, 117, 104, 26);
 		getContentPane().add(textField);
 		textField.setColumns(10);
 
 		lblNewLabel = new JLabel("ID Partido :");
+		lblNewLabel.setBounds(418, 90, 104, 14);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel.setBounds(404, 78, 104, 14);
 		getContentPane().add(lblNewLabel);
 
 		btnVerPartido = new JButton("VerPartido");
-		btnVerPartido.setBounds(403, 138, 105, 20);
+		btnVerPartido.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnVerPartido.setBounds(404, 151, 104, 35);
 		getContentPane().add(btnVerPartido);
 
 		btnVolver = new JButton("Volver");
-		btnVolver.setBounds(404, 320, 104, 36);
+		btnVolver.setBounds(404, 268, 104, 36);
 		getContentPane().add(btnVolver);
 
 	}

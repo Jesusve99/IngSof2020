@@ -24,23 +24,23 @@ public class SalirsePartido extends JFrame {
 	 */
 	public SalirsePartido() {
 		getContentPane().setBackground(new Color(204, 255, 255));
-		setBounds(100, 100, 532, 335);
+		setBounds(100, 100, 540, 375);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(25, 83, 229, 178);
+		scrollPane.setBounds(12, 64, 379, 251);
 		getContentPane().add(scrollPane);
 
 		table = new JTable();
 		scrollPane.setViewportView(table);
 
 		btnGenerarPartidos = new JButton("Generar Lista Partidos");
-		btnGenerarPartidos.setBounds(44, 38, 173, 32);
+		btnGenerarPartidos.setBounds(103, 13, 187, 38);
 		getContentPane().add(btnGenerarPartidos);
 
 		textField = new JTextField();
-		textField.setBounds(355, 109, 117, 25);
+		textField.setBounds(403, 122, 105, 25);
 		getContentPane().add(textField);
 		textField.setColumns(10);
 
@@ -50,16 +50,16 @@ public class SalirsePartido extends JFrame {
 		getContentPane().add(lblNewLabel);
 
 		btnSalirPartido = new JButton("Salir Partido");
-		btnSalirPartido.setBounds(327, 156, 117, 32);
+		btnSalirPartido.setBounds(403, 155, 105, 38);
 		getContentPane().add(btnSalirPartido);
 
 		btnVolverMP = new JButton("Menu");
-		btnVolverMP.setBounds(395, 252, 107, 25);
+		btnVolverMP.setBounds(405, 265, 105, 38);
 		getContentPane().add(btnVolverMP);
-
-		JLabel lblId = new JLabel("Id :");
-		lblId.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
-		lblId.setBounds(294, 110, 56, 16);
+		
+		JLabel lblId = new JLabel("ID Partido :");
+		lblId.setBounds(416, 93, 81, 20);
+		lblId.setFont(new Font("Tahoma", Font.BOLD, 13));
 		getContentPane().add(lblId);
 	}
 }

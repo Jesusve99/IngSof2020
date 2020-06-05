@@ -40,49 +40,24 @@ public class ListaPartidos extends JFrame {
 		jugador = j;
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 660, 421);
+		setBounds(100, 100, 540, 375);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(204, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
 		btnVolver = new JButton("Volver");
+		btnVolver.setBounds(37, 277, 84, 38);
 
 		btnEntrarInfoPartido = new JButton("Entrar");
+		btnEntrarInfoPartido.setBounds(399, 277, 84, 38);
 
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(12, 46, 498, 218);
 
-		JLabel lblTitulo = new JLabel("Lista Partidos:");
-		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING).addGroup(gl_contentPane
-				.createSequentialGroup().addGap(22)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup().addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE).addGap(18))
-						.addGroup(gl_contentPane.createSequentialGroup()
-								.addComponent(lblTitulo, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
-										Short.MAX_VALUE)
-								.addGap(412)))
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnVolver, GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
-						.addComponent(btnEntrarInfoPartido, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 90,
-								Short.MAX_VALUE))
-				.addContainerGap()));
-		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
-				.createSequentialGroup()
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup().addGap(23).addComponent(
-								lblTitulo, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-						.addGroup(gl_contentPane.createSequentialGroup().addContainerGap().addComponent(btnVolver,
-								GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup().addGap(32)
-								.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE).addGap(34))
-						.addGroup(gl_contentPane
-								.createSequentialGroup().addGap(137).addComponent(btnEntrarInfoPartido,
-										GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-								.addContainerGap()))));
+		JLabel lblTitulo = new JLabel("Lista Partidos");
+		lblTitulo.setBounds(186, 13, 144, 20);
+		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 20));
 
 		tablaListaPartidos = new JTable();
 		tablaListaPartidos.addMouseListener(new MouseAdapter() {
@@ -95,8 +70,12 @@ public class ListaPartidos extends JFrame {
 		tablaListaPartidos.getColumn("codPartido").setMinWidth(0);
 		tablaListaPartidos.getColumn("codPartido").setMaxWidth(0);
 		tablaListaPartidos.getColumn("codPartido").setPreferredWidth(0);
+		contentPane.setLayout(null);
 		scrollPane.setViewportView(tablaListaPartidos);
-		contentPane.setLayout(gl_contentPane);
+		contentPane.add(scrollPane);
+		contentPane.add(lblTitulo);
+		contentPane.add(btnVolver);
+		contentPane.add(btnEntrarInfoPartido);
 	}
 
 	public void establecerModeloTabla() {

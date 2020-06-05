@@ -55,17 +55,17 @@ public class ListaPista extends JFrame {
 				}
 			}
 		});
-		btnGenerarListaPistas.setBounds(133, 30, 199, 39);
+		btnGenerarListaPistas.setBounds(109, 30, 199, 39);
 		contentPane.add(btnGenerarListaPistas);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(37, 82, 400, 289);
+		scrollPane.setBounds(37, 82, 545, 289);
 		contentPane.add(scrollPane);
 
 		table = new JTable();
 		scrollPane.setViewportView(table);
 
-		JButton btnMenu = new JButton("Menu");
+		JButton btnMenu = new JButton("Men\u00FA");
 		btnMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -75,7 +75,7 @@ public class ListaPista extends JFrame {
 				cma.setLocationRelativeTo(null);
 			}
 		});
-		btnMenu.setBounds(482, 338, 97, 33);
+		btnMenu.setBounds(405, 30, 100, 39);
 		contentPane.add(btnMenu);
 	}
 

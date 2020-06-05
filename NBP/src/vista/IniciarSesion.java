@@ -36,7 +36,7 @@ public class IniciarSesion extends JFrame {
 	 */
 	public IniciarSesion() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 423, 302);
+		setBounds(100, 100, 540, 375);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(204, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -45,34 +45,34 @@ public class IniciarSesion extends JFrame {
 
 		JLabel lblIniciarSesin = new JLabel("INICIAR SESI\u00D3N");
 		lblIniciarSesin.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblIniciarSesin.setBounds(40, 30, 198, 25);
+		lblIniciarSesin.setBounds(171, 49, 198, 25);
 		contentPane.add(lblIniciarSesin);
 
 		JLabel lblCorreo = new JLabel("Correo :");
 		lblCorreo.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblCorreo.setBounds(60, 88, 56, 16);
+		lblCorreo.setBounds(136, 135, 56, 16);
 		contentPane.add(lblCorreo);
 
 		btnVolver = new JButton("Volver");
-		btnVolver.setBounds(60, 197, 128, 31);
+		btnVolver.setBounds(97, 240, 114, 38);
 		contentPane.add(btnVolver);
 
 		btnEntrar = new JButton("Entrar");
-		btnEntrar.setBounds(223, 197, 128, 30);
+		btnEntrar.setBounds(318, 240, 114, 38);
 		contentPane.add(btnEntrar);
 
 		textusuario = new JTextField();
-		textusuario.setBounds(164, 85, 130, 22);
+		textusuario.setBounds(228, 132, 130, 22);
 		contentPane.add(textusuario);
 		textusuario.setColumns(10);
 
 		JLabel lblContrasea = new JLabel("Contrase\u00F1a :");
 		lblContrasea.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblContrasea.setBounds(60, 117, 107, 31);
+		lblContrasea.setBounds(136, 164, 107, 31);
 		contentPane.add(lblContrasea);
 
 		clave = new JPasswordField();
-		clave.setBounds(164, 120, 130, 22);
+		clave.setBounds(228, 168, 130, 22);
 		contentPane.add(clave);
 	}
 }
