@@ -20,10 +20,12 @@ import modelo.Pista;
 public class CrearPista extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField Nombre;
-	private JTextField Ubicacion;
-	private JTextField HorarioApertura;
-	private JTextField HorarioCierre;
+	public JTextField Nombre;
+	public JTextField Ubicacion;
+	public JTextField HorarioApertura;
+	public JTextField HorarioCierre;
+	public JButton btnCrearPista;
+	public JButton btnCancelar;
 
 	/**
 	 * Launch the application.
@@ -94,23 +96,11 @@ public class CrearPista extends JFrame {
 		contentPane.add(HorarioCierre);
 		HorarioCierre.setColumns(10);
 		
-		JButton btnCrearPista = new JButton("Crear Pista");
-		btnCrearPista.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				crearPista(Nombre, Ubicacion, HorarioApertura, HorarioCierre);
-			}
-		});
+		btnCrearPista = new JButton("Crear Pista");
 		btnCrearPista.setBounds(306, 208, 114, 32);
 		contentPane.add(btnCrearPista);
 		
-		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				cancelar();
-			}
-			
-			
-		});
+		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setBounds(178, 208, 116, 32);
 		contentPane.add(btnCancelar);
 		
@@ -119,40 +109,12 @@ public class CrearPista extends JFrame {
 		lblCrearPista.setBounds(40, 13, 162, 32);
 		contentPane.add(lblCrearPista);
 		
-		JLabel lblNewLabel = new JLabel("(hh:mm:ss)");
+		JLabel lblNewLabel = new JLabel("(hh:mm)");
 		lblNewLabel.setBounds(304, 133, 80, 13);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("(hh:mm:ss)");
+		JLabel lblNewLabel_1 = new JLabel("(hh:mm)");
 		lblNewLabel_1.setBounds(304, 162, 80, 13);
 		contentPane.add(lblNewLabel_1);
-	}
-
-	protected void crearPista(JTextField nombre, JTextField ubicacion, JTextField horarioApertura,
-			JTextField horarioCierre) {
-		if(nombre.getText().equals("")||ubicacion.getText().equals("")||horarioApertura.getText().equals("")||horarioCierre.getText().equals("")) {
-			JOptionPane.showMessageDialog(null, "Tienes que rellenar todos los datos por favor.","ERORR CREAR PISTA!!!!",JOptionPane.ERROR_MESSAGE);
-		}else {
-			Pista pista = new Pista(nombre.getText(), ubicacion.getText(), horarioApertura.getText(), horarioCierre.getText());
-			if(pista.nombreIgual()) {
-				JOptionPane.showMessageDialog(null, "Ese nombre ya esta en uso.","ERORR CREAR PISTA!!!!",JOptionPane.ERROR_MESSAGE);
-			}else {
-			GestionPista gP = new GestionPista();
-			gP.obtenerPista(pista);
-			
-			//Redirigir a Menu
-			dispose();
-			JOptionPane.showMessageDialog(null, "Pista creada con exito","creacion de pista completada",JOptionPane.INFORMATION_MESSAGE);
-			ListaPista l = new ListaPista();
-			l.setVisible(true);
-			}
-		}
-		
-	}
-
-	protected void cancelar() {
-		dispose();
-		MenuAdministrador mad = new MenuAdministrador();
-		mad.setVisible(true);
 	}
 }
