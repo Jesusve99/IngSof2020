@@ -19,6 +19,7 @@ import javax.swing.table.DefaultTableModel;
 
 import modelo.BD;
 import modelo.Jugador;
+import java.awt.Color;
 
 public class ListaPartidos extends JFrame {
 
@@ -41,6 +42,7 @@ public class ListaPartidos extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 660, 421);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(204, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 

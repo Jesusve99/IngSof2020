@@ -19,6 +19,7 @@ import javax.swing.table.DefaultTableModel;
 
 import modelo.Administrador;
 import modelo.BD;
+import java.awt.Color;
 
 public class GestionPista extends JFrame {
 
@@ -40,6 +41,7 @@ public class GestionPista extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 629, 449);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(204, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
