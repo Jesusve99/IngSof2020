@@ -25,31 +25,6 @@ public class SalirsePartido extends JFrame {
 	public JButton btnGenerarPartidos;
 	public JButton btnSalirPartido;
 	public JButton btnVolverMP;
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SalirsePartido frame = new SalirsePartido();
-					GestionSalirsePartido sp= new GestionSalirsePartido(frame);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
-	/*
-	public SalirsePartido() {
-		initialize();
-	}
-	*/
 
 	/**
 	 * Initialize the contents of the frame.
@@ -101,52 +76,10 @@ public class SalirsePartido extends JFrame {
 		getContentPane().add(lblNewLabel);
 		
 		btnSalirPartido = new JButton("Salir Partido");
-		/*
-		btnSalirPartido.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					String codigo = "Select * from Jugador_Partido where partido= ?";
-					PreparedStatement pst2;
-					pst2 = conexion.prepareStatement(codigo);
-					pst2.setString(1, textField.getText());
-					ResultSet rs = pst2.executeQuery();
-					if(rs.first()) {
-						String id="jugador@";
-						String sql = "Delete from Jugador_Partido where partido=\""+textField.getText()+"\" and ID_jug=\""+id+"\"";
-						java.sql.Statement st = conexion.createStatement();
-						st.executeUpdate(sql);					
-						dispose();
-						SalirsePartido sp = new SalirsePartido();
-						sp.setVisible(true);
-					}else {
-						JOptionPane.showMessageDialog(null, "No existe el ID","ERROR",JOptionPane.ERROR_MESSAGE);
-						dispose();
-						SalirsePartido sp = new SalirsePartido();
-						sp.setVisible(true);
-						
-					}
-					
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				}
-				
-			}
-		});
-		*/
 		btnSalirPartido.setBounds(327, 156, 117, 32);
 		getContentPane().add(btnSalirPartido);
 		
 		btnVolverMP = new JButton("Menu");
-		/*
-		btnVolverMP.addActionListener(new ActionListener() {	
-			public void actionPerformed(ActionEvent e) {
-				Pantallaprincipal pp = new Pantallaprincipal();
-				pp.setVisible(true);
-				dispose();
-				//SalirsePartido.this.dispose();
-			}
-		});
-		*/
 		btnVolverMP.setBounds(395, 252, 107, 25);
 		getContentPane().add(btnVolverMP);
 		
