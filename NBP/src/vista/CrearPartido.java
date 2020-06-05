@@ -13,7 +13,7 @@ import javax.swing.border.EmptyBorder;
 
 import modelo.BD;
 
-public class CrearPartido2 extends JFrame {
+public class CrearPartido extends JFrame {
 
 	BD bd = BD.getBD();
 	private JPanel contentPane;
@@ -23,7 +23,7 @@ public class CrearPartido2 extends JFrame {
 	public JButton btnCancelar;
 	public JButton btnCrearPartido;
 
-	public CrearPartido2() {
+	public CrearPartido() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();

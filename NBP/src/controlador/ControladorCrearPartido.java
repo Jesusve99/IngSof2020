@@ -11,15 +11,14 @@ import javax.swing.JOptionPane;
 import modelo.Jugador;
 import modelo.Partido;
 import modelo.Pista;
-import vista.CrearPartido2;
-import vista.InformacionPartidoLista;
+import vista.CrearPartido;
 import vista.MenuJugador;
 
-public class ControladorCrearPartido2 implements ActionListener {
-	private CrearPartido2 vista;
+public class ControladorCrearPartido implements ActionListener {
+	private CrearPartido vista;
 	private Jugador jugador;
 
-	public ControladorCrearPartido2(CrearPartido2 v) {
+	public ControladorCrearPartido(CrearPartido v) {
 		this.vista = v;
 		this.vista.btnCancelar.addActionListener(this);
 		this.vista.btnCrearPartido.addActionListener(this);
@@ -46,20 +45,20 @@ public class ControladorCrearPartido2 implements ActionListener {
 					if (dentroHorario(hora, p.getHoraInicio(), p.getHoraFin())) {
 						if (!coincideHora(hora, ocupadas)) {
 							Partido partido = new Partido(p.getId(), fecha, hora, jugador.getCorreo());
-							if(!partido.anfitrionOtroPartido()) {
+							if (!partido.anfitrionOtroPartido()) {
 								partido.agregarPartido();
 								partido.agregarAnfitrion();
-								
+
 								ControladorMenuJugador pp = new ControladorMenuJugador(new MenuJugador());
 								pp.setJugador(this.getJugador());
 								pp.setVisible(true);
 								this.vista.dispose();
-							}else{
+							} else {
 								JOptionPane.showMessageDialog(this.vista, "Ya has creado un partido en ese dia");
 								vista.txtFecha.setText("");
 								vista.txtHora.setText("");
 							}
-							
+
 						} else {
 							JOptionPane.showMessageDialog(this.vista, "Ya existe un partido a esa hora");
 							vista.txtFecha.setText("");

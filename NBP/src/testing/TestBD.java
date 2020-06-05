@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.sql.SQLException;
 import java.util.Random;
 
 import org.junit.Test;
@@ -19,7 +18,8 @@ public class TestBD {
 	public void conexionException() {
 		assertThrows(BDException.class, () -> {
 			BD bd = BD.getBDPersonalizado("incorrecto", "incorrecto");
-			BD.connectToDatabase();
+			String sel = "SELECT * FROM Partido";
+			bd.Select(sel);
 		});
 	}
 
@@ -88,7 +88,6 @@ public class TestBD {
 
 	@Test
 	public void select() {
-		String pis = ";";
 		Object[] ob;
 		try {
 			String sel = "INSERT INTO Pista(Nombre, Ubicacion, Hora_inicio, Hora_fin) VALUES" + " ('" + "pista2" + "','"
@@ -161,7 +160,6 @@ public class TestBD {
 	public void delete() {
 		Random r = new Random();
 		Integer aux = r.nextInt(100);
-		String pis = ";";
 		bd.Insert("INSERT INTO Pista(Nombre, Ubicacion, Hora_inicio, Hora_fin) VALUES" + " ('" + "pista"
 				+ aux.toString() + "" + "','" + "ubi" + "','" + "" + "','" + "" + "')");
 		bd.Delete("Delete From Pista where Pista.Nombre='pista" + aux.toString() + "'");

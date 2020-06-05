@@ -3,15 +3,13 @@ package controlador;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.List;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 import modelo.BD;
 import modelo.Jugador;
-import net.proteanit.sql.DbUtils;
 import vista.MenuJugador;
 import vista.SalirsePartido;
 
@@ -42,10 +40,18 @@ public class GestionSalirsePartido implements ActionListener {
 
 	private void generarPartido() {
 		try {
-			String codigo = "Select * from Jugador_Partido where ID_jug= \"" + jugador.getCorreo() + "\"";
-			PreparedStatement pst = vista.conexion.prepareStatement(codigo);
-			ResultSet rs = pst.executeQuery();
-			vista.table.setModel(DbUtils.resultSetToTableModel(rs));
+			DefaultTableModel modelo = new DefaultTableModel() {
+				@Override
+				public boolean isCellEditable(int row, int column) {
+					return false;
+				}
+			};
+			modelo.setColumnIdentifiers(new String[] { "Jugador", "Partido", "Estado Solicitud" });
+			String sel = "Select * from Jugador_Partido where ID_jug= \"" + jugador.getCorreo() + "\"";
+			List<Object[]> ob = this.bd.Select(sel);
+			for (Object[] o : ob) {
+				modelo.addRow(o);
+			}
 
 		} catch (Exception exp) {
 			exp.printStackTrace();
@@ -53,41 +59,20 @@ public class GestionSalirsePartido implements ActionListener {
 	}
 
 	private void salirPartido() {
-		try {
-			String codigo = "Select * from Jugador_Partido where partido= ?";
-			PreparedStatement pst2;
-			pst2 = vista.conexion.prepareStatement(codigo);
-			pst2.setString(1, vista.textField.getText());
-			ResultSet rs = pst2.executeQuery();
-			if (rs.first()) {
-				String sql = "Delete from Jugador_Partido where partido=\"" + vista.textField.getText()
-						+ "\" and ID_jug=\"" + jugador.getCorreo() + "\"";
-				java.sql.Statement st = vista.conexion.createStatement();
-				st.executeUpdate(sql);
-				String sel = "SELECT Partido.id_anfitrion FROM Partido WHERE Partido.cod_partido = "
-						+ vista.textField.getText();
-				String anfitrion = bd.SelectEscalar(sel).toString();
-				if (anfitrion.equalsIgnoreCase(jugador.getCorreo())) {
-					String del = "DELETE FROM Partido WHERE Partido.cod_partido = " + vista.textField.getText();
-					bd.Delete(del);
-					JOptionPane.showMessageDialog(null, "Al ser el anfitrion, el partido ha sido eliminado",
-							"Se ha salido correctamente", JOptionPane.OK_OPTION);
-				} else {
-					JOptionPane.showMessageDialog(null, "Ya no pertenece a dicho partido", "Se ha salido correctamente",
-							JOptionPane.INFORMATION_MESSAGE);
-				}
-
-			} else {
-				JOptionPane.showMessageDialog(null, "No existe el ID", "ERROR", JOptionPane.ERROR_MESSAGE);
-				vista.dispose();
-				GestionSalirsePartido gsp = new GestionSalirsePartido(new SalirsePartido());
-				gsp.setJugador(jugador);
-				gsp.setVisible(true);
-				gsp.setLocationRelativeTo(null);
-			}
-
-		} catch (SQLException e1) {
-			e1.printStackTrace();
+		String del = "Delete from Jugador_Partido where partido=\"" + vista.textField.getText() + "\" and ID_jug=\""
+				+ jugador.getCorreo() + "\"";
+		this.bd.Delete(del);
+		String sel = "SELECT Partido.id_anfitrion FROM Partido WHERE Partido.cod_partido = "
+				+ vista.textField.getText();
+		String anfitrion = bd.SelectEscalar(sel).toString();
+		if (anfitrion.equalsIgnoreCase(jugador.getCorreo())) {
+			del = "DELETE FROM Partido WHERE Partido.cod_partido = " + vista.textField.getText();
+			bd.Delete(del);
+			JOptionPane.showMessageDialog(null, "Al ser el anfitrion, el partido ha sido eliminado",
+					"Se ha salido correctamente", JOptionPane.OK_OPTION);
+		} else {
+			JOptionPane.showMessageDialog(null, "Ya no pertenece a dicho partido", "Se ha salido correctamente",
+					JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 

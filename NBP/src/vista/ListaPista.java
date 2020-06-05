@@ -1,8 +1,6 @@
 package vista;
 
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -28,29 +26,13 @@ public class ListaPista extends JFrame {
 	Connection conexion = null;
 
 	public Administrador administrador;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ListaPista frame = new ListaPista();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	public BD baseDatos = BD.getBD();
 
 	/**
 	 * Create the frame.
 	 */
 	public ListaPista() {
-		BD baseDatos = BD.getBD();
-		conexion = baseDatos.connectToDatabase();
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 630, 440);
 		contentPane = new JPanel();

@@ -10,7 +10,6 @@ import modelo.Pista;
 import vista.CrearPista;
 import vista.ListaPista;
 import vista.MenuAdministrador;
-import vista.MenuJugador;
 
 public class ControladorCrearPista implements ActionListener {
 	private CrearPista vista;
@@ -42,7 +41,6 @@ public class ControladorCrearPista implements ActionListener {
 					JOptionPane.showMessageDialog(null, "Ese nombre ya esta en uso.", "ERORR CREAR PISTA!!!!",
 							JOptionPane.ERROR_MESSAGE);
 				} else {
-					// Redirigir a Menu
 					this.vista.dispose();
 					JOptionPane.showMessageDialog(null, "Pista creada con exito", "creacion de pista completada",
 							JOptionPane.INFORMATION_MESSAGE);

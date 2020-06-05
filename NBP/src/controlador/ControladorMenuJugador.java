@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import modelo.Jugador;
-import vista.CrearPartido2;
+import vista.CrearPartido;
 import vista.ListaPartidos;
 import vista.ListaPartidosAnfitrion;
 import vista.MenuInicio;
@@ -47,7 +47,7 @@ public class ControladorMenuJugador implements ActionListener {
 			// CrearPartido c = new CrearPartido();
 			// c.setVisible(true);
 			// c.setLocationRelativeTo(null);
-			ControladorCrearPartido2 c = new ControladorCrearPartido2(new CrearPartido2());
+			ControladorCrearPartido c = new ControladorCrearPartido(new CrearPartido());
 			c.setJugador(this.vista.getJugador());
 			c.setLocationRelativeTo(null);
 			c.setVisible(true);
