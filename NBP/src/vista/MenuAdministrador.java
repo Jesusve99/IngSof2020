@@ -16,7 +16,7 @@ public class MenuAdministrador extends JFrame {
 
 	private JPanel contentPane;
 	public JButton btnCrearPista;
-	public JButton btnEliminarPista;
+	public JButton btnGestionPista;
 	public JButton btnCerrarSesin;
 	public JButton btnListaPistas;
 
@@ -52,9 +52,9 @@ public class MenuAdministrador extends JFrame {
 		btnCrearPista.setBounds(40, 89, 145, 34);
 		contentPane.add(btnCrearPista);
 
-		btnEliminarPista = new JButton("Eliminar pista");
-		btnEliminarPista.setBounds(40, 136, 143, 34);
-		contentPane.add(btnEliminarPista);
+		btnGestionPista = new JButton("Gestionar Pistas");
+		btnGestionPista.setBounds(40, 136, 143, 34);
+		contentPane.add(btnGestionPista);
 
 		btnCerrarSesin = new JButton("Cerrar Sesi\u00F3n");
 		btnCerrarSesin.setBounds(259, 184, 134, 34);
