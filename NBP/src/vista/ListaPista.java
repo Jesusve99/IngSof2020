@@ -3,9 +3,7 @@ package vista;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,20 +11,19 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
 import controlador.ControladorMenuAdministrador;
 import modelo.Administrador;
 import modelo.BD;
-import net.proteanit.sql.DbUtils;
 
 public class ListaPista extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
-	Connection conexion = null;
+	public BD bd = BD.getBD();
 
 	public Administrador administrador;
-	public BD baseDatos = BD.getBD();
 
 	/**
 	 * Create the frame.
@@ -44,15 +41,29 @@ public class ListaPista extends JFrame {
 		JButton btnGenerarListaPistas = new JButton("Generar Lista Pistas");
 		btnGenerarListaPistas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				try {
-					String codigo = "Select * from Pista";
-					PreparedStatement pst = conexion.prepareStatement(codigo);
-					ResultSet rs = pst.executeQuery();
-					table.setModel(DbUtils.resultSetToTableModel(rs));
-
-				} catch (Exception exp) {
-					exp.printStackTrace();
+				DefaultTableModel modelo = new DefaultTableModel() {
+					@Override
+					public boolean isCellEditable(int row, int column) {
+						return false;
+					}
+				};
+				modelo.setColumnIdentifiers(
+						new String[] { "Nombre", "Ubicacion", "Hora apertura", "Hora cierre", "codPartido", "Estado" });
+				String sel = "Select * from Pista";
+				List<Object[]> ob = bd.Select(sel);
+				for (Object[] o : ob) {
+					Boolean estado = Boolean.parseBoolean(o[5].toString());
+					if (estado) {
+						o[5] = "Habilitada";
+					} else {
+						o[5] = "Deshabilitada";
+					}
+					modelo.addRow(o);
 				}
+				table.setModel(modelo);
+				table.getColumn("codPartido").setMinWidth(0);
+				table.getColumn("codPartido").setMaxWidth(0);
+				table.getColumn("codPartido").setPreferredWidth(0);
 			}
 		});
 		btnGenerarListaPistas.setBounds(109, 30, 199, 39);

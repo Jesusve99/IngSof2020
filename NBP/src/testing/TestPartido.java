@@ -69,7 +69,7 @@ public class TestPartido {
 	//contrario devuelve FALSE
 	@Test
 	public void pistaDisponibleTiempo() {
-		assertFalse(partidoPrueba.pistaDisponibleTiempo());
+		assertTrue(partidoPrueba.pistaDisponibleTiempo());
 	}
 	
 	@Test
