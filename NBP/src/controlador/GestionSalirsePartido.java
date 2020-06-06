@@ -39,23 +39,24 @@ public class GestionSalirsePartido implements ActionListener {
 	}
 
 	private void generarPartido() {
-		try {
-			DefaultTableModel modelo = new DefaultTableModel() {
-				@Override
-				public boolean isCellEditable(int row, int column) {
-					return false;
-				}
-			};
-			modelo.setColumnIdentifiers(new String[] { "Jugador", "Partido", "Estado Solicitud" });
-			String sel = "Select * from Jugador_Partido where ID_jug= \"" + jugador.getCorreo() + "\"";
-			List<Object[]> ob = this.bd.Select(sel);
-			for (Object[] o : ob) {
-				modelo.addRow(o);
+		DefaultTableModel modelo = new DefaultTableModel() {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
 			}
-
-		} catch (Exception exp) {
-			exp.printStackTrace();
+		};
+		modelo.setColumnIdentifiers(new String[] { "Jugador", "Partido" });
+		String sel = "Select * from Jugador_Partido where ID_jug= \"" + jugador.getCorreo()
+				+ "\" AND estado_solicitud = 1";
+		List<Object[]> ob = this.bd.Select(sel);
+		for (Object[] o : ob) {
+			modelo.addRow(o);
 		}
+		this.vista.table.setModel(modelo);
+
+		JOptionPane.showMessageDialog(null,
+				"Para salirse el partido introduzca el Id correspondiente al partido del que se quiere salir",
+				"Se ha salido correctamente", JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	private void salirPartido() {
@@ -69,7 +70,7 @@ public class GestionSalirsePartido implements ActionListener {
 			del = "DELETE FROM Partido WHERE Partido.cod_partido = " + vista.textField.getText();
 			bd.Delete(del);
 			JOptionPane.showMessageDialog(null, "Al ser el anfitrion, el partido ha sido eliminado",
-					"Se ha salido correctamente", JOptionPane.OK_OPTION);
+					"Se ha salido correctamente", JOptionPane.INFORMATION_MESSAGE);
 		} else {
 			JOptionPane.showMessageDialog(null, "Ya no pertenece a dicho partido", "Se ha salido correctamente",
 					JOptionPane.INFORMATION_MESSAGE);
