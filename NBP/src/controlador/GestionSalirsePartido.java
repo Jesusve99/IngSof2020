@@ -61,18 +61,18 @@ public class GestionSalirsePartido implements ActionListener {
 	}
 
 	private void salirPartido() {
-		if(vista.textField.getText().equals("")) {
-			JOptionPane.showMessageDialog(null, "Por favor complete los datos del id partido", "ERROR AL SALIRSE PARTIDO!!",
-					JOptionPane.ERROR_MESSAGE);
-		}else {
+		if (vista.textField.getText().isEmpty()) {
+			JOptionPane.showMessageDialog(null, "Por favor complete los datos del id partido",
+					"ERROR AL SALIRSE PARTIDO!!", JOptionPane.ERROR_MESSAGE);
+		} else {
 			long id = Long.parseLong(vista.textField.getText());
-			if(Partido.existePartido(id)) {
-				JOptionPane.showMessageDialog(null, "Ese id de partido no existe, por favor introduzca un id correcto", "ERROR AL SALIRSE PARTIDO!!",
-						JOptionPane.ERROR_MESSAGE);
-			}else {
-			
-				String del = "Delete from Jugador_Partido where partido=\"" + vista.textField.getText() + "\" and ID_jug=\""
-						+ jugador.getCorreo() + "\"";
+			if (Partido.existePartido(id)) {
+				JOptionPane.showMessageDialog(null, "Ese id de partido no existe, por favor introduzca un id correcto",
+						"ERROR AL SALIRSE PARTIDO!!", JOptionPane.ERROR_MESSAGE);
+			} else {
+
+				String del = "Delete from Jugador_Partido where partido=\"" + vista.textField.getText()
+						+ "\" and ID_jug=\"" + jugador.getCorreo() + "\"";
 				this.bd.Delete(del);
 				String sel = "SELECT Partido.id_anfitrion FROM Partido WHERE Partido.cod_partido = "
 						+ vista.textField.getText();
@@ -88,7 +88,7 @@ public class GestionSalirsePartido implements ActionListener {
 				}
 			}
 		}
-		
+
 	}
 
 	private void volverMP() {
