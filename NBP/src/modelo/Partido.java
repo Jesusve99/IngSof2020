@@ -28,6 +28,12 @@ public class Partido {
 		this.hora = hora;
 		this.idAnfitrion = idAnfitrion;
 	}
+	
+	//Comprueba si el id del partido existe o no en la BD
+	public static boolean existePartido(long id) {
+		String sql = "Select * from Partido where cod_partido = "+id;
+		return bd.Select(sql).isEmpty();
+	}
 
 	// Introducir objeto en la BD
 	public void agregarPartido() {
